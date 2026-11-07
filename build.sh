@@ -37,6 +37,20 @@ fi
 
 codesign --force --deep --sign - "$APP"
 
+# --universal заодно собирает для сайта два архива: отдельно Apple Silicon и Intel.
+if [[ "${1:-}" == "--universal" ]]; then
+  for pair in arm64:Apple x86_64:Intel; do
+    arch=${pair%%:*}; name=${pair##*:}
+    THIN=build/thin-$name/Hourfox.app
+    rm -rf "build/thin-$name"; mkdir -p "build/thin-$name"
+    ditto "$APP" "$THIN"
+    lipo "$APP/Contents/MacOS/Hourfox" -thin "$arch" -output "$THIN/Contents/MacOS/Hourfox"
+    codesign --force --deep --sign - "$THIN"
+    rm -f "docs/Hourfox-$name.zip"
+    ditto -c -k --norsrc --keepParent "$THIN" "docs/Hourfox-$name.zip"
+  done
+fi
+
 if [[ "${1:-}" == "--install" ]]; then
   pkill -x Hourfox 2>/dev/null || true
   while pgrep -x Hourfox >/dev/null; do sleep 0.2; done

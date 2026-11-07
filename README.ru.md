@@ -2,7 +2,7 @@
 
 Минималистичный трекер времени для macOS. Живёт в Notch MacBook, а на Mac без выреза в строке меню.
 
-Работает офлайн, без аккаунта и аналитики. **[Сайт](https://andmdesign.github.io/Hourfox/) · [Скачать](https://andmdesign.github.io/Hourfox/Hourfox.zip) · [English](README.md)**
+Работает офлайн, без аккаунта и аналитики. **[Сайт](https://andmdesign.github.io/Hourfox/) · [Скачать](https://andmdesign.github.io/Hourfox/) · [English](README.md)**
 
 ## Возможности
 
@@ -17,7 +17,7 @@
 
 ## Установка
 
-1. Скачайте [Hourfox.zip](https://andmdesign.github.io/Hourfox/Hourfox.zip), распакуйте и перенесите Hourfox в «Программы».
+1. Скачайте [Hourfox-Apple.zip или Hourfox-Intel.zip](https://andmdesign.github.io/Hourfox/), распакуйте и перенесите Hourfox в «Программы».
 2. Приложение пока не нотаризовано, поэтому первый запуск macOS заблокирует. Откройте его, затем разрешите в **Системные настройки → Конфиденциальность и безопасность → Всё равно открыть**. Или проверьте код и соберите сами.
 
 Нужна macOS 14 или новее. Работает на Apple Silicon и Intel.

@@ -466,6 +466,14 @@
   .undo span:last-child { height: 24px; padding: 0 11px; border-radius: 12px; display: grid; place-items: center; background: rgba(255,255,255,0.12); color: #fff; font-weight: 600; white-space: nowrap; }
 
   /* Вопросы */
+  .dl { width: min(420px, calc(100vw - 32px)); margin: auto; padding: 24px; border: 1px solid var(--line); border-radius: 24px; background: #111113; color: #fff; }
+  .dl::backdrop { background: rgba(0,0,0,0.65); backdrop-filter: blur(6px); }
+  .dl h3 { margin: 0 0 16px; font-size: 22px; font-weight: 600; letter-spacing: -0.01em; }
+  .dl a { display: flex; flex-direction: column; gap: 2px; padding: 15px 16px; margin-bottom: 8px; border-radius: 14px; border: 1px solid var(--line); background: rgba(255,255,255,0.04); color: inherit; text-decoration: none; transition: background 0.2s; }
+  .dl a:hover, .dl a:focus-visible { background: rgba(255,255,255,0.1); outline: none; }
+  .dl a b { font-size: 16px; font-weight: 600; }
+  .dl a span { font-size: 13px; color: var(--dim); }
+  .dl p { margin: 12px 2px 0; font-size: 13px; line-height: 1.45; color: var(--dim); }
   .oss-wrap { padding-top: 16px; }
   .oss { display: flex; align-items: center; gap: 18px; padding: 24px 28px; border-radius: 24px; border: 1px solid var(--line); background: rgba(255,255,255,0.03); color: inherit; text-decoration: none; transition: background 0.2s, border-color 0.2s; }
   .oss:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.18); }
@@ -536,7 +544,7 @@
       </button>
       <div class="menu" id="langMenu" role="menu" hidden></div>
     </div>
-    <a class="btn ghost" href="Hourfox.zip" download data-i18n="nav.download">Скачать</a>
+    <a class="btn ghost" href="Hourfox-Apple.zip" data-download data-i18n="nav.download">Скачать</a>
   </div>
 </nav>
 
@@ -545,7 +553,7 @@
     <div class="model" id="model"><img class="icon" src="hourfox-icon.svg" alt="Hourfox"></div>
     <h1 data-i18n="hero.title">Время под&nbsp;контролем</h1>
     <p class="lead" data-i18n="hero.lead">Трекер времени для&nbsp;Mac, который живёт в&nbsp;Notch или в&nbsp;строке меню.</p>
-    <a class="btn big" href="Hourfox.zip" download><span data-i18n="hero.cta">Скачать для <svg class="apple" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>Mac</span></a>
+    <a class="btn big" href="Hourfox-Apple.zip" data-download><span data-i18n="hero.cta">Скачать для <svg class="apple" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>Mac</span></a>
 
     <div class="demo">
       <div class="feats" id="feats" role="tablist" aria-label="Hourfox">
@@ -762,15 +770,21 @@
   <section class="final wrap">
     <h2 data-i18n="end.t">Бесплатно и&nbsp;без аккаунта</h2>
     <div class="actions">
-      <a class="btn big" href="Hourfox.zip" download><span data-i18n="hero.cta">Скачать для <svg class="apple" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>Mac</span></a>
+      <a class="btn big" href="Hourfox-Apple.zip" data-download><span data-i18n="hero.cta">Скачать для <svg class="apple" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>Mac</span></a>
     </div>
   </section>
 </main>
+<dialog class="dl" id="dl" aria-labelledby="dlTitle">
+  <h3 id="dlTitle" data-i18n="dl.t"></h3>
+  <a href="Hourfox-Apple.zip" download><b>Apple Silicon</b><span data-i18n="dl.a"></span></a>
+  <a href="Hourfox-Intel.zip" download><b>Intel</b><span data-i18n="dl.i"></span></a>
+  <p data-i18n="dl.h"></p>
+</dialog>
 
 <footer>
   <div class="wrap">
     <span>Hourfox</span>
-    <a href="Hourfox.zip" download data-i18n="nav.download">Скачать</a>
+    <a href="Hourfox-Apple.zip" data-download data-i18n="nav.download">Скачать</a>
     <a href="https://github.com/andmdesign/Hourfox" target="_blank" rel="noopener">GitHub</a>
     <a href="https://t.me/andmdesign" target="_blank" rel="noopener" data-i18n="ft.feedback">Обратная связь</a>
   </div>
@@ -794,6 +808,7 @@
 
   const T = {
     en: {
+      "dl.t": "Which Mac do you have?", "dl.a": "M1 or newer", "dl.i": "Older models with an Intel processor", "dl.h": "Check under Apple menu → About This Mac.",
       "doc.title": "Hourfox — a time tracker for Mac",
       "nav.download": "Download",
       "hero.title": "Your time, under&nbsp;control",
@@ -843,6 +858,7 @@
       min: "min", h: "h", days: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     },
     ru: {
+      "dl.t": "Какой у вас Mac?", "dl.a": "M1 и новее", "dl.i": "Старые модели с процессором Intel", "dl.h": "Посмотреть можно в меню Apple → «Об этом Mac».",
       "doc.title": "Hourfox — трекер времени для Mac",
       "nav.download": "Скачать",
       "hero.title": "Время под&nbsp;контролем",
@@ -892,6 +908,7 @@
       min: "мин", h: "ч", days: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"]
     },
     uk: {
+      "dl.t": "Який у вас Mac?", "dl.a": "M1 і новіші", "dl.i": "Старіші моделі з процесором Intel", "dl.h": "Подивитися можна в меню Apple → «Про цей Mac».",
       "doc.title": "Hourfox — трекер часу для Mac",
       "nav.download": "Завантажити",
       "hero.title": "Час під&nbsp;контролем",
@@ -941,6 +958,7 @@
       min: "хв", h: "год", days: ["Нд", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"]
     },
     zh: {
+      "dl.t": "你的 Mac 是哪种？", "dl.a": "M1 或更新", "dl.i": "搭载 Intel 处理器的旧款机型", "dl.h": "可在 Apple 菜单 → “关于本机”中查看。",
       "doc.title": "Hourfox — Mac 时间追踪工具",
       "nav.download": "下载",
       "hero.title": "时间，尽在掌握",
@@ -990,6 +1008,7 @@
       min: "分钟", h: "小时", days: ["周日", "周一", "周二", "周三", "周四", "周五", "周六"]
     },
     es: {
+      "dl.t": "¿Qué Mac tienes?", "dl.a": "M1 o más reciente", "dl.i": "Modelos anteriores con procesador Intel", "dl.h": "Compruébalo en el menú Apple → Acerca de este Mac.",
       "doc.title": "Hourfox — control del tiempo para Mac",
       "nav.download": "Descargar",
       "hero.title": "Tu tiempo, bajo&nbsp;control",
@@ -1039,6 +1058,7 @@
       min: "min", h: "h", days: ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"]
     },
     pt: {
+      "dl.t": "Qual é o seu Mac?", "dl.a": "M1 ou mais novo", "dl.i": "Modelos antigos com processador Intel", "dl.h": "Veja no menu Apple → Sobre Este Mac.",
       "doc.title": "Hourfox — controle de tempo para Mac",
       "nav.download": "Baixar",
       "hero.title": "Seu tempo, sob&nbsp;controle",
@@ -1088,6 +1108,7 @@
       min: "min", h: "h", days: ["dom", "seg", "ter", "qua", "qui", "sex", "sáb"]
     },
     cs: {
+      "dl.t": "Jaký máte Mac?", "dl.a": "M1 a novější", "dl.i": "Starší modely s procesorem Intel", "dl.h": "Zjistíte to v nabídce Apple → O tomto Macu.",
       "doc.title": "Hourfox — měření času pro Mac",
       "nav.download": "Stáhnout",
       "hero.title": "Čas pod&nbsp;kontrolou",
@@ -1137,6 +1158,7 @@
       min: "min", h: "h", days: ["ne", "po", "út", "st", "čt", "pá", "so"]
     },
     it: {
+      "dl.t": "Quale Mac hai?", "dl.a": "M1 o più recente", "dl.i": "Modelli precedenti con processore Intel", "dl.h": "Controlla nel menu Apple → Informazioni su questo Mac.",
       "doc.title": "Hourfox — monitoraggio del tempo per Mac",
       "nav.download": "Scarica",
       "hero.title": "Il tuo tempo, sotto&nbsp;controllo",
@@ -1912,6 +1934,18 @@
       if (level) cell.style.background = levels[level];
       map.append(cell);
     }
+  })();
+
+  // Скачивание: кнопка спрашивает процессор. Без скриптов ссылка ведёт на сборку для Apple Silicon.
+  (() => {
+    const dialog = $("dl");
+    document.querySelectorAll("a[data-download]").forEach((link) => link.addEventListener("click", (e) => {
+      e.preventDefault();
+      dialog.showModal();
+    }));
+    dialog.addEventListener("click", (e) => {
+      if (e.target === dialog || e.target.closest("a")) dialog.close();
+    });
   })();
 
   const SCENES = [sceneTimer, sceneProjects, sceneReport, sceneTasks];

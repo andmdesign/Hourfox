@@ -14,4 +14,4 @@ Resources/GoogleOAuth.plist
 
 # macOS
 .DS_Store
-!docs/Hourfox.zip
+!docs/Hourfox-*.zip
