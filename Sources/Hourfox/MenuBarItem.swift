@@ -87,28 +87,32 @@ enum MenuBarIcon {
         drawLogo(center: NSPoint(x: rect.maxX - 2 - iconSide / 2, y: rect.midY), radius: iconSide / 2 - 1, ink: ink)
     }
 
-    /// Упрощённая иконка приложения: кольцо таймера и оранжевая стрелка.
+    /// Упрощённый маскот: голова лиса одним цветом с прорезью очков. Мелкие детали на такой высоте не читаются.
     private static func drawLogo(center: NSPoint, radius: CGFloat, ink: NSColor) {
-        let track = NSBezierPath()
-        track.appendArc(withCenter: center, radius: radius, startAngle: 0, endAngle: 360)
-        track.lineWidth = 1.7
-        ink.withAlphaComponent(0.3).setStroke()
-        track.stroke()
+        func at(_ x: CGFloat, _ y: CGFloat) -> NSPoint {
+            NSPoint(x: center.x + x * radius, y: center.y + y * radius)
+        }
+        let head = NSBezierPath()
+        head.lineJoinStyle = .round
+        head.move(to: at(-0.84, 1))
+        head.line(to: at(-0.36, 0.44))
+        head.line(to: at(0.36, 0.44))
+        head.line(to: at(0.84, 1))
+        head.line(to: at(0.96, -0.12))
+        head.line(to: at(0, -1))
+        head.line(to: at(-0.96, -0.12))
+        head.close()
+        ink.setFill()
+        head.fill()
 
-        let arc = NSBezierPath()
-        arc.appendArc(withCenter: center, radius: radius, startAngle: 90, endAngle: -150, clockwise: true)
-        arc.lineWidth = 1.7
-        arc.lineCapStyle = .round
-        ink.setStroke()
-        arc.stroke()
-
-        let hand = NSBezierPath()
-        hand.move(to: center)
-        hand.line(to: NSPoint(x: center.x, y: center.y + radius - 1.8))
-        hand.lineWidth = 1.5
-        hand.lineCapStyle = .round
-        NSColor.systemOrange.setStroke()
-        hand.stroke()
+        NSGraphicsContext.saveGraphicsState()
+        NSGraphicsContext.current?.compositingOperation = .destinationOut
+        NSColor.black.setFill()
+        for side: CGFloat in [-1, 1] {
+            NSBezierPath(ovalIn: NSRect(x: center.x + (side * 0.38 - 0.3) * radius, y: center.y - 0.2 * radius, width: 0.6 * radius, height: 0.42 * radius)).fill()
+        }
+        NSBezierPath(rect: NSRect(x: center.x - 0.2 * radius, y: center.y + 0.02 * radius, width: 0.4 * radius, height: 0.12 * radius)).fill()
+        NSGraphicsContext.restoreGraphicsState()
     }
 }
 
