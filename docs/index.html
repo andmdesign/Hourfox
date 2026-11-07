@@ -1,0 +1,2195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tempo — a time tracker for Mac</title>
+<meta name="description" content="A time tracker for Mac that lives in the Notch or the menu bar. Works offline, no account needed.">
+<meta property="og:title" content="Tempo — a time tracker for Mac">
+<meta property="og:description" content="A time tracker for Mac that lives in the Notch or the menu bar. Works offline, no account needed.">
+<meta property="og:type" content="website">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="favicon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+} }
+</script>
+<style>
+  :root {
+    --bg: #000;
+    --text: #f5f5f7;
+    --dim: rgba(245, 245, 247, 0.56);
+    --faint: rgba(245, 245, 247, 0.34);
+    --card: #0f0f10;
+    --line: rgba(255, 255, 255, 0.08);
+    --orange: #ff9f0a;
+    --blue: #0a84ff;
+    --green: #30d158;
+    --red: #ff453a;
+    --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Segoe UI", Roboto, sans-serif;
+    --display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Segoe UI", Roboto, sans-serif;
+    --spring: cubic-bezier(0.32, 1.28, 0.5, 1);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  [hidden] { display: none !important; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 17px;
+    line-height: 1.47;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding-inline: 24px; }
+
+  /* Лучи из выреза: фон первого экрана */
+  .rays {
+    position: absolute; top: 0; left: 0; width: 100%; height: 1180px; z-index: -1; pointer-events: none; display: block;
+    -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+            mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+  }
+
+  /* Навигация */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    transition: background 0.25s ease;
+  }
+  /* Фон появляется только при прокрутке: наверху страницы шапка лежит прямо на лучах. */
+  nav.scrolled {
+    background: rgba(0, 0, 0, 0.72);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+  }
+  nav .wrap { display: flex; align-items: center; height: 52px; gap: 12px; }
+  .brand { display: flex; align-items: center; gap: 9px; font-weight: 600; font-size: 15px; }
+  .brand img { width: 26px; height: 26px; }
+  .spacer { flex: 1; }
+  .langsel { position: relative; }
+  .globe {
+    width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center;
+    color: var(--dim); transition: background 0.2s, color 0.2s;
+  }
+  .globe:hover, .globe[aria-expanded="true"] { background: rgba(255,255,255,0.1); color: var(--text); }
+  .globe svg { width: 18px; height: 18px; }
+  .menu {
+    position: absolute; right: 0; top: 42px; min-width: 190px; padding: 6px;
+    z-index: 20; background: #202022; border: 1px solid var(--line); border-radius: 14px;
+    backdrop-filter: saturate(180%) blur(24px); -webkit-backdrop-filter: saturate(180%) blur(24px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    transform-origin: top right; animation: menuIn 0.18s var(--spring);
+  }
+  @keyframes menuIn { from { opacity: 0; transform: scale(0.94); } }
+  .menu button {
+    display: flex; align-items: center; justify-content: space-between; width: 100%;
+    padding: 7px 10px; border-radius: 8px; font-size: 14px; text-align: left; color: var(--text);
+  }
+  .menu button:hover { background: rgba(255,255,255,0.08); }
+  .menu button svg { width: 13px; height: 13px; color: var(--blue); }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    height: 34px; padding: 0 16px; border-radius: 980px;
+    background: var(--text); color: #000; font-size: 14px; font-weight: 600;
+    transition: transform 0.2s var(--spring), background 0.2s;
+  }
+  .btn:hover { background: #fff; }
+  .btn:active { transform: scale(0.96); }
+  .apple { width: 0.92em; height: 0.92em; fill: currentColor; vertical-align: -0.1em; margin: 0 0.12em 0 0.04em; }
+  .btn.big { height: 48px; padding: 0 26px; font-size: 17px; }
+  .btn.ghost { background: rgba(255,255,255,0.07); color: var(--text); font-weight: 500; }
+  .btn.ghost:hover { background: rgba(255,255,255,0.14); }
+
+  /* Первый экран */
+  .hero { text-align: center; padding: 72px 0 40px; }
+  .model { position: relative; width: 190px; height: 190px; margin: -22px auto 6px; }
+  .model .icon { position: absolute; inset: 0; margin: auto; width: 116px; height: 116px; transition: opacity 0.4s; }
+  .model canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; opacity: 0; transition: opacity 0.5s; cursor: grab; touch-action: pan-y; outline: none; }
+  .model canvas:active { cursor: grabbing; }
+  .model.ready canvas { opacity: 1; }
+  .model.ready .icon { opacity: 0; }
+  h1 {
+    text-wrap: balance;
+    font-family: var(--display);
+    font-size: clamp(40px, 7vw, 72px);
+    font-weight: 600; letter-spacing: -0.03em; line-height: 1.05;
+  }
+  .lead { text-wrap: balance; color: var(--dim); font-size: clamp(17px, 2vw, 21px); max-width: 560px; margin: 20px auto 32px; }
+
+  /* Экран-демо */
+  .demo { margin: 40px auto 0; max-width: 960px; }
+  .scaler { position: relative; width: 100%; }
+  .screen {
+    position: absolute; top: 0; left: 50%;
+    width: 880px; height: 400px;
+    transform-origin: top center;
+    border-radius: 18px 18px 0 0;
+    overflow: hidden;
+    background:
+      radial-gradient(120% 90% at 20% 110%, #3a2a6b 0%, transparent 60%),
+      radial-gradient(90% 80% at 85% 100%, #7a3b2c 0%, transparent 55%),
+      linear-gradient(180deg, #11131c 0%, #1b1c2b 100%);
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 40px 120px rgba(0,0,0,0.6);
+    -webkit-mask-image: linear-gradient(180deg, #000 84%, transparent 100%);
+            mask-image: linear-gradient(180deg, #000 84%, transparent 100%);
+    user-select: none;
+    pointer-events: none;
+    text-align: left;
+  }
+  .menubar {
+    height: 32px; display: flex; align-items: center; padding: 0 16px; gap: 18px;
+    background: rgba(20, 20, 30, 0.45);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    font-size: 13px; color: rgba(255,255,255,0.85);
+  }
+  .menubar b { font-weight: 600; }
+  .screen.narrow .menubar span[data-i18n] { display: none; }
+  .screen.narrow .dwin { width: 480px; margin-left: -240px; }
+  .screen.narrow:has(.island.open) .menubar { opacity: 0; }
+  .menubar { transition: opacity 0.2s; }
+  .menubar .right { margin-left: auto; display: flex; gap: 16px; color: rgba(255,255,255,0.8); font-variant-numeric: tabular-nums; }
+  /* Переключатель функций над демо */
+  .feats { display: flex; justify-content: safe center; gap: 6px; margin: 0 auto 22px; overflow-x: auto; scrollbar-width: none; }
+  .feats::-webkit-scrollbar { display: none; }
+  .feats button {
+    flex: none; height: 36px; padding: 0 18px; border-radius: 18px; font-size: 14px; font-weight: 500; color: var(--dim); white-space: nowrap;
+    transition: background 0.25s, color 0.25s, transform 0.2s var(--spring);
+  }
+  .feats button:hover { color: var(--text); }
+  .feats button:active { transform: scale(0.96); }
+  .feats button[aria-selected="true"] { background: rgba(255,255,255,0.13); color: var(--text); }
+  /* Проекты в демо */
+  .pmenu { position: absolute; top: 94px; right: 92px; z-index: 3; width: 178px; padding: 5px; border-radius: 11px; background: #252527; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 12px 34px rgba(0,0,0,0.5); opacity: 0; transform: scale(0.95); transform-origin: top right; pointer-events: none; transition: opacity 0.15s, transform 0.2s var(--spring); }
+  .pmenu.on { opacity: 1; transform: none; pointer-events: auto; }
+  .pmenu button { display: flex; align-items: center; gap: 8px; width: 100%; height: 26px; padding: 0 8px; border-radius: 7px; font-size: 12px; font-weight: 500; text-align: left; }
+  .pmenu button:hover, .pmenu button.pressed { background: var(--blue); color: #fff; transform: none !important; }
+  .pmenu .dot { width: 7px; height: 7px; flex: none; }
+  .pmenu hr { border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 4px 6px; }
+  .newp { display: flex; align-items: center; gap: 10px; height: 38px; margin-top: 12px; padding: 0 8px 0 14px; border-radius: 11px; background: rgba(255,255,255,0.06); }
+  .newp input { flex: 1; min-width: 0; background: none; border: 0; outline: none; color: #fff; font: 13px var(--font); }
+  .newp input::placeholder { color: rgba(255,255,255,0.35); }
+  .swatches { display: flex; gap: 8px; flex: none; }
+  .swatches button { display: block; width: 12px; height: 12px; border-radius: 50%; background: var(--c); padding: 0; }
+  .swatches button.on { outline: 2px solid #fff; outline-offset: 2px; }
+  .newp .ok { padding: 0; cursor: pointer; }
+  /* Окно отчёта в демо */
+  .dwin {
+    position: absolute; top: 46px; left: 50%; width: 520px; margin-left: -260px; z-index: 1; padding: 0 18px 14px;
+    background: #1c1c1e; border: 1px solid rgba(255,255,255,0.1); border-radius: 13px; box-shadow: 0 24px 70px rgba(0,0,0,0.55);
+    opacity: 0; transform: scale(0.94) translateY(8px); pointer-events: none;
+    transition: opacity 0.22s, transform 0.32s var(--spring);
+  }
+  .dwin.on { opacity: 1; transform: none; pointer-events: auto; }
+  .dbar { display: flex; align-items: center; gap: 7px; height: 38px; font-size: 13px; font-weight: 600; }
+  .dbar .lights { display: flex; gap: 7px; margin-right: 8px; }
+  .dbar .lights i, .dbar .lights button { display: block; width: 11px; height: 11px; border-radius: 50%; background: #48484a; padding: 0; }
+  .dbar .lights button { background: #ff5f57; }
+  .dbar .fill { flex: 1; }
+  .dexport { position: relative; display: flex; align-items: center; height: 26px; padding: 0 11px; border-radius: 13px; background: rgba(255,255,255,0.1); font-size: 12px; font-weight: 500; transition: transform 0.12s; }
+  .dmenu { position: absolute; top: 37px; right: 18px; z-index: 2; width: 92px; padding: 4px; border-radius: 9px; background: #2c2c2e; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.45); opacity: 0; transform: scale(0.94); transform-origin: top right; pointer-events: none; transition: opacity 0.15s, transform 0.2s var(--spring); }
+  .dmenu.on { opacity: 1; transform: none; pointer-events: auto; }
+  .dmenu button { display: block; width: 100%; padding: 4px 8px; border-radius: 6px; font-size: 12px; text-align: left; }
+  .dmenu button:hover, .dmenu button.pressed { background: var(--blue); color: #fff; }
+  .dsum { display: flex; align-items: baseline; gap: 8px; }
+  .dsum b { font-family: var(--display); font-size: 28px; font-weight: 600; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  .dsum span { color: var(--dim); font-size: 12px; }
+  .dchart { display: flex; align-items: flex-end; gap: 10px; height: 74px; margin: 8px 0 4px; }
+  .dchart div { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; gap: 2px; height: 100%; }
+  .dchart i { display: block; border-radius: 3px; background: var(--c); }
+  .ddays { display: flex; gap: 10px; color: var(--faint); font-size: 10px; text-align: center; }
+  .ddays span { flex: 1; }
+  .drow { display: flex; align-items: center; gap: 8px; height: 25px; font-size: 12px; border-top: 1px solid rgba(255,255,255,0.07); font-variant-numeric: tabular-nums; }
+  .drow:first-of-type { margin-top: 6px; }
+  .drow .fill { flex: 1; }
+  .drow em { font-style: normal; color: var(--dim); }
+
+  /* Остров */
+  .island {
+    position: absolute; top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 180px; height: 32px;
+    background: #000;
+    border-radius: 0 0 11px 11px;
+    transition: width 0.5s var(--spring), height 0.5s var(--spring), border-radius 0.4s ease;
+    cursor: pointer;
+    z-index: 2;
+  }
+  .island::before, .island::after {
+    content: ""; position: absolute; top: 0; width: 8px; height: 8px;
+    transition: width 0.4s, height 0.4s;
+  }
+  .island::before { left: -8px; background: radial-gradient(circle at 0 100%, transparent 8px, #000 8.5px); }
+  .island::after { right: -8px; background: radial-gradient(circle at 100% 100%, transparent 8px, #000 8.5px); }
+  .island.open { border-radius: 0 0 28px 28px; cursor: default; }
+  .clip { position: absolute; inset: 0; overflow: hidden; border-radius: inherit; }
+
+  .wings {
+    position: absolute; top: 0; left: 0; right: 0; height: 32px;
+    display: flex; align-items: center; justify-content: space-between; padding: 0 16px 0 18px;
+    transition: opacity 0.25s;
+  }
+  .island.open .wings, .island:not(.running) .wings { opacity: 0; pointer-events: none; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--c, var(--orange)); }
+  .wings .dot { animation: breathe 2.8s ease-in-out infinite; }
+  @keyframes breathe { 50% { opacity: 0.45; } }
+  .wtime { font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; }
+
+  .shine {
+    position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.35) 50%, transparent 65%);
+    transform: translateX(-120%);
+  }
+  .shine.go { animation: shine 0.9s ease-out; }
+  @keyframes shine { to { transform: translateX(120%); } }
+
+  .panel {
+    position: absolute; top: 0; left: 50%; width: 500px; margin-left: -250px;
+    padding: 0 24px 18px;
+    opacity: 0; filter: blur(8px); transform: scale(0.96); transform-origin: top center;
+    transition: opacity 0.25s, filter 0.3s, transform 0.4s var(--spring);
+    pointer-events: none;
+  }
+  .island.open .panel { opacity: 1; filter: none; transform: none; pointer-events: auto; transition-delay: 0.06s; }
+  .phead { height: 32px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; font-weight: 500; }
+  .phead .today { color: rgba(255,255,255,0.45); }
+  .phead .today b { color: rgba(255,255,255,0.9); font-weight: 500; margin-left: 5px; font-variant-numeric: tabular-nums; }
+  .phead .icons { display: flex; gap: 14px; color: rgba(255,255,255,0.6); }
+  .phead svg { width: 14px; height: 14px; display: block; }
+  .row {
+    margin-top: 12px; height: 44px; border-radius: 13px; background: rgba(255,255,255,0.09);
+    display: flex; align-items: center; gap: 8px; padding: 0 6px 0 14px;
+  }
+  .row input {
+    flex: 1; min-width: 0; background: none; border: 0; outline: none;
+    color: #fff; font: 15px var(--font);
+  }
+  .row input::placeholder { color: rgba(255,255,255,0.35); }
+  .chip {
+    display: flex; align-items: center; gap: 6px; height: 26px; padding: 0 10px; border-radius: 13px;
+    background: rgba(255,255,255,0.08); font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.9); white-space: nowrap;
+  }
+  .chip .dot { width: 7px; height: 7px; }
+  .ptime { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.85); font-variant-numeric: tabular-nums; }
+  .island:not(.running) .ptime { display: none; }
+  .go-btn {
+    width: 32px; height: 32px; border-radius: 50%; flex: none;
+    display: grid; place-items: center; background: #fff; color: #000;
+    transition: transform 0.25s var(--spring), background 0.25s;
+  }
+  .go-btn:active { transform: scale(0.88); }
+  .island.running .go-btn { background: var(--red); color: #fff; }
+  .go-btn svg { width: 12px; height: 12px; transition: transform 0.3s var(--spring); }
+  .go-btn .stop, .island.running .go-btn .play { display: none; }
+  .island.running .go-btn .stop { display: block; animation: pop 0.35s var(--spring); }
+  .go-btn .play { animation: pop 0.35s var(--spring); }
+  @keyframes pop { from { transform: scale(0.4) translateY(4px); opacity: 0; } }
+  .bar { display: flex; gap: 2px; height: 5px; margin: 14px 4px 8px; }
+  .bar span { border-radius: 3px; background: var(--c); transition: flex-grow 0.6s ease; }
+  .legend { display: flex; gap: 14px; padding: 0 4px; font-size: 11px; font-weight: 500; }
+  .legend span { display: flex; align-items: center; gap: 5px; color: rgba(255,255,255,0.7); white-space: nowrap; }
+  .legend .dot { width: 6px; height: 6px; }
+  .legend i { font-style: normal; color: rgba(255,255,255,0.4); }
+  .tabs { display: flex; gap: 14px; margin: 14px 8px 4px; }
+  .tabs button { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.35); }
+  .tabs button[aria-selected="true"] { color: rgba(255,255,255,0.85); }
+  .tchip {
+    display: flex; align-items: center; gap: 4px; height: 26px; padding: 0 7px; border-radius: 13px;
+    background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.45); font-size: 12px; font-weight: 500; white-space: nowrap; flex: none;
+  }
+  .tchip.on { background: rgba(255,255,255,0.14); color: rgba(255,255,255,0.9); padding: 0 9px; }
+  .tchip svg { width: 12px; height: 12px; }
+  .lrow {
+    display: flex; align-items: center; gap: 9px; height: 28px; padding: 0 8px; border-radius: 8px;
+    font-size: 13px; width: 100%; text-align: left;
+  }
+  .lrow:hover { background: rgba(255,255,255,0.07); }
+  .lrow .t { color: rgba(255,255,255,0.85); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .lrow .p { color: rgba(255,255,255,0.4); flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .lrow .tm { color: rgba(255,255,255,0.35); font-size: 11px; font-variant-numeric: tabular-nums; }
+  .lrow .ic { width: 13px; height: 13px; color: rgba(255,255,255,0.4); flex: none; }
+  .lrow.add { color: rgba(255,255,255,0.3); }
+  .lrow.add input { flex: 1; background: none; border: 0; outline: none; color: #fff; font: 13px var(--font); }
+  .lrow.add input::placeholder { color: rgba(255,255,255,0.3); }
+  .cb { width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.4); flex: none; display: grid; place-items: center; cursor: pointer; transition: background 0.2s, border-color 0.2s; }
+  .cb.on { background: var(--c, var(--blue)); border-color: var(--c, var(--blue)); }
+  .cb.on::after { content: ""; width: 6px; height: 3px; border: solid #fff; border-width: 0 0 1.6px 1.6px; transform: rotate(-45deg) translate(0.5px, -0.5px); }
+  .cb.pri { border-color: var(--p); background: rgba(255,255,255,0.04); background: color-mix(in srgb, var(--p) 18%, transparent); }
+  .cb.pri.on { background: var(--p); }
+  .smile { width: 15px; height: 15px; color: rgba(255,255,255,0.35); flex: none; margin-right: -2px; }
+  .smile svg { display: block; width: 100%; height: 100%; }
+  .wlock { width: 11px; height: 11px; color: rgba(255,255,255,0.22); flex: none; }
+  .wleft { display: flex; align-items: center; gap: 10px; }
+  .pause-btn { width: 32px; height: 32px; border-radius: 50%; flex: none; display: none; place-items: center; background: rgba(255,255,255,0.12); color: #fff; }
+  .island.running .pause-btn { display: grid; }
+  .pause-btn svg { width: 12px; height: 12px; }
+  .pause-btn .p2, .pause-btn.on .p1 { display: none; }
+  .pause-btn.on .p2 { display: block; }
+  .pause-btn.on { background: rgba(255,255,255,0.22); }
+  .island.paused .ptime, .island.paused .wtime { opacity: 0.4; }
+  .grip { display: inline-block; width: 9px; height: 7px; margin-right: 4px; opacity: 0.4; vertical-align: 0; }
+  .tabs button[aria-selected="true"] .grip { opacity: 0.7; }
+  .lrow .due { font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.5); white-space: nowrap; flex: none; }
+  .lrow .due.soon { color: var(--blue); }
+  .tasks-add button { display: grid; place-items: center; flex: none; height: 22px; padding: 0; color: rgba(255,255,255,0.4); }
+  .tasks-add .icon-b { width: 18px; }
+  .tasks-add .icon-b svg { width: 14px; height: 14px; display: block; }
+  .tasks-add .pill-b { padding: 0 8px; border-radius: 11px; background: rgba(255,255,255,0.08); font-size: 11px; font-weight: 500; white-space: nowrap; }
+  .tasks-add .due-b { font-size: 11px; font-weight: 500; white-space: nowrap; }
+  .tasks-add .due-b.set { color: var(--blue); }
+  .primenu { position: absolute; right: 90px; z-index: 3; width: 150px; padding: 5px; border-radius: 11px; background: #252527; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 12px 34px rgba(0,0,0,0.5); opacity: 0; transform: scale(0.95); transform-origin: bottom right; transition: opacity 0.15s, transform 0.2s var(--spring); }
+  .primenu.on { opacity: 1; transform: none; }
+  .primenu button { display: flex; align-items: center; gap: 8px; width: 100%; height: 25px; padding: 0 8px; border-radius: 7px; font-size: 12px; font-weight: 500; }
+  .primenu button.pressed { background: var(--blue); transform: none !important; }
+  .primenu .cb { width: 12px; height: 12px; }
+  .panel .undo { margin: 8px 0 0; }
+  /* Новые карточки */
+  .sinput { display: flex; align-items: center; gap: 5px; height: 44px; padding: 0 14px; border-radius: 13px; background: rgba(255,255,255,0.09); font-size: 15px; white-space: nowrap; overflow: hidden; }
+  .sinput em { font-style: normal; font-weight: 500; }
+  .sinput .tp { color: #5ac8fa; }
+  .sinput .tm { color: var(--orange); }
+  .schips { display: flex; gap: 6px; padding: 10px 6px 2px; font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.7); }
+  .schips span { display: flex; align-items: center; gap: 5px; height: 24px; padding: 0 10px; border-radius: 12px; background: rgba(255,255,255,0.1); white-space: nowrap; }
+  .schips .dot { width: 6px; height: 6px; }
+  .looks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  .look { height: 92px; border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 8px; overflow: hidden; position: relative; }
+  .look i { display: block; height: 7px; border-radius: 4px; }
+  .look i:first-child { width: 55%; }
+  .look i:nth-child(2) { height: 20px; border-radius: 7px; }
+  .look.dark { background: #000; border: 1px solid rgba(255,255,255,0.1); }
+  .look.dark i { background: rgba(255,255,255,0.13); }
+  .look.light { background: #f2f2f4; }
+  .look.light i { background: rgba(0,0,0,0.12); }
+  .look.glass { background: linear-gradient(135deg, rgba(120,110,255,0.35), rgba(255,120,90,0.3)); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,0.3), 0 0 18px rgba(170,120,255,0.25); }
+  .look.glass i { background: rgba(255,255,255,0.28); }
+  .lrow.done .t { color: rgba(255,255,255,0.35); text-decoration: line-through; }
+  .lrow .pl { width: 9px; height: 9px; opacity: 0.3; flex: none; }
+  .lrow:hover .pl { opacity: 0.9; }
+  canvas.burst { position: absolute; inset: 0; pointer-events: none; z-index: 3; }
+  .pressed { transform: scale(0.88) !important; transition: transform 0.12s ease-out !important; }
+  /* Курсор автопоказа. Оси едут с разной кривой, поэтому путь получается дугой, как у руки. */
+  .ghost-x, .ghost-y { position: absolute; top: 0; left: 0; will-change: transform; pointer-events: none; }
+  .ghost-x { z-index: 4; opacity: 0; transition-property: transform, opacity; transition-timing-function: cubic-bezier(0.42, 0, 0.18, 1), ease; transition-duration: 0.8s, 0.3s; }
+  .ghost-x.on { opacity: 1; }
+  .ghost-y { transition: transform 0.8s cubic-bezier(0.6, 0.02, 0.34, 1); }
+  .ghost-y svg { display: block; width: 22px; height: 22px; transform-origin: 4px 3px; transition: transform 0.11s ease-out; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.45)); overflow: visible; }
+  .ghost-y.down svg { transform: scale(0.84); }
+  .ghost-ring { position: absolute; left: 4px; top: 3px; width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: 50%; background: rgba(255,255,255,0.28); opacity: 0; }
+  .ghost-ring.go { animation: ghostRing 0.45s ease-out; }
+  @keyframes ghostRing { from { opacity: 1; transform: scale(0.3); } to { opacity: 0; transform: scale(1.25); } }
+
+  section { padding: 96px 0 0; }
+
+  /* Карточки */
+  .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .kb { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; align-items: start; }
+  .kbc { --t: 255,255,255; background: rgba(var(--t), .05); border-radius: 12px; padding: 8px; display: grid; gap: 6px; }
+  .kbh { display: block; width: 58%; height: 16px; border-radius: 99px; background: rgba(var(--c), .22); }
+  .kbc i { display: block; height: 42px; border-radius: 8px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.08); }
+  .kbc i.s { height: 30px; }
+  .kbc i.run { border: 1.5px solid #0a84ff; }
+  .ymap { display: grid; grid-template-rows: repeat(7, 1fr); grid-auto-flow: column; grid-auto-columns: 1fr; gap: 3px; padding: 4px; }
+  .ymap b { aspect-ratio: 1; border-radius: 2px; background: rgba(255,255,255,.09); }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 28px;
+    min-height: 220px; display: flex; flex-direction: column;
+  }
+  .card .art { margin-bottom: auto; }
+  .card h3 { font-family: var(--display); font-size: 24px; font-weight: 600; letter-spacing: -0.015em; margin-top: 28px; }
+  .card p { color: var(--dim); margin-top: 6px; font-size: 16px; }
+
+  /* Элементы приложения в карточках */
+  .surface { background: #000; border-radius: 20px; padding: 12px; }
+  .surface.window { background: #1c1c1e; border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; padding: 8px 14px; }
+  .card .row { margin-top: 0; }
+  .row.slim { height: 38px; border-radius: 11px; background: rgba(255,255,255,0.06); padding-right: 8px; gap: 10px; }
+  .ttl { flex: 1; min-width: 0; font-size: 15px; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center; }
+  .row.slim .ttl { font-size: 13px; }
+  .caret { width: 1.5px; height: 15px; margin-left: 1px; background: #0a84ff; animation: blink 1.1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .swatches { display: flex; gap: 8px; flex: none; }
+  .swatches i { width: 12px; height: 12px; border-radius: 50%; background: var(--c); }
+  .swatches i.on { outline: 2px solid #fff; outline-offset: 2px; }
+  .ok { width: 24px; height: 24px; border-radius: 50%; background: #fff; color: #000; display: grid; place-items: center; flex: none; }
+  .ok svg { width: 11px; height: 11px; }
+  .chip .ud { width: 7px; height: 10px; opacity: 0.5; }
+  .go-btn.red { background: var(--red); color: #fff; cursor: default; }
+  .note { display: flex; align-items: center; gap: 8px; padding: 10px 15px 2px; font-size: 13px; color: rgba(255,255,255,0.8); }
+  .note svg { width: 13px; height: 13px; color: rgba(255,255,255,0.35); flex: none; }
+  .rrow { display: flex; align-items: center; gap: 10px; padding: 9px 0; font-size: 14px; font-variant-numeric: tabular-nums; }
+  .rrow + .rrow { border-top: 1px solid rgba(255,255,255,0.08); }
+  .rrow .chev { width: 7px; height: 10px; color: rgba(255,255,255,0.3); flex: none; }
+  .rrow .dot { width: 9px; height: 9px; flex: none; }
+  .rrow .nm { flex: 1; font-weight: 500; white-space: nowrap; }
+  .track { width: 90px; height: 5px; border-radius: 3px; background: rgba(255,255,255,0.07); flex: none; }
+  .track span { display: block; height: 100%; border-radius: 3px; background: var(--c); }
+  .pct { width: 40px; text-align: right; color: var(--dim); }
+  .dur { min-width: 76px; text-align: right; white-space: nowrap; }
+  .jhead { display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.55); padding: 4px 0 8px; border-bottom: 1px solid rgba(255,255,255,0.08); font-variant-numeric: tabular-nums; }
+  .jrow { display: flex; align-items: center; gap: 14px; padding: 10px 0 4px; font-size: 14px; font-variant-numeric: tabular-nums; }
+  .jt { flex: 1; display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .jt small { display: flex; align-items: center; gap: 5px; font-size: 12px; color: var(--dim); }
+  .jt .dot { width: 7px; height: 7px; }
+  .range { color: var(--dim); font-size: 13px; }
+  .card .lrow:hover { background: none; }
+  .banner {
+    display: flex; align-items: center; gap: 10px; margin-top: 10px; height: 46px; padding: 0 8px 0 14px;
+    border-radius: 13px; background: rgba(255,159,10,0.16);
+  }
+  .banner svg { width: 14px; height: 14px; color: var(--orange); flex: none; }
+  .banner b { font-size: 13px; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .pill { height: 26px; padding: 0 11px; border-radius: 13px; display: grid; place-items: center; font-size: 12px; font-weight: 600; white-space: nowrap; }
+  .pill.dark { background: rgba(255,255,255,0.12); }
+  .pill.light { background: #fff; color: #000; }
+
+  /* Новые карточки */
+  .mbar {
+    display: flex; align-items: center; gap: 7px; height: 38px; padding: 0 14px; border-radius: 12px;
+    background: linear-gradient(90deg, #17233f, #2b2346); font-size: 14px; font-weight: 500; font-variant-numeric: tabular-nums;
+  }
+  .mbar .fill { flex: 1; }
+  .mbar .ring { width: 11px; height: 11px; border-radius: 50%; border: 2px solid var(--blue); flex: none; }
+  .mbar .logo { width: 16px; height: 16px; margin-left: 2px; flex: none; }
+  .mbar .other { width: 14px; height: 14px; border-radius: 4px; background: rgba(255,255,255,0.22); flex: none; }
+  .mpanel { margin: 8px 0 0 auto; width: 76%; height: 58px; padding: 10px; border-radius: 14px; background: #000; display: flex; flex-direction: column; gap: 8px; }
+  .mpanel i { display: block; height: 7px; border-radius: 4px; background: rgba(255,255,255,0.14); }
+  .mpanel i:first-child { width: 42%; }
+  .mpanel i:last-child { height: 15px; border-radius: 7px; background: rgba(255,255,255,0.09); }
+  .undo { display: flex; align-items: center; justify-content: space-between; gap: 10px; height: 34px; margin-top: 8px; padding: 0 6px 0 12px; border-radius: 11px; background: rgba(255,255,255,0.06); font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.7); }
+  .undo span:last-child { height: 24px; padding: 0 11px; border-radius: 12px; display: grid; place-items: center; background: rgba(255,255,255,0.12); color: #fff; font-weight: 600; white-space: nowrap; }
+
+  /* Вопросы */
+  .faq { max-width: 760px; margin: 0 auto; }
+  .faq h2 { font-family: var(--display); font-size: clamp(28px, 4.2vw, 48px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 20px; }
+  .faq details { border-top: 1px solid var(--line); }
+  .faq details:last-child { border-bottom: 1px solid var(--line); }
+  .faq summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 0; font-size: 18px; font-weight: 500; cursor: pointer; list-style: none; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: ""; width: 8px; height: 8px; margin-right: 4px; border: solid var(--dim); border-width: 0 1.6px 1.6px 0; transform: rotate(45deg); transition: transform 0.25s var(--spring); flex: none; }
+  .faq details[open] summary::after { transform: rotate(-135deg); }
+  .faq details p { color: var(--dim); padding: 0 28px 20px 0; }
+  .faq code { font: 0.86em ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--text); overflow-wrap: anywhere; }
+
+  a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 8px; }
+
+  /* Финал */
+  .final { text-align: center; padding: 120px 0 40px; }
+  .final h2 { margin-bottom: 32px; font-family: var(--display); font-size: clamp(32px, 5vw, 56px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.08; }
+    .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  footer { border-top: 1px solid var(--line); margin-top: 56px; }
+  footer .wrap { display: flex; justify-content: center; gap: 20px; padding-top: 22px; padding-bottom: 40px; font-size: 13px; color: var(--faint); flex-wrap: wrap; }
+  footer a:hover { color: var(--text); }
+
+  @media (max-width: 1000px) {
+    .track, .banner .pill.dark { display: none; }
+  }
+  @media (max-width: 820px) {
+    .grid { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 720px) {
+    .wrap { padding-inline: 16px; }
+    .hero { padding-top: 48px; }
+    .feats { gap: 0; }
+    .feats button { height: 32px; padding: 0 11px; font-size: 13px; }
+    .model { width: 150px; height: 150px; margin-top: -14px; }
+    .model .icon { width: 92px; height: 92px; }
+    .card { min-height: 0; padding: 20px; min-width: 0; }
+      .mbar .other { display: none; }
+    .faq summary { font-size: 17px; }
+    .track, .range, .card .chip, .card .tchip span { display: none; }
+    .menu { right: -8px; }
+    section { padding-top: 72px; }
+    nav .btn { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<canvas class="rays" id="rays" aria-hidden="true"></canvas>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#"><img src="icon.png" alt="">Tempo</a>
+    <div class="spacer"></div>
+    <div class="langsel">
+      <button class="globe" id="globe" aria-label="Language" aria-haspopup="menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg>
+      </button>
+      <div class="menu" id="langMenu" role="menu" hidden></div>
+    </div>
+    <a class="btn ghost" href="Tempo.zip" download data-i18n="nav.download">Скачать</a>
+  </div>
+</nav>
+
+<main>
+  <header class="hero wrap">
+    <div class="model" id="model"><img class="icon" src="icon.png" alt="Tempo"></div>
+    <h1 data-i18n="hero.title">Время под&nbsp;контролем</h1>
+    <p class="lead" data-i18n="hero.lead">Трекер времени для&nbsp;Mac, который живёт в&nbsp;Notch или в&nbsp;строке меню.</p>
+    <a class="btn big" href="Tempo.zip" download><span data-i18n="hero.cta">Скачать для <svg class="apple" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>Mac</span></a>
+
+    <div class="demo">
+      <div class="feats" id="feats" role="tablist" aria-label="Tempo">
+        <button role="tab" data-scene="0" data-i18n="b.timer"></button>
+        <button role="tab" data-scene="1" data-i18n="b.proj"></button>
+        <button role="tab" data-scene="2" data-i18n="b.report"></button>
+        <button role="tab" data-scene="3" data-i18n="d.tasks"></button>
+      </div>
+      <div class="scaler" id="scaler">
+        <div class="screen" id="screen" inert>
+          <div class="menubar">
+            <b>Tempo</b><span data-i18n="mb.file">Файл</span><span data-i18n="mb.edit">Правка</span><span data-i18n="mb.view">Вид</span>
+            <span class="right"><span id="mbClock"></span></span>
+          </div>
+
+          <div class="dwin" id="dwin">
+            <div class="dbar">
+              <span class="lights"><button id="dclose" aria-label="Close"></button><i></i><i></i></span>
+              <span data-i18n="c4.t"></span><span class="fill"></span>
+              <button class="dexport" id="dexport" data-i18n="x.export"></button>
+            </div>
+            <div class="dmenu" id="dmenu"><button id="dpdf">PDF</button><button id="dcsv">CSV</button></div>
+            <div class="dsum"><b id="dtotal"></b><span data-i18n="b.week"></span></div>
+            <div class="dchart" id="dchart"></div>
+            <div class="ddays" id="ddays"></div>
+            <div id="drows"></div>
+          </div>
+
+          <div class="island running" id="island">
+            <div class="clip">
+              <div class="wings"><span class="wleft"><span class="dot" id="wingDot"></span><svg class="wlock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.5 10.5V6.75a4.5 4.5 0 1 1 9 0v3.75M3.75 21.75h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H3.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"/></svg></span><span class="wtime" id="wingTime">0:00</span></div>
+              <div class="shine" id="shine"></div>
+              <div class="panel">
+                <div class="phead">
+                  <span class="today"><span data-i18n="d.today">Сегодня</span><b id="today">0 мин</b></span>
+                  <span class="icons">
+                    <button id="pexpand" aria-label="Report" style="display:block"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15"/></svg></button>
+                    <svg viewBox="0 0 16 16" fill="currentColor"><circle cx="3" cy="8" r="1.5"/><circle cx="8" cy="8" r="1.5"/><circle cx="13" cy="8" r="1.5"/></svg>
+                  </span>
+                </div>
+                <div class="row">
+                  <span class="smile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15.182 15.182a4.5 4.5 0 0 1-6.364 0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/><circle cx="9.4" cy="9.75" r=".9" fill="currentColor" stroke="none"/><circle cx="14.6" cy="9.75" r=".9" fill="currentColor" stroke="none"/></svg></span>
+                  <input id="title" autocomplete="off" spellcheck="false">
+                  <button class="chip" id="chip"><span class="dot" id="chipDot"></span><span id="chipName"></span></button>
+                  <button class="tchip" id="tchip" aria-label="Timer"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="8" cy="9" r="5.6"/><path d="M8 9V6.4M6.4 1.6h3.2"/></svg><span id="tchipLabel"></span></button>
+                  <span class="ptime" id="ptime">0:00:00</span>
+                  <button class="pause-btn" id="pauseB" aria-label="Pause"><svg class="p1" viewBox="0 0 12 12"><rect x="2.4" y="1.5" width="2.6" height="9" rx=".9" fill="currentColor"/><rect x="7" y="1.5" width="2.6" height="9" rx=".9" fill="currentColor"/></svg><svg class="p2" viewBox="0 0 12 12"><path d="M2.5 1.2v9.6c0 .6.6.9 1.1.6l7.4-4.8c.4-.3.4-.9 0-1.2L3.6.6C3.1.3 2.5.6 2.5 1.2z" fill="currentColor"/></svg></button>
+                  <button class="go-btn" id="go" aria-label="Start / stop">
+                    <svg class="play" viewBox="0 0 12 12"><path d="M2.5 1.2v9.6c0 .6.6.9 1.1.6l7.4-4.8c.4-.3.4-.9 0-1.2L3.6.6C3.1.3 2.5.6 2.5 1.2z" fill="currentColor"/></svg>
+                    <svg class="stop" viewBox="0 0 12 12"><rect x="1.5" y="1.5" width="9" height="9" rx="2" fill="currentColor"/></svg>
+                  </button>
+                </div>
+                <div class="pmenu" id="pmenu"></div>
+                <div class="newp" id="newp" hidden>
+                  <input id="newName" autocomplete="off" spellcheck="false">
+                  <div class="swatches" id="swatches"></div>
+                  <button class="ok" id="newOk" aria-label="OK"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></button>
+                </div>
+                <div class="bar" id="bar"></div>
+                <div class="legend" id="legend"></div>
+                <div class="tabs" id="tabs" role="tablist">
+                  <button data-tab="recent" role="tab"></button>
+                  <button data-tab="tasks" role="tab"></button>
+                  <button data-tab="notes" role="tab"></button>
+                </div>
+                <div id="list"></div>
+                <div class="undo" id="undoD" hidden><span data-i18n="b.taskDone"></span><span data-i18n="x.undo"></span></div>
+                <div class="primenu" id="primenu"></div>
+              </div>
+            </div>
+          </div>
+          <canvas class="burst" id="burst"></canvas>
+          <div class="ghost-x" id="ghostX" aria-hidden="true">
+            <div class="ghost-y" id="ghostY">
+              <span class="ghost-ring" id="ghostRing"></span>
+              <svg viewBox="0 0 22 22"><path d="M4 3v14.6l3.9-3.7 2.5 5.7 2.9-1.3-2.5-5.5H16L4 3z" fill="#111" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="wrap">
+    <div class="grid">
+      <div class="card">
+        <div class="art">
+          <div class="surface">
+            <div class="lrow"><i class="cb pri" style="--p:#ff453a"></i><span class="t" data-i18n="a.t1"></span><span class="p" data-i18n="f.p2"></span><svg class="pl" viewBox="0 0 12 12"><path d="M2.5 1.2v9.6c0 .6.6.9 1.1.6l7.4-4.8c.4-.3.4-.9 0-1.2L3.6.6C3.1.3 2.5.6 2.5 1.2z" fill="currentColor"/></svg></div>
+            <div class="lrow"><i class="cb pri" style="--p:#ff9f0a"></i><span class="t" data-i18n="a.t2"></span><span class="p"></span><svg class="pl" viewBox="0 0 12 12"><path d="M2.5 1.2v9.6c0 .6.6.9 1.1.6l7.4-4.8c.4-.3.4-.9 0-1.2L3.6.6C3.1.3 2.5.6 2.5 1.2z" fill="currentColor"/></svg></div>
+            <div class="lrow done"><i class="cb on" style="--c:#0a84ff"></i><span class="t" data-i18n="a.t3"></span><span class="p"></span></div>
+          </div>
+        </div>
+        <h3 data-i18n="c1.t"></h3>
+        <p data-i18n="c1.d"></p>
+      </div>
+      <div class="card">
+        <div class="art">
+          <div class="surface">
+            <div class="lrow"><svg class="ic" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="2" y="1.5" width="10" height="11" rx="2"/><path d="M4.5 5h5M4.5 7.5h5M4.5 10h3" stroke-linecap="round"/></svg><span class="t" data-i18n="a.n1"></span><span class="p" data-i18n="a.n1p"></span><span class="tm">18:06</span></div>
+            <div class="lrow"><svg class="ic" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="2" y="1.5" width="10" height="11" rx="2"/><path d="M4.5 5h5M4.5 7.5h5M4.5 10h3" stroke-linecap="round"/></svg><span class="t" data-i18n="a.n2"></span><span class="p" data-i18n="a.n2p"></span><span class="tm">15:36</span></div>
+            <div class="lrow add"><svg class="ic" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M7 3v8M3 7h8"/></svg><span data-i18n="d.newNote"></span></div>
+          </div>
+        </div>
+        <h3 data-i18n="c2.t"></h3>
+        <p data-i18n="c2.d"></p>
+      </div>
+      <div class="card">
+        <div class="art">
+          <div class="surface">
+            <div class="row">
+              <span class="ttl" data-i18n="a.task"></span>
+              <span class="tchip on"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="8" cy="9" r="5.6"/><path d="M8 9V6.4M6.4 1.6h3.2"/></svg><span data-i18n="a.25"></span></span>
+              <span class="go-btn red"><svg viewBox="0 0 12 12"><rect x="1.5" y="1.5" width="9" height="9" rx="2" fill="currentColor"/></svg></span>
+            </div>
+            <div class="banner"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5a4.5 4.5 0 0 0-4.5 4.5v2.6L2.2 10.8c-.3.5 0 1.2.7 1.2h10.2c.6 0 1-.7.7-1.2L12.5 8.6V6A4.5 4.5 0 0 0 8 1.5zM6.2 13a1.9 1.9 0 0 0 3.6 0z"/></svg><b data-i18n="a.timeup"></b><span class="pill dark" data-i18n="a.more5"></span><span class="pill light" data-i18n="a.done"></span></div>
+          </div>
+        </div>
+        <h3 data-i18n="c3.t"></h3>
+        <p data-i18n="c3.d"></p>
+      </div>
+      <div class="card">
+        <div class="art">
+          <div class="surface window">
+            <div class="rrow"><svg class="chev" viewBox="0 0 8 12"><path d="M2 2l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="dot" style="--c: var(--orange)"></span><span class="nm" data-i18n="f.p1"></span><span class="track"><span style="width:72%; --c: var(--orange)"></span></span><span class="pct">72&nbsp;%</span><span class="dur" data-i18n="a.d1"></span></div>
+            <div class="rrow"><svg class="chev" viewBox="0 0 8 12"><path d="M2 2l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="dot" style="--c: var(--blue)"></span><span class="nm" data-i18n="f.p2"></span><span class="track"><span style="width:28%; --c: var(--blue)"></span></span><span class="pct">28&nbsp;%</span><span class="dur" data-i18n="a.d2"></span></div>
+          </div>
+        </div>
+        <h3 data-i18n="c4.t"></h3>
+        <p data-i18n="c4.d"></p>
+      </div>
+      <div class="card">
+        <div class="art">
+          <div class="kb" aria-hidden="true">
+            <div class="kbc"><span class="kbh" style="--c:255,255,255">&nbsp;</span><i></i><i class="s"></i></div>
+            <div class="kbc" style="--t:10,132,255"><span class="kbh dot" style="--c:10,132,255">&nbsp;</span><i class="run"></i></div>
+            <div class="kbc" style="--t:48,209,88"><span class="kbh dot" style="--c:48,209,88">&nbsp;</span><i class="s"></i><i></i><i class="s"></i></div>
+          </div>
+        </div>
+        <h3 data-i18n="c13.t"></h3>
+        <p data-i18n="c13.d"></p>
+      </div>
+      <div class="card">
+        <div class="art">
+          <div class="surface"><div class="ymap" id="ymap" aria-hidden="true"></div></div>
+        </div>
+        <h3 data-i18n="c14.t"></h3>
+        <p data-i18n="c14.d"></p>
+      </div>
+      <div class="card">
+        <div class="art">
+          <div class="surface">
+            <div class="sinput"><span data-i18n="x.si1"></span><em class="tp">@<span data-i18n="f.p2"></span></em><em class="tm" data-i18n="x.si2"></em></div>
+            <div class="schips"><span><i class="dot" style="--c: var(--blue)"></i><span style="all:unset" data-i18n="f.p2"></span></span><span data-i18n="x.si3"></span></div>
+          </div>
+        </div>
+        <h3 data-i18n="c11.t"></h3>
+        <p data-i18n="c11.d"></p>
+      </div>
+      <div class="card">
+        <div class="art">
+          <div class="looks" aria-hidden="true">
+            <div class="look dark"><i></i><i></i></div>
+            <div class="look light"><i></i><i></i></div>
+            <div class="look glass"><i></i><i></i></div>
+          </div>
+        </div>
+        <h3 data-i18n="c12.t"></h3>
+        <p data-i18n="c12.d"></p>
+      </div>
+      <div class="card">
+        <div class="art">
+          <div class="mbar">
+            <span class="fill"></span><span class="other"></span><span class="other"></span>
+            <span class="ring"></span><span>01:03:40</span>
+            <img class="logo" src="favicon.png" alt="">
+          </div>
+          <div class="mpanel"><i></i><i></i></div>
+        </div>
+        <h3 data-i18n="c7.t"></h3>
+        <p data-i18n="c7.d"></p>
+      </div>
+      <div class="card">
+        <div class="art">
+          <div class="surface">
+            <div class="lrow"><svg class="ic" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="2" y="1.5" width="10" height="11" rx="2"/><path d="M4.5 5h5M4.5 7.5h5M4.5 10h3" stroke-linecap="round"/></svg><span class="t">data-2026-11-06.json</span><span class="p"></span></div>
+            <div class="undo"><span data-i18n="x.deleted"></span><span data-i18n="x.undo"></span></div>
+          </div>
+        </div>
+        <h3 data-i18n="c10.t"></h3>
+        <p data-i18n="c10.d"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="faq">
+      <h2 data-i18n="q.title"></h2>
+      <details><summary data-i18n="q1.q"></summary><p data-i18n="q1.a"></p></details>
+      <details><summary data-i18n="q2.q"></summary><p data-i18n="q2.a"></p></details>
+      <details><summary data-i18n="q4.q"></summary><p data-i18n="q4.a"></p></details>
+      <details><summary data-i18n="q3.q"></summary><p data-i18n="q3.a"></p></details>
+    </div>
+  </section>
+
+  <section class="final wrap">
+    <h2 data-i18n="end.t">Бесплатно и&nbsp;без аккаунта</h2>
+    <div class="actions">
+      <a class="btn big" href="Tempo.zip" download><span data-i18n="hero.cta">Скачать для <svg class="apple" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>Mac</span></a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Tempo</span>
+    <a href="Tempo.zip" download data-i18n="nav.download">Скачать</a>
+    <a href="https://github.com/c4daam/Tempo" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://t.me/andmdesign" target="_blank" rel="noopener" data-i18n="ft.feedback">Обратная связь</a>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const APPLE = '<svg class="apple" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>';
+  const PLAY = '<svg class="pl" viewBox="0 0 12 12"><path d="M2.5 1.2v9.6c0 .6.6.9 1.1.6l7.4-4.8c.4-.3.4-.9 0-1.2L3.6.6C3.1.3 2.5.6 2.5 1.2z" fill="currentColor"/></svg>';
+  const ICON_SMILE = "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M15.182 15.182a4.5 4.5 0 0 1-6.364 0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z\"/><circle cx=\"9.4\" cy=\"9.75\" r=\".9\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"14.6\" cy=\"9.75\" r=\".9\" fill=\"currentColor\" stroke=\"none\"/></svg>";
+  const ICON_CAL = "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5\"/></svg>";
+  const NOTE = '<svg class="ic" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="2" y="1.5" width="10" height="11" rx="2"/><path d="M4.5 5h5M4.5 7.5h5M4.5 10h3" stroke-linecap="round"/></svg>';
+  const PLUS = '<svg class="ic" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M7 3v8M3 7h8"/></svg>';
+  const CHECK = '<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg>';
+
+  // ---------- Языки: те же, что в приложении ----------
+  const LANGS = [
+    ["en", "English", "en"], ["ru", "Русский", "ru"], ["uk", "Українська", "uk"], ["zh", "简体中文", "zh-Hans"], ["es", "Español", "es"],
+    ["pt", "Português", "pt-BR"], ["cs", "Čeština", "cs"], ["it", "Italiano", "it"],
+  ];
+
+  const T = {
+    en: {
+      "doc.title": "Tempo — a time tracker for Mac",
+      "nav.download": "Download",
+      "hero.title": "Your time, under&nbsp;control",
+      "hero.lead": "A time tracker for Mac that lives in the Notch or the menu bar.",
+      "hero.cta": "Download for {apple}Mac",
+      "mb.file": "File", "mb.edit": "Edit", "mb.view": "View",
+      "d.today": "Today", "d.recent": "Recent", "d.tasks": "Tasks", "d.notes": "Notes",
+      "d.newTask": "New Task", "d.newNote": "New Note",
+      "d.placeholder": "What are you working on?",
+      "c1.t": "Tasks", "c1.d": "List, kanban, boards by project and due date. With priorities and reminders.",
+      "c2.t": "Notes", "c2.d": "Capture a thought in one line.",
+      "c3.t": "Stopwatch or timer", "c3.d": "A gentle chime when time’s up.",
+      "c4.t": "Reports", "c4.d": "By day, week, month and year. Amounts, expenses, PDF and CSV export.",
+      "c13.t": "Kanban", "c13.d": "Drag tasks between columns.", "c14.t": "Year in review", "c14.d": "A map of your days, working hours and a card you can save as an image.",
+                  "a.t1": "Reply about the estimate", "a.t2": "Update résumé", "a.t3": "Send invoice",
+      "a.n1": "Gallery ideas", "a.n1p": "Seasonal filters, large previews",
+      "a.n2": "Client call", "a.n2p": "Move the deadline to Friday",
+      "a.timeup": "Time’s up", "a.more5": "+5&nbsp;min", "a.done": "Done", "a.25": "25&nbsp;min",
+      "a.task": "Homepage fixes", "f.p1": "Design", "f.p2": "Client A",
+      "a.d1": "1&nbsp;h 58&nbsp;min", "a.d2": "45&nbsp;min",       "end.t": "Free, no account needed",
+                        "c7.t": "With or without a notch",
+      "c7.d": "On a Mac without a notch, Tempo moves to the menu bar on its own.",
+                              "c10.t": "Your data stays on your Mac",
+      "c10.d": "No account. A backup every day, and a deletion or a finished task can be undone.",
+                                                "x.deleted": "Entry deleted",
+      "x.undo": "Undo",
+      "q.title": "Common questions",
+      "q1.q": "Will it run on my Mac?",
+      "q1.a": "Yes, with macOS 14+ and Apple Silicon (M1 or newer). Without a notch, Tempo lives in the menu bar.",
+      "q2.q": "How do I install it?",
+      "q2.a": "Unzip and drag Tempo to Applications. On first launch, go to System Settings → Privacy &amp; Security and click Open Anyway.",
+      "q4.q": "Is it safe?",
+      "q4.a": "Tempo doesn’t ask for access to your screen or files, works without an account and sends nothing online. It only asks for Calendar access if you turn on Show in Calendar.",
+      "q3.q": "Where is my data?",
+      "q3.a": "Only on your Mac, in <code>~/Library/Application Support/Tempo</code>. No account, no internet, and nothing gets sent anywhere.",
+      "b.timer": "Tracker", "x.export": "Export", "b.week": "This week",
+      "b.proj": "Projects", "b.report": "Report", "b.newProject": "New project…", "b.nameProject": "Project name", "b.newName": "Client B",
+      "c11.t": "Smart input", "c11.d": "Project and timer right in the task name.", "c12.t": "Make it yours", "c12.d": "Light or dark, glass and glow.",
+      "x.si1": "Call", "x.si2": "30m", "x.si3": "30 min", "b.taskDone": "Task completed",
+      "b.pri3": "High", "b.pri2": "Medium", "b.pri1": "Low", "b.pri0": "No priority", "b.proj1": "Project",
+      "ft.feedback": "Feedback",
+      projects: ["Design", "Client A", "Study"],
+      recent: ["Homepage fixes", "Brief call", "Card layout", "SwiftUI course"],
+      tasks: [["Reply about the estimate", 3, 1], ["Update résumé", 2, null], ["Gallery photos", 1, 0]],
+      notes: [["Gallery ideas", "Seasonal filters, large previews"], ["Client call", "Move the deadline to Friday"], ["Buy coffee", ""]],
+      min: "min", h: "h", days: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    },
+    ru: {
+      "doc.title": "Tempo — трекер времени для Mac",
+      "nav.download": "Скачать",
+      "hero.title": "Время под&nbsp;контролем",
+      "hero.lead": "Трекер времени для&nbsp;Mac, который живёт в&nbsp;Notch или в&nbsp;строке меню.",
+      "hero.cta": "Скачать для {apple}Mac",
+      "mb.file": "Файл", "mb.edit": "Правка", "mb.view": "Вид",
+      "d.today": "Сегодня", "d.recent": "Недавние", "d.tasks": "Задачи", "d.notes": "Заметки",
+      "d.newTask": "Новая задача", "d.newNote": "Новая заметка",
+      "d.placeholder": "Чем вы заняты?",
+      "c1.t": "Задачи", "c1.d": "Список, канбан, доски по&nbsp;проектам и&nbsp;срокам. С&nbsp;приоритетами и&nbsp;напоминаниями.",
+      "c2.t": "Заметки", "c2.d": "Запишите мысль в&nbsp;одну строку.",
+      "c3.t": "Секундомер или таймер", "c3.d": "Мягкий сигнал, когда время вышло.",
+      "c4.t": "Отчёты", "c4.d": "За&nbsp;день, неделю, месяц и&nbsp;год. Суммы, расходы и&nbsp;экспорт в&nbsp;PDF и&nbsp;CSV.",
+      "c13.t": "Канбан", "c13.d": "Перетаскивайте задачи между колонками.", "c14.t": "Итоги года", "c14.d": "Карта дней, часы работы и&nbsp;карточка, которую можно сохранить картинкой.",
+                  "a.t1": "Ответить по смете", "a.t2": "Обновить резюме", "a.t3": "Отправить счёт",
+      "a.n1": "Идеи для галереи", "a.n1p": "Фильтр по сезонам, крупные превью",
+      "a.n2": "Созвон с клиентом", "a.n2p": "Перенести дедлайн на пятницу",
+      "a.timeup": "Время вышло", "a.more5": "+5&nbsp;мин", "a.done": "Готово", "a.25": "25&nbsp;мин",
+      "a.task": "Правки главной страницы", "f.p1": "Дизайн", "f.p2": "Клиент А",
+      "a.d1": "1&nbsp;ч 58&nbsp;мин", "a.d2": "45&nbsp;мин",       "end.t": "Бесплатно и&nbsp;без аккаунта",
+                        "c7.t": "С&nbsp;вырезом и&nbsp;без",
+      "c7.d": "На&nbsp;Mac без выреза Tempo сам перейдёт в&nbsp;строку меню.",
+                              "c10.t": "Данные остаются на&nbsp;Mac",
+      "c10.d": "Без аккаунта. Копия каждый день, а&nbsp;удаление и&nbsp;завершение задачи можно отменить.",
+                                                "x.deleted": "Запись удалена",
+      "x.undo": "Отменить",
+      "q.title": "Частые вопросы",
+      "q1.q": "Заработает ли на&nbsp;моём Mac?",
+      "q1.a": "Да, если macOS&nbsp;14+ и&nbsp;Apple Silicon (M1 и&nbsp;новее). Без выреза Tempo живёт в&nbsp;строке меню.",
+      "q2.q": "Как установить?",
+      "q2.a": "Распакуйте и&nbsp;перетащите Tempo в&nbsp;«Программы». При первом запуске откройте Системные настройки → Конфиденциальность и&nbsp;безопасность → «Всё равно открыть».",
+      "q4.q": "Это безопасно?",
+      "q4.a": "Tempo не&nbsp;просит доступ к&nbsp;экрану и&nbsp;файлам, работает без аккаунта и&nbsp;ничего не&nbsp;отправляет в&nbsp;интернет. Доступ к&nbsp;Календарю запросит, только если включите показ записей в&nbsp;нём.",
+      "q3.q": "Где лежат данные?",
+      "q3.a": "Только на&nbsp;вашем Mac, в&nbsp;<code>~/Library/Application Support/Tempo</code>. Без аккаунта и&nbsp;интернета, никуда не&nbsp;отправляются.",
+      "b.timer": "Трекер", "x.export": "Экспорт", "b.week": "Эта неделя",
+      "b.proj": "Проекты", "b.report": "Отчёт", "b.newProject": "Новый проект…", "b.nameProject": "Название проекта", "b.newName": "Клиент Б",
+      "c11.t": "Умный ввод", "c11.d": "Проект и&nbsp;таймер прямо в&nbsp;названии задачи.", "c12.t": "Под себя", "c12.d": "Светлая или тёмная тема, стекло и&nbsp;сияние.",
+      "x.si1": "Созвон", "x.si2": "30м", "x.si3": "30&nbsp;мин", "b.taskDone": "Задача выполнена",
+      "b.pri3": "Высокий", "b.pri2": "Средний", "b.pri1": "Низкий", "b.pri0": "Без приоритета", "b.proj1": "Проект",
+      "ft.feedback": "Обратная связь",
+      projects: ["Дизайн", "Клиент А", "Учёба"],
+      recent: ["Правки главной страницы", "Созвон по ТЗ", "Вёрстка карточек", "Курс по SwiftUI"],
+      tasks: [["Ответить по смете", 3, 1], ["Обновить резюме", 2, null], ["Фото для галереи", 1, 0]],
+      notes: [["Идеи для галереи", "Фильтр по сезонам, крупные превью"], ["Созвон с клиентом", "Перенести дедлайн на пятницу"], ["Купить кофе", ""]],
+      min: "мин", h: "ч", days: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"]
+    },
+    uk: {
+      "doc.title": "Tempo — трекер часу для Mac",
+      "nav.download": "Завантажити",
+      "hero.title": "Час під&nbsp;контролем",
+      "hero.lead": "Трекер часу для&nbsp;Mac, який живе в&nbsp;Notch або в&nbsp;рядку меню.",
+      "hero.cta": "Завантажити для {apple}Mac",
+      "mb.file": "Файл", "mb.edit": "Редагування", "mb.view": "Вигляд",
+      "d.today": "Сьогодні", "d.recent": "Нещодавні", "d.tasks": "Завдання", "d.notes": "Нотатки",
+      "d.newTask": "Нове завдання", "d.newNote": "Нова нотатка",
+      "d.placeholder": "Чим ви зайняті?",
+      "c1.t": "Завдання", "c1.d": "Список, канбан, дошки за&nbsp;проєктами й&nbsp;термінами. З&nbsp;пріоритетами й&nbsp;нагадуваннями.",
+      "c2.t": "Нотатки", "c2.d": "Запишіть думку в&nbsp;один рядок.",
+      "c3.t": "Секундомір або таймер", "c3.d": "М’який сигнал, коли час вийшов.",
+      "c4.t": "Звіти", "c4.d": "За&nbsp;день, тиждень, місяць і&nbsp;рік. Суми, витрати й&nbsp;експорт у&nbsp;PDF і&nbsp;CSV.",
+      "c13.t": "Канбан", "c13.d": "Перетягуйте завдання між колонками.", "c14.t": "Підсумки року", "c14.d": "Карта днів, години роботи й&nbsp;картка, яку можна зберегти картинкою.",
+                  "a.t1": "Відповісти щодо кошторису", "a.t2": "Оновити резюме", "a.t3": "Надіслати рахунок",
+      "a.n1": "Ідеї для галереї", "a.n1p": "Фільтр за сезонами, великі прев’ю",
+      "a.n2": "Дзвінок із клієнтом", "a.n2p": "Перенести дедлайн на п’ятницю",
+      "a.timeup": "Час вийшов", "a.more5": "+5&nbsp;хв", "a.done": "Готово", "a.25": "25&nbsp;хв",
+      "a.task": "Правки головної сторінки", "f.p1": "Дизайн", "f.p2": "Клієнт А",
+      "a.d1": "1&nbsp;год 58&nbsp;хв", "a.d2": "45&nbsp;хв",       "end.t": "Безплатно й&nbsp;без акаунта",
+                        "c7.t": "З&nbsp;вирізом і&nbsp;без",
+      "c7.d": "На&nbsp;Mac без вирізу Tempo сам перейде в&nbsp;рядок меню.",
+                              "c10.t": "Дані залишаються на&nbsp;Mac",
+      "c10.d": "Без акаунта. Копія щодня, а&nbsp;видалення й&nbsp;завершення завдання можна скасувати.",
+                                                "x.deleted": "Запис видалено",
+      "x.undo": "Скасувати",
+      "q.title": "Часті запитання",
+      "q1.q": "Чи запрацює на&nbsp;моєму Mac?",
+      "q1.a": "Так, якщо macOS&nbsp;14+ і&nbsp;Apple Silicon (M1 і&nbsp;новіші). Без вирізу Tempo живе в&nbsp;рядку меню.",
+      "q2.q": "Як установити?",
+      "q2.a": "Розпакуйте й&nbsp;перетягніть Tempo у&nbsp;«Програми». Під час першого запуску відкрийте Системні параметри → Конфіденційність і&nbsp;безпека → «Усе одно відкрити».",
+      "q4.q": "Це безпечно?",
+      "q4.a": "Tempo не&nbsp;просить доступу до&nbsp;екрана й&nbsp;файлів, працює без акаунта й&nbsp;нічого не&nbsp;надсилає в&nbsp;інтернет. Доступ до&nbsp;Календаря запитає, лише якщо ввімкнете показ записів у&nbsp;ньому.",
+      "q3.q": "Де лежать дані?",
+      "q3.a": "Лише на&nbsp;вашому Mac, у&nbsp;<code>~/Library/Application Support/Tempo</code>. Без акаунта й&nbsp;інтернету, нікуди не&nbsp;надсилаються.",
+      "b.timer": "Трекер", "x.export": "Експорт", "b.week": "Цей тиждень",
+      "b.proj": "Проєкти", "b.report": "Звіт", "b.newProject": "Новий проєкт…", "b.nameProject": "Назва проєкту", "b.newName": "Клієнт Б",
+      "c11.t": "Розумне введення", "c11.d": "Проєкт і&nbsp;таймер просто в&nbsp;назві завдання.", "c12.t": "Під себе", "c12.d": "Світла чи темна тема, скло й&nbsp;сяйво.",
+      "x.si1": "Дзвінок", "x.si2": "30хв", "x.si3": "30&nbsp;хв", "b.taskDone": "Завдання виконано",
+      "b.pri3": "Високий", "b.pri2": "Середній", "b.pri1": "Низький", "b.pri0": "Без пріоритету", "b.proj1": "Проєкт",
+      "ft.feedback": "Зворотний зв’язок",
+      projects: ["Дизайн", "Клієнт А", "Навчання"],
+      recent: ["Правки головної сторінки", "Дзвінок щодо ТЗ", "Верстка карток", "Курс зі SwiftUI"],
+      tasks: [["Відповісти щодо кошторису", 3, 1], ["Оновити резюме", 2, null], ["Фото для галереї", 1, 0]],
+      notes: [["Ідеї для галереї", "Фільтр за сезонами, великі прев’ю"], ["Дзвінок із клієнтом", "Перенести дедлайн на п’ятницю"], ["Купити каву", ""]],
+      min: "хв", h: "год", days: ["Нд", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"]
+    },
+    zh: {
+      "doc.title": "Tempo — Mac 时间追踪工具",
+      "nav.download": "下载",
+      "hero.title": "时间，尽在掌握",
+      "hero.lead": "一款住在 Notch 或菜单栏里的 Mac 时间追踪工具。",
+      "hero.cta": "下载 {apple}Mac 版",
+      "mb.file": "文件", "mb.edit": "编辑", "mb.view": "显示",
+      "d.today": "今天", "d.recent": "最近", "d.tasks": "任务", "d.notes": "笔记",
+      "d.newTask": "新任务", "d.newNote": "新笔记",
+      "d.placeholder": "你在做什么？",
+      "c1.t": "任务", "c1.d": "列表、看板,按项目和截止日期分组。支持优先级和提醒。",
+      "c2.t": "笔记", "c2.d": "一句话记下想法。",
+      "c3.t": "秒表或倒计时", "c3.d": "时间到时轻声提醒。",
+      "c4.t": "报告", "c4.d": "按天、周、月、年查看。金额、支出,导出 PDF 和 CSV。",
+      "c13.t": "看板", "c13.d": "在列之间拖动任务。", "c14.t": "年度总结", "c14.d": "每日地图、工作时段,还有可存为图片的卡片。",
+                  "a.t1": "回复报价", "a.t2": "更新简历", "a.t3": "发送发票",
+      "a.n1": "图库灵感", "a.n1p": "按季节筛选，大尺寸预览",
+      "a.n2": "客户通话", "a.n2p": "截止日期改到周五",
+      "a.timeup": "时间到了", "a.more5": "+5 分钟", "a.done": "完成", "a.25": "25 分钟",
+      "a.task": "首页修改", "f.p1": "设计", "f.p2": "客户 A",
+      "a.d1": "1 小时 58 分钟", "a.d2": "45 分钟",       "end.t": "免费，无需账户",
+                        "c7.t": "有无刘海都能用",
+      "c7.d": "在没有刘海的 Mac 上，Tempo 会自动移到菜单栏。",
+                              "c10.t": "数据留在你的 Mac 上",
+      "c10.d": "无需账户。每天备份，删除和完成任务都可撤销。",
+                                                "x.deleted": "记录已删除",
+      "x.undo": "撤销",
+      "q.title": "常见问题",
+      "q1.q": "我的 Mac 能用吗？",
+      "q1.a": "需要 macOS 14 或更高版本和 Apple 芯片（M1 或更新）。没有刘海时，Tempo 在菜单栏中。",
+      "q2.q": "怎么安装？",
+      "q2.a": "解压后把 Tempo 拖到“应用程序”。首次启动时，打开“系统设置 → 隐私与安全性”，点按“仍要打开”。",
+      "q4.q": "安全吗？",
+      "q4.a": "Tempo 不会请求访问屏幕或文件，无需账户，也不会向网络发送任何内容。只有开启“在日历中显示”时，才会请求访问日历。",
+      "q3.q": "数据在哪里？",
+      "q3.a": "只在你的 Mac 上，位于 <code>~/Library/Application Support/Tempo</code>。无需账户和联网，也不会发送到任何地方。",
+      "b.timer": "追踪", "x.export": "导出", "b.week": "本周",
+      "b.proj": "项目", "b.report": "报告", "b.newProject": "新项目…", "b.nameProject": "项目名称", "b.newName": "客户 B",
+      "c11.t": "智能输入", "c11.d": "项目和计时直接写在任务名称里。", "c12.t": "随心外观", "c12.d": "浅色或深色主题，还有玻璃与光效。",
+      "x.si1": "通话", "x.si2": "30m", "x.si3": "30 分钟", "b.taskDone": "任务已完成",
+      "b.pri3": "高", "b.pri2": "中", "b.pri1": "低", "b.pri0": "无优先级", "b.proj1": "项目",
+      "ft.feedback": "反馈",
+      projects: ["设计", "客户 A", "学习"],
+      recent: ["首页修改", "需求沟通", "卡片排版", "SwiftUI 课程"],
+      tasks: [["回复报价", 3, 1], ["更新简历", 2, null], ["图库照片", 1, 0]],
+      notes: [["图库灵感", "按季节筛选，大尺寸预览"], ["客户通话", "截止日期改到周五"], ["买咖啡", ""]],
+      min: "分钟", h: "小时", days: ["周日", "周一", "周二", "周三", "周四", "周五", "周六"]
+    },
+    es: {
+      "doc.title": "Tempo — control del tiempo para Mac",
+      "nav.download": "Descargar",
+      "hero.title": "Tu tiempo, bajo&nbsp;control",
+      "hero.lead": "Un registro de tiempo para Mac que vive en el Notch o en la barra de menús.",
+      "hero.cta": "Descargar para {apple}Mac",
+      "mb.file": "Archivo", "mb.edit": "Edición", "mb.view": "Visualización",
+      "d.today": "Hoy", "d.recent": "Recientes", "d.tasks": "Tareas", "d.notes": "Notas",
+      "d.newTask": "Nueva tarea", "d.newNote": "Nueva nota",
+      "d.placeholder": "¿En qué estás trabajando?",
+      "c1.t": "Tareas", "c1.d": "Lista, kanban y tableros por proyecto y fecha. Con prioridades y recordatorios.",
+      "c2.t": "Notas", "c2.d": "Apunta una idea en una línea.",
+      "c3.t": "Cronómetro o temporizador", "c3.d": "Un aviso suave cuando se acaba el tiempo.",
+      "c4.t": "Informes", "c4.d": "Por día, semana, mes y año. Importes, gastos y exportación a PDF y CSV.",
+      "c13.t": "Kanban", "c13.d": "Arrastra las tareas entre columnas.", "c14.t": "Resumen del año", "c14.d": "Mapa de tus días, horas de trabajo y una tarjeta para guardar como imagen.",
+                  "a.t1": "Responder al presupuesto", "a.t2": "Actualizar el CV", "a.t3": "Enviar factura",
+      "a.n1": "Ideas para la galería", "a.n1p": "Filtros por temporada, vistas grandes",
+      "a.n2": "Llamada con el cliente", "a.n2p": "Mover la entrega al viernes",
+      "a.timeup": "Se acabó el tiempo", "a.more5": "+5&nbsp;min", "a.done": "Hecho", "a.25": "25&nbsp;min",
+      "a.task": "Cambios en la portada", "f.p1": "Diseño", "f.p2": "Cliente A",
+      "a.d1": "1&nbsp;h 58&nbsp;min", "a.d2": "45&nbsp;min",       "end.t": "Gratis y sin cuenta",
+                        "c7.t": "Con o sin notch",
+      "c7.d": "En un Mac sin notch, Tempo pasa solo a la barra de menús.",
+                              "c10.t": "Tus datos se quedan en tu Mac",
+      "c10.d": "Sin cuenta. Una copia cada día, y lo eliminado o completado se puede deshacer.",
+                                                "x.deleted": "Entrada eliminada",
+      "x.undo": "Deshacer",
+      "q.title": "Preguntas frecuentes",
+      "q1.q": "¿Funcionará en mi Mac?",
+      "q1.a": "Sí, con macOS 14+ y Apple Silicon (M1 o más reciente). Sin notch, Tempo vive en la barra de menús.",
+      "q2.q": "¿Cómo se instala?",
+      "q2.a": "Descomprime y arrastra Tempo a Aplicaciones. En el primer inicio, ve a Ajustes del Sistema → Privacidad y seguridad y pulsa Abrir igualmente.",
+      "q4.q": "¿Es seguro?",
+      "q4.a": "Tempo no pide acceso a tu pantalla ni a tus archivos, funciona sin cuenta y no envía nada a internet. Solo pedirá acceso al Calendario si activas Mostrar en Calendario.",
+      "q3.q": "¿Dónde están mis datos?",
+      "q3.a": "Solo en tu Mac, en <code>~/Library/Application Support/Tempo</code>. Sin cuenta ni internet, y no se envían a ningún sitio.",
+      "b.timer": "Registro", "x.export": "Exportar", "b.week": "Esta semana",
+      "b.proj": "Proyectos", "b.report": "Informe", "b.newProject": "Nuevo proyecto…", "b.nameProject": "Nombre del proyecto", "b.newName": "Cliente B",
+      "c11.t": "Entrada inteligente", "c11.d": "Proyecto y temporizador en el propio nombre de la tarea.", "c12.t": "A tu gusto", "c12.d": "Tema claro u oscuro, cristal y brillo.",
+      "x.si1": "Llamada", "x.si2": "30m", "x.si3": "30 min", "b.taskDone": "Tarea completada",
+      "b.pri3": "Alta", "b.pri2": "Media", "b.pri1": "Baja", "b.pri0": "Sin prioridad", "b.proj1": "Proyecto",
+      "ft.feedback": "Comentarios",
+      projects: ["Diseño", "Cliente A", "Estudio"],
+      recent: ["Cambios en la portada", "Llamada de briefing", "Maquetar tarjetas", "Curso de SwiftUI"],
+      tasks: [["Responder al presupuesto", 3, 1], ["Actualizar el CV", 2, null], ["Fotos de la galería", 1, 0]],
+      notes: [["Ideas para la galería", "Filtros por temporada, vistas grandes"], ["Llamada con el cliente", "Mover la entrega al viernes"], ["Comprar café", ""]],
+      min: "min", h: "h", days: ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"]
+    },
+    pt: {
+      "doc.title": "Tempo — controle de tempo para Mac",
+      "nav.download": "Baixar",
+      "hero.title": "Seu tempo, sob&nbsp;controle",
+      "hero.lead": "Um registro de tempo para Mac que fica no Notch ou na barra de menus.",
+      "hero.cta": "Baixar para {apple}Mac",
+      "mb.file": "Arquivo", "mb.edit": "Editar", "mb.view": "Visualizar",
+      "d.today": "Hoje", "d.recent": "Recentes", "d.tasks": "Tarefas", "d.notes": "Notas",
+      "d.newTask": "Nova tarefa", "d.newNote": "Nova nota",
+      "d.placeholder": "No que você está trabalhando?",
+      "c1.t": "Tarefas", "c1.d": "Lista, kanban e quadros por projeto e prazo. Com prioridades e lembretes.",
+      "c2.t": "Notas", "c2.d": "Anote uma ideia em uma linha.",
+      "c3.t": "Cronômetro ou timer", "c3.d": "Um aviso suave quando o tempo acaba.",
+      "c4.t": "Relatórios", "c4.d": "Por dia, semana, mês e ano. Valores, despesas e exportação em PDF e CSV.",
+      "c13.t": "Kanban", "c13.d": "Arraste as tarefas entre as colunas.", "c14.t": "Resumo do ano", "c14.d": "Mapa dos seus dias, horas de trabalho e um cartão para salvar como imagem.",
+                  "a.t1": "Responder sobre o orçamento", "a.t2": "Atualizar o currículo", "a.t3": "Enviar fatura",
+      "a.n1": "Ideias para a galeria", "a.n1p": "Filtros por estação, prévias grandes",
+      "a.n2": "Ligação com o cliente", "a.n2p": "Mudar o prazo para sexta",
+      "a.timeup": "O tempo acabou", "a.more5": "+5&nbsp;min", "a.done": "OK", "a.25": "25&nbsp;min",
+      "a.task": "Ajustes na página inicial", "f.p1": "Design", "f.p2": "Cliente A",
+      "a.d1": "1&nbsp;h 58&nbsp;min", "a.d2": "45&nbsp;min",       "end.t": "Grátis e sem conta",
+                        "c7.t": "Com ou sem notch",
+      "c7.d": "Em um Mac sem notch, o Tempo vai sozinho para a barra de menus.",
+                              "c10.t": "Seus dados ficam no seu Mac",
+      "c10.d": "Sem conta. Uma cópia por dia, e o que foi excluído ou concluído pode ser desfeito.",
+                                                "x.deleted": "Registro excluído",
+      "x.undo": "Desfazer",
+      "q.title": "Perguntas frequentes",
+      "q1.q": "Vai funcionar no meu Mac?",
+      "q1.a": "Sim, com macOS 14+ e Apple Silicon (M1 ou mais novo). Sem notch, o Tempo fica na barra de menus.",
+      "q2.q": "Como instalar?",
+      "q2.a": "Descompacte e arraste o Tempo para Aplicativos. Na primeira vez, vá em Ajustes do Sistema → Privacidade e Segurança e clique em Abrir Mesmo Assim.",
+      "q4.q": "É seguro?",
+      "q4.a": "O Tempo não pede acesso à tela nem aos arquivos, funciona sem conta e não envia nada para a internet. Só pede acesso ao Calendário se você ativar Mostrar no Calendário.",
+      "q3.q": "Onde ficam meus dados?",
+      "q3.a": "Só no seu Mac, em <code>~/Library/Application Support/Tempo</code>. Sem conta nem internet, e nada é enviado para lugar nenhum.",
+      "b.timer": "Registro", "x.export": "Exportar", "b.week": "Esta semana",
+      "b.proj": "Projetos", "b.report": "Relatório", "b.newProject": "Novo projeto…", "b.nameProject": "Nome do projeto", "b.newName": "Cliente B",
+      "c11.t": "Entrada inteligente", "c11.d": "Projeto e timer no próprio nome da tarefa.", "c12.t": "Do seu jeito", "c12.d": "Tema claro ou escuro, vidro e brilho.",
+      "x.si1": "Ligação", "x.si2": "30m", "x.si3": "30 min", "b.taskDone": "Tarefa concluída",
+      "b.pri3": "Alta", "b.pri2": "Média", "b.pri1": "Baixa", "b.pri0": "Sem prioridade", "b.proj1": "Projeto",
+      "ft.feedback": "Feedback",
+      projects: ["Design", "Cliente A", "Estudos"],
+      recent: ["Ajustes na página inicial", "Ligação de briefing", "Layout dos cards", "Curso de SwiftUI"],
+      tasks: [["Responder sobre o orçamento", 3, 1], ["Atualizar o currículo", 2, null], ["Fotos da galeria", 1, 0]],
+      notes: [["Ideias para a galeria", "Filtros por estação, prévias grandes"], ["Ligação com o cliente", "Mudar o prazo para sexta"], ["Comprar café", ""]],
+      min: "min", h: "h", days: ["dom", "seg", "ter", "qua", "qui", "sex", "sáb"]
+    },
+    cs: {
+      "doc.title": "Tempo — měření času pro Mac",
+      "nav.download": "Stáhnout",
+      "hero.title": "Čas pod&nbsp;kontrolou",
+      "hero.lead": "Sledování času pro Mac, které žije v Notchi nebo na řádku nabídek.",
+      "hero.cta": "Stáhnout pro {apple}Mac",
+      "mb.file": "Soubor", "mb.edit": "Úpravy", "mb.view": "Zobrazení",
+      "d.today": "Dnes", "d.recent": "Nedávné", "d.tasks": "Úkoly", "d.notes": "Poznámky",
+      "d.newTask": "Nový úkol", "d.newNote": "Nová poznámka",
+      "d.placeholder": "Na čem pracujete?",
+      "c1.t": "Úkoly", "c1.d": "Seznam, kanban, tabule podle projektů a termínů. S prioritami a připomenutím.",
+      "c2.t": "Poznámky", "c2.d": "Myšlenka na jeden řádek.",
+      "c3.t": "Stopky nebo časovač", "c3.d": "Jemný signál, když čas vyprší.",
+      "c4.t": "Přehledy", "c4.d": "Za den, týden, měsíc a rok. Částky, výdaje a export do PDF a CSV.",
+      "c13.t": "Kanban", "c13.d": "Přetahujte úkoly mezi sloupci.", "c14.t": "Shrnutí roku", "c14.d": "Mapa dnů, pracovní hodiny a karta, kterou lze uložit jako obrázek.",
+                  "a.t1": "Odpovědět na nabídku", "a.t2": "Aktualizovat životopis", "a.t3": "Poslat fakturu",
+      "a.n1": "Nápady pro galerii", "a.n1p": "Filtry podle sezóny, velké náhledy",
+      "a.n2": "Hovor s klientem", "a.n2p": "Posunout termín na pátek",
+      "a.timeup": "Čas vypršel", "a.more5": "+5&nbsp;min", "a.done": "Hotovo", "a.25": "25&nbsp;min",
+      "a.task": "Úpravy úvodní stránky", "f.p1": "Design", "f.p2": "Klient A",
+      "a.d1": "1&nbsp;h 58&nbsp;min", "a.d2": "45&nbsp;min",       "end.t": "Zdarma a bez účtu",
+                        "c7.t": "S výřezem i bez něj",
+      "c7.d": "Na Macu bez výřezu se Tempo samo přesune na řádek nabídek.",
+                              "c10.t": "Vaše data zůstávají na Macu",
+      "c10.d": "Bez účtu. Záloha každý den a smazání i dokončení úkolu lze vrátit.",
+                                                "x.deleted": "Záznam smazán",
+      "x.undo": "Zpět",
+      "q.title": "Časté otázky",
+      "q1.q": "Poběží na mém Macu?",
+      "q1.a": "Ano, s macOS 14+ a Apple Silicon (M1 a novější). Bez výřezu bydlí Tempo na řádku nabídek.",
+      "q2.q": "Jak ho nainstalovat?",
+      "q2.a": "Rozbalte a přetáhněte Tempo do Aplikací. Při prvním spuštění otevřete Nastavení systému → Soukromí a zabezpečení a klikněte na Přesto otevřít.",
+      "q4.q": "Je to bezpečné?",
+      "q4.a": "Tempo nežádá o přístup k obrazovce ani souborům, funguje bez účtu a nic neposílá na internet. O přístup ke Kalendáři požádá, jen když zapnete Zobrazovat v Kalendáři.",
+      "q3.q": "Kde jsou moje data?",
+      "q3.a": "Jen na vašem Macu, v <code>~/Library/Application Support/Tempo</code>. Bez účtu a internetu, nikam se neposílají.",
+      "b.timer": "Měření", "x.export": "Exportovat", "b.week": "Tento týden",
+      "b.proj": "Projekty", "b.report": "Přehled", "b.newProject": "Nový projekt…", "b.nameProject": "Název projektu", "b.newName": "Klient B",
+      "c11.t": "Chytré zadávání", "c11.d": "Projekt a časovač přímo v názvu úkolu.", "c12.t": "Podle vás", "c12.d": "Světlý nebo tmavý motiv, sklo a záře.",
+      "x.si1": "Hovor", "x.si2": "30m", "x.si3": "30 min", "b.taskDone": "Úkol dokončen",
+      "b.pri3": "Vysoká", "b.pri2": "Střední", "b.pri1": "Nízká", "b.pri0": "Bez priority", "b.proj1": "Projekt",
+      "ft.feedback": "Zpětná vazba",
+      projects: ["Design", "Klient A", "Studium"],
+      recent: ["Úpravy úvodní stránky", "Hovor o zadání", "Sazba karet", "Kurz SwiftUI"],
+      tasks: [["Odpovědět na nabídku", 3, 1], ["Aktualizovat životopis", 2, null], ["Fotky do galerie", 1, 0]],
+      notes: [["Nápady pro galerii", "Filtry podle sezóny, velké náhledy"], ["Hovor s klientem", "Posunout termín na pátek"], ["Koupit kávu", ""]],
+      min: "min", h: "h", days: ["ne", "po", "út", "st", "čt", "pá", "so"]
+    },
+    it: {
+      "doc.title": "Tempo — monitoraggio del tempo per Mac",
+      "nav.download": "Scarica",
+      "hero.title": "Il tuo tempo, sotto&nbsp;controllo",
+      "hero.lead": "Un tracker del tempo per Mac che vive nel Notch o nella barra dei menu.",
+      "hero.cta": "Scarica per {apple}Mac",
+      "mb.file": "File", "mb.edit": "Modifica", "mb.view": "Vista",
+      "d.today": "Oggi", "d.recent": "Recenti", "d.tasks": "Attività", "d.notes": "Note",
+      "d.newTask": "Nuova attività", "d.newNote": "Nuova nota",
+      "d.placeholder": "Su cosa stai lavorando?",
+      "c1.t": "Attività", "c1.d": "Elenco, kanban e bacheche per progetto e scadenza. Con priorità e promemoria.",
+      "c2.t": "Note", "c2.d": "Fissa un’idea in una riga.",
+      "c3.t": "Cronometro o timer", "c3.d": "Un avviso discreto quando il tempo scade.",
+      "c4.t": "Report", "c4.d": "Per giorno, settimana, mese e anno. Importi, spese ed esportazione in PDF e CSV.",
+      "c13.t": "Kanban", "c13.d": "Trascina le attività tra le colonne.", "c14.t": "Riepilogo dell’anno", "c14.d": "Mappa dei giorni, ore di lavoro e una scheda da salvare come immagine.",
+                  "a.t1": "Rispondere sul preventivo", "a.t2": "Aggiornare il CV", "a.t3": "Inviare la fattura",
+      "a.n1": "Idee per la galleria", "a.n1p": "Filtri per stagione, anteprime grandi",
+      "a.n2": "Chiamata col cliente", "a.n2p": "Spostare la scadenza a venerdì",
+      "a.timeup": "Tempo scaduto", "a.more5": "+5&nbsp;min", "a.done": "Fatto", "a.25": "25&nbsp;min",
+      "a.task": "Modifiche alla home", "f.p1": "Design", "f.p2": "Cliente A",
+      "a.d1": "1&nbsp;h 58&nbsp;min", "a.d2": "45&nbsp;min",       "end.t": "Gratis e senza account",
+                        "c7.t": "Con o senza notch",
+      "c7.d": "Su un Mac senza notch, Tempo passa da solo alla barra dei menu.",
+                              "c10.t": "I tuoi dati restano sul Mac",
+      "c10.d": "Nessun account. Un backup al giorno, e ciò che elimini o completi si può annullare.",
+                                                "x.deleted": "Voce eliminata",
+      "x.undo": "Annulla",
+      "q.title": "Domande frequenti",
+      "q1.q": "Funzionerà sul mio Mac?",
+      "q1.a": "Sì, con macOS 14+ e Apple Silicon (M1 o più recente). Senza notch, Tempo vive nella barra dei menu.",
+      "q2.q": "Come si installa?",
+      "q2.a": "Estrai e trascina Tempo in Applicazioni. Al primo avvio, vai in Impostazioni di Sistema → Privacy e sicurezza e fai clic su Apri comunque.",
+      "q4.q": "È sicuro?",
+      "q4.a": "Tempo non chiede l’accesso allo schermo o ai file, funziona senza account e non invia nulla online. Chiede l’accesso a Calendario solo se attivi Mostra in Calendario.",
+      "q3.q": "Dove sono i miei dati?",
+      "q3.a": "Solo sul tuo Mac, in <code>~/Library/Application Support/Tempo</code>. Senza account né internet, e non vengono inviati da nessuna parte.",
+      "b.timer": "Tracker", "x.export": "Esporta", "b.week": "Questa settimana",
+      "b.proj": "Progetti", "b.report": "Report", "b.newProject": "Nuovo progetto…", "b.nameProject": "Nome del progetto", "b.newName": "Cliente B",
+      "c11.t": "Inserimento rapido", "c11.d": "Progetto e timer direttamente nel nome dell’attività.", "c12.t": "A modo tuo", "c12.d": "Tema chiaro o scuro, vetro e bagliore.",
+      "x.si1": "Chiamata", "x.si2": "30m", "x.si3": "30 min", "b.taskDone": "Attività completata",
+      "b.pri3": "Alta", "b.pri2": "Media", "b.pri1": "Bassa", "b.pri0": "Nessuna priorità", "b.proj1": "Progetto",
+      "ft.feedback": "Feedback",
+      projects: ["Design", "Cliente A", "Studio"],
+      recent: ["Modifiche alla home", "Call di briefing", "Layout delle schede", "Corso di SwiftUI"],
+      tasks: [["Rispondere sul preventivo", 3, 1], ["Aggiornare il CV", 2, null], ["Foto per la galleria", 1, 0]],
+      notes: [["Idee per la galleria", "Filtri per stagione, anteprime grandi"], ["Chiamata col cliente", "Spostare la scadenza a venerdì"], ["Comprare il caffè", ""]],
+      min: "min", h: "h", days: ["dom", "lun", "mar", "mer", "gio", "ven", "sab"]
+    }
+  };
+
+  const store = {
+    get(k) { try { return localStorage.getItem(k); } catch { return null; } },
+    set(k, v) { try { localStorage.setItem(k, v); } catch {} }
+  };
+  // Язык: сохранённый, иначе по браузеру, иначе английский.
+  function detect() {
+    for (const l of navigator.languages || [navigator.language || "en"]) {
+      const code = l.toLowerCase().split("-")[0];
+      if (T[code]) return code;
+    }
+    return "en";
+  }
+  let lang = T[store.get("tempo-lang")] ? store.get("tempo-lang") : detect();
+
+  // ---------- Демо-данные ----------
+  const COLORS = ["#ff9f0a", "#0a84ff", "#30d158"];
+  const PRIORITY = { 3: "#ff453a", 2: "#ff9f0a", 1: "#ffd60a" };
+  const now = Date.now();
+  const demo = {
+    running: true,
+    start: now - (24 * 60 + 49) * 1000,
+    title: 0,             // индекс недавней задачи или строка, если пользователь ввёл своё
+    project: 0,
+    planned: null,        // секунды таймера; null — секундомер
+    nextPlanned: null,
+    done: [5400, 2700, 0],
+    tab: "recent",
+    pausedAt: null,
+    newTask: { priority: 0, due: false },
+    tasks: null,          // [{title, priority, project, done}] — по языку при первом показе
+    notes: null
+  };
+  const recents = [[1, 1], [2, 0], [3, 2]];   // [индекс задачи, проект]
+  const TIMER_STEPS = [null, 25 * 60, 45 * 60];
+
+  const $ = (id) => document.getElementById(id);
+  const island = $("island"), input = $("title");
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+  function short(sec) {
+    const m = Math.floor(sec / 60), h = Math.floor(m / 60), mm = m % 60, t = T[lang];
+    if (!h) return `${mm} ${t.min}`;
+    return mm ? `${h} ${t.h} ${mm} ${t.min}` : `${h} ${t.h}`;
+  }
+  const pad = (n) => String(n).padStart(2, "0");
+  function clock(sec) { sec = Math.floor(sec); return `${Math.floor(sec / 3600)}:${pad(Math.floor(sec / 60) % 60)}:${pad(sec % 60)}`; }
+  function compact(sec) { sec = Math.floor(sec); return sec < 3600 ? `${Math.floor(sec / 60)}:${pad(sec % 60)}` : clock(sec); }
+  const elapsed = () => demo.running ? ((demo.pausedAt || Date.now()) - demo.start) / 1000 : 0;
+  const shown = () => demo.planned ? Math.max(0, demo.planned - elapsed()) : elapsed();
+  const titleText = () => typeof demo.title === "number" ? T[lang].recent[demo.title] : demo.title;
+
+  function totals() {
+    const t = demo.done.slice();
+    if (demo.running) t[demo.project] += elapsed();
+    return t;
+  }
+
+  function seedLists() {
+    const t = T[lang];
+    demo.tasks = t.tasks.map(([title, priority, project], i) => ({ title, priority, project, done: false, due: i === 0 }));
+    demo.notes = t.notes.map(([title, preview], i) => ({ title, preview, time: ["18:06", "15:36", "09:12"][i] }));
+  }
+
+  // ---------- Тексты ----------
+  function renderStatic() {
+    const t = T[lang];
+    document.documentElement.lang = LANGS.find((l) => l[0] === lang)[2];
+    document.title = t["doc.title"];
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      const v = t[el.dataset.i18n];
+      if (v != null) el.innerHTML = v.replace("{apple}", APPLE);
+    });
+    input.placeholder = t["d.placeholder"];
+    if (document.activeElement !== input) input.value = demo.running ? titleText() : "";
+    renderMenu();
+    renderChip();
+    renderTabs();
+    renderReport();
+    renderProjectMenu();
+    tick();
+  }
+
+  // Окно отчёта: неделя по дням и проектам.
+  function renderReport() {
+    const t = T[lang], week = [27000, 12600, 4500];   // секунды по проектам
+    const days = [[3, 1.5, 0], [2.5, 2, 0.5], [4, 0.5, 0], [1.5, 2.5, 0.75], [3, 1, 0.5], [0, 0, 0], [0, 0, 0]];
+    const order = [1, 2, 3, 4, 5, 6, 0];
+    $("dtotal").textContent = short(week.reduce((a, b) => a + b, 0));
+    $("dchart").innerHTML = days.map((d) =>
+      `<div>${d.map((h, i) => h ? `<i style="--c:${COLORS[i]};height:${h * 11}px"></i>` : "").reverse().join("")}</div>`).join("");
+    $("ddays").innerHTML = order.map((d) => `<span>${esc(t.days[d])}</span>`).join("");
+    $("drows").innerHTML = week.map((sec, i) =>
+      `<div class="drow"><span class="dot" style="--c:${COLORS[i]};width:8px;height:8px"></span><span>${esc(t.projects[i])}</span><span class="fill"></span><em>${Math.round(sec / 441)}&nbsp;%</em><span>${short(sec)}</span></div>`).join("");
+  }
+
+  function renderMenu() {
+    $("langMenu").innerHTML = LANGS.map(([code, name]) =>
+      `<button role="menuitemradio" aria-checked="${code === lang}" data-lang="${code}"><span>${name}</span>${code === lang ? CHECK : ""}</button>`
+    ).join("");
+  }
+
+  function renderChip() {
+    $("chipDot").style.setProperty("--c", COLORS[demo.project]);
+    $("wingDot").style.setProperty("--c", COLORS[demo.project]);
+    $("chipName").textContent = T[lang].projects[demo.project];
+    const p = demo.running ? demo.planned : demo.nextPlanned;
+    $("tchip").classList.toggle("on", !!p);
+    $("tchipLabel").textContent = !demo.running && p ? short(p) : "";
+  }
+
+  function renderTabs() {
+    const t = T[lang];
+    const open = demo.tasks.filter((x) => !x.done).length;
+    const labels = { recent: t["d.recent"], tasks: open ? `${t["d.tasks"]} ${open}` : t["d.tasks"], notes: t["d.notes"] };
+    document.querySelectorAll("#tabs button").forEach((b) => {
+      b.innerHTML = `<svg class="grip" viewBox="0 0 9 7" fill="currentColor"><rect width="9" height="1.2" rx=".6"/><rect y="2.9" width="9" height="1.2" rx=".6"/><rect y="5.8" width="9" height="1.2" rx=".6"/></svg>${esc(labels[b.dataset.tab])}`;
+      b.setAttribute("aria-selected", String(b.dataset.tab === demo.tab));
+    });
+    renderList();
+  }
+
+  function renderList() {
+    const t = T[lang];
+    let html = "";
+    if (demo.tab === "recent") {
+      html = recents.map(([task, p], i) =>
+        `<button class="lrow" data-recent="${i}"><span class="dot" style="--c:${COLORS[p]}"></span><span class="t">${esc(t.recent[task])}</span><span class="p">${esc(t.projects[p])}</span>${PLAY}</button>`
+      ).join("");
+    } else if (demo.tab === "tasks") {
+      const order = demo.tasks.map((x, i) => [x, i]).filter(([x]) => !x.done).sort((a, b) => b[0].priority - a[0].priority);
+      const dueText = `${t["d.today"]} 14:30`;
+      html = order.map(([x, i]) =>
+        `<div class="lrow" data-task="${i}"><i class="cb${x.priority ? " pri" : ""}" data-check="${i}" style="--p:${PRIORITY[x.priority] || "#fff"};--c:${x.project != null ? COLORS[x.project] : "#0a84ff"}"></i>` +
+        `<span class="t">${esc(x.title)}</span><span class="p">${x.project != null ? esc(t.projects[x.project]) : ""}</span>${x.due ? `<span class="due soon">${esc(dueText)}</span>` : ""}${PLAY}</div>`
+      ).join("") +
+        `<div class="lrow add tasks-add">${PLUS}<input data-add="task" placeholder="${esc(t["d.newTask"])}" autocomplete="off">` +
+        `<button class="icon-b" id="nPri" aria-label="Priority"><i class="cb" id="nPriDot"></i></button>` +
+        `<button class="icon-b" aria-label="Emoji">${ICON_SMILE}</button>` +
+        `<button class="pill-b">${esc(t["b.proj1"])}</button>` +
+        `<button class="icon-b due-b" id="nDue" aria-label="Due">${ICON_CAL}</button></div>`;
+    } else {
+      html = demo.notes.map((n) =>
+        `<div class="lrow">${NOTE}<span class="t">${esc(n.title)}</span><span class="p">${esc(n.preview)}</span><span class="tm">${n.time}</span></div>`
+      ).join("") + `<label class="lrow add">${PLUS}<input data-add="note" placeholder="${esc(t["d.newNote"])}" autocomplete="off"></label>`;
+    }
+    $("list").innerHTML = html;
+    if (island.classList.contains("open")) size();
+  }
+
+  function tick() {
+    const tot = totals(), sum = tot.reduce((a, b) => a + b, 0) || 1, t = T[lang];
+    if (demo.running && demo.planned && elapsed() >= demo.planned) { stop(); return; }
+    $("wingTime").textContent = compact(shown());
+    $("ptime").textContent = clock(shown());
+    $("today").textContent = short(tot.reduce((a, b) => a + b, 0));
+    const order = tot.map((s, i) => [s, i]).filter(([s]) => s > 0).sort((a, b) => b[0] - a[0]);
+    $("bar").innerHTML = order.map(([s, i]) => `<span style="--c:${COLORS[i]};flex-grow:${s / sum}"></span>`).join("");
+    $("legend").innerHTML = order.map(([s, i]) =>
+      `<span><span class="dot" style="--c:${COLORS[i]}"></span>${esc(t.projects[i])} <i>${short(s)}</i></span>`).join("");
+    const d = new Date();
+    $("mbClock").textContent = `${t.days[d.getDay()]} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+  }
+
+  // ---------- Раскрытие ----------
+  const NOTCH = 180, WING = 74;
+  let expandTimer, collapseTimer;
+  let auto = false;   // идёт автопоказ
+
+  function size() {
+    if (island.classList.contains("open")) {
+      island.style.width = "500px";
+      island.style.height = (island.querySelector(".panel").offsetHeight) + "px";
+    } else {
+      island.style.width = (NOTCH + (demo.running ? WING * 2 : 0)) + "px";
+      island.style.height = "32px";
+    }
+  }
+  function expand() { clearTimeout(collapseTimer); island.classList.add("open"); size(); }
+  function collapse() {
+    clearTimeout(expandTimer);
+    if (island.contains(document.activeElement)) document.activeElement.blur();
+    island.classList.remove("open");
+    size();
+  }
+  const typing = () => island.contains(document.activeElement) && document.activeElement.tagName === "INPUT";
+
+  island.addEventListener("click", (e) => {
+    // Клики внутри панели не должны заново раскрывать только что свёрнутый Notch.
+    if (e.composedPath().some((el) => el.classList && el.classList.contains("panel"))) return;
+    if (!island.classList.contains("open")) { expand(); e.stopPropagation(); }
+  });
+  document.addEventListener("click", (e) => {
+    if (!auto && !island.contains(e.target) && island.classList.contains("open")) collapse();
+  });
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") { demo.running ? input.blur() : start(input.value.trim() || T[lang].recent[0], demo.project); }
+    if (e.key === "Escape") collapse();
+  });
+  input.addEventListener("input", () => { if (demo.running) demo.title = input.value; });
+
+  // Проекты: список под чипом и создание нового, как в приложении.
+  const SWATCHES = ["#ff453a", "#ff9f0a", "#ffd60a", "#30d158", "#40c8e0", "#bf5af2", "#ff375f"];
+  const pmenu = $("pmenu"), newp = $("newp"), newName = $("newName");
+  let newColor = SWATCHES[0];
+  function renderProjectMenu() {
+    const t = T[lang];
+    pmenu.innerHTML = t.projects.map((name, i) =>
+      `<button data-project="${i}"><span class="dot" style="--c:${COLORS[i]}"></span>${esc(name)}</button>`).join("") +
+      `<hr><button id="pnew">${esc(t["b.newProject"])}</button>`;
+    newName.placeholder = t["b.nameProject"];
+    $("swatches").innerHTML = SWATCHES.map((c) =>
+      `<button data-color="${c}" class="${c === newColor ? "on" : ""}" style="--c:${c}" aria-label="${c}"></button>`).join("");
+  }
+  function closeNewProject() {
+    newp.hidden = true;
+    newName.value = "";
+    if (island.classList.contains("open")) size();
+  }
+  function createProject() {
+    const name = newName.value.trim();
+    if (!name) return;
+    const i = COLORS.length;
+    COLORS.push(newColor);
+    Object.values(T).forEach((t) => { t.projects[i] = name; });
+    demo.done[i] = 0;
+    demo.project = i;
+    closeNewProject();
+    renderProjectMenu();
+    renderChip();
+    tick();
+  }
+  function dropCustomProjects() {
+    COLORS.length = 3;
+    Object.values(T).forEach((t) => { t.projects.length = 3; });
+    pmenu.classList.remove("on");
+    newp.hidden = true;
+    newName.value = "";
+    renderProjectMenu();
+  }
+  $("chip").addEventListener("click", (e) => {
+    e.stopPropagation();
+    pmenu.classList.toggle("on");
+  });
+  pmenu.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const pick = e.target.closest("[data-project]");
+    if (pick) {
+      demo.project = +pick.dataset.project;
+      pmenu.classList.remove("on");
+      renderChip();
+      tick();
+    } else if (e.target.closest("#pnew")) {
+      pmenu.classList.remove("on");
+      newp.hidden = false;
+      size();
+      if (!auto) newName.focus();
+    }
+  });
+  $("swatches").addEventListener("click", (e) => {
+    const b = e.target.closest("[data-color]");
+    if (!b) return;
+    newColor = b.dataset.color;
+    renderProjectMenu();
+  });
+  $("newOk").addEventListener("click", createProject);
+  newName.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") createProject();
+    if (e.key === "Escape") closeNewProject();
+  });
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest("#pmenu")) pmenu.classList.remove("on");
+  });
+  $("tchip").addEventListener("click", () => {
+    if (demo.running) {
+      // Во время работы — «ещё 25 минут» от текущего момента или снять ограничение.
+      demo.planned = demo.planned ? null : elapsed() + 25 * 60;
+    } else {
+      demo.nextPlanned = TIMER_STEPS[(TIMER_STEPS.indexOf(demo.nextPlanned) + 1) % TIMER_STEPS.length];
+    }
+    renderChip();
+    tick();
+  });
+  $("go").addEventListener("click", () => {
+    if (demo.running) stop(); else start(input.value.trim() || T[lang].recent[0], demo.project);
+  });
+  let undoTimer;
+  $("pauseB").addEventListener("click", () => {
+    if (demo.pausedAt) {
+      demo.start += Date.now() - demo.pausedAt;
+      demo.pausedAt = null;
+    } else {
+      demo.pausedAt = Date.now();
+    }
+    $("pauseB").classList.toggle("on", !!demo.pausedAt);
+    island.classList.toggle("paused", !!demo.pausedAt);
+    tick();
+  });
+  // Приоритет новой задачи: меню над строкой ввода, как в приложении.
+  const primenu = $("primenu");
+  function openPriorityMenu() {
+    const t = T[lang];
+    primenu.innerHTML = [[3, "b.pri3"], [2, "b.pri2"], [1, "b.pri1"], [0, "b.pri0"]].map(([p, key]) =>
+      `<button data-priority="${p}"><i class="cb${p ? " pri" : ""}" style="--p:${PRIORITY[p] || "#fff"}"></i>${esc(t[key])}</button>`).join("");
+    const panel = island.querySelector(".panel").getBoundingClientRect(), row = $("nPri").getBoundingClientRect(), k = panel.width / 500;
+    primenu.style.top = `${(row.top - panel.top) / k - 118}px`;
+    primenu.classList.add("on");
+  }
+  primenu.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-priority]");
+    if (!b) return;
+    demo.newTask.priority = +b.dataset.priority;
+    const dot = $("nPriDot");
+    dot.className = demo.newTask.priority ? "cb pri" : "cb";
+    dot.style.setProperty("--p", PRIORITY[demo.newTask.priority] || "#fff");
+    primenu.classList.remove("on");
+  });
+  $("list").addEventListener("click", (e) => {
+    if (e.target.closest("#nPri")) { openPriorityMenu(); return; }
+    if (e.target.closest("#nDue")) {
+      demo.newTask.due = true;
+      const b = $("nDue");
+      b.classList.add("set");
+      b.classList.remove("icon-b");
+      b.textContent = `${T[lang]["d.today"]} 14:30`;
+    }
+  });
+  const dwin = $("dwin"), dmenu = $("dmenu");
+  function showReport(on) {
+    dwin.classList.toggle("on", on);
+    if (!on) dmenu.classList.remove("on");
+  }
+  $("pexpand").addEventListener("click", () => { collapse(); showReport(true); });
+  $("dclose").addEventListener("click", () => showReport(false));
+  $("dexport").addEventListener("click", () => dmenu.classList.toggle("on"));
+  dmenu.addEventListener("click", () => dmenu.classList.remove("on"));
+  $("tabs").addEventListener("click", (e) => {
+    const b = e.target.closest("button[data-tab]");
+    if (!b) return;
+    demo.tab = b.dataset.tab;
+    renderTabs();
+  });
+  $("list").addEventListener("click", (e) => {
+    const check = e.target.closest("[data-check]");
+    if (check) {
+      const i = +check.dataset.check;
+      check.classList.add("on");
+      check.closest(".lrow").classList.add("done");
+      setTimeout(() => {
+        demo.tasks[i].done = true;
+        renderTabs();
+        $("undoD").hidden = false;
+        size();
+        clearTimeout(undoTimer);
+        undoTimer = setTimeout(() => { $("undoD").hidden = true; size(); }, 3200);
+      }, 450);
+      return;
+    }
+    const recent = e.target.closest("[data-recent]");
+    if (recent) {
+      const [task, p] = recents[+recent.dataset.recent];
+      start(task, p);
+      return;
+    }
+    const task = e.target.closest("[data-task]");
+    if (task) {
+      const x = demo.tasks[+task.dataset.task];
+      start(x.title, x.project ?? demo.project);
+    }
+  });
+  $("list").addEventListener("keydown", (e) => {
+    const field = e.target.closest("input[data-add]");
+    if (!field || e.key !== "Enter" || !field.value.trim()) return;
+    let text = field.value.trim();
+    if (field.dataset.add === "task") {
+      // «!!! Позвонить» — восклицательные знаки в начале задают приоритет, как в приложении.
+      const marks = (text.match(/^!{1,3}/) || [""])[0].length;
+      text = text.slice(marks).trim() || text;
+      demo.tasks.push({ title: text, priority: marks || demo.newTask.priority, project: demo.project, done: false, due: demo.newTask.due });
+      demo.newTask = { priority: 0, due: false };
+    } else {
+      const d = new Date();
+      demo.notes.unshift({ title: text, preview: "", time: `${pad(d.getHours())}:${pad(d.getMinutes())}` });
+      demo.notes = demo.notes.slice(0, 4);
+    }
+    renderTabs();
+    const next = $("list").querySelector("input[data-add]");
+    if (next && !auto) next.focus();
+  });
+
+  function start(title, project) {
+    if (demo.running) stop(true);
+    demo.running = true;
+    demo.start = Date.now();
+    demo.title = title;
+    demo.project = project;
+    demo.planned = demo.nextPlanned;
+    demo.pausedAt = null;
+    $("pauseB").classList.remove("on");
+    island.classList.remove("paused");
+    island.classList.add("running");
+    renderStatic();
+    collapse();
+    setTimeout(() => {
+      const s = $("shine");
+      s.classList.remove("go"); void s.offsetWidth; s.classList.add("go");
+    }, 420);
+  }
+
+  function stop(silent) {
+    demo.done[demo.project] += demo.planned ? Math.min(elapsed(), demo.planned) : elapsed();
+    demo.running = false;
+    demo.planned = null;
+    demo.pausedAt = null;
+    $("pauseB").classList.remove("on");
+    island.classList.remove("running", "paused");
+    input.value = "";
+    renderChip();
+    tick();
+    size();
+    if (!silent) confetti(COLORS[demo.project]);
+  }
+
+  // ---------- Карточки: галочки нажимаются ----------
+  document.querySelectorAll(".card .cb").forEach((cb) => cb.addEventListener("click", () => {
+    cb.classList.toggle("on");
+    cb.closest(".lrow").classList.toggle("done", cb.classList.contains("on"));
+  }));
+
+  let SCREEN_W = 880;
+
+  // ---------- Конфетти при остановке ----------
+  const canvas = $("burst"), ctx = canvas.getContext("2d");
+  let parts = [], raf = 0;
+  function confetti(color) {
+    const go = $("go").getBoundingClientRect(), scr = $("screen").getBoundingClientRect();
+    const k = scr.width / SCREEN_W;
+    canvas.width = SCREEN_W * 2; canvas.height = 400 * 2;
+    const x = (go.left + go.width / 2 - scr.left) / k, y = (go.top + go.height / 2 - scr.top) / k;
+    const cols = [color, color, "rgba(255,255,255,0.9)"];
+    for (let i = 0; i < 46; i++) {
+      const a = (-90 + (Math.random() - 0.5) * 110) * Math.PI / 180, v = 3 + Math.random() * 4;
+      parts.push({ x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v, r: Math.random() * 6, vr: (Math.random() - 0.5) * 0.4,
+        w: 5 + Math.random() * 5, h: 3 + Math.random() * 3, c: cols[i % 3], life: 1 });
+    }
+    if (!raf) raf = requestAnimationFrame(frame);
+  }
+  function frame() {
+    ctx.setTransform(2, 0, 0, 2, 0, 0);
+    ctx.clearRect(0, 0, SCREEN_W, 400);
+    parts = parts.filter((p) => p.life > 0);
+    for (const p of parts) {
+      p.vy += 0.16; p.vx *= 0.99; p.x += p.vx; p.y += p.vy; p.r += p.vr; p.life -= 0.012;
+      ctx.save(); ctx.globalAlpha = Math.max(0, p.life); ctx.translate(p.x, p.y); ctx.rotate(p.r);
+      ctx.fillStyle = p.c; ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h); ctx.restore();
+    }
+    raf = parts.length ? requestAnimationFrame(frame) : 0;
+  }
+
+  // ---------- Масштаб экрана-демо под ширину ----------
+  function fit() {
+    // На телефоне «экран» уже, чтобы целиком влезал, а Notch оставался крупным.
+    const w = $("scaler").clientWidth;
+    SCREEN_W = w < 700 ? 516 : 880;
+    const k = Math.min(1, w / SCREEN_W), scr = $("screen");
+    scr.style.width = SCREEN_W + "px";
+    scr.classList.toggle("narrow", SCREEN_W < 880);
+    scr.style.transform = `translateX(-50%) scale(${k})`;
+    $("scaler").style.height = (400 * k) + "px";
+  }
+  new ResizeObserver(fit).observe($("scaler"));
+
+  // ---------- Глобус: меню языков ----------
+  const globe = $("globe"), menu = $("langMenu");
+  function toggleMenu(open) {
+    menu.hidden = !open;
+    globe.setAttribute("aria-expanded", String(open));
+  }
+  globe.addEventListener("click", (e) => { e.stopPropagation(); toggleMenu(menu.hidden); });
+  menu.addEventListener("click", (e) => {
+    const b = e.target.closest("button[data-lang]");
+    if (!b) return;
+    lang = b.dataset.lang;
+    store.set("tempo-lang", lang);
+    seedLists();
+    toggleMenu(false);
+    renderStatic();
+    size();
+  });
+  document.addEventListener("click", (e) => { if (!menu.hidden && !e.target.closest(".langsel")) toggleMenu(false); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") toggleMenu(false); });
+
+  const navBar = document.querySelector("nav");
+  const markScrolled = () => navBar.classList.toggle("scrolled", scrollY > 8);
+  addEventListener("scroll", markScrolled, { passive: true });
+  markScrolled();
+
+  seedLists();
+  renderStatic();
+  fit();
+  size();
+  setInterval(tick, 1000);
+
+  // ---------- Автопоказ: курсор сам проходит по функциям, экран только смотрят ----------
+  const ghostX = $("ghostX"), ghostY = $("ghostY"), ghostRing = $("ghostRing");
+  const calm = matchMedia("(prefers-reduced-motion: reduce)");
+  let run = 0, inView = false, gx = 0, gy = 0;
+  const STOPPED = Symbol("stopped");
+
+  // Пауза, которая обрывает сцену, как только показ остановили.
+  const wait = (ms) => new Promise((done, fail) => {
+    const id = run;
+    setTimeout(() => (id === run ? done() : fail(STOPPED)), ms);
+  });
+
+  function place(el, fx = 0.5, fy = 0.5) {
+    const box = $("screen").getBoundingClientRect(), k = box.width / SCREEN_W, r = el.getBoundingClientRect();
+    return [(r.left + r.width * fx - box.left) / k, (r.top + r.height * fy - box.top) / k];
+  }
+
+  async function glide(x, y, speed = 1) {
+    const dist = Math.hypot(x - gx, y - gy);
+    const ms = Math.round(Math.min(1250, Math.max(520, 420 + dist * 1.5)) / speed);
+    ghostX.style.transitionDuration = `${ms}ms, 0.3s`;
+    ghostY.style.transitionDuration = `${ms}ms`;
+    ghostX.style.transform = `translateX(${x}px)`;
+    ghostY.style.transform = `translateY(${y}px)`;
+    gx = x; gy = y;
+    await wait(ms + 70);
+  }
+
+  function jump(x, y) {
+    ghostX.style.transitionDuration = "0s, 0.3s";
+    ghostY.style.transitionDuration = "0s";
+    ghostX.style.transform = `translateX(${x}px)`;
+    ghostY.style.transform = `translateY(${y}px)`;
+    gx = x; gy = y;
+    void ghostX.offsetWidth;
+  }
+
+  async function press(el) {
+    const [x, y] = place(el);
+    await glide(x, y);
+    await wait(160);
+    ghostY.classList.add("down");
+    el.classList.add("pressed");
+    ghostRing.classList.remove("go"); void ghostRing.offsetWidth; ghostRing.classList.add("go");
+    await wait(120);
+    ghostY.classList.remove("down");
+    el.classList.remove("pressed");
+    el.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    await wait(220);
+  }
+
+  function resetDemo() {
+    collapse();
+    demo.running = false;
+    demo.title = 0;
+    demo.project = 0;
+    demo.planned = null;
+    demo.nextPlanned = null;
+    demo.done = [5400, 2700, 0];
+    demo.tab = "recent";
+    island.classList.remove("running");
+    input.value = "";
+    showReport(false);
+    dropCustomProjects();
+    demo.pausedAt = null;
+    demo.newTask = { priority: 0, due: false };
+    $("pauseB").classList.remove("on");
+    island.classList.remove("paused");
+    $("undoD").hidden = true;
+    clearTimeout(undoTimer);
+    primenu.classList.remove("on");
+    seedLists();
+    renderStatic();
+    size();
+  }
+
+  async function type(field, text) {
+    for (let i = 1; i <= text.length; i++) {
+      field.value = text.slice(0, i);
+      await wait(44 + Math.random() * 46);
+    }
+  }
+
+  const rest = () => [SCREEN_W * 0.7, 270];
+  const inList = (selector) => $("list").querySelector(selector);
+
+  async function openNotch() {
+    resetDemo();
+    jump(SCREEN_W * 0.78, 340);
+    await wait(600);
+    ghostX.classList.add("on");
+    await wait(300);
+    const [x, y] = place(island);
+    await glide(x, y);
+    expand();
+    await wait(620);
+  }
+
+  async function finish(pause = 1300) {
+    await glide(...rest());
+    collapse();
+    await wait(pause);
+    ghostX.classList.remove("on");
+    await wait(450);
+  }
+
+  // Таймер: написать задачу, выбрать проект и время, запустить, остановить.
+  async function sceneTimer() {
+    await openNotch();
+    const [x, y] = place(input, 0.12);
+    await glide(x, y, 1.3);
+    await wait(140);
+    await type(input, T[lang].recent[0]);
+    await wait(320);
+    await press($("chip"));
+    await wait(380);
+    await press($("tchip"));
+    await wait(520);
+    await press($("go"));
+    // Запись пошла, Notch свернулся: время тикает рядом с вырезом.
+    await glide(...rest());
+    await wait(2600);
+    const [nx, ny] = place(island);
+    await glide(nx, ny);
+    expand();
+    await wait(620);
+    await press($("pauseB"));
+    await wait(1100);
+    await press($("pauseB"));
+    await wait(650);
+    await press($("go"));
+    await wait(500);
+    await finish();
+  }
+
+  // Задачи: добавить с приоритетом и сроком, закрыть выполненную, запустить запись.
+  async function sceneTasks() {
+    await openNotch();
+    await press(document.querySelector('#tabs [data-tab="tasks"]'));
+    await wait(450);
+    const field = inList('input[data-add="task"]');
+    const [x, y] = place(field, 0.1);
+    await glide(x, y, 1.3);
+    await wait(140);
+    await type(field, T[lang].recent[1]);
+    await wait(280);
+    await press($("nPri"));
+    await wait(450);
+    await press(primenu.querySelector('[data-priority="3"]'));
+    await wait(350);
+    await press($("nDue"));
+    await wait(450);
+    field.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", bubbles: true }));
+    await wait(850);
+    const rows = $("list").querySelectorAll("[data-check]");
+    await press(rows[rows.length - 1]);
+    await wait(1500);
+    await press(inList("[data-task] .pl"));
+    await glide(...rest());
+    await wait(2200);
+    await finish(500);
+  }
+
+  // Проекты: открыть список, создать новый со своим цветом.
+  async function sceneProjects() {
+    await openNotch();
+    const [x, y] = place(input, 0.12);
+    await glide(x, y, 1.3);
+    await wait(140);
+    await type(input, T[lang].recent[3]);
+    await wait(320);
+    await press($("chip"));
+    await wait(650);
+    await press($("pnew"));
+    await wait(450);
+    const [nx, ny] = place($("newName"), 0.1);
+    await glide(nx, ny, 1.3);
+    await wait(120);
+    await type($("newName"), T[lang]["b.newName"]);
+    await wait(320);
+    await press($("swatches").children[5]);
+    await wait(420);
+    await press($("newOk"));
+    await wait(700);
+    await press($("go"));
+    await glide(...rest());
+    await wait(2200);
+    await finish(500);
+  }
+
+  // Отчёт: открыть окно, посмотреть неделю, выгрузить в PDF.
+  async function sceneReport() {
+    await openNotch();
+    await press($("pexpand"));
+    await wait(700);
+    let [x, y] = place($("dchart"), 0.32, 0.5);
+    await glide(x, y);
+    await wait(500);
+    [x, y] = place($("drows"), 0.7, 0.5);
+    await glide(x, y);
+    await wait(800);
+    await press($("dexport"));
+    await wait(450);
+    await press($("dpdf"));
+    await wait(600);
+    await press($("dclose"));
+    await finish(500);
+  }
+
+  // Карта года на карточке: узор постоянный, чтобы не прыгал при перезагрузке.
+  (() => {
+    const map = $("ymap");
+    let seed = 7;
+    const next = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    const levels = ["", "rgba(10,132,255,.32)", "rgba(10,132,255,.52)", "rgba(10,132,255,.75)", "#0a84ff"];
+    for (let i = 0; i < 26 * 7; i++) {
+      const cell = document.createElement("b");
+      const weekend = i % 7 > 4;
+      const v = next();
+      const level = weekend ? (v > 0.86 ? 1 : 0) : v < 0.18 ? 0 : Math.ceil(next() * 4);
+      if (level) cell.style.background = levels[level];
+      map.append(cell);
+    }
+  })();
+
+  const SCENES = [sceneTimer, sceneProjects, sceneReport, sceneTasks];
+  let sceneIndex = 0;
+  function markScene() {
+    document.querySelectorAll("#feats button").forEach((b) => b.setAttribute("aria-selected", String(+b.dataset.scene === sceneIndex)));
+  }
+  $("feats").addEventListener("click", (e) => {
+    const b = e.target.closest("button[data-scene]");
+    if (!b) return;
+    sceneIndex = +b.dataset.scene;
+    markScene();
+    halt();
+    play();
+  });
+  markScene();
+
+  function halt() {
+    run++;
+    auto = false;
+    ghostX.classList.remove("on");
+    ghostY.classList.remove("down");
+    document.querySelectorAll(".pressed").forEach((el) => el.classList.remove("pressed"));
+  }
+
+  async function play() {
+    if (auto || !inView || document.hidden || calm.matches) return;
+    auto = true;
+    const id = ++run;
+    try {
+      while (id === run) {
+        markScene();
+        await SCENES[sceneIndex]();
+        sceneIndex = (sceneIndex + 1) % SCENES.length;
+      }
+    } catch (e) {
+      if (e !== STOPPED) { halt(); throw e; }
+    }
+  }
+
+  new IntersectionObserver(([e]) => {
+    inView = e.isIntersecting;
+    if (inView) play(); else if (auto) halt();
+  }, { threshold: 0.4 }).observe($("scaler"));
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) { if (auto) halt(); } else play();
+  });
+  calm.addEventListener("change", () => { if (calm.matches) { if (auto) halt(); } else play(); });
+})();
+</script>
+<script>
+// Лучи: свет падает сверху, от центра страницы, как из выреза. Пока таймер в демо идёт, свет ярче.
+(() => {
+  const canvas = document.getElementById("rays");
+  const gl = canvas.getContext("webgl", { antialias: false, alpha: false, powerPreference: "low-power" });
+  if (!gl) { canvas.remove(); return; }
+  const vertex = "attribute vec2 p; void main() { gl_Position = vec4(p, 0.0, 1.0); }";
+  const fragment = `
+    precision highp float;
+    uniform vec2 res;
+    uniform float time, power;
+    float hash(vec2 p) { return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453); }
+    void main() {
+      // Начало координат чуть выше страницы: лучи выходят будто из-за края экрана.
+      vec2 uv = (gl_FragCoord.xy - vec2(0.5 * res.x, res.y + 0.06 * res.y)) / res.y;
+      float angle = atan(uv.x, -uv.y);
+      float dist = length(uv);
+      float a = 0.5 + 0.5 * sin(angle * 3.4 + time * 0.09 + 1.5 * sin(angle * 1.3 - time * 0.06));
+      float b = 0.5 + 0.5 * sin(angle * 8.0 - time * 0.13 + 1.2 * sin(angle * 2.6 + time * 0.05));
+      float c = 0.5 + 0.5 * sin(angle * 17.0 + time * 0.07);
+      float rays = a * (0.5 + 0.5 * b) + 0.08 * b * c;
+      float fall = pow(smoothstep(1.5, 0.0, dist), 1.25);
+      float cone = smoothstep(1.45, 0.25, abs(angle));
+      vec3 color = vec3(rays * fall * cone * power);
+      // Лёгкое зерно убирает полосы на тёмном градиенте.
+      color += (hash(gl_FragCoord.xy + time) - 0.5) / 255.0;
+      gl_FragColor = vec4(color, 1.0);
+    }`;
+  function shader(type, source) {
+    const sh = gl.createShader(type);
+    gl.shaderSource(sh, source);
+    gl.compileShader(sh);
+    return sh;
+  }
+  const program = gl.createProgram();
+  gl.attachShader(program, shader(gl.VERTEX_SHADER, vertex));
+  gl.attachShader(program, shader(gl.FRAGMENT_SHADER, fragment));
+  gl.linkProgram(program);
+  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) { canvas.remove(); return; }
+  gl.useProgram(program);
+  gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+  const position = gl.getAttribLocation(program, "p");
+  gl.enableVertexAttribArray(position);
+  gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
+  const uRes = gl.getUniformLocation(program, "res");
+  const uTime = gl.getUniformLocation(program, "time");
+  const uPower = gl.getUniformLocation(program, "power");
+
+  const island = document.getElementById("island");
+  const calm = matchMedia("(prefers-reduced-motion: reduce)");
+  const IDLE = 0.1, ACTIVE = 0.13;
+  let power = IDLE, last = 0, running = false, inView = true;
+
+  function resize() {
+    // Размытый свет не требует полного разрешения, так он почти не грузит Mac.
+    const w = Math.max(1, Math.round(canvas.clientWidth * 0.5)), h = Math.max(1, Math.round(canvas.clientHeight * 0.5));
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width = w; canvas.height = h;
+      gl.viewport(0, 0, w, h);
+    }
+    gl.uniform2f(uRes, w, h);
+  }
+  function paint(t) {
+    gl.uniform1f(uTime, t / 1000 + 40);
+    gl.uniform1f(uPower, power);
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+  }
+  function frame(t) {
+    if (!running) return;
+    requestAnimationFrame(frame);
+    if (t - last < 33) return;   // 30 кадров хватает для такого медленного света
+    const dt = Math.min(0.1, (t - last) / 1000);
+    last = t;
+    const target = island && island.classList.contains("running") ? ACTIVE : IDLE;
+    power += (target - power) * Math.min(1, dt * 1.4);
+    paint(t);
+  }
+  function update() {
+    const should = inView && !calm.matches;
+    if (should && !running) { running = true; requestAnimationFrame(frame); }
+    if (!should) { running = false; paint(0); }
+  }
+  new ResizeObserver(() => { resize(); paint(last); }).observe(canvas);
+  new IntersectionObserver(([e]) => { inView = e.isIntersecting; update(); }).observe(canvas);
+  calm.addEventListener("change", update);
+  resize();
+  paint(0);
+  update();
+})();
+</script>
+<script type="module">
+// 3D-значок: настоящая модель, а не картинка. Если WebGL или библиотека недоступны, остаётся обычная иконка.
+const stage = document.getElementById("model");
+try {
+  const THREE = await import("three");
+  const { RoomEnvironment } = await import("three/addons/environments/RoomEnvironment.js");
+
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "low-power" });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 0.95;
+  renderer.domElement.setAttribute("aria-hidden", "true");
+  stage.append(renderer.domElement);
+
+  const scene = new THREE.Scene();
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+  pmrem.dispose();
+  const camera = new THREE.PerspectiveCamera(26, 1, 0.1, 50);
+  camera.position.set(0, 0, 7.4);
+  const key = new THREE.DirectionalLight(0xffffff, 0.9);
+  key.position.set(2, 3, 5);
+  const rim = new THREE.DirectionalLight(0xff9f0a, 1.4);
+  rim.position.set(-4, -1.5, -2.5);
+  // Холодный контровой свет отделяет тёмный корпус от чёрного фона.
+  const edge = new THREE.DirectionalLight(0x9db8ff, 1.1);
+  edge.position.set(4, 1.5, -3);
+  scene.add(key, rim, edge);
+
+  // Корпус: скруглённый квадрат с фаской, как у значка приложения.
+  const side = 2, radius = 0.46, depth = 0.3, half = side / 2;
+  // Контур точками без повтора первой: совпавшие точки давали скол на фаске.
+  const outline = [];
+  const corners = [[half - radius, -half + radius, -Math.PI / 2], [half - radius, half - radius, 0], [-half + radius, half - radius, Math.PI / 2], [-half + radius, -half + radius, Math.PI]];
+  for (const [cx, cy, from] of corners) {
+    for (let i = 0; i <= 24; i++) {
+      const t = from + (i / 24) * (Math.PI / 2);
+      outline.push(new THREE.Vector2(cx + Math.cos(t) * radius, cy + Math.sin(t) * radius));
+    }
+  }
+  const shape = new THREE.Shape(outline);
+  const bodyGeometry = new THREE.ExtrudeGeometry(shape, { depth, bevelEnabled: true, bevelSize: 0.05, bevelThickness: 0.05, bevelSegments: 8, curveSegments: 48 });
+  bodyGeometry.center();
+  const body = new THREE.Mesh(bodyGeometry, new THREE.MeshPhysicalMaterial({ color: 0x0b0b0d, metalness: 0.2, roughness: 0.42, clearcoat: 1, clearcoatRoughness: 0.08, envMapIntensity: 0.75 }));
+
+  const white = new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0xffffff, emissiveIntensity: 0.3, roughness: 0.4 });
+  const track = new THREE.MeshStandardMaterial({ color: 0x2c2c30, roughness: 0.5 });
+  const orange = new THREE.MeshStandardMaterial({ color: 0xff8400, emissive: 0xff6a00, emissiveIntensity: 0.55, roughness: 0.45 });
+  const black = new THREE.MeshPhysicalMaterial({ color: 0x050506, roughness: 0.2, clearcoat: 1 });
+
+  const hands = [];
+  function face() {
+    const g = new THREE.Group();
+    const front = depth / 2 + 0.05;
+    // Вырез с огоньком сверху.
+    const notch = new THREE.Mesh(new THREE.CapsuleGeometry(0.085, 0.42, 8, 24), black);
+    notch.rotation.z = Math.PI / 2;
+    notch.position.set(0, 0.7, front);
+    notch.scale.z = 0.22;
+    const led = new THREE.Mesh(new THREE.SphereGeometry(0.03, 16, 16), orange);
+    led.position.set(-0.2, 0.7, front + 0.018);
+    // Кольцо таймера: серая дорожка и белая дуга, как на значке.
+    const center = new THREE.Group();
+    center.position.set(0, -0.1, front);
+    const ringTrack = new THREE.Mesh(new THREE.TorusGeometry(0.52, 0.05, 16, 120), track);
+    const arc = new THREE.Mesh(new THREE.TorusGeometry(0.52, 0.066, 16, 120, Math.PI * 1.62), white);
+    arc.rotation.z = Math.PI / 2 - Math.PI * 1.62;
+    ringTrack.scale.z = arc.scale.z = 0.55;
+    // Стрелка.
+    const hand = new THREE.Group();
+    const needle = new THREE.Mesh(new THREE.CapsuleGeometry(0.036, 0.28, 8, 16), orange);
+    needle.position.y = 0.2;
+    needle.position.z = 0.03;
+    needle.scale.z = 0.6;
+    hand.add(needle);
+    hands.push(hand);
+    const pin = new THREE.Mesh(new THREE.SphereGeometry(0.07, 24, 24), white);
+    pin.position.z = 0.04;
+    pin.scale.z = 0.6;
+    center.add(ringTrack, arc, hand, pin);
+    g.add(notch, led, center);
+    return g;
+  }
+  const front = face();
+  const back = face();
+  back.rotation.y = Math.PI;
+  const model = new THREE.Group();
+  model.add(body, front, back);
+  scene.add(model);
+
+  function resize() {
+    const w = stage.clientWidth, h = stage.clientHeight;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+  new ResizeObserver(() => { resize(); if (!running) draw(); }).observe(stage);
+  resize();
+
+  const calm = matchMedia("(prefers-reduced-motion: reduce)");
+  const SPIN = 0.55;              // оборотов в радианах за секунду
+  let angle = -0.42, spin = SPIN, tiltX = 0, tiltY = 0, targetX = 0, targetY = 0;
+  let dragging = false, dragX = 0, lastT = performance.now(), running = false, inView = true;
+
+  function draw() {
+    model.rotation.y = angle + tiltY;
+    model.rotation.x = 0.1 + tiltX;
+    renderer.render(scene, camera);
+  }
+  function frame(t) {
+    if (!running) return;
+    const dt = Math.min(0.05, (t - lastT) / 1000);
+    lastT = t;
+    // После рывка скорость мягко возвращается к обычной.
+    if (!dragging) { spin += (SPIN - spin) * Math.min(1, dt * 1.6); angle += spin * dt; }
+    tiltX += (targetX - tiltX) * Math.min(1, dt * 4);
+    tiltY += (targetY - tiltY) * Math.min(1, dt * 4);
+    model.position.y = Math.sin(t / 1400) * 0.035;
+    for (const hand of hands) hand.rotation.z = -t / 1000 * (Math.PI * 2 / 12);
+    draw();
+    requestAnimationFrame(frame);
+  }
+  function update() {
+    const should = inView && !calm.matches;
+    if (should && !running) { running = true; lastT = performance.now(); requestAnimationFrame(frame); }
+    if (!should) { running = false; draw(); }
+  }
+
+  const canvas = renderer.domElement;
+  canvas.addEventListener("pointerdown", (e) => {
+    dragging = true;
+    dragX = e.clientX;
+    spin = 0;
+    canvas.setPointerCapture(e.pointerId);
+  });
+  canvas.addEventListener("pointermove", (e) => {
+    if (!dragging) return;
+    const delta = (e.clientX - dragX) * 0.012;
+    angle += delta;
+    spin = spin * 0.6 + delta * 24;
+    dragX = e.clientX;
+    if (!running) draw();
+  });
+  const release = () => { dragging = false; spin = Math.max(-9, Math.min(9, spin)); };
+  canvas.addEventListener("pointerup", release);
+  canvas.addEventListener("pointercancel", release);
+  // Значок чуть поворачивается в сторону мыши.
+  addEventListener("pointermove", (e) => {
+    if (e.pointerType !== "mouse") return;
+    const r = stage.getBoundingClientRect();
+    targetY = Math.max(-1, Math.min(1, (e.clientX - r.left - r.width / 2) / 500)) * 0.28;
+    targetX = Math.max(-1, Math.min(1, (e.clientY - r.top - r.height / 2) / 500)) * 0.2;
+  }, { passive: true });
+
+  new IntersectionObserver(([e]) => { inView = e.isIntersecting; update(); }).observe(stage);
+  calm.addEventListener("change", update);
+  draw();
+  stage.classList.add("ready");
+  update();
+} catch (error) {
+  console.warn("Tempo: 3D-значок недоступен, показана обычная иконка", error);
+}
+</script>
+</body>
+</html>

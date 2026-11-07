@@ -1,0 +1,4364 @@
+{
+  "Нет доступа к Календарю": {
+    "en": "No access to Calendar",
+    "zh-Hans": "无法访问日历",
+    "es": "Sin acceso al Calendario",
+    "pt-BR": "Sem acesso ao Calendário",
+    "cs": "Žádný přístup ke Kalendáři",
+    "it": "Nessun accesso a Calendario",
+    "uk": "Немає доступу до Календаря"
+  },
+  "Разрешите Tempo доступ: Системные настройки → Конфиденциальность и безопасность → Календари.": {
+    "en": "Allow Tempo access in System Settings → Privacy & Security → Calendars.",
+    "zh-Hans": "请在“系统设置”→“隐私与安全性”→“日历”中允许 Tempo 访问。",
+    "es": "Permite el acceso a Tempo en Ajustes del Sistema → Privacidad y seguridad → Calendarios.",
+    "pt-BR": "Permita o acesso do Tempo em Ajustes do Sistema → Privacidade e Segurança → Calendários.",
+    "cs": "Povolte Tempu přístup v Nastavení systému → Soukromí a zabezpečení → Kalendáře.",
+    "it": "Consenti l’accesso a Tempo in Impostazioni di Sistema → Privacy e sicurezza → Calendari.",
+    "uk": "Надайте Tempo доступ: Системні параметри → Конфіденційність і безпека → Календарі."
+  },
+  "Открыть настройки": {
+    "en": "Open Settings",
+    "zh-Hans": "打开设置",
+    "es": "Abrir Ajustes",
+    "pt-BR": "Abrir Ajustes",
+    "cs": "Otevřít nastavení",
+    "it": "Apri Impostazioni",
+    "uk": "Відкрити параметри"
+  },
+  "Отмена": {
+    "en": "Cancel",
+    "zh-Hans": "取消",
+    "es": "Cancelar",
+    "pt-BR": "Cancelar",
+    "cs": "Zrušit",
+    "it": "Annulla",
+    "uk": "Скасувати"
+  },
+  "Журнал": {
+    "en": "Journal",
+    "zh-Hans": "记录",
+    "es": "Registro",
+    "pt-BR": "Registro",
+    "cs": "Záznamy",
+    "it": "Registro",
+    "uk": "Журнал"
+  },
+  "Задачи": {
+    "en": "Tasks",
+    "zh-Hans": "任务",
+    "es": "Tareas",
+    "pt-BR": "Tarefas",
+    "cs": "Úkoly",
+    "it": "Attività",
+    "uk": "Завдання"
+  },
+  "Заметки": {
+    "en": "Notes",
+    "zh-Hans": "笔记",
+    "es": "Notas",
+    "pt-BR": "Notas",
+    "cs": "Poznámky",
+    "it": "Note",
+    "uk": "Нотатки"
+  },
+  "Настройки": {
+    "en": "Settings",
+    "zh-Hans": "设置",
+    "es": "Ajustes",
+    "pt-BR": "Ajustes",
+    "cs": "Nastavení",
+    "it": "Impostazioni",
+    "uk": "Параметри"
+  },
+  "Отчёт": {
+    "en": "Report",
+    "zh-Hans": "报告",
+    "es": "Informe",
+    "pt-BR": "Relatório",
+    "cs": "Přehled",
+    "it": "Report",
+    "uk": "Звіт"
+  },
+  "Проект": {
+    "en": "Project",
+    "zh-Hans": "项目",
+    "es": "Proyecto",
+    "pt-BR": "Projeto",
+    "cs": "Projekt",
+    "it": "Progetto",
+    "uk": "Проєкт"
+  },
+  "Проекты": {
+    "en": "Projects",
+    "zh-Hans": "项目",
+    "es": "Proyectos",
+    "pt-BR": "Projetos",
+    "cs": "Projekty",
+    "it": "Progetti",
+    "uk": "Проєкти"
+  },
+  "Новый проект": {
+    "en": "New Project",
+    "zh-Hans": "新建项目",
+    "es": "Nuevo proyecto",
+    "pt-BR": "Novo projeto",
+    "cs": "Nový projekt",
+    "it": "Nuovo progetto",
+    "uk": "Новий проєкт"
+  },
+  "Выключите лишнее — если выключить всё, в Notch останется только строка таймера.": {
+    "en": "Turn off what you don’t need. With everything off, the Notch shows only the timer bar.",
+    "zh-Hans": "关闭不需要的功能。全部关闭后，Notch 中只保留计时栏。",
+    "es": "Desactiva lo que no necesites. Si lo desactivas todo, en el Notch solo queda la barra del temporizador.",
+    "pt-BR": "Desative o que não precisar. Com tudo desativado, o Notch mostra apenas a barra do timer.",
+    "cs": "Vypněte, co nepotřebujete. Když vypnete vše, v Notchi zůstane jen řádek časovače.",
+    "it": "Disattiva ciò che non ti serve. Disattivando tutto, nel Notch resta solo la barra del timer.",
+    "uk": "Вимкніть зайве: якщо вимкнути все, у Notch залишиться лише рядок таймера."
+  },
+  "Общие": {
+    "en": "General",
+    "zh-Hans": "通用",
+    "es": "General",
+    "pt-BR": "Geral",
+    "cs": "Obecné",
+    "it": "Generali",
+    "uk": "Загальні"
+  },
+  "Открывать при входе в систему": {
+    "en": "Open at Login",
+    "zh-Hans": "登录时打开",
+    "es": "Abrir al iniciar sesión",
+    "pt-BR": "Abrir ao iniciar sessão",
+    "cs": "Otevřít při přihlášení",
+    "it": "Apri al login",
+    "uk": "Відкривати під час входу в систему"
+  },
+  "Tempo запустится вместе с Mac": {
+    "en": "Tempo starts when you log in",
+    "zh-Hans": "登录 Mac 时自动启动 Tempo",
+    "es": "Tempo se abre al iniciar tu Mac",
+    "pt-BR": "O Tempo abre quando você inicia o Mac",
+    "cs": "Tempo se spustí spolu s Macem",
+    "it": "Tempo si avvia insieme al Mac",
+    "uk": "Tempo запуститься разом із Mac"
+  },
+  "Показывать в Календаре": {
+    "en": "Show in Calendar",
+    "zh-Hans": "在日历中显示",
+    "es": "Mostrar en Calendario",
+    "pt-BR": "Mostrar no Calendário",
+    "cs": "Zobrazovat v Kalendáři",
+    "it": "Mostra in Calendario",
+    "uk": "Показувати в Календарі"
+  },
+  "Завершённые записи — в календаре «Tempo»": {
+    "en": "Finished entries go to the “Tempo” calendar",
+    "zh-Hans": "已完成的记录会添加到“Tempo”日历",
+    "es": "Las entradas terminadas van al calendario «Tempo»",
+    "pt-BR": "Registros concluídos vão para o calendário “Tempo”",
+    "cs": "Dokončené záznamy se ukládají do kalendáře „Tempo“",
+    "it": "Le voci completate finiscono nel calendario «Tempo»",
+    "uk": "Завершені записи в календарі «Tempo»"
+  },
+  "Записей пока нет": {
+    "en": "No entries yet",
+    "zh-Hans": "还没有记录",
+    "es": "Aún no hay entradas",
+    "pt-BR": "Ainda não há registros",
+    "cs": "Zatím žádné záznamy",
+    "it": "Ancora nessuna voce",
+    "uk": "Записів поки немає"
+  },
+  "Наведите курсор на Notch вверху экрана и запустите таймер — или добавьте запись вручную.": {
+    "en": "Hover over the Notch at the top of the screen and start the timer, or add an entry manually.",
+    "zh-Hans": "将指针移到屏幕顶部的 Notch 上并开始计时，或手动添加记录。",
+    "es": "Pasa el puntero sobre el Notch en la parte superior de la pantalla e inicia el temporizador, o añade una entrada manualmente.",
+    "pt-BR": "Passe o ponteiro sobre o Notch no topo da tela e inicie o timer, ou adicione um registro manualmente.",
+    "cs": "Najeďte ukazatelem na Notch nahoře na obrazovce a spusťte časovač, nebo přidejte záznam ručně.",
+    "it": "Passa il puntatore sul Notch in alto sullo schermo e avvia il timer, oppure aggiungi una voce manualmente.",
+    "uk": "Наведіть курсор на Notch угорі екрана й запустіть таймер або додайте запис вручну."
+  },
+  "Добавить запись": {
+    "en": "Add Entry",
+    "zh-Hans": "添加记录",
+    "es": "Añadir entrada",
+    "pt-BR": "Adicionar registro",
+    "cs": "Přidat záznam",
+    "it": "Aggiungi voce",
+    "uk": "Додати запис"
+  },
+  "Добавить запись вручную": {
+    "en": "Add entry manually",
+    "zh-Hans": "手动添加记录",
+    "es": "Añadir entrada manualmente",
+    "pt-BR": "Adicionar registro manualmente",
+    "cs": "Přidat záznam ručně",
+    "it": "Aggiungi voce manualmente",
+    "uk": "Додати запис вручну"
+  },
+  "Экспорт в CSV": {
+    "en": "Export to CSV",
+    "zh-Hans": "导出为 CSV",
+    "es": "Exportar a CSV",
+    "pt-BR": "Exportar para CSV",
+    "cs": "Exportovat do CSV",
+    "it": "Esporta in CSV"
+  },
+  "Всего %@": {
+    "en": "Total %@",
+    "zh-Hans": "共 %@",
+    "es": "Total: %@",
+    "pt-BR": "Total: %@",
+    "cs": "Celkem %@",
+    "it": "Totale %@",
+    "uk": "Усього %@"
+  },
+  "Без описания": {
+    "en": "No description",
+    "zh-Hans": "无描述",
+    "es": "Sin descripción",
+    "pt-BR": "Sem descrição",
+    "cs": "Bez popisu",
+    "it": "Senza descrizione",
+    "uk": "Без опису"
+  },
+  "Остановить": {
+    "en": "Stop",
+    "zh-Hans": "停止",
+    "es": "Detener",
+    "pt-BR": "Parar",
+    "cs": "Zastavit",
+    "it": "Ferma",
+    "uk": "Зупинити"
+  },
+  "Продолжить": {
+    "en": "Continue",
+    "zh-Hans": "继续",
+    "es": "Continuar",
+    "pt-BR": "Continuar",
+    "cs": "Pokračovat",
+    "it": "Riprendi",
+    "uk": "Продовжити"
+  },
+  "Изменить…": {
+    "en": "Edit…",
+    "zh-Hans": "编辑…",
+    "es": "Editar…",
+    "pt-BR": "Editar…",
+    "cs": "Upravit…",
+    "it": "Modifica…",
+    "uk": "Змінити…"
+  },
+  "Добавить комментарий…": {
+    "en": "Add Comment…",
+    "zh-Hans": "添加备注…",
+    "es": "Añadir comentario…",
+    "pt-BR": "Adicionar comentário…",
+    "cs": "Přidat komentář…",
+    "it": "Aggiungi commento…",
+    "uk": "Додати коментар…"
+  },
+  "Изменить комментарий…": {
+    "en": "Edit Comment…",
+    "zh-Hans": "编辑备注…",
+    "es": "Editar comentario…",
+    "pt-BR": "Editar comentário…",
+    "cs": "Upravit komentář…",
+    "it": "Modifica commento…",
+    "uk": "Змінити коментар…"
+  },
+  "Удалить": {
+    "en": "Delete",
+    "zh-Hans": "删除",
+    "es": "Eliminar",
+    "pt-BR": "Excluir",
+    "cs": "Smazat",
+    "it": "Elimina",
+    "uk": "Видалити"
+  },
+  "Новая задача": {
+    "en": "New Task",
+    "zh-Hans": "新任务",
+    "es": "Nueva tarea",
+    "pt-BR": "Nova tarefa",
+    "cs": "Nový úkol",
+    "it": "Nuova attività",
+    "uk": "Нове завдання"
+  },
+  "Выполненные · %lld": {
+    "en": "Completed · %lld",
+    "zh-Hans": "已完成 · %lld",
+    "es": "Completadas · %lld",
+    "pt-BR": "Concluídas · %lld",
+    "cs": "Hotové · %lld",
+    "it": "Completate · %lld",
+    "uk": "Виконані · %lld"
+  },
+  "Открытых: %lld": {
+    "en": "Open: %lld",
+    "zh-Hans": "未完成：%lld",
+    "es": "Pendientes: %lld",
+    "pt-BR": "Pendentes: %lld",
+    "cs": "Otevřené: %lld",
+    "it": "Aperte: %lld",
+    "uk": "Відкритих: %lld"
+  },
+  "Начать": {
+    "en": "Start",
+    "zh-Hans": "开始",
+    "es": "Empezar",
+    "pt-BR": "Começar",
+    "cs": "Začít",
+    "it": "Inizia",
+    "uk": "Почати"
+  },
+  "Переименовать…": {
+    "en": "Rename…",
+    "zh-Hans": "重命名…",
+    "es": "Renombrar…",
+    "pt-BR": "Renomear…",
+    "cs": "Přejmenovat…",
+    "it": "Rinomina…",
+    "uk": "Перейменувати…"
+  },
+  "Без проекта": {
+    "en": "No Project",
+    "zh-Hans": "无项目",
+    "es": "Sin proyecto",
+    "pt-BR": "Sem projeto",
+    "cs": "Bez projektu",
+    "it": "Nessun progetto",
+    "uk": "Без проєкту"
+  },
+  "Название задачи": {
+    "en": "Task Name",
+    "zh-Hans": "任务名称",
+    "es": "Nombre de la tarea",
+    "pt-BR": "Nome da tarefa",
+    "cs": "Název úkolu",
+    "it": "Nome dell’attività",
+    "uk": "Назва завдання"
+  },
+  "Название": {
+    "en": "Name",
+    "zh-Hans": "名称",
+    "es": "Nombre",
+    "pt-BR": "Nome",
+    "cs": "Název",
+    "it": "Nome",
+    "uk": "Назва"
+  },
+  "Сохранить": {
+    "en": "Save",
+    "zh-Hans": "保存",
+    "es": "Guardar",
+    "pt-BR": "Salvar",
+    "cs": "Uložit",
+    "it": "Salva",
+    "uk": "Зберегти"
+  },
+  "Заметок пока нет": {
+    "en": "No notes yet",
+    "zh-Hans": "还没有笔记",
+    "es": "Aún no hay notas",
+    "pt-BR": "Ainda não há notas",
+    "cs": "Zatím žádné poznámky",
+    "it": "Ancora nessuna nota",
+    "uk": "Нотаток поки немає"
+  },
+  "Выберите заметку": {
+    "en": "Select a note",
+    "zh-Hans": "选择一条笔记",
+    "es": "Selecciona una nota",
+    "pt-BR": "Selecione uma nota",
+    "cs": "Vyberte poznámku",
+    "it": "Seleziona una nota",
+    "uk": "Виберіть нотатку"
+  },
+  "Записывайте мысли прямо в Notch или здесь.": {
+    "en": "Jot down thoughts right in the Notch or here.",
+    "zh-Hans": "直接在 Notch 或这里记下想法。",
+    "es": "Apunta tus ideas directamente en el Notch o aquí.",
+    "pt-BR": "Anote ideias direto no Notch ou aqui.",
+    "cs": "Zapisujte myšlenky přímo v Notchi nebo tady.",
+    "it": "Annota le idee direttamente nel Notch o qui.",
+    "uk": "Записуйте думки просто в Notch або тут."
+  },
+  "Новая заметка": {
+    "en": "New Note",
+    "zh-Hans": "新笔记",
+    "es": "Nueva nota",
+    "pt-BR": "Nova nota",
+    "cs": "Nová poznámka",
+    "it": "Nuova nota",
+    "uk": "Нова нотатка"
+  },
+  "Удалить заметку": {
+    "en": "Delete Note",
+    "zh-Hans": "删除笔记",
+    "es": "Eliminar nota",
+    "pt-BR": "Excluir nota",
+    "cs": "Smazat poznámku",
+    "it": "Elimina nota",
+    "uk": "Видалити нотатку"
+  },
+  "Описание": {
+    "en": "Description",
+    "zh-Hans": "描述",
+    "es": "Descripción",
+    "pt-BR": "Descrição",
+    "cs": "Popis",
+    "it": "Descrizione",
+    "uk": "Опис"
+  },
+  "Чем вы занимались?": {
+    "en": "What were you working on?",
+    "zh-Hans": "你刚才在做什么？",
+    "es": "¿En qué estabas trabajando?",
+    "pt-BR": "No que você estava trabalhando?",
+    "cs": "Na čem jste pracovali?",
+    "it": "Su cosa stavi lavorando?",
+    "uk": "Чим ви займалися?"
+  },
+  "Комментарий": {
+    "en": "Comment",
+    "zh-Hans": "备注",
+    "es": "Comentario",
+    "pt-BR": "Comentário",
+    "cs": "Komentář",
+    "it": "Commento",
+    "uk": "Коментар"
+  },
+  "Заметки по ходу работы": {
+    "en": "Notes as you work",
+    "zh-Hans": "工作时的备注",
+    "es": "Notas mientras trabajas",
+    "pt-BR": "Notas durante o trabalho",
+    "cs": "Poznámky během práce",
+    "it": "Note durante il lavoro",
+    "uk": "Нотатки під час роботи"
+  },
+  "Начало": {
+    "en": "Start",
+    "zh-Hans": "开始",
+    "es": "Inicio",
+    "pt-BR": "Início",
+    "cs": "Začátek",
+    "it": "Inizio",
+    "uk": "Початок"
+  },
+  "Конец": {
+    "en": "End",
+    "zh-Hans": "结束",
+    "es": "Fin",
+    "pt-BR": "Fim",
+    "cs": "Konec",
+    "it": "Fine",
+    "uk": "Кінець"
+  },
+  "идёт сейчас": {
+    "en": "in progress",
+    "zh-Hans": "进行中",
+    "es": "en curso",
+    "pt-BR": "em andamento",
+    "cs": "probíhá",
+    "it": "in corso",
+    "uk": "триває зараз"
+  },
+  "Длительность": {
+    "en": "Duration",
+    "zh-Hans": "时长",
+    "es": "Duración",
+    "pt-BR": "Duração",
+    "cs": "Trvání",
+    "it": "Durata",
+    "uk": "Тривалість"
+  },
+  "конец раньше начала": {
+    "en": "end is before start",
+    "zh-Hans": "结束时间早于开始时间",
+    "es": "el fin es anterior al inicio",
+    "pt-BR": "o fim é antes do início",
+    "cs": "konec je před začátkem",
+    "it": "la fine precede l’inizio",
+    "uk": "кінець раніше за початок"
+  },
+  "Добавить": {
+    "en": "Add",
+    "zh-Hans": "添加",
+    "es": "Añadir",
+    "pt-BR": "Adicionar",
+    "cs": "Přidat",
+    "it": "Aggiungi",
+    "uk": "Додати"
+  },
+  "Изменить проект": {
+    "en": "Edit Project",
+    "zh-Hans": "编辑项目",
+    "es": "Editar proyecto",
+    "pt-BR": "Editar projeto",
+    "cs": "Upravit projekt",
+    "it": "Modifica progetto",
+    "uk": "Змінити проєкт"
+  },
+  "Удалить проект": {
+    "en": "Delete Project",
+    "zh-Hans": "删除项目",
+    "es": "Eliminar proyecto",
+    "pt-BR": "Excluir projeto",
+    "cs": "Smazat projekt",
+    "it": "Elimina progetto",
+    "uk": "Видалити проєкт"
+  },
+  "Удалить проект «%@»?": {
+    "en": "Delete project “%@”?",
+    "zh-Hans": "删除项目“%@”？",
+    "es": "¿Eliminar el proyecto «%@»?",
+    "pt-BR": "Excluir o projeto “%@”?",
+    "cs": "Smazat projekt „%@“?",
+    "it": "Eliminare il progetto «%@»?",
+    "uk": "Видалити проєкт «%@»?"
+  },
+  "Записи останутся в журнале, но без проекта.": {
+    "en": "Entries will stay in the journal without a project.",
+    "zh-Hans": "记录会保留，但不再属于任何项目。",
+    "es": "Las entradas se quedarán en el registro, sin proyecto.",
+    "pt-BR": "Os registros continuarão no histórico, sem projeto.",
+    "cs": "Záznamy zůstanou zachovány, ale bez projektu.",
+    "it": "Le voci resteranno nel registro, senza progetto.",
+    "uk": "Записи залишаться в журналі, але без проєкту."
+  },
+  "Проект не найден": {
+    "en": "Project not found",
+    "zh-Hans": "未找到项目",
+    "es": "Proyecto no encontrado",
+    "pt-BR": "Projeto não encontrado",
+    "cs": "Projekt nenalezen",
+    "it": "Progetto non trovato",
+    "uk": "Проєкт не знайдено"
+  },
+  "Создать": {
+    "en": "Create",
+    "zh-Hans": "创建",
+    "es": "Crear",
+    "pt-BR": "Criar",
+    "cs": "Vytvořit",
+    "it": "Crea",
+    "uk": "Створити"
+  },
+  "День": {
+    "en": "Day",
+    "zh-Hans": "日",
+    "es": "Día",
+    "pt-BR": "Dia",
+    "cs": "Den",
+    "it": "Giorno",
+    "uk": "День"
+  },
+  "Неделя": {
+    "en": "Week",
+    "zh-Hans": "周",
+    "es": "Semana",
+    "pt-BR": "Semana",
+    "cs": "Týden",
+    "it": "Settimana",
+    "uk": "Тиждень"
+  },
+  "Месяц": {
+    "en": "Month",
+    "zh-Hans": "月",
+    "es": "Mes",
+    "pt-BR": "Mês",
+    "cs": "Měsíc",
+    "it": "Mese",
+    "uk": "Місяць"
+  },
+  "Назад": {
+    "en": "Previous",
+    "zh-Hans": "上一个",
+    "es": "Anterior",
+    "pt-BR": "Anterior",
+    "cs": "Předchozí",
+    "it": "Precedente",
+    "uk": "Назад"
+  },
+  "Сегодня": {
+    "en": "Today",
+    "zh-Hans": "今天",
+    "es": "Hoy",
+    "pt-BR": "Hoje",
+    "cs": "Dnes",
+    "it": "Oggi",
+    "uk": "Сьогодні"
+  },
+  "Вперёд": {
+    "en": "Next",
+    "zh-Hans": "下一个",
+    "es": "Siguiente",
+    "pt-BR": "Próximo",
+    "cs": "Další",
+    "it": "Successivo",
+    "uk": "Уперед"
+  },
+  "Период": {
+    "en": "Period",
+    "zh-Hans": "时段",
+    "es": "Periodo",
+    "pt-BR": "Período",
+    "cs": "Období",
+    "it": "Periodo",
+    "uk": "Період"
+  },
+  "мин": {
+    "en": "min",
+    "zh-Hans": "分钟",
+    "es": "min",
+    "pt-BR": "min",
+    "cs": "min",
+    "it": "min",
+    "uk": "хв"
+  },
+  "За этот период записей нет.": {
+    "en": "No entries for this period.",
+    "zh-Hans": "此时段没有记录。",
+    "es": "No hay entradas en este periodo.",
+    "pt-BR": "Não há registros neste período.",
+    "cs": "Za toto období nejsou žádné záznamy.",
+    "it": "Nessuna voce in questo periodo.",
+    "uk": "За цей період записів немає."
+  },
+  "Часы": {
+    "en": "Hours",
+    "zh-Hans": "小时",
+    "es": "Horas",
+    "pt-BR": "Horas",
+    "cs": "Hodiny",
+    "it": "Ore",
+    "uk": "Години"
+  },
+  "ч": {
+    "en": "h",
+    "zh-Hans": "小时",
+    "es": "h",
+    "pt-BR": "h",
+    "cs": "h",
+    "it": "h",
+    "uk": "год"
+  },
+  "Язык": {
+    "en": "Language",
+    "zh-Hans": "语言",
+    "es": "Idioma",
+    "pt-BR": "Idioma",
+    "cs": "Jazyk",
+    "it": "Lingua",
+    "uk": "Мова"
+  },
+  "Недавние": {
+    "en": "Recent",
+    "zh-Hans": "最近",
+    "es": "Recientes",
+    "pt-BR": "Recentes",
+    "cs": "Nedávné",
+    "it": "Recenti",
+    "uk": "Нещодавні"
+  },
+  "Итог за сегодня": {
+    "en": "Today’s Total",
+    "zh-Hans": "今日合计",
+    "es": "Total de hoy",
+    "pt-BR": "Total de hoje",
+    "cs": "Dnešní souhrn",
+    "it": "Totale di oggi",
+    "uk": "Підсумок за сьогодні"
+  },
+  "Комментарии": {
+    "en": "Comments",
+    "zh-Hans": "备注",
+    "es": "Comentarios",
+    "pt-BR": "Comentários",
+    "cs": "Komentáře",
+    "it": "Commenti",
+    "uk": "Коментарі"
+  },
+  "Таймер обратного отсчёта": {
+    "en": "Countdown Timer",
+    "zh-Hans": "倒计时",
+    "es": "Temporizador",
+    "pt-BR": "Timer regressivo",
+    "cs": "Odpočet",
+    "it": "Timer con conto alla rovescia",
+    "uk": "Таймер зворотного відліку"
+  },
+  "Последние задачи для запуска в один клик": {
+    "en": "Recent tasks to restart in one click",
+    "zh-Hans": "一键重新开始最近的任务",
+    "es": "Tareas recientes para reanudar con un clic",
+    "pt-BR": "Tarefas recentes para retomar com um clique",
+    "cs": "Nedávné úkoly ke spuštění jedním kliknutím",
+    "it": "Attività recenti da riprendere con un clic",
+    "uk": "Останні завдання для запуску в один клік"
+  },
+  "Список дел с приоритетами": {
+    "en": "To-do list with priorities",
+    "zh-Hans": "带优先级的待办清单",
+    "es": "Lista de tareas con prioridades",
+    "pt-BR": "Lista de tarefas com prioridades",
+    "cs": "Seznam úkolů s prioritami",
+    "it": "Elenco di attività con priorità",
+    "uk": "Список справ із пріоритетами"
+  },
+  "Быстрые заметки": {
+    "en": "Quick notes",
+    "zh-Hans": "快速笔记",
+    "es": "Notas rápidas",
+    "pt-BR": "Notas rápidas",
+    "cs": "Rychlé poznámky",
+    "it": "Note rapide",
+    "uk": "Швидкі нотатки"
+  },
+  "Полоска дня с временем по проектам": {
+    "en": "Daily bar with time per project",
+    "zh-Hans": "按项目显示当天用时的进度条",
+    "es": "Barra del día con el tiempo por proyecto",
+    "pt-BR": "Barra do dia com o tempo por projeto",
+    "cs": "Pruh dne s časem podle projektů",
+    "it": "Barra del giorno con il tempo per progetto",
+    "uk": "Смужка дня з часом за проєктами"
+  },
+  "Поле для заметки к идущей записи": {
+    "en": "Field for a note on the running entry",
+    "zh-Hans": "为进行中的记录添加备注",
+    "es": "Campo para anotar la entrada en curso",
+    "pt-BR": "Campo para anotar o registro em andamento",
+    "cs": "Pole pro poznámku k běžícímu záznamu",
+    "it": "Campo per annotare la voce in corso",
+    "uk": "Поле для нотатки до поточного запису"
+  },
+  "Кнопка с часами рядом с проектом": {
+    "en": "Clock button next to the project",
+    "zh-Hans": "项目旁的时钟按钮",
+    "es": "Botón de reloj junto al proyecto",
+    "pt-BR": "Botão de relógio ao lado do projeto",
+    "cs": "Tlačítko s hodinami vedle projektu",
+    "it": "Pulsante orologio accanto al progetto",
+    "uk": "Кнопка з годинником поруч із проєктом"
+  },
+  "Высокий": {
+    "en": "High",
+    "zh-Hans": "高",
+    "es": "Alta",
+    "pt-BR": "Alta",
+    "cs": "Vysoká",
+    "it": "Alta",
+    "uk": "Високий"
+  },
+  "Средний": {
+    "en": "Medium",
+    "zh-Hans": "中",
+    "es": "Media",
+    "pt-BR": "Média",
+    "cs": "Střední",
+    "it": "Media",
+    "uk": "Середній"
+  },
+  "Низкий": {
+    "en": "Low",
+    "zh-Hans": "低",
+    "es": "Baja",
+    "pt-BR": "Baixa",
+    "cs": "Nízká",
+    "it": "Bassa",
+    "uk": "Низький"
+  },
+  "Без приоритета": {
+    "en": "No Priority",
+    "zh-Hans": "无优先级",
+    "es": "Sin prioridad",
+    "pt-BR": "Sem prioridade",
+    "cs": "Bez priority",
+    "it": "Nessuna priorità",
+    "uk": "Без пріоритету"
+  },
+  "Вчера": {
+    "en": "Yesterday",
+    "zh-Hans": "昨天",
+    "es": "Ayer",
+    "pt-BR": "Ontem",
+    "cs": "Včera",
+    "it": "Ieri",
+    "uk": "Учора"
+  },
+  "Без ограничения": {
+    "en": "No Limit",
+    "zh-Hans": "不限时",
+    "es": "Sin límite",
+    "pt-BR": "Sem limite",
+    "cs": "Bez omezení",
+    "it": "Nessun limite",
+    "uk": "Без обмеження"
+  },
+  "Ещё %@": {
+    "en": "Add %@",
+    "zh-Hans": "再加 %@",
+    "es": "Añadir %@",
+    "pt-BR": "Mais %@",
+    "cs": "Přidat %@",
+    "it": "Aggiungi %@",
+    "uk": "Ще %@"
+  },
+  "Секундомер": {
+    "en": "Stopwatch",
+    "zh-Hans": "秒表",
+    "es": "Cronómetro",
+    "pt-BR": "Cronômetro",
+    "cs": "Stopky",
+    "it": "Cronometro",
+    "uk": "Секундомір"
+  },
+  "Новый проект…": {
+    "en": "New Project…",
+    "zh-Hans": "新建项目…",
+    "es": "Nuevo proyecto…",
+    "pt-BR": "Novo projeto…",
+    "cs": "Nový projekt…",
+    "it": "Nuovo progetto…",
+    "uk": "Новий проєкт…"
+  },
+  "Настройки…": {
+    "en": "Settings…",
+    "zh-Hans": "设置…",
+    "es": "Ajustes…",
+    "pt-BR": "Ajustes…",
+    "cs": "Nastavení…",
+    "it": "Impostazioni…",
+    "uk": "Параметри…"
+  },
+  "Открывать при входе в систему": {
+    "en": "Open at Login",
+    "zh-Hans": "登录时打开",
+    "es": "Abrir al iniciar sesión",
+    "pt-BR": "Abrir ao iniciar sessão",
+    "cs": "Otevřít při přihlášení",
+    "it": "Apri al login",
+    "uk": "Відкривати під час входу в систему"
+  },
+  "Показывать в Календаре": {
+    "en": "Show in Calendar",
+    "zh-Hans": "在日历中显示",
+    "es": "Mostrar en Calendario",
+    "pt-BR": "Mostrar no Calendário",
+    "cs": "Zobrazovat v Kalendáři",
+    "it": "Mostra in Calendario",
+    "uk": "Показувати в Календарі"
+  },
+  "Открыть Календарь": {
+    "en": "Open Calendar",
+    "zh-Hans": "打开日历",
+    "es": "Abrir Calendario",
+    "pt-BR": "Abrir Calendário",
+    "cs": "Otevřít Kalendář",
+    "it": "Apri Calendario",
+    "uk": "Відкрити Календар"
+  },
+  "Знакомство с Tempo": {
+    "en": "Getting Started",
+    "zh-Hans": "Tempo 入门",
+    "es": "Introducción a Tempo",
+    "pt-BR": "Introdução ao Tempo",
+    "cs": "Seznámení s Tempem",
+    "it": "Introduzione a Tempo",
+    "uk": "Знайомство з Tempo"
+  },
+  "Завершить Tempo": {
+    "en": "Quit Tempo",
+    "zh-Hans": "退出 Tempo",
+    "es": "Salir de Tempo",
+    "pt-BR": "Sair do Tempo",
+    "cs": "Ukončit Tempo",
+    "it": "Esci da Tempo",
+    "uk": "Завершити Tempo"
+  },
+  "Ещё": {
+    "en": "More",
+    "zh-Hans": "更多",
+    "es": "Más",
+    "pt-BR": "Mais",
+    "cs": "Více",
+    "it": "Altro",
+    "uk": "Ще"
+  },
+  "Чем вы заняты?": {
+    "en": "What are you working on?",
+    "zh-Hans": "你在做什么？",
+    "es": "¿En qué estás trabajando?",
+    "pt-BR": "No que você está trabalhando?",
+    "cs": "Na čem pracujete?",
+    "it": "Su cosa stai lavorando?",
+    "uk": "Чим ви зайняті?"
+  },
+  "Удалить текущую запись": {
+    "en": "Discard Current Entry",
+    "zh-Hans": "放弃当前记录",
+    "es": "Descartar entrada actual",
+    "pt-BR": "Descartar registro atual",
+    "cs": "Zahodit aktuální záznam",
+    "it": "Scarta la voce corrente",
+    "uk": "Видалити поточний запис"
+  },
+  "Комментарий к «%@»": {
+    "en": "Comment on “%@”",
+    "zh-Hans": "给“%@”添加备注",
+    "es": "Comentario sobre «%@»",
+    "pt-BR": "Comentário sobre “%@”",
+    "cs": "Komentář k „%@“",
+    "it": "Commento su «%@»",
+    "uk": "Коментар до «%@»"
+  },
+  "Название проекта": {
+    "en": "Project name",
+    "zh-Hans": "项目名称",
+    "es": "Nombre del proyecto",
+    "pt-BR": "Nome do projeto",
+    "cs": "Název projektu",
+    "it": "Nome del progetto",
+    "uk": "Назва проєкту"
+  },
+  "Здесь появятся последние задачи": {
+    "en": "Recent tasks will appear here",
+    "zh-Hans": "最近的任务会显示在这里",
+    "es": "Aquí aparecerán las tareas recientes",
+    "pt-BR": "As tarefas recentes aparecerão aqui",
+    "cs": "Zde se zobrazí nedávné úkoly",
+    "it": "Qui compariranno le attività recenti",
+    "uk": "Тут з’являться останні завдання"
+  },
+  "Добавить комментарий": {
+    "en": "Add Comment",
+    "zh-Hans": "添加备注",
+    "es": "Añadir comentario",
+    "pt-BR": "Adicionar comentário",
+    "cs": "Přidat komentář",
+    "it": "Aggiungi commento",
+    "uk": "Додати коментар"
+  },
+  "Изменить комментарий": {
+    "en": "Edit Comment",
+    "zh-Hans": "编辑备注",
+    "es": "Editar comentario",
+    "pt-BR": "Editar comentário",
+    "cs": "Upravit komentář",
+    "it": "Modifica commento",
+    "uk": "Змінити коментар"
+  },
+  "Удалить запись": {
+    "en": "Delete Entry",
+    "zh-Hans": "删除记录",
+    "es": "Eliminar entrada",
+    "pt-BR": "Excluir registro",
+    "cs": "Smazat záznam",
+    "it": "Elimina voce",
+    "uk": "Видалити запис"
+  },
+  "Время вышло": {
+    "en": "Time’s up",
+    "zh-Hans": "时间到了",
+    "es": "Se acabó el tiempo",
+    "pt-BR": "O tempo acabou",
+    "cs": "Čas vypršel",
+    "it": "Tempo scaduto",
+    "uk": "Час вийшов"
+  },
+  "+5 мин": {
+    "en": "+5 min",
+    "zh-Hans": "+5 分钟",
+    "es": "+5 min",
+    "pt-BR": "+5 min",
+    "cs": "+5 min",
+    "it": "+5 min",
+    "uk": "+5 хв"
+  },
+  "Готово": {
+    "en": "Done",
+    "zh-Hans": "完成",
+    "es": "Hecho",
+    "pt-BR": "OK",
+    "cs": "Hotovo",
+    "it": "Fatto",
+    "uk": "Готово"
+  },
+  "Запустить": {
+    "en": "Start",
+    "zh-Hans": "开始",
+    "es": "Iniciar",
+    "pt-BR": "Iniciar",
+    "cs": "Spustit",
+    "it": "Avvia",
+    "uk": "Запустити"
+  },
+  "Таймер": {
+    "en": "Timer",
+    "zh-Hans": "计时器",
+    "es": "Temporizador",
+    "pt-BR": "Timer",
+    "cs": "Časovač",
+    "it": "Timer",
+    "uk": "Таймер"
+  },
+  "Ещё %lld в журнале": {
+    "en": "%lld more in the journal",
+    "zh-Hans": "记录中还有 %lld 项",
+    "es": "%lld más en el registro",
+    "pt-BR": "Mais %lld no registro",
+    "cs": "Dalších %lld v záznamech",
+    "it": "Altre %lld nel registro",
+    "uk": "Ще %lld у журналі"
+  },
+  "Приоритет": {
+    "en": "Priority",
+    "zh-Hans": "优先级",
+    "es": "Prioridad",
+    "pt-BR": "Prioridade",
+    "cs": "Priorita",
+    "it": "Priorità",
+    "uk": "Пріоритет"
+  },
+  "Изменить": {
+    "en": "Edit",
+    "zh-Hans": "编辑",
+    "es": "Editar",
+    "pt-BR": "Editar",
+    "cs": "Upravit",
+    "it": "Modifica",
+    "uk": "Змінити"
+  },
+  "Скопировать": {
+    "en": "Copy",
+    "zh-Hans": "拷贝",
+    "es": "Copiar",
+    "pt-BR": "Copiar",
+    "cs": "Kopírovat",
+    "it": "Copia",
+    "uk": "Скопіювати"
+  },
+  "Заметка": {
+    "en": "Note",
+    "zh-Hans": "笔记",
+    "es": "Nota",
+    "pt-BR": "Nota",
+    "cs": "Poznámka",
+    "it": "Nota",
+    "uk": "Нотатка"
+  },
+  "Добро пожаловать в Tempo": {
+    "en": "Welcome to Tempo",
+    "zh-Hans": "欢迎使用 Tempo",
+    "es": "Te damos la bienvenida a Tempo",
+    "pt-BR": "Boas-vindas ao Tempo",
+    "cs": "Vítejte v Tempu",
+    "it": "Ti diamo il benvenuto in Tempo",
+    "uk": "Ласкаво просимо до Tempo"
+  },
+  "Учёт времени прямо в Notch": {
+    "en": "Time tracking right in the Notch",
+    "zh-Hans": "直接在 Notch 中记录时间",
+    "es": "Control del tiempo directamente en el Notch",
+    "pt-BR": "Controle de tempo direto no Notch",
+    "cs": "Měření času přímo v Notchi",
+    "it": "Monitoraggio del tempo direttamente nel Notch",
+    "uk": "Облік часу просто в Notch"
+  },
+  "Наведите курсор на вырез экрана, и Tempo раскроется.": {
+    "en": "Hover over the screen notch and Tempo opens up.",
+    "zh-Hans": "将指针移到屏幕顶部的刘海处，Tempo 就会展开。",
+    "es": "Pasa el puntero sobre el notch de la pantalla y Tempo se abrirá.",
+    "pt-BR": "Passe o ponteiro sobre o notch da tela e o Tempo se abrirá.",
+    "cs": "Najeďte ukazatelem na výřez displeje a Tempo se rozbalí.",
+    "it": "Passa il puntatore sul notch dello schermo e Tempo si aprirà.",
+    "uk": "Наведіть курсор на виріз екрана, і Tempo розгорнеться."
+  },
+  "Секундомер или таймер": {
+    "en": "Stopwatch or Timer",
+    "zh-Hans": "秒表或倒计时",
+    "es": "Cronómetro o temporizador",
+    "pt-BR": "Cronômetro ou timer",
+    "cs": "Stopky nebo časovač",
+    "it": "Cronometro o timer",
+    "uk": "Секундомір або таймер"
+  },
+  "Кнопка с часами рядом с проектом задаёт обратный отсчёт.": {
+    "en": "The clock button next to the project sets a countdown.",
+    "zh-Hans": "项目旁的时钟按钮可设置倒计时。",
+    "es": "El botón de reloj junto al proyecto activa una cuenta atrás.",
+    "pt-BR": "O botão de relógio ao lado do projeto define uma contagem regressiva.",
+    "cs": "Tlačítko s hodinami vedle projektu nastaví odpočet.",
+    "it": "Il pulsante orologio accanto al progetto imposta un conto alla rovescia.",
+    "uk": "Кнопка з годинником поруч із проєктом задає зворотний відлік."
+  },
+  "Список дел с приоритетами во вкладке «Задачи».": {
+    "en": "A to-do list with priorities in the Tasks tab.",
+    "zh-Hans": "“任务”标签页中带优先级的待办清单。",
+    "es": "Lista de tareas con prioridades en la pestaña Tareas.",
+    "pt-BR": "Lista de tarefas com prioridades na aba Tarefas.",
+    "cs": "Seznam úkolů s prioritami na kartě Úkoly.",
+    "it": "Elenco di attività con priorità nella scheda Attività.",
+    "uk": "Список справ із пріоритетами у вкладці «Завдання»."
+  },
+  "Журнал и отчёт": {
+    "en": "Journal & Reports",
+    "zh-Hans": "记录与报告",
+    "es": "Registro e informes",
+    "pt-BR": "Registro e relatórios",
+    "cs": "Záznamy a přehledy",
+    "it": "Registro e report",
+    "uk": "Журнал і звіт"
+  },
+  "Всё время по дням и проектам. Можно показывать в Календаре.": {
+    "en": "All your time by day and project. Can also appear in Calendar.",
+    "zh-Hans": "按日期和项目查看所有时间，还可以显示在日历中。",
+    "es": "Todo tu tiempo por días y proyectos. También en Calendario.",
+    "pt-BR": "Todo o seu tempo por dia e projeto. Também no Calendário.",
+    "cs": "Veškerý čas podle dnů a projektů. Lze zobrazit i v Kalendáři.",
+    "it": "Tutto il tuo tempo per giorno e progetto. Anche in Calendario.",
+    "uk": "Увесь час за днями й проєктами. Можна показувати в Календарі."
+  },
+  "Дата;Начало;Конец;Часы;Проект;Описание;Комментарий": {
+    "en": "Date;Start;End;Hours;Project;Description;Comment",
+    "zh-Hans": "日期;开始;结束;小时;项目;描述;备注",
+    "es": "Fecha;Inicio;Fin;Horas;Proyecto;Descripción;Comentario",
+    "pt-BR": "Data;Início;Fim;Horas;Projeto;Descrição;Comentário",
+    "cs": "Datum;Začátek;Konec;Hodiny;Projekt;Popis;Komentář",
+    "it": "Data;Inizio;Fine;Ore;Progetto;Descrizione;Commento"
+  },
+  "О программе Tempo": {
+    "en": "About Tempo",
+    "zh-Hans": "关于 Tempo",
+    "es": "Acerca de Tempo",
+    "pt-BR": "Sobre o Tempo",
+    "cs": "O aplikaci Tempo",
+    "it": "Informazioni su Tempo",
+    "uk": "Про Tempo"
+  },
+  "Скрыть Tempo": {
+    "en": "Hide Tempo",
+    "zh-Hans": "隐藏 Tempo",
+    "es": "Ocultar Tempo",
+    "pt-BR": "Ocultar Tempo",
+    "cs": "Skrýt Tempo",
+    "it": "Nascondi Tempo",
+    "uk": "Сховати Tempo"
+  },
+  "Старт / Стоп": {
+    "en": "Start / Stop",
+    "zh-Hans": "开始 / 停止",
+    "es": "Iniciar / Detener",
+    "pt-BR": "Iniciar / Parar",
+    "cs": "Spustit / Zastavit",
+    "it": "Avvia / Ferma",
+    "uk": "Старт / Стоп"
+  },
+  "Правка": {
+    "en": "Edit",
+    "zh-Hans": "编辑",
+    "es": "Edición",
+    "pt-BR": "Editar",
+    "cs": "Úpravy",
+    "it": "Modifica",
+    "uk": "Редагування"
+  },
+  "Отменить": {
+    "en": "Undo",
+    "zh-Hans": "撤销",
+    "es": "Deshacer",
+    "pt-BR": "Desfazer",
+    "cs": "Zpět",
+    "it": "Annulla",
+    "uk": "Скасувати"
+  },
+  "Повторить": {
+    "en": "Redo",
+    "zh-Hans": "重做",
+    "es": "Rehacer",
+    "pt-BR": "Refazer",
+    "cs": "Znovu",
+    "it": "Ripeti",
+    "uk": "Повторити"
+  },
+  "Вырезать": {
+    "en": "Cut",
+    "zh-Hans": "剪切",
+    "es": "Cortar",
+    "pt-BR": "Recortar",
+    "cs": "Vyjmout",
+    "it": "Taglia",
+    "uk": "Вирізати"
+  },
+  "Вставить": {
+    "en": "Paste",
+    "zh-Hans": "粘贴",
+    "es": "Pegar",
+    "pt-BR": "Colar",
+    "cs": "Vložit",
+    "it": "Incolla",
+    "uk": "Вставити"
+  },
+  "Выбрать все": {
+    "en": "Select All",
+    "zh-Hans": "全选",
+    "es": "Seleccionar todo",
+    "pt-BR": "Selecionar tudo",
+    "cs": "Vybrat vše",
+    "it": "Seleziona tutto",
+    "uk": "Вибрати все"
+  },
+  "Окно": {
+    "en": "Window",
+    "zh-Hans": "窗口",
+    "es": "Ventana",
+    "pt-BR": "Janela",
+    "cs": "Okno",
+    "it": "Finestra",
+    "uk": "Вікно"
+  },
+  "Свернуть": {
+    "en": "Minimize",
+    "zh-Hans": "最小化",
+    "es": "Minimizar",
+    "pt-BR": "Minimizar",
+    "cs": "Minimalizovat",
+    "it": "Riduci a icona",
+    "uk": "Згорнути"
+  },
+  "Закрыть": {
+    "en": "Close",
+    "zh-Hans": "关闭",
+    "es": "Cerrar",
+    "pt-BR": "Fechar",
+    "cs": "Zavřít",
+    "it": "Chiudi",
+    "uk": "Закрити"
+  },
+  "Оформление": {
+    "en": "Appearance",
+    "zh-Hans": "外观",
+    "es": "Apariencia",
+    "pt-BR": "Aparência",
+    "cs": "Vzhled",
+    "it": "Aspetto",
+    "uk": "Оформлення"
+  },
+  "Сияние": {
+    "en": "Glow",
+    "zh-Hans": "光效",
+    "es": "Resplandor",
+    "pt-BR": "Brilho",
+    "cs": "Záře",
+    "it": "Bagliore",
+    "uk": "Сяйво"
+  },
+  "Переливающаяся подсветка края в стиле Apple Intelligence": {
+    "en": "Flowing edge light, Apple Intelligence style",
+    "zh-Hans": "Apple Intelligence 风格的流光边缘",
+    "es": "Luz de borde fluida al estilo de Apple Intelligence",
+    "pt-BR": "Luz de borda fluida no estilo da Apple Intelligence",
+    "cs": "Plynulé světlo okrajů ve stylu Apple Intelligence",
+    "it": "Luce fluida sui bordi in stile Apple Intelligence",
+    "uk": "Переливчасте підсвічування краю в стилі Apple Intelligence"
+  },
+  "Открыть окно": {
+    "en": "Open Window",
+    "zh-Hans": "打开窗口",
+    "es": "Abrir ventana",
+    "pt-BR": "Abrir janela",
+    "cs": "Otevřít okno",
+    "it": "Apri finestra",
+    "uk": "Відкрити вікно"
+  },
+  "Заголовок": {
+    "en": "Title",
+    "zh-Hans": "标题",
+    "es": "Título",
+    "pt-BR": "Título",
+    "cs": "Název",
+    "it": "Titolo",
+    "uk": "Заголовок"
+  },
+  "Перетащите, чтобы поменять порядок": {
+    "en": "Drag to reorder",
+    "zh-Hans": "拖移以重新排序",
+    "es": "Arrastra para reordenar",
+    "pt-BR": "Arraste para reordenar",
+    "cs": "Přetažením změníte pořadí",
+    "it": "Trascina per riordinare",
+    "uk": "Перетягніть, щоб змінити порядок"
+  },
+  "Минуты, например 30 или 1:30": {
+    "en": "Minutes, e.g. 30 or 1:30",
+    "zh-Hans": "分钟，例如 30 或 1:30",
+    "es": "Minutos, p. ej., 30 o 1:30",
+    "pt-BR": "Minutos, por ex. 30 ou 1:30",
+    "cs": "Minuty, např. 30 nebo 1:30",
+    "it": "Minuti, ad es. 30 o 1:30",
+    "uk": "Хвилини, наприклад 30 або 1:30"
+  },
+  "Эмодзи": {
+    "en": "Emoji",
+    "zh-Hans": "表情符号",
+    "es": "Emoji",
+    "pt-BR": "Emoji",
+    "cs": "Emoji",
+    "it": "Emoji",
+    "uk": "Емодзі"
+  },
+  "Эмодзи…": {
+    "en": "Emoji…",
+    "zh-Hans": "表情符号…",
+    "es": "Emoji…",
+    "pt-BR": "Emoji…",
+    "cs": "Emoji…",
+    "it": "Emoji…",
+    "uk": "Емодзі…"
+  },
+  "Без эмодзи": {
+    "en": "No Emoji",
+    "zh-Hans": "无表情符号",
+    "es": "Sin emoji",
+    "pt-BR": "Sem emoji",
+    "cs": "Bez emoji",
+    "it": "Nessuna emoji",
+    "uk": "Без емодзі"
+  },
+  "Стекло": {
+    "en": "Glass",
+    "zh-Hans": "玻璃",
+    "es": "Cristal",
+    "pt-BR": "Vidro",
+    "cs": "Sklo",
+    "it": "Vetro",
+    "uk": "Скло"
+  },
+  "Стеклянное покрытие вместо чёрного фона Notch": {
+    "en": "Glass finish instead of the black Notch background",
+    "zh-Hans": "用玻璃质感替代 Notch 的黑色背景",
+    "es": "Acabado de cristal en lugar del fondo negro del Notch",
+    "pt-BR": "Acabamento de vidro no lugar do fundo preto do Notch",
+    "cs": "Skleněný povrch místo černého pozadí Notch",
+    "it": "Finitura in vetro al posto dello sfondo nero del Notch",
+    "uk": "Скляне покриття замість чорного тла Notch"
+  },
+  "Раскрывать при наведении": {
+    "en": "Expand on Hover",
+    "zh-Hans": "悬停时展开",
+    "es": "Expandir al pasar el cursor",
+    "pt-BR": "Expandir ao passar o cursor",
+    "cs": "Rozbalit při najetí myší",
+    "it": "Espandi al passaggio del mouse",
+    "uk": "Розгортати під час наведення"
+  },
+  "Не раскрывать при наведении": {
+    "en": "Don’t Expand on Hover",
+    "zh-Hans": "悬停时不展开",
+    "es": "No expandir al pasar el cursor",
+    "pt-BR": "Não expandir ao passar o cursor",
+    "cs": "Nerozbalovat při najetí myší",
+    "it": "Non espandere al passaggio del mouse",
+    "uk": "Не розгортати під час наведення"
+  },
+  "Пауза": {
+    "en": "Pause",
+    "zh-Hans": "暂停",
+    "es": "Pausa",
+    "pt-BR": "Pausar",
+    "cs": "Pozastavit",
+    "it": "Pausa",
+    "uk": "Пауза"
+  },
+  "События": {
+    "en": "Events",
+    "zh-Hans": "日程",
+    "es": "Eventos",
+    "pt-BR": "Eventos",
+    "cs": "Události",
+    "it": "Eventi",
+    "uk": "Події"
+  },
+  "Встречи на сегодня из Google Календаря": {
+    "en": "Today’s events from Google Calendar",
+    "zh-Hans": "来自 Google 日历的今日日程",
+    "es": "Eventos de hoy de Google Calendar",
+    "pt-BR": "Eventos de hoje do Google Agenda",
+    "cs": "Dnešní události z Kalendáře Google",
+    "it": "Eventi di oggi da Google Calendar",
+    "uk": "Зустрічі на сьогодні з Google Календаря"
+  },
+  "Google Календарь": {
+    "en": "Google Calendar",
+    "zh-Hans": "Google 日历",
+    "es": "Google Calendar",
+    "pt-BR": "Google Agenda",
+    "cs": "Kalendář Google",
+    "it": "Google Calendar",
+    "uk": "Google Календар"
+  },
+  "Подключить Google Календарь": {
+    "en": "Connect Google Calendar",
+    "zh-Hans": "连接 Google 日历",
+    "es": "Conectar Google Calendar",
+    "pt-BR": "Conectar o Google Agenda",
+    "cs": "Připojit Kalendář Google",
+    "it": "Collega Google Calendar",
+    "uk": "Підключити Google Календар"
+  },
+  "Подключить": {
+    "en": "Connect",
+    "zh-Hans": "连接",
+    "es": "Conectar",
+    "pt-BR": "Conectar",
+    "cs": "Připojit",
+    "it": "Collega",
+    "uk": "Підключити"
+  },
+  "Подключён": {
+    "en": "Connected",
+    "zh-Hans": "已连接",
+    "es": "Conectado",
+    "pt-BR": "Conectado",
+    "cs": "Připojeno",
+    "it": "Collegato",
+    "uk": "Підключено"
+  },
+  "Отключить": {
+    "en": "Disconnect",
+    "zh-Hans": "断开连接",
+    "es": "Desconectar",
+    "pt-BR": "Desconectar",
+    "cs": "Odpojit",
+    "it": "Scollega",
+    "uk": "Відключити"
+  },
+  "Ожидаем вход в браузере…": {
+    "en": "Waiting for sign-in in your browser…",
+    "zh-Hans": "正在等待你在浏览器中登录…",
+    "es": "Esperando el inicio de sesión en el navegador…",
+    "pt-BR": "Aguardando o login no navegador…",
+    "cs": "Čekáme na přihlášení v prohlížeči…",
+    "it": "In attesa dell’accesso nel browser…",
+    "uk": "Очікуємо вхід у браузері…"
+  },
+  "На сегодня событий больше нет": {
+    "en": "No more events today",
+    "zh-Hans": "今天没有更多日程了",
+    "es": "No hay más eventos hoy",
+    "pt-BR": "Não há mais eventos hoje",
+    "cs": "Dnes už žádné další události",
+    "it": "Nessun altro evento oggi",
+    "uk": "На сьогодні подій більше немає"
+  },
+  "Нет связи с Google Календарём": {
+    "en": "Can’t reach Google Calendar",
+    "zh-Hans": "无法连接到 Google 日历",
+    "es": "No se puede acceder a Google Calendar",
+    "pt-BR": "Não foi possível acessar o Google Agenda",
+    "cs": "Kalendář Google není dostupný",
+    "it": "Impossibile raggiungere Google Calendar",
+    "uk": "Немає зв’язку з Google Календарем"
+  },
+  "Весь день": {
+    "en": "All day",
+    "zh-Hans": "全天",
+    "es": "Todo el día",
+    "pt-BR": "O dia todo",
+    "cs": "Celý den",
+    "it": "Tutto il giorno",
+    "uk": "Увесь день"
+  },
+  "Без названия": {
+    "en": "Untitled",
+    "zh-Hans": "无标题",
+    "es": "Sin título",
+    "pt-BR": "Sem título",
+    "cs": "Bez názvu",
+    "it": "Senza titolo",
+    "uk": "Без назви"
+  },
+  "Присоединиться": {
+    "en": "Join",
+    "zh-Hans": "加入",
+    "es": "Unirse",
+    "pt-BR": "Participar",
+    "cs": "Připojit se",
+    "it": "Partecipa",
+    "uk": "Приєднатися"
+  },
+  "Открыть в Google Календаре": {
+    "en": "Open in Google Calendar",
+    "zh-Hans": "在 Google 日历中打开",
+    "es": "Abrir en Google Calendar",
+    "pt-BR": "Abrir no Google Agenda",
+    "cs": "Otevřít v Kalendáři Google",
+    "it": "Apri in Google Calendar",
+    "uk": "Відкрити в Google Календарі"
+  },
+  "События на сегодня во вкладке Notch": {
+    "en": "Today’s events in a Notch tab",
+    "zh-Hans": "在 Notch 标签页中查看今日日程",
+    "es": "Los eventos de hoy en una pestaña de Notch",
+    "pt-BR": "Os eventos de hoje em uma aba do Notch",
+    "cs": "Dnešní události na kartě v Notch",
+    "it": "Gli eventi di oggi in una scheda del Notch",
+    "uk": "Події на сьогодні у вкладці Notch"
+  },
+  "Только чтение: Tempo показывает события и ничего не меняет в календаре.": {
+    "en": "Read-only: Tempo shows your events and never changes your calendar.",
+    "zh-Hans": "只读：Tempo 只显示日程，不会更改你的日历。",
+    "es": "Solo lectura: Tempo muestra los eventos y no cambia nada en tu calendario.",
+    "pt-BR": "Somente leitura: o Tempo mostra os eventos e não altera nada na sua agenda.",
+    "cs": "Jen pro čtení: Tempo události zobrazuje a v kalendáři nic nemění.",
+    "it": "Sola lettura: Tempo mostra gli eventi e non modifica nulla nel calendario.",
+    "uk": "Лише читання: Tempo показує події й нічого не змінює в календарі."
+  },
+  "Не удалось подключить Google Календарь. Попробуйте ещё раз.": {
+    "en": "Couldn’t connect Google Calendar. Please try again.",
+    "zh-Hans": "无法连接 Google 日历，请重试。",
+    "es": "No se pudo conectar Google Calendar. Inténtalo de nuevo.",
+    "pt-BR": "Não foi possível conectar o Google Agenda. Tente novamente.",
+    "cs": "Kalendář Google se nepodařilo připojit. Zkuste to znovu.",
+    "it": "Impossibile collegare Google Calendar. Riprova.",
+    "uk": "Не вдалося підключити Google Календар. Спробуйте ще раз."
+  },
+  "Доступ к Google Календарю отозван. Подключите его снова.": {
+    "en": "Access to Google Calendar was revoked. Please connect it again.",
+    "zh-Hans": "Google 日历的访问权限已被撤销，请重新连接。",
+    "es": "Se revocó el acceso a Google Calendar. Vuelve a conectarlo.",
+    "pt-BR": "O acesso ao Google Agenda foi revogado. Conecte-o novamente.",
+    "cs": "Přístup ke Kalendáři Google byl odvolán. Připojte ho znovu.",
+    "it": "L’accesso a Google Calendar è stato revocato. Collegalo di nuovo.",
+    "uk": "Доступ до Google Календаря відкликано. Підключіть його знову."
+  },
+  "Tempo подключён. Можно вернуться в приложение.": {
+    "en": "Tempo is connected. You can return to the app.",
+    "zh-Hans": "Tempo 已连接，可以返回应用了。",
+    "es": "Tempo está conectado. Ya puedes volver a la app.",
+    "pt-BR": "O Tempo está conectado. Você já pode voltar ao app.",
+    "cs": "Tempo je připojeno. Můžete se vrátit do aplikace.",
+    "it": "Tempo è collegato. Puoi tornare all’app.",
+    "uk": "Tempo підключено. Можна повернутися в застосунок."
+  },
+  "Не удалось подключиться. Вернитесь в Tempo и попробуйте ещё раз.": {
+    "en": "Couldn’t connect. Return to Tempo and try again.",
+    "zh-Hans": "连接失败。请返回 Tempo 重试。",
+    "es": "No se pudo conectar. Vuelve a Tempo e inténtalo de nuevo.",
+    "pt-BR": "Não foi possível conectar. Volte ao Tempo e tente novamente.",
+    "cs": "Připojení se nezdařilo. Vraťte se do Tempo a zkuste to znovu.",
+    "it": "Connessione non riuscita. Torna a Tempo e riprova.",
+    "uk": "Не вдалося підключитися. Поверніться в Tempo і спробуйте ще раз."
+  },
+  "Авто": {
+    "en": "Auto",
+    "zh-Hans": "自动",
+    "es": "Automático",
+    "pt-BR": "Automático",
+    "cs": "Automaticky",
+    "it": "Automatico",
+    "uk": "Авто"
+  },
+  "Строка меню": {
+    "en": "Menu Bar",
+    "zh-Hans": "菜单栏",
+    "es": "Barra de menús",
+    "pt-BR": "Barra de menus",
+    "cs": "Řádek nabídek",
+    "it": "Barra dei menu",
+    "uk": "Рядок меню"
+  },
+  "Вид": {
+    "en": "View",
+    "uk": "Вигляд",
+    "zh-Hans": "视图",
+    "es": "Vista",
+    "pt-BR": "Visualização",
+    "cs": "Zobrazení",
+    "it": "Vista"
+  },
+  "Авто: Notch, если есть вырез, иначе значок в строке меню": {
+    "en": "Auto: Notch if your Mac has one, otherwise an icon in the menu bar",
+    "zh-Hans": "自动：有刘海时使用 Notch，否则在菜单栏显示图标",
+    "es": "Automático: Notch si tu Mac lo tiene; si no, un icono en la barra de menús",
+    "pt-BR": "Automático: Notch se o Mac tiver; caso contrário, um ícone na barra de menus",
+    "cs": "Automaticky: Notch, pokud ho Mac má, jinak ikona v řádku nabídek",
+    "it": "Automatico: Notch se il Mac lo ha, altrimenti un’icona nella barra dei menu",
+    "uk": "Авто: Notch, якщо є виріз, інакше значок у рядку меню"
+  },
+  "Все проекты": {
+    "en": "All Projects",
+    "zh-Hans": "所有项目",
+    "es": "Todos los proyectos",
+    "pt-BR": "Todos os projetos",
+    "cs": "Všechny projekty",
+    "it": "Tutti i progetti",
+    "uk": "Усі проєкти"
+  },
+  "Отчёт о работе": {
+    "en": "Work Report",
+    "zh-Hans": "工作报告",
+    "es": "Informe de trabajo",
+    "pt-BR": "Relatório de trabalho",
+    "cs": "Pracovní přehled",
+    "it": "Report di lavoro",
+    "uk": "Звіт про роботу"
+  },
+  "Дата": {
+    "en": "Date",
+    "zh-Hans": "日期",
+    "es": "Fecha",
+    "pt-BR": "Data",
+    "cs": "Datum",
+    "it": "Data",
+    "uk": "Дата"
+  },
+  "Задача": {
+    "en": "Task",
+    "zh-Hans": "任务",
+    "es": "Tarea",
+    "pt-BR": "Tarefa",
+    "cs": "Úkol",
+    "it": "Attività",
+    "uk": "Завдання"
+  },
+  "Время": {
+    "en": "Time",
+    "zh-Hans": "时间",
+    "es": "Tiempo",
+    "pt-BR": "Tempo",
+    "cs": "Čas",
+    "it": "Tempo",
+    "uk": "Час"
+  },
+  "Сумма": {
+    "en": "Amount",
+    "zh-Hans": "金额",
+    "es": "Importe",
+    "pt-BR": "Valor",
+    "cs": "Částka",
+    "it": "Importo",
+    "uk": "Сума"
+  },
+  "Итого": {
+    "en": "Total",
+    "zh-Hans": "合计",
+    "es": "Total",
+    "pt-BR": "Total",
+    "cs": "Celkem",
+    "it": "Totale",
+    "uk": "Разом"
+  },
+  "Не удалось добавить картинку": {
+    "en": "Couldn’t add the image",
+    "zh-Hans": "无法添加图片",
+    "es": "No se pudo añadir la imagen",
+    "pt-BR": "Não foi possível adicionar a imagem",
+    "cs": "Obrázek se nepodařilo přidat",
+    "it": "Impossibile aggiungere l’immagine",
+    "uk": "Не вдалося додати зображення"
+  },
+  "Нужен файл с изображением размером до 50 МБ.": {
+    "en": "Choose an image file up to 50 MB.",
+    "zh-Hans": "请选择不超过 50 MB 的图片文件。",
+    "es": "Elige un archivo de imagen de hasta 50 MB.",
+    "pt-BR": "Escolha um arquivo de imagem de até 50 MB.",
+    "cs": "Vyberte obrázek o velikosti do 50 MB.",
+    "it": "Scegli un’immagine fino a 50 MB."
+  },
+  "Добавить картинку…": {
+    "en": "Add Image…",
+    "zh-Hans": "添加图片…",
+    "es": "Añadir imagen…",
+    "pt-BR": "Adicionar imagem…",
+    "cs": "Přidat obrázek…",
+    "it": "Aggiungi immagine…"
+  },
+  "PNG, JPEG, HEIC, GIF и другие форматы. Картинка сама подгонится под квадрат. Удалить: правый щелчок.": {
+    "en": "PNG, JPEG, HEIC, GIF and other formats. The image fits itself to a square. Right-click to delete.",
+    "zh-Hans": "支持 PNG、JPEG、HEIC、GIF 等格式。图片会自动适配为正方形。右键点按可删除。",
+    "es": "PNG, JPEG, HEIC, GIF y otros formatos. La imagen se ajusta sola a un cuadrado. Clic derecho para eliminar.",
+    "pt-BR": "PNG, JPEG, HEIC, GIF e outros formatos. A imagem se ajusta sozinha a um quadrado. Clique com o botão direito para apagar.",
+    "cs": "PNG, JPEG, HEIC, GIF a další formáty. Obrázek se sám přizpůsobí čtverci. Smažete ho pravým kliknutím.",
+    "it": "PNG, JPEG, HEIC, GIF e altri formati. L’immagine si adatta da sola a un quadrato. Clic destro per eliminare."
+  },
+  "Сон и простой": {
+    "en": "Sleep and Idle Time",
+    "zh-Hans": "睡眠和闲置",
+    "es": "Reposo e inactividad",
+    "pt-BR": "Repouso e inatividade",
+    "cs": "Spánek a nečinnost",
+    "it": "Stop e inattività"
+  },
+  "Напоминание о забытом таймере": {
+    "en": "Forgotten Timer Reminder",
+    "zh-Hans": "忘记关闭计时器提醒",
+    "es": "Aviso de temporizador olvidado",
+    "pt-BR": "Lembrete de timer esquecido",
+    "cs": "Připomínka zapomenutého časovače",
+    "it": "Promemoria timer dimenticato"
+  },
+  "Цель на день": {
+    "en": "Daily Goal",
+    "zh-Hans": "每日目标",
+    "es": "Objetivo diario",
+    "pt-BR": "Meta diária",
+    "cs": "Denní cíl",
+    "it": "Obiettivo giornaliero",
+    "uk": "Мета на день"
+  },
+  "Сроки у задач": {
+    "en": "Task Due Dates",
+    "zh-Hans": "任务截止日期",
+    "es": "Fechas límite de tareas",
+    "pt-BR": "Prazos das tarefas",
+    "cs": "Termíny úkolů",
+    "it": "Scadenze delle attività",
+    "uk": "Терміни завдань"
+  },
+  "Ставки и суммы": {
+    "en": "Rates and Amounts",
+    "zh-Hans": "费率和金额",
+    "es": "Tarifas e importes",
+    "pt-BR": "Tarifas e valores",
+    "cs": "Sazby a částky",
+    "it": "Tariffe e importi",
+    "uk": "Ставки й суми"
+  },
+  "PDF-отчёт для клиента": {
+    "en": "Client PDF Report",
+    "zh-Hans": "客户 PDF 报告",
+    "es": "Informe PDF para clientes",
+    "pt-BR": "Relatório PDF para clientes",
+    "cs": "PDF přehled pro klienta",
+    "it": "Report PDF per il cliente",
+    "uk": "PDF-звіт для клієнта"
+  },
+  "Большой набор эмодзи": {
+    "en": "Larger Emoji Set",
+    "zh-Hans": "更多表情符号",
+    "es": "Más emojis",
+    "pt-BR": "Mais emojis",
+    "cs": "Větší sada emoji",
+    "it": "Più emoji"
+  },
+  "Свои эмодзи": {
+    "en": "Custom Emoji",
+    "zh-Hans": "自定义表情",
+    "es": "Emojis propios",
+    "pt-BR": "Emojis próprios",
+    "cs": "Vlastní emoji",
+    "it": "Emoji personalizzate"
+  },
+  "Спросит, вычесть ли время, пока вас не было": {
+    "en": "Asks whether to subtract the time you were away",
+    "zh-Hans": "询问是否扣除你离开的时间",
+    "es": "Pregunta si restar el tiempo que estuviste fuera",
+    "pt-BR": "Pergunta se deve subtrair o tempo em que você esteve fora",
+    "cs": "Zeptá se, zda odečíst čas, kdy jste byli pryč",
+    "it": "Chiede se sottrarre il tempo in cui eri via"
+  },
+  "Спросит, работаете ли вы, если запись идёт слишком долго": {
+    "en": "Asks if you’re still working when an entry runs too long",
+    "zh-Hans": "记录时间过长时询问你是否还在工作",
+    "es": "Pregunta si sigues trabajando cuando un registro dura demasiado",
+    "pt-BR": "Pergunta se você ainda está trabalhando quando um registro dura demais",
+    "cs": "Zeptá se, zda ještě pracujete, když záznam běží moc dlouho",
+    "it": "Chiede se stai ancora lavorando quando una voce dura troppo"
+  },
+  "Прогресс рядом со временем за сегодня": {
+    "en": "Progress next to today’s time",
+    "zh-Hans": "在今日时间旁显示进度",
+    "es": "Progreso junto al tiempo de hoy",
+    "pt-BR": "Progresso ao lado do tempo de hoje",
+    "cs": "Postup vedle dnešního času",
+    "it": "Avanzamento accanto al tempo di oggi",
+    "uk": "Прогрес поруч із часом за сьогодні"
+  },
+  "Сегодня, завтра, просрочено. Просроченные наверху": {
+    "en": "Today, tomorrow, overdue. Overdue tasks go first",
+    "zh-Hans": "今天、明天、已逾期。逾期任务排在最前",
+    "es": "Hoy, mañana, vencidas. Las vencidas van primero",
+    "pt-BR": "Hoje, amanhã, atrasadas. As atrasadas vêm primeiro",
+    "cs": "Dnes, zítra, po termínu. Úkoly po termínu jsou nahoře",
+    "it": "Oggi, domani, in ritardo. Quelle in ritardo vengono prima",
+    "uk": "Сьогодні, завтра, прострочено. Прострочені вгорі"
+  },
+  "Ставка задаётся в проекте, сумма видна в отчёте": {
+    "en": "Set a rate in a project and see the amount in reports",
+    "zh-Hans": "在项目中设置费率，在报告中查看金额",
+    "es": "Define la tarifa en el proyecto y ve el importe en el informe",
+    "pt-BR": "Defina a tarifa no projeto e veja o valor no relatório",
+    "cs": "Sazbu nastavíte v projektu, částku uvidíte v přehledu",
+    "it": "Imposta la tariffa nel progetto e vedi l’importo nel report",
+    "uk": "Ставка задається в проєкті, сума видна у звіті"
+  },
+  "Кнопка в отчёте: записи за период в PDF": {
+    "en": "A report button that exports a period to PDF",
+    "zh-Hans": "报告中的按钮：将所选时段导出为 PDF",
+    "es": "Un botón en el informe exporta el período a PDF",
+    "pt-BR": "Um botão no relatório exporta o período em PDF",
+    "cs": "Tlačítko v přehledu uloží období do PDF",
+    "it": "Un pulsante nel report esporta il periodo in PDF"
+  },
+  "Больше эмодзи при выборе, кроме короткого рабочего набора": {
+    "en": "More emoji to choose from, beyond the short work set",
+    "zh-Hans": "除简短的工作表情外，提供更多选择",
+    "es": "Más emojis para elegir, además del conjunto de trabajo",
+    "pt-BR": "Mais emojis para escolher, além do conjunto de trabalho",
+    "cs": "Více emoji na výběr navíc ke krátké pracovní sadě",
+    "it": "Più emoji tra cui scegliere, oltre al set di lavoro"
+  },
+  "Любая картинка станет эмодзи. Хранится только на этом Mac": {
+    "en": "Turn any image into an emoji. Stored only on this Mac",
+    "zh-Hans": "任何图片都能变成表情，仅保存在这台 Mac 上",
+    "es": "Cualquier imagen puede ser un emoji. Solo se guarda en este Mac",
+    "pt-BR": "Qualquer imagem vira um emoji. Fica salva só neste Mac",
+    "cs": "Z libovolného obrázku bude emoji. Uloží se jen v tomto Macu",
+    "it": "Qualsiasi immagine diventa un’emoji. Resta solo su questo Mac"
+  },
+  "Считать простоем после": {
+    "en": "Count as idle after",
+    "zh-Hans": "闲置判定时间",
+    "es": "Considerar inactividad tras",
+    "pt-BR": "Considerar inatividade após",
+    "cs": "Považovat za nečinnost po",
+    "it": "Considera inattività dopo"
+  },
+  "Напоминать через": {
+    "en": "Remind after",
+    "zh-Hans": "提醒时间",
+    "es": "Avisar después de",
+    "pt-BR": "Lembrar após",
+    "cs": "Připomenout po",
+    "it": "Ricorda dopo"
+  },
+  "Валюта": {
+    "en": "Currency",
+    "zh-Hans": "货币",
+    "es": "Moneda",
+    "pt-BR": "Moeda",
+    "cs": "Měna",
+    "it": "Valuta",
+    "uk": "Валюта"
+  },
+  "Ваше имя в отчёте": {
+    "en": "Your name in the report",
+    "zh-Hans": "报告中显示的姓名",
+    "es": "Tu nombre en el informe",
+    "pt-BR": "Seu nome no relatório",
+    "cs": "Vaše jméno v přehledu",
+    "it": "Il tuo nome nel report"
+  },
+  "Вас не было %@": {
+    "en": "You were away for %@",
+    "zh-Hans": "你离开了 %@",
+    "es": "Estuviste fuera %@",
+    "pt-BR": "Você esteve fora por %@",
+    "cs": "Byli jste pryč %@",
+    "it": "Sei stato via per %@"
+  },
+  "Оставить": {
+    "en": "Keep",
+    "zh-Hans": "保留",
+    "es": "Conservar",
+    "pt-BR": "Manter",
+    "cs": "Ponechat",
+    "it": "Mantieni"
+  },
+  "Вычесть": {
+    "en": "Subtract",
+    "zh-Hans": "扣除",
+    "es": "Restar",
+    "pt-BR": "Subtrair",
+    "cs": "Odečíst",
+    "it": "Sottrai"
+  },
+  "Запись идёт уже %@": {
+    "en": "Running for %@",
+    "zh-Hans": "已记录 %@",
+    "es": "En curso desde hace %@",
+    "pt-BR": "Em andamento há %@",
+    "cs": "Běží už %@",
+    "it": "In corso da %@"
+  },
+  "Продолжаю": {
+    "en": "Still Working",
+    "zh-Hans": "还在工作",
+    "es": "Sigo trabajando",
+    "pt-BR": "Continuar",
+    "cs": "Pracuji dál",
+    "it": "Continuo"
+  },
+  "Завтра": {
+    "en": "Tomorrow",
+    "zh-Hans": "明天",
+    "es": "Mañana",
+    "pt-BR": "Amanhã",
+    "cs": "Zítra",
+    "it": "Domani",
+    "uk": "Завтра"
+  },
+  "Срок": {
+    "en": "Due Date",
+    "zh-Hans": "截止日期",
+    "es": "Fecha límite",
+    "pt-BR": "Prazo",
+    "cs": "Termín",
+    "it": "Scadenza",
+    "uk": "Термін"
+  },
+  "Через неделю": {
+    "en": "In a Week",
+    "zh-Hans": "一周后",
+    "es": "En una semana",
+    "pt-BR": "Em uma semana",
+    "cs": "Za týden",
+    "it": "Tra una settimana",
+    "uk": "За тиждень"
+  },
+  "Выбрать дату…": {
+    "en": "Choose Date…",
+    "zh-Hans": "选择日期…",
+    "es": "Elegir fecha…",
+    "pt-BR": "Escolher data…",
+    "cs": "Vybrat datum…",
+    "it": "Scegli data…",
+    "uk": "Вибрати дату…"
+  },
+  "Без срока": {
+    "en": "No Due Date",
+    "zh-Hans": "无截止日期",
+    "es": "Sin fecha límite",
+    "pt-BR": "Sem prazo",
+    "cs": "Bez termínu",
+    "it": "Nessuna scadenza",
+    "uk": "Без терміну"
+  },
+  "Дополнительно": {
+    "en": "Extras",
+    "zh-Hans": "更多功能",
+    "es": "Extras",
+    "pt-BR": "Extras",
+    "cs": "Doplňky",
+    "it": "Extra",
+    "uk": "Додатково"
+  },
+  "Всё необязательно: включайте только то, что нужно вам.": {
+    "en": "All optional. Turn on only what you need.",
+    "zh-Hans": "全部可选，只开启你需要的功能。",
+    "es": "Todo es opcional. Activa solo lo que necesites.",
+    "pt-BR": "Tudo é opcional. Ative só o que você precisa.",
+    "cs": "Vše je volitelné. Zapněte jen to, co potřebujete.",
+    "it": "È tutto facoltativo. Attiva solo ciò che ti serve."
+  },
+  "Ставка в час": {
+    "en": "Hourly Rate",
+    "zh-Hans": "每小时费率",
+    "es": "Tarifa por hora",
+    "pt-BR": "Tarifa por hora",
+    "cs": "Hodinová sazba",
+    "it": "Tariffa oraria",
+    "uk": "Ставка за годину"
+  },
+  "PDF для клиента": {
+    "en": "Client PDF",
+    "zh-Hans": "客户 PDF",
+    "es": "PDF para cliente",
+    "pt-BR": "PDF para cliente",
+    "cs": "PDF pro klienta",
+    "it": "PDF per il cliente"
+  },
+  "Настройте Tempo под себя": {
+    "en": "Make Tempo Yours",
+    "zh-Hans": "按你的方式设置 Tempo",
+    "es": "Adapta Tempo a ti",
+    "pt-BR": "Deixe o Tempo do seu jeito",
+    "cs": "Přizpůsobte si Tempo",
+    "it": "Personalizza Tempo",
+    "uk": "Налаштуйте Tempo під себе"
+  },
+  "Включите только то, что нужно. Всё можно поменять позже в настройках.": {
+    "en": "Turn on only what you need. You can change everything later in Settings.",
+    "zh-Hans": "只开启你需要的功能。之后可随时在设置中更改。",
+    "es": "Activa solo lo que necesites. Podrás cambiarlo todo después en Ajustes.",
+    "pt-BR": "Ative só o que você precisa. Depois, é possível mudar tudo nos Ajustes.",
+    "cs": "Zapněte jen to, co potřebujete. Vše můžete později změnit v Nastavení.",
+    "it": "Attiva solo ciò che ti serve. Potrai cambiare tutto dopo nelle Impostazioni.",
+    "uk": "Увімкніть лише те, що потрібно. Усе можна змінити пізніше в параметрах."
+  },
+  "Щёлкните значок Tempo в строке меню, и он раскроется.": {
+    "en": "Click the Tempo icon in the menu bar to open it.",
+    "zh-Hans": "点按菜单栏中的 Tempo 图标即可打开。",
+    "es": "Haz clic en el icono de Tempo en la barra de menús para abrirlo.",
+    "pt-BR": "Clique no ícone do Tempo na barra de menus para abri-lo.",
+    "cs": "Klikněte na ikonu Tempo v řádku nabídek a otevře se.",
+    "it": "Fai clic sull’icona di Tempo nella barra dei menu per aprirlo.",
+    "uk": "Клацніть значок Tempo в рядку меню, і він розгорнеться."
+  },
+  "Далее": {
+    "en": "Continue",
+    "zh-Hans": "继续",
+    "es": "Continuar",
+    "pt-BR": "Continuar",
+    "cs": "Pokračovat",
+    "it": "Continua",
+    "uk": "Далі"
+  },
+  "Учёт времени": {
+    "en": "Time Tracking",
+    "zh-Hans": "时间记录",
+    "es": "Registro de tiempo",
+    "pt-BR": "Registro de tempo",
+    "cs": "Sledování času",
+    "it": "Monitoraggio del tempo",
+    "uk": "Облік часу"
+  },
+  "Клиенты": {
+    "en": "Clients",
+    "zh-Hans": "客户",
+    "es": "Clientes",
+    "pt-BR": "Clientes",
+    "cs": "Klienti",
+    "it": "Clienti",
+    "uk": "Клієнти"
+  },
+  "Имя или компания": {
+    "en": "Name or company",
+    "zh-Hans": "姓名或公司",
+    "es": "Nombre o empresa",
+    "pt-BR": "Nome ou empresa",
+    "cs": "Jméno nebo firma",
+    "it": "Nome o azienda"
+  },
+  "Часов в день": {
+    "en": "Hours per Day",
+    "zh-Hans": "每天小时数",
+    "es": "Horas al día",
+    "pt-BR": "Horas por dia",
+    "cs": "Hodin denně",
+    "it": "Ore al giorno",
+    "uk": "Годин на день"
+  },
+  "Умный ввод": {
+    "en": "Smart Input",
+    "zh-Hans": "智能输入",
+    "es": "Entrada inteligente",
+    "pt-BR": "Entrada inteligente",
+    "cs": "Chytré zadávání",
+    "it": "Inserimento intelligente",
+    "uk": "Розумне введення"
+  },
+  "Лента дня": {
+    "en": "Day Timeline",
+    "zh-Hans": "每日时间线",
+    "es": "Cronología del día",
+    "pt-BR": "Linha do tempo do dia",
+    "cs": "Časová osa dne",
+    "it": "Cronologia del giorno"
+  },
+  "Всё одной строкой: созвон @клиент 30м": {
+    "en": "All in one line: call @client 30m",
+    "zh-Hans": "一行搞定：通话 @客户 30m",
+    "es": "Todo en una línea: llamada @cliente 30m",
+    "pt-BR": "Tudo em uma linha: chamada @cliente 30m",
+    "cs": "Vše na jeden řádek: hovor @klient 30m",
+    "it": "Tutto in una riga: chiamata @cliente 30m",
+    "uk": "Усе одним рядком: дзвінок @клієнт 30хв"
+  },
+  "Покажет, что вы забыли записать, и добавит это в один клик": {
+    "en": "Shows what you forgot to track and adds it in one click",
+    "zh-Hans": "显示你忘记记录的时间，点一下即可添加",
+    "es": "Muestra lo que olvidaste registrar y lo añade con un clic",
+    "pt-BR": "Mostra o que você esqueceu de registrar e adiciona com um clique",
+    "cs": "Ukáže, co jste zapomněli zaznamenat, a přidá to jedním kliknutím",
+    "it": "Mostra ciò che hai dimenticato di registrare e lo aggiunge con un clic"
+  },
+  "не записано: %@": {
+    "en": "not tracked: %@",
+    "zh-Hans": "未记录：%@",
+    "es": "sin registrar: %@",
+    "pt-BR": "não registrado: %@",
+    "cs": "nezaznamenáno: %@",
+    "it": "non registrato: %@"
+  },
+  "За этот день ничего нет. Лента появится, когда вы поработаете на Mac.": {
+    "en": "Nothing for this day yet. The timeline appears as you work on your Mac.",
+    "zh-Hans": "这一天还没有内容。在 Mac 上工作后会显示时间线。",
+    "es": "No hay nada de este día. La cronología aparecerá cuando trabajes en el Mac.",
+    "pt-BR": "Nada neste dia. A linha do tempo aparece quando você trabalha no Mac.",
+    "cs": "Pro tento den tu nic není. Časová osa se objeví, až budete na Macu pracovat.",
+    "it": "Nessun dato per questo giorno. La cronologia appare quando lavori sul Mac."
+  },
+  "Не записано": {
+    "en": "Not Tracked",
+    "zh-Hans": "未记录",
+    "es": "Sin registrar",
+    "pt-BR": "Não registrado",
+    "cs": "Nezaznamenáno",
+    "it": "Non registrato"
+  },
+  "Записать": {
+    "en": "Add",
+    "zh-Hans": "记录",
+    "es": "Registrar",
+    "pt-BR": "Registrar",
+    "cs": "Zaznamenat",
+    "it": "Registra"
+  },
+  "Изменить перед записью…": {
+    "en": "Edit Before Adding…",
+    "zh-Hans": "记录前编辑…",
+    "es": "Editar antes de registrar…",
+    "pt-BR": "Editar antes de registrar…",
+    "cs": "Upravit před zaznamenáním…",
+    "it": "Modifica prima di registrare…"
+  },
+  "Скрыть": {
+    "en": "Hide",
+    "zh-Hans": "隐藏",
+    "es": "Ocultar",
+    "pt-BR": "Ocultar",
+    "cs": "Skrýt",
+    "it": "Nascondi"
+  },
+  "Хранить": {
+    "en": "Keep For",
+    "zh-Hans": "保留时间",
+    "es": "Conservar",
+    "pt-BR": "Manter por",
+    "cs": "Uchovávat",
+    "it": "Conserva"
+  },
+  "%@ дн.": {
+    "en": "%@ days",
+    "zh-Hans": "%@ 天",
+    "es": "%@ días",
+    "pt-BR": "%@ dias",
+    "cs": "%@ dní",
+    "it": "%@ giorni"
+  },
+  "Только названия приложений, без содержимого окон. Хранится только на этом Mac.": {
+    "en": "App names only, never window contents. Stored only on this Mac.",
+    "zh-Hans": "仅记录应用名称，不含窗口内容，只保存在这台 Mac 上。",
+    "es": "Solo nombres de apps, nunca el contenido de las ventanas. Se guarda solo en este Mac.",
+    "pt-BR": "Apenas nomes de apps, nunca o conteúdo das janelas. Fica salvo só neste Mac.",
+    "cs": "Jen názvy aplikací, bez obsahu oken. Uloží se jen v tomto Macu.",
+    "it": "Solo i nomi delle app, mai il contenuto delle finestre. Resta solo su questo Mac."
+  },
+  "Очистить ленту…": {
+    "en": "Clear Timeline…",
+    "zh-Hans": "清除时间线…",
+    "es": "Borrar cronología…",
+    "pt-BR": "Limpar linha do tempo…",
+    "cs": "Vymazat časovou osu…",
+    "it": "Cancella cronologia…"
+  },
+  "Удалить всю историю приложений?": {
+    "en": "Delete all app history?",
+    "zh-Hans": "删除所有应用记录？",
+    "es": "¿Eliminar todo el historial de apps?",
+    "pt-BR": "Apagar todo o histórico de apps?",
+    "cs": "Smazat celou historii aplikací?",
+    "it": "Eliminare tutta la cronologia delle app?"
+  },
+  "Ваши записи времени останутся.": {
+    "en": "Your time entries will stay.",
+    "zh-Hans": "你的时间记录会保留。",
+    "es": "Tus registros de tiempo se conservarán.",
+    "pt-BR": "Seus registros de tempo serão mantidos.",
+    "cs": "Vaše časové záznamy zůstanou.",
+    "it": "Le tue voci di tempo resteranno."
+  },
+  "Своя нейросеть": {
+    "en": "Your Own AI",
+    "zh-Hans": "自带 AI 模型",
+    "es": "Tu propia IA",
+    "pt-BR": "Sua própria IA",
+    "cs": "Vlastní AI",
+    "it": "La tua IA"
+  },
+  "Облачная по вашему ключу или локальная на этом Mac": {
+    "en": "Cloud with your key, or local on this Mac",
+    "zh-Hans": "使用你的密钥连接云端，或在这台 Mac 上本地运行",
+    "es": "En la nube con tu clave o local en este Mac",
+    "pt-BR": "Na nuvem com sua chave ou local neste Mac",
+    "cs": "V cloudu s vaším klíčem nebo lokálně v tomto Macu",
+    "it": "Nel cloud con la tua chiave o in locale su questo Mac"
+  },
+  "Нейросеть": {
+    "en": "AI",
+    "zh-Hans": "AI",
+    "es": "IA",
+    "pt-BR": "IA",
+    "cs": "AI",
+    "it": "IA"
+  },
+  "Другой адрес": {
+    "en": "Custom URL",
+    "zh-Hans": "其他地址",
+    "es": "Otra dirección",
+    "pt-BR": "Outro endereço",
+    "cs": "Jiná adresa",
+    "it": "Altro indirizzo"
+  },
+  "Проверьте адрес сервиса.": {
+    "en": "Check the service URL.",
+    "zh-Hans": "请检查服务地址。",
+    "es": "Revisa la dirección del servicio.",
+    "pt-BR": "Verifique o endereço do serviço.",
+    "cs": "Zkontrolujte adresu služby.",
+    "it": "Controlla l’indirizzo del servizio."
+  },
+  "Ключ можно отправлять только по https или на этот Mac.": {
+    "en": "Keys can only be sent over HTTPS or to this Mac.",
+    "zh-Hans": "密钥只能通过 HTTPS 发送或发送到这台 Mac。",
+    "es": "La clave solo puede enviarse por HTTPS o a este Mac.",
+    "pt-BR": "A chave só pode ser enviada por HTTPS ou para este Mac.",
+    "cs": "Klíč lze odeslat jen přes HTTPS nebo do tohoto Macu.",
+    "it": "La chiave può essere inviata solo via HTTPS o a questo Mac."
+  },
+  "Сервис не принял ключ.": {
+    "en": "The service rejected the key.",
+    "zh-Hans": "服务未接受此密钥。",
+    "es": "El servicio rechazó la clave.",
+    "pt-BR": "O serviço recusou a chave.",
+    "cs": "Služba klíč nepřijala.",
+    "it": "Il servizio ha rifiutato la chiave."
+  },
+  "Сервис не нашёл такую модель или адрес.": {
+    "en": "The service couldn’t find this model or URL.",
+    "zh-Hans": "服务找不到此模型或地址。",
+    "es": "El servicio no encontró ese modelo o dirección.",
+    "pt-BR": "O serviço não encontrou esse modelo ou endereço.",
+    "cs": "Služba tento model nebo adresu nenašla.",
+    "it": "Il servizio non ha trovato questo modello o indirizzo."
+  },
+  "Сервис просит подождать: лимит запросов или баланс.": {
+    "en": "The service asks you to wait: request limit or balance.",
+    "zh-Hans": "服务要求稍候：已达请求限额或余额不足。",
+    "es": "El servicio pide esperar: límite de solicitudes o saldo.",
+    "pt-BR": "O serviço pede para aguardar: limite de solicitações ou saldo.",
+    "cs": "Služba žádá o strpení: limit požadavků nebo zůstatek.",
+    "it": "Il servizio chiede di attendere: limite di richieste o saldo."
+  },
+  "Модель отказалась отвечать на этот запрос.": {
+    "en": "The model declined this request.",
+    "zh-Hans": "模型拒绝回答此请求。",
+    "es": "El modelo rechazó esta solicitud.",
+    "pt-BR": "O modelo recusou esta solicitação.",
+    "cs": "Model tento požadavek odmítl.",
+    "it": "Il modello ha rifiutato questa richiesta."
+  },
+  "Модель вернула пустой ответ.": {
+    "en": "The model returned an empty answer.",
+    "zh-Hans": "模型返回了空回答。",
+    "es": "El modelo devolvió una respuesta vacía.",
+    "pt-BR": "O modelo retornou uma resposta vazia.",
+    "cs": "Model vrátil prázdnou odpověď.",
+    "it": "Il modello ha restituito una risposta vuota."
+  },
+  "Не удалось разобрать ответ модели. Попробуйте ещё раз.": {
+    "en": "Couldn’t read the model’s answer. Please try again.",
+    "zh-Hans": "无法读取模型的回答，请重试。",
+    "es": "No se pudo leer la respuesta del modelo. Inténtalo de nuevo.",
+    "pt-BR": "Não foi possível ler a resposta do modelo. Tente novamente.",
+    "cs": "Odpověď modelu se nepodařilo přečíst. Zkuste to znovu.",
+    "it": "Impossibile leggere la risposta del modello. Riprova."
+  },
+  "Сервис ответил ошибкой %@.": {
+    "en": "The service returned error %@.",
+    "zh-Hans": "服务返回错误 %@。",
+    "es": "El servicio devolvió el error %@.",
+    "pt-BR": "O serviço retornou o erro %@.",
+    "cs": "Služba vrátila chybu %@.",
+    "it": "Il servizio ha restituito l’errore %@."
+  },
+  "Нет связи с сервисом.": {
+    "en": "Can’t reach the service.",
+    "zh-Hans": "无法连接到服务。",
+    "es": "No se puede acceder al servicio.",
+    "pt-BR": "Não foi possível acessar o serviço.",
+    "cs": "Služba není dostupná.",
+    "it": "Impossibile raggiungere il servizio."
+  },
+  "Спрашиваем нейросеть…": {
+    "en": "Asking the AI…",
+    "zh-Hans": "正在询问 AI…",
+    "es": "Consultando a la IA…",
+    "pt-BR": "Consultando a IA…",
+    "cs": "Ptáme se AI…",
+    "it": "Chiediamo all’IA…"
+  },
+  "Запрос останется на этом Mac": {
+    "en": "This request stays on this Mac",
+    "zh-Hans": "此请求将保留在这台 Mac 上",
+    "es": "Esta solicitud se queda en este Mac",
+    "pt-BR": "Esta solicitação fica neste Mac",
+    "cs": "Požadavek zůstane v tomto Macu",
+    "it": "Questa richiesta resta su questo Mac"
+  },
+  "Это уйдёт в %@": {
+    "en": "This will be sent to %@",
+    "zh-Hans": "以下内容将发送到 %@",
+    "es": "Esto se enviará a %@",
+    "pt-BR": "Isto será enviado para %@",
+    "cs": "Toto se odešle do %@",
+    "it": "Questo verrà inviato a %@"
+  },
+  "Больше не показывать перед отправкой": {
+    "en": "Don’t show again before sending",
+    "zh-Hans": "发送前不再显示",
+    "es": "No mostrar de nuevo antes de enviar",
+    "pt-BR": "Não mostrar de novo antes de enviar",
+    "cs": "Před odesláním už nezobrazovat",
+    "it": "Non mostrare più prima dell’invio"
+  },
+  "Отправить": {
+    "en": "Send",
+    "zh-Hans": "发送",
+    "es": "Enviar",
+    "pt-BR": "Enviar",
+    "cs": "Odeslat",
+    "it": "Invia"
+  },
+  "Нейросеть не подключена. Проверьте настройки.": {
+    "en": "AI isn’t connected. Check Settings.",
+    "zh-Hans": "AI 未连接，请检查设置。",
+    "es": "La IA no está conectada. Revisa los ajustes.",
+    "pt-BR": "A IA não está conectada. Verifique os Ajustes.",
+    "cs": "AI není připojena. Zkontrolujte Nastavení.",
+    "it": "L’IA non è collegata. Controlla le Impostazioni."
+  },
+  "Добавить запись словами": {
+    "en": "Add Entry in Words",
+    "zh-Hans": "用文字添加记录",
+    "es": "Añadir registro con palabras",
+    "pt-BR": "Adicionar registro com palavras",
+    "cs": "Přidat záznam slovy",
+    "it": "Aggiungi voce a parole"
+  },
+  "вчера с двух до четырёх созвон с клиентом": {
+    "en": "call with a client yesterday from 2 to 4",
+    "zh-Hans": "昨天两点到四点和客户通话",
+    "es": "llamada con un cliente ayer de 2 a 4",
+    "pt-BR": "chamada com cliente ontem das 2 às 4",
+    "cs": "včera od dvou do čtyř hovor s klientem",
+    "it": "chiamata con un cliente ieri dalle 2 alle 4"
+  },
+  "Итоги: %@": {
+    "en": "Review: %@",
+    "zh-Hans": "总结：%@",
+    "es": "Resumen: %@",
+    "pt-BR": "Resumo: %@",
+    "cs": "Shrnutí: %@",
+    "it": "Riepilogo: %@"
+  },
+  "Написано нейросетью, может ошибаться.": {
+    "en": "Written by AI and may contain mistakes.",
+    "zh-Hans": "由 AI 撰写，可能有误。",
+    "es": "Escrito por IA, puede contener errores.",
+    "pt-BR": "Escrito por IA, pode conter erros.",
+    "cs": "Napsala AI, může obsahovat chyby.",
+    "it": "Scritto dall’IA, può contenere errori."
+  },
+  "Сервис": {
+    "en": "Service",
+    "zh-Hans": "服务",
+    "es": "Servicio",
+    "pt-BR": "Serviço",
+    "cs": "Služba",
+    "it": "Servizio"
+  },
+  "Адрес": {
+    "en": "URL",
+    "zh-Hans": "地址",
+    "es": "Dirección",
+    "pt-BR": "Endereço",
+    "cs": "Adresa",
+    "it": "Indirizzo"
+  },
+  "Модель": {
+    "en": "Model",
+    "zh-Hans": "模型",
+    "es": "Modelo",
+    "pt-BR": "Modelo",
+    "cs": "Model",
+    "it": "Modello"
+  },
+  "Название модели": {
+    "en": "Model name",
+    "zh-Hans": "模型名称",
+    "es": "Nombre del modelo",
+    "pt-BR": "Nome do modelo",
+    "cs": "Název modelu",
+    "it": "Nome del modello"
+  },
+  "Ключ API": {
+    "en": "API Key",
+    "zh-Hans": "API 密钥",
+    "es": "Clave de API",
+    "pt-BR": "Chave de API",
+    "cs": "Klíč API",
+    "it": "Chiave API"
+  },
+  "Сохранён в Связке ключей": {
+    "en": "Saved in Keychain",
+    "zh-Hans": "已存储在钥匙串中",
+    "es": "Guardada en Llavero",
+    "pt-BR": "Salva nas Chaves",
+    "cs": "Uloženo v Klíčence",
+    "it": "Salvata nel Portachiavi"
+  },
+  "Вставьте ключ": {
+    "en": "Paste key",
+    "zh-Hans": "粘贴密钥",
+    "es": "Pega la clave",
+    "pt-BR": "Cole a chave",
+    "cs": "Vložte klíč",
+    "it": "Incolla la chiave"
+  },
+  "Проверить подключение": {
+    "en": "Test Connection",
+    "zh-Hans": "测试连接",
+    "es": "Probar conexión",
+    "pt-BR": "Testar conexão",
+    "cs": "Otestovat připojení",
+    "it": "Prova connessione"
+  },
+  "Не показывать данные перед отправкой": {
+    "en": "Don’t show data before sending",
+    "zh-Hans": "发送前不显示数据",
+    "es": "No mostrar los datos antes de enviar",
+    "pt-BR": "Não mostrar dados antes de enviar",
+    "cs": "Před odesláním data nezobrazovat",
+    "it": "Non mostrare i dati prima dell’invio"
+  },
+  "Запросы идут к модели на этом Mac и никуда больше не уходят.": {
+    "en": "Requests go to the model on this Mac and nowhere else.",
+    "zh-Hans": "请求只发送到这台 Mac 上的模型，不会发往别处。",
+    "es": "Las solicitudes van al modelo en este Mac y a ningún otro sitio.",
+    "pt-BR": "As solicitações vão para o modelo neste Mac e para nenhum outro lugar.",
+    "cs": "Požadavky jdou k modelu v tomto Macu a nikam jinam.",
+    "it": "Le richieste vanno al modello su questo Mac e da nessun’altra parte."
+  },
+  "Запросы уходят в выбранный сервис, оплата по вашему тарифу. Нейросеть только заполняет форму: запись сохраняете вы.": {
+    "en": "Requests go to the chosen service and are billed on your plan. AI only fills in the form; you save the entry.",
+    "zh-Hans": "请求发送到所选服务，并按你的套餐计费。AI 只填写表单，由你保存记录。",
+    "es": "Las solicitudes van al servicio elegido y se cobran según tu plan. La IA solo rellena el formulario; tú guardas el registro.",
+    "pt-BR": "As solicitações vão para o serviço escolhido e são cobradas no seu plano. A IA só preenche o formulário; você salva o registro.",
+    "cs": "Požadavky jdou do vybrané služby a účtují se podle vašeho tarifu. AI jen vyplní formulář, záznam uložíte vy.",
+    "it": "Le richieste vanno al servizio scelto e sono addebitate sul tuo piano. L’IA compila solo il modulo; sei tu a salvare la voce."
+  },
+  "Подключено": {
+    "en": "Connected",
+    "zh-Hans": "已连接",
+    "es": "Conectado",
+    "pt-BR": "Conectado",
+    "cs": "Připojeno",
+    "it": "Collegato"
+  },
+  "Предложить название": {
+    "en": "Suggest a Name",
+    "zh-Hans": "建议名称",
+    "es": "Sugerir nombre",
+    "pt-BR": "Sugerir nome",
+    "cs": "Navrhnout název",
+    "it": "Suggerisci un nome"
+  },
+  "Итоги от нейросети": {
+    "en": "AI Review",
+    "zh-Hans": "AI 总结",
+    "es": "Resumen de la IA",
+    "pt-BR": "Resumo da IA",
+    "cs": "Shrnutí od AI",
+    "it": "Riepilogo dell’IA"
+  },
+  "Укажите время: например, вчера с двух до четырёх.": {
+    "en": "Add a time, for example: yesterday from 2 to 4.",
+    "zh-Hans": "请写明时间，例如：昨天两点到四点。",
+    "es": "Indica la hora, por ejemplo: ayer de 2 a 4.",
+    "pt-BR": "Informe o horário, por exemplo: ontem das 2 às 4.",
+    "cs": "Uveďte čas, například: včera od dvou do čtyř.",
+    "it": "Indica l’orario, ad esempio: ieri dalle 2 alle 4."
+  },
+  "Новый проект «%@»": {
+    "en": "New Project “%@”",
+    "zh-Hans": "新项目“%@”",
+    "es": "Nuevo proyecto «%@»",
+    "pt-BR": "Novo projeto “%@”",
+    "cs": "Nový projekt „%@“",
+    "it": "Nuovo progetto «%@»",
+    "uk": "Новий проєкт «%@»"
+  },
+  "Как в системе": {
+    "en": "Match System",
+    "zh-Hans": "跟随系统",
+    "es": "Como el sistema",
+    "pt-BR": "Como o sistema",
+    "cs": "Podle systému",
+    "it": "Come il sistema",
+    "uk": "Як у системі"
+  },
+  "Светлая": {
+    "en": "Light",
+    "zh-Hans": "浅色",
+    "es": "Claro",
+    "pt-BR": "Claro",
+    "cs": "Světlý",
+    "it": "Chiaro",
+    "uk": "Світла"
+  },
+  "Тёмная": {
+    "en": "Dark",
+    "zh-Hans": "深色",
+    "es": "Oscuro",
+    "pt-BR": "Escuro",
+    "cs": "Tmavý",
+    "it": "Scuro",
+    "uk": "Темна"
+  },
+  "Тема": {
+    "en": "Theme",
+    "zh-Hans": "主题",
+    "es": "Tema",
+    "pt-BR": "Tema",
+    "cs": "Motiv",
+    "it": "Tema",
+    "uk": "Тема"
+  },
+  "Создать ключ Claude": {
+    "en": "Create a Claude Key",
+    "zh-Hans": "创建 Claude 密钥",
+    "es": "Crear clave de Claude",
+    "pt-BR": "Criar chave do Claude",
+    "cs": "Vytvořit klíč Claude",
+    "it": "Crea chiave Claude"
+  },
+  "Создать ключ OpenAI": {
+    "en": "Create an OpenAI Key",
+    "zh-Hans": "创建 OpenAI 密钥",
+    "es": "Crear clave de OpenAI",
+    "pt-BR": "Criar chave da OpenAI",
+    "cs": "Vytvořit klíč OpenAI",
+    "it": "Crea chiave OpenAI"
+  },
+  "Создать ключ Gemini": {
+    "en": "Create a Gemini Key",
+    "zh-Hans": "创建 Gemini 密钥",
+    "es": "Crear clave de Gemini",
+    "pt-BR": "Criar chave do Gemini",
+    "cs": "Vytvořit klíč Gemini",
+    "it": "Crea chiave Gemini"
+  },
+  "Скачать Ollama": {
+    "en": "Download Ollama",
+    "zh-Hans": "下载 Ollama",
+    "es": "Descargar Ollama",
+    "pt-BR": "Baixar Ollama",
+    "cs": "Stáhnout Ollama",
+    "it": "Scarica Ollama"
+  },
+  "Скачать LM Studio": {
+    "en": "Download LM Studio",
+    "zh-Hans": "下载 LM Studio",
+    "es": "Descargar LM Studio",
+    "pt-BR": "Baixar LM Studio",
+    "cs": "Stáhnout LM Studio",
+    "it": "Scarica LM Studio"
+  },
+  "1. Откройте сайт, войдите и создайте ключ.\n2. Вставьте его сюда и нажмите «Сохранить».\n3. Нажмите «Проверить подключение».\nОплата API отдельная: подписка Claude в неё не входит.": {
+    "en": "1. Open the site, sign in and create a key.\n2. Paste it here and click Save.\n3. Click Test Connection.\nAPI billing is separate: a Claude subscription doesn’t cover it.",
+    "zh-Hans": "1. 打开网站，登录并创建密钥。\n2. 粘贴到这里并点按“保存”。\n3. 点按“测试连接”。\nAPI 单独计费，Claude 订阅不包含 API 用量。",
+    "es": "1. Abre el sitio, inicia sesión y crea una clave.\n2. Pégala aquí y haz clic en Guardar.\n3. Haz clic en Probar conexión.\nLa API se paga aparte: la suscripción a Claude no la incluye.",
+    "pt-BR": "1. Abra o site, entre e crie uma chave.\n2. Cole aqui e clique em Salvar.\n3. Clique em Testar conexão.\nA API é cobrada à parte: a assinatura do Claude não a inclui.",
+    "cs": "1. Otevřete web, přihlaste se a vytvořte klíč.\n2. Vložte ho sem a klikněte na Uložit.\n3. Klikněte na Otestovat připojení.\nAPI se platí zvlášť: předplatné Claude ho nezahrnuje.",
+    "it": "1. Apri il sito, accedi e crea una chiave.\n2. Incollala qui e fai clic su Salva.\n3. Fai clic su Prova connessione.\nL’API si paga a parte: l’abbonamento a Claude non la include."
+  },
+  "1. Откройте сайт, войдите и создайте ключ.\n2. Вставьте его сюда и нажмите «Сохранить».\n3. Впишите название модели из документации OpenAI.\n4. Нажмите «Проверить подключение».\nОплата API отдельная: подписка ChatGPT в неё не входит.": {
+    "en": "1. Open the site, sign in and create a key.\n2. Paste it here and click Save.\n3. Enter a model name from the OpenAI docs.\n4. Click Test Connection.\nAPI billing is separate: a ChatGPT subscription doesn’t cover it.",
+    "zh-Hans": "1. 打开网站，登录并创建密钥。\n2. 粘贴到这里并点按“保存”。\n3. 填写 OpenAI 文档中的模型名称。\n4. 点按“测试连接”。\nAPI 单独计费，ChatGPT 订阅不包含 API 用量。",
+    "es": "1. Abre el sitio, inicia sesión y crea una clave.\n2. Pégala aquí y haz clic en Guardar.\n3. Escribe un modelo de la documentación de OpenAI.\n4. Haz clic en Probar conexión.\nLa API se paga aparte: la suscripción a ChatGPT no la incluye.",
+    "pt-BR": "1. Abra o site, entre e crie uma chave.\n2. Cole aqui e clique em Salvar.\n3. Digite um modelo da documentação da OpenAI.\n4. Clique em Testar conexão.\nA API é cobrada à parte: a assinatura do ChatGPT não a inclui.",
+    "cs": "1. Otevřete web, přihlaste se a vytvořte klíč.\n2. Vložte ho sem a klikněte na Uložit.\n3. Zadejte model z dokumentace OpenAI.\n4. Klikněte na Otestovat připojení.\nAPI se platí zvlášť: předplatné ChatGPT ho nezahrnuje.",
+    "it": "1. Apri il sito, accedi e crea una chiave.\n2. Incollala qui e fai clic su Salva.\n3. Inserisci un modello dalla documentazione OpenAI.\n4. Fai clic su Prova connessione.\nL’API si paga a parte: l’abbonamento a ChatGPT non la include."
+  },
+  "1. Откройте сайт, войдите и создайте ключ.\n2. Вставьте его сюда и нажмите «Сохранить».\n3. Впишите название модели из документации Google.\n4. Нажмите «Проверить подключение».": {
+    "en": "1. Open the site, sign in and create a key.\n2. Paste it here and click Save.\n3. Enter a model name from the Google docs.\n4. Click Test Connection.",
+    "zh-Hans": "1. 打开网站，登录并创建密钥。\n2. 粘贴到这里并点按“保存”。\n3. 填写 Google 文档中的模型名称。\n4. 点按“测试连接”。",
+    "es": "1. Abre el sitio, inicia sesión y crea una clave.\n2. Pégala aquí y haz clic en Guardar.\n3. Escribe un modelo de la documentación de Google.\n4. Haz clic en Probar conexión.",
+    "pt-BR": "1. Abra o site, entre e crie uma chave.\n2. Cole aqui e clique em Salvar.\n3. Digite um modelo da documentação do Google.\n4. Clique em Testar conexão.",
+    "cs": "1. Otevřete web, přihlaste se a vytvořte klíč.\n2. Vložte ho sem a klikněte na Uložit.\n3. Zadejte model z dokumentace Google.\n4. Klikněte na Otestovat připojení.",
+    "it": "1. Apri il sito, accedi e crea una chiave.\n2. Incollala qui e fai clic su Salva.\n3. Inserisci un modello dalla documentazione Google.\n4. Fai clic su Prova connessione."
+  },
+  "1. Установите и запустите Ollama.\n2. Скачайте модель в Терминале: ollama pull и её название.\n3. Впишите это название сюда.\n4. Нажмите «Проверить подключение». Ключ не нужен.": {
+    "en": "1. Install and open Ollama.\n2. Download a model in Terminal: ollama pull plus its name.\n3. Enter that name here.\n4. Click Test Connection. No key needed.",
+    "zh-Hans": "1. 安装并打开 Ollama。\n2. 在“终端”中下载模型：ollama pull 加模型名称。\n3. 在此填写该名称。\n4. 点按“测试连接”。无需密钥。",
+    "es": "1. Instala y abre Ollama.\n2. Descarga un modelo en Terminal: ollama pull y su nombre.\n3. Escribe ese nombre aquí.\n4. Haz clic en Probar conexión. No hace falta clave.",
+    "pt-BR": "1. Instale e abra o Ollama.\n2. Baixe um modelo no Terminal: ollama pull e o nome dele.\n3. Digite esse nome aqui.\n4. Clique em Testar conexão. Não precisa de chave.",
+    "cs": "1. Nainstalujte a otevřete Ollama.\n2. Stáhněte model v Terminálu: ollama pull a jeho název.\n3. Zadejte tento název sem.\n4. Klikněte na Otestovat připojení. Klíč není potřeba.",
+    "it": "1. Installa e apri Ollama.\n2. Scarica un modello nel Terminale: ollama pull e il suo nome.\n3. Inserisci qui quel nome.\n4. Fai clic su Prova connessione. Nessuna chiave necessaria."
+  },
+  "1. Установите LM Studio и скачайте в ней модель.\n2. Включите там локальный сервер.\n3. Впишите сюда название модели.\n4. Нажмите «Проверить подключение». Ключ не нужен.": {
+    "en": "1. Install LM Studio and download a model in it.\n2. Turn on its local server.\n3. Enter the model name here.\n4. Click Test Connection. No key needed.",
+    "zh-Hans": "1. 安装 LM Studio 并在其中下载模型。\n2. 开启其本地服务器。\n3. 在此填写模型名称。\n4. 点按“测试连接”。无需密钥。",
+    "es": "1. Instala LM Studio y descarga un modelo.\n2. Activa allí el servidor local.\n3. Escribe aquí el nombre del modelo.\n4. Haz clic en Probar conexión. No hace falta clave.",
+    "pt-BR": "1. Instale o LM Studio e baixe um modelo nele.\n2. Ative o servidor local.\n3. Digite aqui o nome do modelo.\n4. Clique em Testar conexão. Não precisa de chave.",
+    "cs": "1. Nainstalujte LM Studio a stáhněte v něm model.\n2. Zapněte v něm místní server.\n3. Zadejte sem název modelu.\n4. Klikněte na Otestovat připojení. Klíč není potřeba.",
+    "it": "1. Installa LM Studio e scarica un modello.\n2. Attiva il server locale.\n3. Inserisci qui il nome del modello.\n4. Fai clic su Prova connessione. Nessuna chiave necessaria."
+  },
+  "Подойдёт сервис с API в формате OpenAI. Впишите его адрес, название модели и, если нужно, ключ.": {
+    "en": "Works with services that use the OpenAI API format. Enter the URL, model name and, if needed, a key.",
+    "zh-Hans": "适用于采用 OpenAI API 格式的服务。请填写地址、模型名称，如有需要再填写密钥。",
+    "es": "Sirve para servicios con API en formato OpenAI. Escribe la dirección, el modelo y, si hace falta, la clave.",
+    "pt-BR": "Funciona com serviços que usam o formato de API da OpenAI. Informe o endereço, o modelo e, se preciso, a chave.",
+    "cs": "Funguje se službami s API ve formátu OpenAI. Zadejte adresu, název modelu a případně klíč.",
+    "it": "Funziona con servizi con API in formato OpenAI. Inserisci indirizzo, modello e, se serve, la chiave."
+  },
+  "Окна и раскрытый Notch. Свёрнутый Notch всегда чёрный": {
+    "en": "Windows and the expanded Notch. The collapsed Notch is always black",
+    "zh-Hans": "窗口和展开的 Notch。收起的 Notch 始终为黑色",
+    "es": "Ventanas y Notch abierto. El Notch cerrado siempre es negro",
+    "pt-BR": "Janelas e Notch aberto. O Notch fechado é sempre preto",
+    "cs": "Okna a rozbalený Notch. Sbalený Notch je vždy černý",
+    "it": "Finestre e Notch aperto. Il Notch chiuso è sempre nero",
+    "uk": "Вікна й розгорнутий Notch. Згорнутий Notch завжди чорний"
+  },
+  "Простой режим": {
+    "en": "Simple Mode",
+    "zh-Hans": "简易模式",
+    "es": "Modo simple",
+    "pt-BR": "Modo simples",
+    "cs": "Jednoduchý režim",
+    "it": "Modalità semplice"
+  },
+  "Только секундомер в Notch": {
+    "en": "Stopwatch Only in Notch",
+    "zh-Hans": "Notch 中仅显示秒表",
+    "es": "Solo cronómetro en Notch",
+    "pt-BR": "Só cronômetro no Notch",
+    "cs": "V Notch jen stopky",
+    "it": "Solo cronometro nel Notch"
+  },
+  "Остальное в Notch скроется. Время всё равно сохраняется в журнале.": {
+    "en": "Everything else in Notch is hidden. Time is still saved to the journal.",
+    "zh-Hans": "Notch 中的其他内容会隐藏，时间仍会保存到日志。",
+    "es": "Lo demás se oculta en Notch. El tiempo se sigue guardando en el diario.",
+    "pt-BR": "O resto do Notch fica oculto. O tempo continua salvo no diário.",
+    "cs": "Vše ostatní se v Notch skryje. Čas se dál ukládá do deníku.",
+    "it": "Il resto del Notch viene nascosto. Il tempo viene comunque salvato nel diario."
+  },
+  "Экспорт": {
+    "en": "Export",
+    "zh-Hans": "导出",
+    "es": "Exportar",
+    "pt-BR": "Exportar",
+    "cs": "Exportovat",
+    "it": "Esporta",
+    "uk": "Експорт"
+  },
+  "Разделить запись": {
+    "en": "Split entry",
+    "zh-Hans": "拆分记录",
+    "es": "Dividir entrada",
+    "pt-BR": "Dividir registro",
+    "cs": "Rozdělit záznam",
+    "it": "Dividi voce",
+    "uk": "Розділити запис"
+  },
+  "Разделить в": {
+    "en": "Split at",
+    "zh-Hans": "拆分时间",
+    "es": "Dividir a las",
+    "pt-BR": "Dividir às",
+    "cs": "Rozdělit v",
+    "it": "Dividi alle",
+    "uk": "Розділити о"
+  },
+  "Первая часть": {
+    "en": "First part",
+    "zh-Hans": "第一部分",
+    "es": "Primera parte",
+    "pt-BR": "Primeira parte",
+    "cs": "První část",
+    "it": "Prima parte",
+    "uk": "Перша частина"
+  },
+  "Вторая часть": {
+    "en": "Second part",
+    "zh-Hans": "第二部分",
+    "es": "Segunda parte",
+    "pt-BR": "Segunda parte",
+    "cs": "Druhá část",
+    "it": "Seconda parte",
+    "uk": "Друга частина"
+  },
+  "Название второй части": {
+    "en": "Second part name",
+    "zh-Hans": "第二部分名称",
+    "es": "Nombre de la segunda parte",
+    "pt-BR": "Nome da segunda parte",
+    "cs": "Název druhé části",
+    "it": "Nome della seconda parte",
+    "uk": "Назва другої частини"
+  },
+  "Разделить": {
+    "en": "Split",
+    "zh-Hans": "拆分",
+    "es": "Dividir",
+    "pt-BR": "Dividir",
+    "cs": "Rozdělit",
+    "it": "Dividi",
+    "uk": "Розділити"
+  },
+  "Эта неделя": {
+    "en": "This week",
+    "zh-Hans": "本周",
+    "es": "Esta semana",
+    "pt-BR": "Esta semana",
+    "cs": "Tento týden",
+    "it": "Questa settimana",
+    "uk": "Цей тиждень"
+  },
+  "Этот месяц": {
+    "en": "This month",
+    "zh-Hans": "本月",
+    "es": "Este mes",
+    "pt-BR": "Este mês",
+    "cs": "Tento měsíc",
+    "it": "Questo mese",
+    "uk": "Цей місяць"
+  },
+  "Прошлый месяц": {
+    "en": "Last month",
+    "zh-Hans": "上月",
+    "es": "Mes pasado",
+    "pt-BR": "Mês passado",
+    "cs": "Minulý měsíc",
+    "it": "Mese scorso",
+    "uk": "Минулий місяць"
+  },
+  "Каждая запись": {
+    "en": "Each entry",
+    "zh-Hans": "每条记录",
+    "es": "Cada entrada",
+    "pt-BR": "Cada registro",
+    "cs": "Každý záznam",
+    "it": "Ogni voce",
+    "uk": "Кожен запис"
+  },
+  "По дням": {
+    "en": "By day",
+    "zh-Hans": "按天",
+    "es": "Por día",
+    "pt-BR": "Por dia",
+    "cs": "Po dnech",
+    "it": "Per giorno",
+    "uk": "За днями"
+  },
+  "По задачам": {
+    "en": "By task",
+    "zh-Hans": "按任务",
+    "es": "Por tarea",
+    "pt-BR": "Por tarefa",
+    "cs": "Po úkolech",
+    "it": "Per attività",
+    "uk": "За завданнями"
+  },
+  "По проектам": {
+    "en": "By project",
+    "zh-Hans": "按项目",
+    "es": "Por proyecto",
+    "pt-BR": "Por projeto",
+    "cs": "Po projektech",
+    "it": "Per progetto",
+    "uk": "За проєктами"
+  },
+  "Начало и конец": {
+    "en": "Start and end",
+    "zh-Hans": "开始和结束",
+    "es": "Inicio y fin",
+    "pt-BR": "Início e fim",
+    "cs": "Začátek a konec",
+    "it": "Inizio e fine",
+    "uk": "Початок і кінець"
+  },
+  "Проектов: %@": {
+    "en": "Projects: %@",
+    "zh-Hans": "项目:%@",
+    "es": "Proyectos: %@",
+    "pt-BR": "Projetos: %@",
+    "cs": "Projektů: %@",
+    "it": "Progetti: %@",
+    "uk": "Проєктів: %@"
+  },
+  "Клиент: %@": {
+    "en": "Client: %@",
+    "zh-Hans": "客户:%@",
+    "es": "Cliente: %@",
+    "pt-BR": "Cliente: %@",
+    "cs": "Klient: %@",
+    "it": "Cliente: %@",
+    "uk": "Клієнт: %@"
+  },
+  "Сохранить как шаблон": {
+    "en": "Save as template",
+    "zh-Hans": "存为模板",
+    "es": "Guardar como plantilla",
+    "pt-BR": "Salvar como modelo",
+    "cs": "Uložit jako šablonu",
+    "it": "Salva come modello",
+    "uk": "Зберегти як шаблон"
+  },
+  "Что выгружать": {
+    "en": "What to export",
+    "zh-Hans": "导出内容",
+    "es": "Qué exportar",
+    "pt-BR": "O que exportar",
+    "cs": "Co exportovat",
+    "it": "Cosa esportare",
+    "uk": "Що експортувати"
+  },
+  "Формат": {
+    "en": "Format",
+    "zh-Hans": "格式",
+    "es": "Formato",
+    "pt-BR": "Formato",
+    "cs": "Formát",
+    "it": "Formato",
+    "uk": "Формат"
+  },
+  "С": {
+    "en": "From",
+    "zh-Hans": "从",
+    "es": "Desde",
+    "pt-BR": "De",
+    "cs": "Od",
+    "it": "Dal",
+    "uk": "З"
+  },
+  "По": {
+    "en": "To",
+    "zh-Hans": "到",
+    "es": "Hasta",
+    "pt-BR": "Até",
+    "cs": "Do",
+    "it": "Al",
+    "uk": "По"
+  },
+  "Записи без проекта": {
+    "en": "Entries without a project",
+    "zh-Hans": "无项目的记录",
+    "es": "Entradas sin proyecto",
+    "pt-BR": "Registros sem projeto",
+    "cs": "Záznamy bez projektu",
+    "it": "Voci senza progetto",
+    "uk": "Записи без проєкту"
+  },
+  "Как выглядит": {
+    "en": "Appearance",
+    "zh-Hans": "外观",
+    "es": "Apariencia",
+    "pt-BR": "Aparência",
+    "cs": "Vzhled",
+    "it": "Aspetto",
+    "uk": "Як виглядає"
+  },
+  "Группировка": {
+    "en": "Grouping",
+    "zh-Hans": "分组",
+    "es": "Agrupación",
+    "pt-BR": "Agrupamento",
+    "cs": "Seskupení",
+    "it": "Raggruppamento",
+    "uk": "Групування"
+  },
+  "Округление времени": {
+    "en": "Time rounding",
+    "zh-Hans": "时间取整",
+    "es": "Redondeo de tiempo",
+    "pt-BR": "Arredondamento do tempo",
+    "cs": "Zaokrouhlení času",
+    "it": "Arrotondamento tempo",
+    "uk": "Округлення часу"
+  },
+  "Без округления": {
+    "en": "No rounding",
+    "zh-Hans": "不取整",
+    "es": "Sin redondeo",
+    "pt-BR": "Sem arredondamento",
+    "cs": "Bez zaokrouhlení",
+    "it": "Nessun arrotondamento",
+    "uk": "Без округлення"
+  },
+  "До %@": {
+    "en": "To %@",
+    "zh-Hans": "至 %@",
+    "es": "A %@",
+    "pt-BR": "Para %@",
+    "cs": "Na %@",
+    "it": "A %@",
+    "uk": "До %@"
+  },
+  "Формат времени": {
+    "en": "Time format",
+    "zh-Hans": "时间格式",
+    "es": "Formato de tiempo",
+    "pt-BR": "Formato de tempo",
+    "cs": "Formát času",
+    "it": "Formato ora",
+    "uk": "Формат часу"
+  },
+  "Колонки": {
+    "en": "Columns",
+    "zh-Hans": "列",
+    "es": "Columnas",
+    "pt-BR": "Colunas",
+    "cs": "Sloupce",
+    "it": "Colonne",
+    "uk": "Стовпці"
+  },
+  "Шапка PDF": {
+    "en": "PDF header",
+    "zh-Hans": "PDF 页眉",
+    "es": "Encabezado del PDF",
+    "pt-BR": "Cabeçalho do PDF",
+    "cs": "Záhlaví PDF",
+    "it": "Intestazione PDF",
+    "uk": "Шапка PDF"
+  },
+  "Ваше имя или компания": {
+    "en": "Your name or company",
+    "zh-Hans": "您的姓名或公司",
+    "es": "Tu nombre o empresa",
+    "pt-BR": "Seu nome ou empresa",
+    "cs": "Vaše jméno nebo firma",
+    "it": "Il tuo nome o azienda",
+    "uk": "Ваше ім’я або компанія"
+  },
+  "Не указано": {
+    "en": "Not set",
+    "zh-Hans": "未设置",
+    "es": "Sin indicar",
+    "pt-BR": "Não informado",
+    "cs": "Neuvedeno",
+    "it": "Non indicato",
+    "uk": "Не вказано"
+  },
+  "Клиент": {
+    "en": "Client",
+    "zh-Hans": "客户",
+    "es": "Cliente",
+    "pt-BR": "Cliente",
+    "cs": "Klient",
+    "it": "Cliente",
+    "uk": "Клієнт"
+  },
+  "Не указан": {
+    "en": "Not set",
+    "zh-Hans": "未设置",
+    "es": "Sin indicar",
+    "pt-BR": "Não informado",
+    "cs": "Neuveden",
+    "it": "Non indicato",
+    "uk": "Не вказано"
+  },
+  "Логотип": {
+    "en": "Logo",
+    "zh-Hans": "徽标",
+    "es": "Logotipo",
+    "pt-BR": "Logotipo",
+    "cs": "Logo",
+    "it": "Logo",
+    "uk": "Логотип"
+  },
+  "Убрать": {
+    "en": "Remove",
+    "zh-Hans": "移除",
+    "es": "Quitar",
+    "pt-BR": "Remover",
+    "cs": "Odebrat",
+    "it": "Rimuovi",
+    "uk": "Прибрати"
+  },
+  "Выбрать…": {
+    "en": "Choose…",
+    "zh-Hans": "选择…",
+    "es": "Elegir…",
+    "pt-BR": "Escolher…",
+    "cs": "Vybrat…",
+    "it": "Scegli…",
+    "uk": "Вибрати…"
+  },
+  "в архиве": {
+    "en": "archived",
+    "zh-Hans": "已归档",
+    "es": "archivado",
+    "pt-BR": "arquivado",
+    "cs": "v archivu",
+    "it": "archiviato",
+    "uk": "в архіві"
+  },
+  "За этот период записей нет": {
+    "en": "No entries for this period",
+    "zh-Hans": "此期间没有记录",
+    "es": "No hay entradas en este periodo",
+    "pt-BR": "Sem registros neste período",
+    "cs": "Za toto období nejsou žádné záznamy",
+    "it": "Nessuna voce in questo periodo",
+    "uk": "За цей період записів немає"
+  },
+  "Выберите другой период или проекты.": {
+    "en": "Choose a different period or projects.",
+    "zh-Hans": "请选择其他期间或项目。",
+    "es": "Elige otro periodo o proyectos.",
+    "pt-BR": "Escolha outro período ou projetos.",
+    "cs": "Vyberte jiné období nebo projekty.",
+    "it": "Scegli un altro periodo o altri progetti.",
+    "uk": "Виберіть інший період або проєкти."
+  },
+  "Сохранить как шаблон…": {
+    "en": "Save as template…",
+    "zh-Hans": "存为模板…",
+    "es": "Guardar como plantilla…",
+    "pt-BR": "Salvar como modelo…",
+    "cs": "Uložit jako šablonu…",
+    "it": "Salva come modello…",
+    "uk": "Зберегти як шаблон…"
+  },
+  "Удалить шаблон": {
+    "en": "Delete template",
+    "zh-Hans": "删除模板",
+    "es": "Eliminar plantilla",
+    "pt-BR": "Excluir modelo",
+    "cs": "Smazat šablonu",
+    "it": "Elimina modello",
+    "uk": "Видалити шаблон"
+  },
+  "Шаблоны": {
+    "en": "Templates",
+    "zh-Hans": "模板",
+    "es": "Plantillas",
+    "pt-BR": "Modelos",
+    "cs": "Šablony",
+    "it": "Modelli",
+    "uk": "Шаблони"
+  },
+  "Итого: %@": {
+    "en": "Total: %@",
+    "zh-Hans": "合计:%@",
+    "es": "Total: %@",
+    "pt-BR": "Total: %@",
+    "cs": "Celkem: %@",
+    "it": "Totale: %@",
+    "uk": "Разом: %@"
+  },
+  "Экспорт…": {
+    "en": "Export…",
+    "zh-Hans": "导出…",
+    "es": "Exportar…",
+    "pt-BR": "Exportar…",
+    "cs": "Exportovat…",
+    "it": "Esporta…",
+    "uk": "Експорт…"
+  },
+  "Не удалось сохранить файл": {
+    "en": "Could not save the file",
+    "zh-Hans": "无法保存文件",
+    "es": "No se pudo guardar el archivo",
+    "pt-BR": "Não foi possível salvar o arquivo",
+    "cs": "Soubor se nepodařilo uložit",
+    "it": "Impossibile salvare il file",
+    "uk": "Не вдалося зберегти файл"
+  },
+  "Экспорт в PDF: кнопка в отчёте и формат в окне экспорта": {
+    "en": "PDF export: a button in the report and a format in the export window",
+    "zh-Hans": "PDF 导出:报告中的按钮和导出窗口中的格式",
+    "es": "Exportar a PDF: un botón en el informe y un formato en la ventana de exportación",
+    "pt-BR": "Exportar para PDF: botão no relatório e formato na janela de exportação",
+    "cs": "Export do PDF: tlačítko v přehledu a formát v okně exportu",
+    "it": "Esportazione PDF: pulsante nel report e formato nella finestra di esportazione",
+    "uk": "Експорт у PDF: кнопка у звіті та формат у вікні експорту"
+  },
+  "Архив": {
+    "en": "Archive",
+    "zh-Hans": "归档",
+    "es": "Archivo",
+    "pt-BR": "Arquivo",
+    "cs": "Archiv",
+    "it": "Archivio",
+    "uk": "Архів"
+  },
+  "Вернуть из архива": {
+    "en": "Restore from archive",
+    "zh-Hans": "从归档恢复",
+    "es": "Restaurar del archivo",
+    "pt-BR": "Restaurar do arquivo",
+    "cs": "Obnovit z archivu",
+    "it": "Ripristina dall’archivio",
+    "uk": "Повернути з архіву"
+  },
+  "В архив": {
+    "en": "Archive",
+    "zh-Hans": "归档",
+    "es": "Archivar",
+    "pt-BR": "Arquivar",
+    "cs": "Archivovat",
+    "it": "Archivia",
+    "uk": "В архів"
+  },
+  "Основные": {
+    "en": "General",
+    "zh-Hans": "常规",
+    "es": "General",
+    "pt-BR": "Geral",
+    "cs": "Obecné",
+    "it": "Generali",
+    "uk": "Основні"
+  },
+  "Раздел": {
+    "en": "Section",
+    "zh-Hans": "分区",
+    "es": "Sección",
+    "pt-BR": "Seção",
+    "cs": "Sekce",
+    "it": "Sezione"
+  },
+  "Интеграции": {
+    "en": "Integrations",
+    "zh-Hans": "集成",
+    "es": "Integraciones",
+    "pt-BR": "Integrações",
+    "cs": "Integrace",
+    "it": "Integrazioni",
+    "uk": "Інтеграції"
+  },
+  "Ничего не найдено": {
+    "en": "Nothing found",
+    "zh-Hans": "未找到内容",
+    "es": "No se encontró nada",
+    "pt-BR": "Nada encontrado",
+    "cs": "Nic nenalezeno",
+    "it": "Nessun risultato",
+    "uk": "Нічого не знайдено"
+  },
+  "Поиск идёт по названию, комментарию и проекту.": {
+    "en": "Search looks in names, comments and projects.",
+    "zh-Hans": "搜索范围包括名称、评论和项目。",
+    "es": "La búsqueda abarca nombres, comentarios y proyectos.",
+    "pt-BR": "A busca abrange nomes, comentários e projetos.",
+    "cs": "Hledá se v názvech, komentářích a projektech.",
+    "it": "La ricerca include nomi, commenti e progetti.",
+    "uk": "Пошук іде за назвою, коментарем і проєктом."
+  },
+  "Настроить и сохранить файл": {
+    "en": "Configure and save a file",
+    "zh-Hans": "设置并保存文件",
+    "es": "Configurar y guardar un archivo",
+    "pt-BR": "Configurar e salvar um arquivo",
+    "cs": "Nastavit a uložit soubor",
+    "it": "Configura e salva un file",
+    "uk": "Налаштувати й зберегти файл"
+  },
+  "Поиск по записям": {
+    "en": "Search entries",
+    "zh-Hans": "搜索记录",
+    "es": "Buscar entradas",
+    "pt-BR": "Buscar registros",
+    "cs": "Hledat záznamy",
+    "it": "Cerca voci",
+    "uk": "Пошук у записах"
+  },
+  "Очистить": {
+    "en": "Clear",
+    "zh-Hans": "清除",
+    "es": "Borrar",
+    "pt-BR": "Limpar",
+    "cs": "Vymazat",
+    "it": "Cancella",
+    "uk": "Очистити"
+  },
+  "Найдено: %@, всего %@": {
+    "en": "Found: %@, total %@",
+    "zh-Hans": "找到:%@,共 %@",
+    "es": "Encontradas: %@, total %@",
+    "pt-BR": "Encontrados: %@, total %@",
+    "cs": "Nalezeno: %@, celkem %@",
+    "it": "Trovate: %@, totale %@",
+    "uk": "Знайдено: %@, усього %@"
+  },
+  "Открепить": {
+    "en": "Unpin",
+    "zh-Hans": "取消固定",
+    "es": "Desfijar",
+    "pt-BR": "Desafixar",
+    "cs": "Odepnout",
+    "it": "Sblocca",
+    "uk": "Відкріпити"
+  },
+  "Закрепить": {
+    "en": "Pin",
+    "zh-Hans": "固定",
+    "es": "Fijar",
+    "pt-BR": "Fixar",
+    "cs": "Připnout",
+    "it": "Fissa",
+    "uk": "Закріпити"
+  },
+  "Разделить…": {
+    "en": "Split…",
+    "zh-Hans": "拆分…",
+    "es": "Dividir…",
+    "pt-BR": "Dividir…",
+    "cs": "Rozdělit…",
+    "it": "Dividi…",
+    "uk": "Розділити…"
+  },
+  "Склеить с «%@»": {
+    "en": "Merge with “%@”",
+    "zh-Hans": "与“%@”合并",
+    "es": "Unir con «%@»",
+    "pt-BR": "Unir com “%@”",
+    "cs": "Sloučit s „%@“",
+    "it": "Unisci con «%@»",
+    "uk": "Об’єднати з «%@»"
+  },
+  "Закреплено": {
+    "en": "Pinned",
+    "zh-Hans": "已固定",
+    "es": "Fijada",
+    "pt-BR": "Fixado",
+    "cs": "Připnuto",
+    "it": "Fissata",
+    "uk": "Закріплено"
+  },
+  "Запись удалена": {
+    "en": "Entry deleted",
+    "zh-Hans": "记录已删除",
+    "es": "Entrada eliminada",
+    "pt-BR": "Registro excluído",
+    "cs": "Záznam smazán",
+    "it": "Voce eliminata",
+    "uk": "Запис видалено"
+  },
+  "Задача удалена": {
+    "en": "Task deleted",
+    "zh-Hans": "任务已删除",
+    "es": "Tarea eliminada",
+    "pt-BR": "Tarefa excluída",
+    "cs": "Úkol smazán",
+    "it": "Attività eliminata",
+    "uk": "Завдання видалено"
+  },
+  "Заметка удалена": {
+    "en": "Note deleted",
+    "zh-Hans": "笔记已删除",
+    "es": "Nota eliminada",
+    "pt-BR": "Nota excluída",
+    "cs": "Poznámka smazána",
+    "it": "Nota eliminata",
+    "uk": "Нотатку видалено"
+  },
+  "Проект удалён": {
+    "en": "Project deleted",
+    "zh-Hans": "项目已删除",
+    "es": "Proyecto eliminado",
+    "pt-BR": "Projeto excluído",
+    "cs": "Projekt smazán",
+    "it": "Progetto eliminato",
+    "uk": "Проєкт видалено"
+  },
+  "Запись разделена": {
+    "en": "Entry split",
+    "zh-Hans": "记录已拆分",
+    "es": "Entrada dividida",
+    "pt-BR": "Registro dividido",
+    "cs": "Záznam rozdělen",
+    "it": "Voce divisa",
+    "uk": "Запис розділено"
+  },
+  "Записи склеены": {
+    "en": "Entries merged",
+    "zh-Hans": "记录已合并",
+    "es": "Entradas unidas",
+    "pt-BR": "Registros unidos",
+    "cs": "Záznamy sloučeny",
+    "it": "Voci unite",
+    "uk": "Записи об’єднано"
+  },
+  "Выбрано: %@, всего %@": {
+    "en": "Selected: %@, total %@",
+    "zh-Hans": "已选择:%@,共 %@",
+    "es": "Seleccionadas: %@, total %@",
+    "pt-BR": "Selecionados: %@, total %@",
+    "cs": "Vybráno: %@, celkem %@",
+    "it": "Selezionate: %@, totale %@",
+    "uk": "Вибрано: %@, усього %@"
+  },
+  "Склеить": {
+    "en": "Merge",
+    "zh-Hans": "合并",
+    "es": "Unir",
+    "pt-BR": "Unir",
+    "cs": "Sloučit",
+    "it": "Unisci",
+    "uk": "Об’єднати"
+  },
+  "Склеить можно завершённые записи подряд за один день": {
+    "en": "You can merge finished, consecutive entries from one day",
+    "zh-Hans": "只能合并同一天内连续且已结束的记录",
+    "es": "Solo se pueden unir entradas terminadas y seguidas del mismo día",
+    "pt-BR": "Só é possível unir registros concluídos e seguidos do mesmo dia",
+    "cs": "Sloučit lze dokončené záznamy jdoucí po sobě v jednom dni",
+    "it": "Puoi unire solo voci concluse e consecutive dello stesso giorno",
+    "uk": "Об’єднати можна завершені записи поспіль за один день"
+  },
+  "Удалить выбранные: %@": {
+    "en": "Delete selected: %@",
+    "zh-Hans": "删除所选:%@",
+    "es": "Eliminar seleccionadas: %@",
+    "pt-BR": "Excluir selecionados: %@",
+    "cs": "Smazat vybrané: %@",
+    "it": "Elimina selezionate: %@",
+    "uk": "Видалити вибрані: %@"
+  },
+  "Записи удалены": {
+    "en": "Entries deleted",
+    "zh-Hans": "记录已删除",
+    "es": "Entradas eliminadas",
+    "pt-BR": "Registros excluídos",
+    "cs": "Záznamy smazány",
+    "it": "Voci eliminate",
+    "uk": "Записи видалено"
+  },
+  "Другой цвет": {
+    "en": "Another color",
+    "uk": "Інший колір",
+    "zh-Hans": "其他颜色",
+    "es": "Otro color",
+    "pt-BR": "Outra cor",
+    "cs": "Jiná barva",
+    "it": "Altro colore"
+  },
+  "Выбрать даты": {
+    "en": "Choose dates",
+    "uk": "Вибрати дати",
+    "zh-Hans": "选择日期",
+    "es": "Elegir fechas",
+    "pt-BR": "Escolher datas",
+    "cs": "Vybrat data",
+    "it": "Scegli date"
+  },
+  "Другое время": {
+    "en": "Other time",
+    "uk": "Інший час",
+    "zh-Hans": "其他时间",
+    "es": "Otra duración",
+    "pt-BR": "Outro tempo",
+    "cs": "Jiný čas",
+    "it": "Altra durata"
+  },
+  "Без времени": {
+    "en": "No time",
+    "uk": "Без часу",
+    "zh-Hans": "无时间",
+    "es": "Sin hora",
+    "pt-BR": "Sem horário",
+    "cs": "Bez času",
+    "it": "Senza orario"
+  },
+  "Время задачи": {
+    "en": "Task time",
+    "uk": "Час завдання",
+    "zh-Hans": "任务时间",
+    "es": "Hora de la tarea",
+    "pt-BR": "Hora da tarefa",
+    "cs": "Čas úkolu",
+    "it": "Ora dell’attività"
+  },
+  "+15 мин": {
+    "en": "+15 min",
+    "uk": "+15 хв",
+    "zh-Hans": "+15 分钟",
+    "es": "+15 min",
+    "pt-BR": "+15 min",
+    "cs": "+15 min",
+    "it": "+15 min"
+  },
+  "Задача выполнена": {
+    "en": "Task completed",
+    "uk": "Завдання виконано",
+    "zh-Hans": "任务已完成",
+    "es": "Tarea completada",
+    "pt-BR": "Tarefa concluída",
+    "cs": "Úkol dokončen",
+    "it": "Attività completata"
+  },
+  "Дизайн": {
+    "en": "Design",
+    "uk": "Дизайн",
+    "zh-Hans": "设计",
+    "es": "Diseño",
+    "pt-BR": "Design",
+    "cs": "Design",
+    "it": "Design"
+  },
+  "Клиент А": {
+    "en": "Client A",
+    "uk": "Клієнт А",
+    "zh-Hans": "客户 A",
+    "es": "Cliente A",
+    "pt-BR": "Cliente A",
+    "cs": "Klient A",
+    "it": "Cliente A"
+  },
+  "Созвон по ТЗ": {
+    "en": "Brief call",
+    "uk": "Дзвінок щодо ТЗ",
+    "zh-Hans": "需求沟通",
+    "es": "Llamada de briefing",
+    "pt-BR": "Ligação de briefing",
+    "cs": "Hovor o zadání",
+    "it": "Call di briefing"
+  },
+  "Вёрстка карточек": {
+    "en": "Card layout",
+    "uk": "Верстка карток",
+    "zh-Hans": "卡片排版",
+    "es": "Maquetar tarjetas",
+    "pt-BR": "Layout dos cards",
+    "cs": "Sazba karet",
+    "it": "Layout delle schede"
+  },
+  "Правки главной страницы": {
+    "en": "Homepage fixes",
+    "uk": "Правки головної сторінки",
+    "zh-Hans": "首页修改",
+    "es": "Cambios en la portada",
+    "pt-BR": "Ajustes na página inicial",
+    "cs": "Úpravy úvodní stránky",
+    "it": "Modifiche alla home"
+  },
+  "Ответить по смете": {
+    "en": "Reply about the estimate",
+    "uk": "Відповісти щодо кошторису",
+    "zh-Hans": "回复报价",
+    "es": "Responder al presupuesto",
+    "pt-BR": "Responder sobre o orçamento",
+    "cs": "Odpovědět na nabídku",
+    "it": "Rispondere sul preventivo"
+  },
+  "Обновить резюме": {
+    "en": "Update résumé",
+    "uk": "Оновити резюме",
+    "zh-Hans": "更新简历",
+    "es": "Actualizar el CV",
+    "pt-BR": "Atualizar o currículo",
+    "cs": "Aktualizovat životopis",
+    "it": "Aggiornare il CV"
+  },
+  "Фото для галереи": {
+    "en": "Gallery photos",
+    "uk": "Фото для галереї",
+    "zh-Hans": "图库照片",
+    "es": "Fotos de la galería",
+    "pt-BR": "Fotos da galeria",
+    "cs": "Fotky do galerie",
+    "it": "Foto per la galleria"
+  },
+  "Выполненные задачи удалены": {
+    "en": "Completed tasks deleted",
+    "uk": "Виконані завдання видалено",
+    "zh-Hans": "已删除已完成的任务",
+    "es": "Tareas completadas eliminadas",
+    "pt-BR": "Tarefas concluídas excluídas",
+    "cs": "Dokončené úkoly smazány",
+    "it": "Attività completate eliminate"
+  },
+  "Удалить все выполненные задачи": {
+    "en": "Delete all completed tasks",
+    "uk": "Видалити всі виконані завдання",
+    "zh-Hans": "删除所有已完成的任务",
+    "es": "Eliminar todas las tareas completadas",
+    "pt-BR": "Excluir todas as tarefas concluídas",
+    "cs": "Smazat všechny dokončené úkoly",
+    "it": "Elimina tutte le attività completate"
+  },
+  "В архиве пусто": {
+    "en": "Archive is empty",
+    "uk": "В архіві порожньо",
+    "zh-Hans": "归档为空",
+    "es": "El archivo está vacío",
+    "pt-BR": "O arquivo está vazio",
+    "cs": "Archiv je prázdný",
+    "it": "L’archivio è vuoto"
+  },
+  "Сюда попадает всё удалённое. Удалить окончательно можно только отсюда.": {
+    "en": "Everything you delete lands here. Only here can it be deleted for good.",
+    "uk": "Сюди потрапляє все видалене. Остаточно видалити можна лише звідси.",
+    "zh-Hans": "所有删除的内容都会到这里。只有在这里才能永久删除。",
+    "es": "Aquí llega todo lo eliminado. Solo desde aquí se puede borrar definitivamente.",
+    "pt-BR": "Tudo o que é excluído vem para cá. Só daqui é possível excluir definitivamente.",
+    "cs": "Sem se dostane vše smazané. Natrvalo smazat lze jen odtud.",
+    "it": "Qui finisce tutto ciò che elimini. Solo da qui puoi eliminarlo definitivamente."
+  },
+  "Записи": {
+    "en": "Entries",
+    "uk": "Записи",
+    "zh-Hans": "记录",
+    "es": "Entradas",
+    "pt-BR": "Registros",
+    "cs": "Záznamy",
+    "it": "Voci"
+  },
+  "Вернуть": {
+    "en": "Restore",
+    "uk": "Повернути",
+    "zh-Hans": "恢复",
+    "es": "Restaurar",
+    "pt-BR": "Restaurar",
+    "cs": "Obnovit",
+    "it": "Ripristina"
+  },
+  "Удалить навсегда": {
+    "en": "Delete forever",
+    "uk": "Видалити назавжди",
+    "zh-Hans": "永久删除",
+    "es": "Eliminar para siempre",
+    "pt-BR": "Excluir para sempre",
+    "cs": "Smazat natrvalo",
+    "it": "Elimina per sempre"
+  },
+  "Удалить навсегда?": {
+    "en": "Delete forever?",
+    "uk": "Видалити назавжди?",
+    "zh-Hans": "要永久删除吗?",
+    "es": "¿Eliminar para siempre?",
+    "pt-BR": "Excluir para sempre?",
+    "cs": "Smazat natrvalo?",
+    "it": "Eliminare per sempre?"
+  },
+  "Это нельзя отменить.": {
+    "en": "This can’t be undone.",
+    "uk": "Це неможливо скасувати.",
+    "zh-Hans": "此操作无法撤销。",
+    "es": "No se puede deshacer.",
+    "pt-BR": "Não é possível desfazer.",
+    "cs": "Tuto akci nelze vrátit.",
+    "it": "L’azione non può essere annullata."
+  },
+  "Очистить архив": {
+    "en": "Empty archive",
+    "uk": "Очистити архів",
+    "zh-Hans": "清空归档",
+    "es": "Vaciar archivo",
+    "pt-BR": "Esvaziar arquivo",
+    "cs": "Vyprázdnit archiv",
+    "it": "Svuota archivio"
+  },
+  "Очистить архив?": {
+    "en": "Empty archive?",
+    "uk": "Очистити архів?",
+    "zh-Hans": "要清空归档吗?",
+    "es": "¿Vaciar el archivo?",
+    "pt-BR": "Esvaziar o arquivo?",
+    "cs": "Vyprázdnit archiv?",
+    "it": "Svuotare l’archivio?"
+  },
+  "Всё удалённое исчезнет. Это нельзя отменить.": {
+    "en": "Everything deleted will be gone. This can’t be undone.",
+    "uk": "Усе видалене зникне. Це неможливо скасувати.",
+    "zh-Hans": "所有已删除的内容都将消失。此操作无法撤销。",
+    "es": "Todo lo eliminado desaparecerá. No se puede deshacer.",
+    "pt-BR": "Tudo o que foi excluído desaparecerá. Não é possível desfazer.",
+    "cs": "Vše smazané zmizí. Tuto akci nelze vrátit.",
+    "it": "Tutto ciò che è stato eliminato sparirà. L’azione non può essere annullata."
+  },
+  "Проект попадёт в архив. Записи останутся в журнале, но без проекта.": {
+    "en": "The project moves to the archive. Entries stay in the journal without a project.",
+    "uk": "Проєкт потрапить в архів. Записи залишаться в журналі, але без проєкту.",
+    "zh-Hans": "项目将移至归档。记录会保留在日志中,但不再属于该项目。",
+    "es": "El proyecto irá al archivo. Las entradas seguirán en el diario, sin proyecto.",
+    "pt-BR": "O projeto irá para o arquivo. Os registros continuam no diário, sem projeto.",
+    "cs": "Projekt se přesune do archivu. Záznamy zůstanou v deníku, ale bez projektu.",
+    "it": "Il progetto finirà nell’archivio. Le voci restano nel diario, senza progetto."
+  },
+  "Всего": {
+    "en": "Total",
+    "uk": "Усього",
+    "zh-Hans": "总计",
+    "es": "Total",
+    "pt-BR": "Total",
+    "cs": "Celkem",
+    "it": "Totale"
+  },
+  "Записей": {
+    "en": "Entries",
+    "uk": "Записів",
+    "zh-Hans": "条记录",
+    "es": "Entradas",
+    "pt-BR": "Registros",
+    "cs": "Záznamů",
+    "it": "Voci"
+  },
+  "В среднем за день": {
+    "en": "Daily average",
+    "uk": "У середньому за день",
+    "zh-Hans": "日均",
+    "es": "Promedio diario",
+    "pt-BR": "Média diária",
+    "cs": "Denní průměr",
+    "it": "Media giornaliera"
+  },
+  "Дней с записями: %@": {
+    "en": "Days with entries: %@",
+    "uk": "Днів із записами: %@",
+    "zh-Hans": "有记录的天数:%@",
+    "es": "Días con entradas: %@",
+    "pt-BR": "Dias com registros: %@",
+    "cs": "Dnů se záznamy: %@",
+    "it": "Giorni con voci: %@"
+  },
+  "Ещё: %@": {
+    "en": "More: %@",
+    "uk": "Ще: %@",
+    "zh-Hans": "其他:%@",
+    "es": "Más: %@",
+    "pt-BR": "Mais: %@",
+    "cs": "Další: %@",
+    "it": "Altri: %@"
+  },
+  "Доля": {
+    "en": "Share",
+    "uk": "Частка",
+    "zh-Hans": "占比",
+    "es": "Parte",
+    "pt-BR": "Parte",
+    "cs": "Podíl",
+    "it": "Quota"
+  },
+  "Список": {
+    "en": "List",
+    "uk": "Список",
+    "zh-Hans": "列表",
+    "es": "Lista",
+    "pt-BR": "Lista",
+    "cs": "Seznam",
+    "it": "Elenco"
+  },
+  "Календарь": {
+    "en": "Calendar",
+    "uk": "Календар",
+    "zh-Hans": "日历",
+    "es": "Calendario",
+    "pt-BR": "Calendário",
+    "cs": "Kalendář",
+    "it": "Calendario"
+  },
+  "сейчас": {
+    "en": "now",
+    "uk": "зараз",
+    "zh-Hans": "现在",
+    "es": "ahora",
+    "pt-BR": "agora",
+    "cs": "teď",
+    "it": "adesso"
+  },
+  "Предыдущий день": {
+    "en": "Previous day",
+    "uk": "Попередній день",
+    "zh-Hans": "前一天",
+    "es": "Día anterior",
+    "pt-BR": "Dia anterior",
+    "cs": "Předchozí den",
+    "it": "Giorno precedente"
+  },
+  "Следующий день": {
+    "en": "Next day",
+    "uk": "Наступний день",
+    "zh-Hans": "后一天",
+    "es": "Día siguiente",
+    "pt-BR": "Próximo dia",
+    "cs": "Další den",
+    "it": "Giorno successivo"
+  },
+  "Крупнее": {
+    "en": "Zoom in",
+    "uk": "Більше",
+    "zh-Hans": "放大",
+    "es": "Ampliar",
+    "pt-BR": "Ampliar",
+    "cs": "Přiblížit",
+    "it": "Ingrandisci"
+  },
+  "Мельче": {
+    "en": "Zoom out",
+    "uk": "Менше",
+    "zh-Hans": "缩小",
+    "es": "Reducir",
+    "pt-BR": "Reduzir",
+    "cs": "Oddálit",
+    "it": "Riduci"
+  },
+  "Протяните по сетке, чтобы добавить запись": {
+    "en": "Drag across the grid to add an entry",
+    "uk": "Протягніть по сітці, щоб додати запис",
+    "zh-Hans": "在网格上拖动以添加记录",
+    "es": "Arrastra por la cuadrícula para añadir una entrada",
+    "pt-BR": "Arraste na grade para adicionar um registro",
+    "cs": "Tažením po mřížce přidáte záznam",
+    "it": "Trascina sulla griglia per aggiungere una voce"
+  },
+  "Время записи изменено": {
+    "en": "Entry time changed",
+    "uk": "Час запису змінено",
+    "zh-Hans": "记录时间已更改",
+    "es": "Hora de la entrada cambiada",
+    "pt-BR": "Horário do registro alterado",
+    "cs": "Čas záznamu změněn",
+    "it": "Orario della voce modificato"
+  },
+  "Расходы": {
+    "en": "Expenses",
+    "uk": "Витрати",
+    "zh-Hans": "支出",
+    "es": "Gastos",
+    "pt-BR": "Despesas",
+    "cs": "Výdaje",
+    "it": "Spese"
+  },
+  "Расход": {
+    "en": "Expense",
+    "uk": "Витрата",
+    "zh-Hans": "支出",
+    "es": "Gasto",
+    "pt-BR": "Despesa",
+    "cs": "Výdaj",
+    "it": "Spesa"
+  },
+  "Расход: %@": {
+    "en": "Expense: %@",
+    "uk": "Витрата: %@",
+    "zh-Hans": "支出:%@",
+    "es": "Gasto: %@",
+    "pt-BR": "Despesa: %@",
+    "cs": "Výdaj: %@",
+    "it": "Spesa: %@"
+  },
+  "Отчёт по расписанию": {
+    "en": "Scheduled report",
+    "uk": "Звіт за розкладом",
+    "zh-Hans": "定时报告",
+    "es": "Informe programado",
+    "pt-BR": "Relatório programado",
+    "cs": "Plánovaný přehled",
+    "it": "Report programmato"
+  },
+  "Закрытие месяцев": {
+    "en": "Closing months",
+    "uk": "Закриття місяців",
+    "zh-Hans": "月份结账",
+    "es": "Cierre de meses",
+    "pt-BR": "Fechamento de meses",
+    "cs": "Uzávěrka měsíců",
+    "it": "Chiusura dei mesi"
+  },
+  "Сам сохраняет отчёт за прошедший период в папку": {
+    "en": "Saves a report for the past period to a folder",
+    "uk": "Сам зберігає звіт за минулий період у теку",
+    "zh-Hans": "自动将上一周期的报告保存到文件夹",
+    "es": "Guarda un informe del periodo pasado en una carpeta",
+    "pt-BR": "Salva um relatório do período anterior em uma pasta",
+    "cs": "Sám uloží přehled za uplynulé období do složky",
+    "it": "Salva in una cartella il report del periodo passato"
+  },
+  "Оплаченный месяц нельзя случайно изменить. Закрывается в отчёте": {
+    "en": "A paid month can’t be changed by accident. Close it in the report",
+    "uk": "Оплачений місяць не змінити випадково. Закривається у звіті",
+    "zh-Hans": "已付款的月份不会被误改。在报告中结账",
+    "es": "Un mes pagado no se puede cambiar por error. Se cierra en el informe",
+    "pt-BR": "Um mês pago não pode ser alterado por engano. Feche no relatório",
+    "cs": "Zaplacený měsíc nejde omylem změnit. Uzavírá se v přehledu",
+    "it": "Un mese pagato non si può modificare per sbaglio. Si chiude nel report"
+  },
+  "Расходы в проектах": {
+    "en": "Project expenses",
+    "uk": "Витрати в проєктах",
+    "zh-Hans": "项目支出",
+    "es": "Gastos en proyectos",
+    "pt-BR": "Despesas nos projetos",
+    "cs": "Výdaje v projektech",
+    "it": "Spese nei progetti"
+  },
+  "Открыть…": {
+    "en": "Open…",
+    "uk": "Відкрити…",
+    "zh-Hans": "打开…",
+    "es": "Abrir…",
+    "pt-BR": "Abrir…",
+    "cs": "Otevřít…",
+    "it": "Apri…"
+  },
+  "Новая запись": {
+    "en": "New Entry",
+    "uk": "Новий запис",
+    "zh-Hans": "新记录",
+    "es": "Nueva entrada",
+    "pt-BR": "Novo registro",
+    "cs": "Nový záznam",
+    "it": "Nuova voce"
+  },
+  "Запись": {
+    "en": "Entry",
+    "uk": "Запис",
+    "zh-Hans": "记录",
+    "es": "Entrada",
+    "pt-BR": "Registro",
+    "cs": "Záznam",
+    "it": "Voce"
+  },
+  "Месяц закрыт. Открыть его можно в отчёте.": {
+    "en": "This month is closed. You can reopen it in the report.",
+    "uk": "Місяць закрито. Відкрити його можна у звіті.",
+    "zh-Hans": "此月已结账。可在报告中重新打开。",
+    "es": "Este mes está cerrado. Puedes reabrirlo en el informe.",
+    "pt-BR": "Este mês está fechado. Você pode reabri-lo no relatório.",
+    "cs": "Měsíc je uzavřený. Otevřít ho můžete v přehledu.",
+    "it": "Questo mese è chiuso. Puoi riaprirlo nel report."
+  },
+  "Конец на следующий день": {
+    "en": "Ends the next day",
+    "uk": "Кінець наступного дня",
+    "zh-Hans": "次日结束",
+    "es": "Termina al día siguiente",
+    "pt-BR": "Termina no dia seguinte",
+    "cs": "Končí další den",
+    "it": "Termina il giorno dopo"
+  },
+  "Оплата": {
+    "en": "Payment",
+    "uk": "Оплата",
+    "zh-Hans": "付款",
+    "es": "Pago",
+    "pt-BR": "Pagamento",
+    "cs": "Platba",
+    "it": "Pagamento"
+  },
+  "В час": {
+    "en": "Hourly",
+    "uk": "За годину",
+    "zh-Hans": "按小时",
+    "es": "Por hora",
+    "pt-BR": "Por hora",
+    "cs": "Za hodinu",
+    "it": "All’ora"
+  },
+  "За проект": {
+    "en": "Fixed",
+    "uk": "За проєкт",
+    "zh-Hans": "按项目",
+    "es": "Por proyecto",
+    "pt-BR": "Por projeto",
+    "cs": "Za projekt",
+    "it": "A progetto"
+  },
+  "Цена проекта": {
+    "en": "Project price",
+    "uk": "Ціна проєкту",
+    "zh-Hans": "项目价格",
+    "es": "Precio del proyecto",
+    "pt-BR": "Preço do projeto",
+    "cs": "Cena projektu",
+    "it": "Prezzo del progetto"
+  },
+  "Расход удалён": {
+    "en": "Expense deleted",
+    "uk": "Витрату видалено",
+    "zh-Hans": "支出已删除",
+    "es": "Gasto eliminado",
+    "pt-BR": "Despesa excluída",
+    "cs": "Výdaj smazán",
+    "it": "Spesa eliminata"
+  },
+  "Выходит в час": {
+    "en": "Per hour, actual",
+    "uk": "Виходить за годину",
+    "zh-Hans": "实际时薪",
+    "es": "Sale por hora",
+    "pt-BR": "Sai por hora",
+    "cs": "Vychází na hodinu",
+    "it": "Risulta all’ora"
+  },
+  "Расходы: %@": {
+    "en": "Expenses: %@",
+    "uk": "Витрати: %@",
+    "zh-Hans": "支出:%@",
+    "es": "Gastos: %@",
+    "pt-BR": "Despesas: %@",
+    "cs": "Výdaje: %@",
+    "it": "Spese: %@"
+  },
+  "Такси, подписка, подрядчик": {
+    "en": "Taxi, subscription, contractor",
+    "uk": "Таксі, підписка, підрядник",
+    "zh-Hans": "出租车、订阅、外包",
+    "es": "Taxi, suscripción, proveedor",
+    "pt-BR": "Táxi, assinatura, prestador",
+    "cs": "Taxi, předplatné, dodavatel",
+    "it": "Taxi, abbonamento, fornitore"
+  },
+  "Каждую неделю": {
+    "en": "Every week",
+    "uk": "Щотижня",
+    "zh-Hans": "每周",
+    "es": "Cada semana",
+    "pt-BR": "Toda semana",
+    "cs": "Každý týden",
+    "it": "Ogni settimana"
+  },
+  "Каждый месяц": {
+    "en": "Every month",
+    "uk": "Щомісяця",
+    "zh-Hans": "每月",
+    "es": "Cada mes",
+    "pt-BR": "Todo mês",
+    "cs": "Každý měsíc",
+    "it": "Ogni mese"
+  },
+  "Как часто": {
+    "en": "How often",
+    "uk": "Як часто",
+    "zh-Hans": "频率",
+    "es": "Frecuencia",
+    "pt-BR": "Frequência",
+    "cs": "Jak často",
+    "it": "Frequenza"
+  },
+  "Папка": {
+    "en": "Folder",
+    "uk": "Тека",
+    "zh-Hans": "文件夹",
+    "es": "Carpeta",
+    "pt-BR": "Pasta",
+    "cs": "Složka",
+    "it": "Cartella"
+  },
+  "Последний: %@": {
+    "en": "Latest: %@",
+    "uk": "Останній: %@",
+    "zh-Hans": "最新:%@",
+    "es": "Último: %@",
+    "pt-BR": "Último: %@",
+    "cs": "Poslední: %@",
+    "it": "Ultimo: %@"
+  },
+  "Пока папка не выбрана, отчёты не сохраняются.": {
+    "en": "Reports aren’t saved until you choose a folder.",
+    "uk": "Поки теку не вибрано, звіти не зберігаються.",
+    "zh-Hans": "选择文件夹后才会保存报告。",
+    "es": "Los informes no se guardan hasta elegir una carpeta.",
+    "pt-BR": "Os relatórios só são salvos depois de escolher uma pasta.",
+    "cs": "Dokud nevyberete složku, přehledy se neukládají.",
+    "it": "I report non vengono salvati finché non scegli una cartella."
+  },
+  "Открыть месяц": {
+    "en": "Reopen Month",
+    "uk": "Відкрити місяць",
+    "zh-Hans": "重新打开此月",
+    "es": "Reabrir mes",
+    "pt-BR": "Reabrir mês",
+    "cs": "Otevřít měsíc",
+    "it": "Riapri mese"
+  },
+  "Закрыть месяц": {
+    "en": "Close Month",
+    "uk": "Закрити місяць",
+    "zh-Hans": "结账此月",
+    "es": "Cerrar mes",
+    "pt-BR": "Fechar mês",
+    "cs": "Uzavřít měsíc",
+    "it": "Chiudi mese"
+  },
+  "Записи этого и следующих месяцев снова можно менять": {
+    "en": "Entries in this and later months can be changed again",
+    "uk": "Записи цього й наступних місяців знову можна змінювати",
+    "zh-Hans": "此月及之后月份的记录可再次修改",
+    "es": "Las entradas de este mes y los siguientes se podrán volver a cambiar",
+    "pt-BR": "Os registros deste mês e dos seguintes poderão ser alterados novamente",
+    "cs": "Záznamy tohoto a dalších měsíců půjde znovu měnit",
+    "it": "Le voci di questo mese e dei successivi saranno di nuovo modificabili"
+  },
+  "Записи этого и прошлых месяцев нельзя будет менять": {
+    "en": "Entries in this and earlier months won’t be editable",
+    "uk": "Записи цього й попередніх місяців не можна буде змінювати",
+    "zh-Hans": "此月及之前月份的记录将无法修改",
+    "es": "Las entradas de este mes y los anteriores no se podrán cambiar",
+    "pt-BR": "Os registros deste mês e dos anteriores não poderão ser alterados",
+    "cs": "Záznamy tohoto a předchozích měsíců nepůjde měnit",
+    "it": "Le voci di questo mese e dei precedenti non saranno modificabili"
+  },
+  "Месяц закрыт": {
+    "en": "Month closed",
+    "uk": "Місяць закрито",
+    "zh-Hans": "此月已结账",
+    "es": "Mes cerrado",
+    "pt-BR": "Mês fechado",
+    "cs": "Měsíc uzavřen",
+    "it": "Mese chiuso"
+  },
+  "фикс": {
+    "en": "fixed",
+    "uk": "фікс",
+    "zh-Hans": "固定",
+    "es": "fijo",
+    "pt-BR": "fixo",
+    "cs": "fix",
+    "it": "fisso"
+  },
+  "Канбан": {
+    "en": "Kanban",
+    "uk": "Канбан",
+    "zh-Hans": "看板",
+    "es": "Kanban",
+    "pt-BR": "Kanban",
+    "cs": "Kanban",
+    "it": "Kanban"
+  },
+  "По приоритету": {
+    "en": "By Priority",
+    "uk": "За пріоритетом",
+    "zh-Hans": "按优先级",
+    "es": "Por prioridad",
+    "pt-BR": "Por prioridade",
+    "cs": "Podle priority",
+    "it": "Per priorità"
+  },
+  "По срокам": {
+    "en": "By Due Date",
+    "uk": "За термінами",
+    "zh-Hans": "按截止日期",
+    "es": "Por fecha",
+    "pt-BR": "Por prazo",
+    "cs": "Podle termínu",
+    "it": "Per scadenza"
+  },
+  "Сделать": {
+    "en": "To Do",
+    "uk": "Зробити",
+    "zh-Hans": "待办",
+    "es": "Por hacer",
+    "pt-BR": "A fazer",
+    "cs": "Udělat",
+    "it": "Da fare"
+  },
+  "В работе": {
+    "en": "In Progress",
+    "uk": "У роботі",
+    "zh-Hans": "进行中",
+    "es": "En curso",
+    "pt-BR": "Em andamento",
+    "cs": "Rozpracováno",
+    "it": "In corso"
+  },
+  "Просрочено": {
+    "en": "Overdue",
+    "uk": "Прострочено",
+    "zh-Hans": "已逾期",
+    "es": "Vencido",
+    "pt-BR": "Atrasado",
+    "cs": "Po termínu",
+    "it": "In ritardo"
+  },
+  "Позже": {
+    "en": "Later",
+    "uk": "Пізніше",
+    "zh-Hans": "以后",
+    "es": "Más tarde",
+    "pt-BR": "Depois",
+    "cs": "Později",
+    "it": "Più tardi"
+  },
+  "Вид задач": {
+    "en": "Task view",
+    "uk": "Вигляд завдань",
+    "zh-Hans": "任务视图",
+    "es": "Vista de tareas",
+    "pt-BR": "Visualização de tarefas",
+    "cs": "Zobrazení úkolů",
+    "it": "Vista attività"
+  },
+  "Год": {
+    "en": "Year",
+    "uk": "Рік",
+    "zh-Hans": "年",
+    "es": "Año",
+    "pt-BR": "Ano",
+    "cs": "Rok",
+    "it": "Anno"
+  },
+  "Год в отчёте": {
+    "en": "Year in report",
+    "uk": "Рік у звіті",
+    "zh-Hans": "报告中的年度",
+    "es": "Año en el informe",
+    "pt-BR": "Ano no relatório",
+    "cs": "Rok v přehledu",
+    "it": "Anno nel report"
+  },
+  "Карта года, часы работы и итоги, которые можно сохранить картинкой": {
+    "en": "Year map, working hours and a recap you can save as an image",
+    "uk": "Карта року, години роботи й підсумки, які можна зберегти картинкою",
+    "zh-Hans": "年度地图、工作时段和可存为图片的年度总结",
+    "es": "Mapa del año, horas de trabajo y un resumen para guardar como imagen",
+    "pt-BR": "Mapa do ano, horas de trabalho e um resumo para salvar como imagem",
+    "cs": "Mapa roku, pracovní hodiny a shrnutí, které lze uložit jako obrázek",
+    "it": "Mappa dell’anno, ore di lavoro e un riepilogo da salvare come immagine"
+  },
+  "Итоги года": {
+    "en": "Year in Review",
+    "uk": "Підсумки року",
+    "zh-Hans": "年度总结",
+    "es": "Resumen del año",
+    "pt-BR": "Resumo do ano",
+    "cs": "Shrnutí roku",
+    "it": "Riepilogo dell’anno"
+  },
+  "Карта года": {
+    "en": "Year Map",
+    "uk": "Карта року",
+    "zh-Hans": "年度地图",
+    "es": "Mapa del año",
+    "pt-BR": "Mapa do ano",
+    "cs": "Mapa roku",
+    "it": "Mappa dell’anno"
+  },
+  "Часы работы": {
+    "en": "Working Hours",
+    "uk": "Години роботи",
+    "zh-Hans": "工作时段",
+    "es": "Horas de trabajo",
+    "pt-BR": "Horas de trabalho",
+    "cs": "Pracovní hodiny",
+    "it": "Ore di lavoro"
+  },
+  "Жаворонок": {
+    "en": "Early Bird",
+    "uk": "Жайворонок",
+    "zh-Hans": "早起型",
+    "es": "Madrugador",
+    "pt-BR": "Madrugador",
+    "cs": "Ranní ptáče",
+    "it": "Mattiniero"
+  },
+  "Дневной ритм": {
+    "en": "Daytime",
+    "uk": "Денний ритм",
+    "zh-Hans": "白天型",
+    "es": "Ritmo diurno",
+    "pt-BR": "Ritmo diurno",
+    "cs": "Denní rytmus",
+    "it": "Ritmo diurno"
+  },
+  "Вечерний ритм": {
+    "en": "Evening",
+    "uk": "Вечірній ритм",
+    "zh-Hans": "傍晚型",
+    "es": "Ritmo vespertino",
+    "pt-BR": "Ritmo noturno",
+    "cs": "Večerní rytmus",
+    "it": "Ritmo serale"
+  },
+  "Сова": {
+    "en": "Night Owl",
+    "uk": "Сова",
+    "zh-Hans": "夜猫子",
+    "es": "Noctámbulo",
+    "pt-BR": "Coruja",
+    "cs": "Noční sova",
+    "it": "Nottambulo"
+  },
+  "Пик в %@": {
+    "en": "Peak at %@",
+    "uk": "Пік о %@",
+    "zh-Hans": "高峰 %@",
+    "es": "Pico a las %@",
+    "pt-BR": "Pico às %@",
+    "cs": "Vrchol v %@",
+    "it": "Picco alle %@"
+  },
+  "в работе за год": {
+    "en": "at work this year",
+    "uk": "у роботі за рік",
+    "zh-Hans": "全年工作时长",
+    "es": "de trabajo este año",
+    "pt-BR": "de trabalho no ano",
+    "cs": "práce za rok",
+    "it": "di lavoro nell’anno"
+  },
+  "Дней в работе": {
+    "en": "Days worked",
+    "uk": "Днів у роботі",
+    "zh-Hans": "工作天数",
+    "es": "Días trabajados",
+    "pt-BR": "Dias trabalhados",
+    "cs": "Odpracované dny",
+    "it": "Giorni lavorati"
+  },
+  "Дней подряд": {
+    "en": "Days in a row",
+    "uk": "Днів поспіль",
+    "zh-Hans": "连续天数",
+    "es": "Días seguidos",
+    "pt-BR": "Dias seguidos",
+    "cs": "Dny v řadě",
+    "it": "Giorni di fila"
+  },
+  "Самый длинный день": {
+    "en": "Longest day",
+    "uk": "Найдовший день",
+    "zh-Hans": "最长的一天",
+    "es": "Día más largo",
+    "pt-BR": "Dia mais longo",
+    "cs": "Nejdelší den",
+    "it": "Giorno più lungo"
+  },
+  "Главный проект": {
+    "en": "Top project",
+    "uk": "Головний проєкт",
+    "zh-Hans": "主要项目",
+    "es": "Proyecto principal",
+    "pt-BR": "Projeto principal",
+    "cs": "Hlavní projekt",
+    "it": "Progetto principale"
+  },
+  "Заработано": {
+    "en": "Earned",
+    "uk": "Зароблено",
+    "zh-Hans": "收入",
+    "es": "Ganado",
+    "pt-BR": "Ganho",
+    "cs": "Vyděláno",
+    "it": "Guadagnato"
+  },
+  "Когда идёт работа": {
+    "en": "When the work happens",
+    "uk": "Коли йде робота",
+    "zh-Hans": "工作时间分布",
+    "es": "Cuándo se trabaja",
+    "pt-BR": "Quando o trabalho acontece",
+    "cs": "Kdy se pracuje",
+    "it": "Quando si lavora"
+  },
+  "Скопировано": {
+    "en": "Copied",
+    "uk": "Скопійовано",
+    "zh-Hans": "已复制",
+    "es": "Copiado",
+    "pt-BR": "Copiado",
+    "cs": "Zkopírováno",
+    "it": "Copiato"
+  },
+  "Сохранить картинкой…": {
+    "en": "Save as Image…",
+    "uk": "Зберегти картинкою…",
+    "zh-Hans": "存为图片…",
+    "es": "Guardar como imagen…",
+    "pt-BR": "Salvar como imagem…",
+    "cs": "Uložit jako obrázek…",
+    "it": "Salva come immagine…"
+  },
+  "Звуки": {
+    "en": "Sounds",
+    "uk": "Звуки",
+    "zh-Hans": "声音",
+    "es": "Sonidos",
+    "pt-BR": "Sons",
+    "cs": "Zvuky",
+    "it": "Suoni"
+  },
+  "Тихий щелчок на старт и стоп таймера": {
+    "en": "A quiet click when the timer starts and stops",
+    "uk": "Тихе клацання на старт і стоп таймера",
+    "zh-Hans": "计时器启停时的轻微咔哒声",
+    "es": "Un clic suave al iniciar y detener el temporizador",
+    "pt-BR": "Um clique suave ao iniciar e parar o timer",
+    "cs": "Tiché cvaknutí při spuštění a zastavení časovače",
+    "it": "Un clic leggero all’avvio e all’arresto del timer"
+  },
+  "Меньше": {
+    "en": "Less",
+    "uk": "Менше",
+    "zh-Hans": "较少",
+    "es": "Menos",
+    "pt-BR": "Menos",
+    "cs": "Méně",
+    "it": "Meno"
+  },
+  "Больше": {
+    "en": "More",
+    "uk": "Більше",
+    "zh-Hans": "较多",
+    "es": "Más",
+    "pt-BR": "Mais",
+    "cs": "Více",
+    "it": "Più"
+  },
+  "Стоп": {
+    "en": "Stop",
+    "uk": "Стоп",
+    "zh-Hans": "停止",
+    "es": "Detener",
+    "pt-BR": "Parar",
+    "cs": "Zastavit",
+    "it": "Ferma"
+  },
+  "Пустые": {
+    "en": "Empty",
+    "uk": "Порожні",
+    "zh-Hans": "空白",
+    "es": "Vacías",
+    "pt-BR": "Vazias",
+    "cs": "Prázdné",
+    "it": "Vuote"
+  },
+  "Идёт": {
+    "en": "Running",
+    "uk": "Триває",
+    "zh-Hans": "进行中",
+    "es": "En curso",
+    "pt-BR": "Em andamento",
+    "cs": "Běží",
+    "it": "In corso"
+  },
+  "Выполнить": {
+    "en": "Complete",
+    "uk": "Виконати",
+    "zh-Hans": "完成",
+    "es": "Completar",
+    "pt-BR": "Concluir",
+    "cs": "Dokončit",
+    "it": "Completa"
+  },
+  "Не удалось прочитать данные Tempo": {
+    "en": "Couldn’t read Tempo data",
+    "uk": "Не вдалося прочитати дані Tempo",
+    "zh-Hans": "无法读取 Tempo 数据",
+    "es": "No se pudieron leer los datos de Tempo",
+    "pt-BR": "Não foi possível ler os dados do Tempo",
+    "cs": "Data Tempo se nepodařilo načíst",
+    "it": "Impossibile leggere i dati di Tempo"
+  },
+  "Копия файла сохранена, ничего не потеряно: %@": {
+    "en": "A copy of the file was saved, nothing is lost: %@",
+    "uk": "Копію файлу збережено, нічого не втрачено: %@",
+    "zh-Hans": "文件副本已保存,数据没有丢失:%@",
+    "es": "Se guardó una copia del archivo, no se perdió nada: %@",
+    "pt-BR": "Uma cópia do arquivo foi salva, nada foi perdido: %@",
+    "cs": "Kopie souboru je uložena, nic se neztratilo: %@",
+    "it": "Una copia del file è stata salvata, non si è perso nulla: %@"
+  }
+}

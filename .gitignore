@@ -1,0 +1,16 @@
+# Сборка
+.build/
+build/
+*.app
+*.zip
+
+# Xcode / SwiftPM
+.swiftpm/
+*.xcodeproj/xcuserdata/
+
+# Ключи Google
+Resources/GoogleOAuth.plist
+
+# macOS
+.DS_Store
+!docs/Tempo.zip
