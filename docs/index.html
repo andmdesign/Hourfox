@@ -466,6 +466,15 @@
   .undo span:last-child { height: 24px; padding: 0 11px; border-radius: 12px; display: grid; place-items: center; background: rgba(255,255,255,0.12); color: #fff; font-weight: 600; white-space: nowrap; }
 
   /* Вопросы */
+  .oss-wrap { padding-top: 16px; }
+  .oss { display: flex; align-items: center; gap: 18px; padding: 24px 28px; border-radius: 24px; border: 1px solid var(--line); background: rgba(255,255,255,0.03); color: inherit; text-decoration: none; transition: background 0.2s, border-color 0.2s; }
+  .oss:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.18); }
+  .oss-mark { width: 34px; height: 34px; flex: none; }
+  .oss-text { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .oss-text strong { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
+  .oss-text span { color: var(--dim); font-size: 15px; line-height: 1.45; }
+  .oss-arrow { width: 18px; height: 18px; flex: none; margin-left: auto; color: var(--dim); }
+  .faq details a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
   .faq { max-width: 760px; margin: 0 auto; }
   .faq h2 { font-family: var(--display); font-size: clamp(28px, 4.2vw, 48px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 20px; }
   .faq details { border-top: 1px solid var(--line); }
@@ -732,6 +741,14 @@
     </div>
   </section>
 
+  <section class="wrap oss-wrap">
+    <a class="oss" href="https://github.com/andmdesign/Hourfox" target="_blank" rel="noopener">
+      <svg class="oss-mark" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+      <span class="oss-text"><strong data-i18n="oss.t"></strong><span data-i18n="oss.d"></span></span>
+      <svg class="oss-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </section>
+
   <section class="wrap">
     <div class="faq">
       <h2 data-i18n="q.title"></h2>
@@ -809,7 +826,8 @@
       "q2.q": "How do I install it?",
       "q2.a": "Unzip and drag Hourfox to Applications. On first launch, go to System Settings → Privacy &amp; Security and click Open Anyway.",
       "q4.q": "Is it safe?",
-      "q4.a": "Hourfox doesn’t ask for access to your screen or files, works without an account and sends nothing online. It only asks for Calendar access if you turn on Show in Calendar.",
+      "q4.a": "Hourfox doesn’t ask for access to your screen or files, works without an account and sends nothing online. It only asks for Calendar access if you turn on Show in Calendar. The code is open: <a href=\"https://github.com/andmdesign/Hourfox\" target=\"_blank\" rel=\"noopener\">check it on GitHub</a>.",
+      "oss.t": "Open source", "oss.d": "All the code is on GitHub: check for yourself that Hourfox sends nothing, or build it from source. MIT&nbsp;license.",
       "q3.q": "Where is my data?",
       "q3.a": "Only on your Mac, in <code>~/Library/Application Support/Hourfox</code>. No account, no internet, and nothing gets sent anywhere.",
       "b.timer": "Tracker", "x.export": "Export", "b.week": "This week",
@@ -857,7 +875,8 @@
       "q2.q": "Как установить?",
       "q2.a": "Распакуйте и&nbsp;перетащите Hourfox в&nbsp;«Программы». При первом запуске откройте Системные настройки → Конфиденциальность и&nbsp;безопасность → «Всё равно открыть».",
       "q4.q": "Это безопасно?",
-      "q4.a": "Hourfox не&nbsp;просит доступ к&nbsp;экрану и&nbsp;файлам, работает без аккаунта и&nbsp;ничего не&nbsp;отправляет в&nbsp;интернет. Доступ к&nbsp;Календарю запросит, только если включите показ записей в&nbsp;нём.",
+      "q4.a": "Hourfox не&nbsp;просит доступ к&nbsp;экрану и&nbsp;файлам, работает без аккаунта и&nbsp;ничего не&nbsp;отправляет в&nbsp;интернет. Доступ к&nbsp;Календарю запросит, только если включите показ записей в&nbsp;нём. Код открыт: <a href=\"https://github.com/andmdesign/Hourfox\" target=\"_blank\" rel=\"noopener\">проверьте на&nbsp;GitHub</a>.",
+      "oss.t": "Открытый код", "oss.d": "Весь код на&nbsp;GitHub: проверьте сами, что Hourfox ничего не&nbsp;отправляет, или соберите его из&nbsp;исходников. Лицензия&nbsp;MIT.",
       "q3.q": "Где лежат данные?",
       "q3.a": "Только на&nbsp;вашем Mac, в&nbsp;<code>~/Library/Application Support/Hourfox</code>. Без аккаунта и&nbsp;интернета, никуда не&nbsp;отправляются.",
       "b.timer": "Трекер", "x.export": "Экспорт", "b.week": "Эта неделя",
@@ -905,7 +924,8 @@
       "q2.q": "Як установити?",
       "q2.a": "Розпакуйте й&nbsp;перетягніть Hourfox у&nbsp;«Програми». Під час першого запуску відкрийте Системні параметри → Конфіденційність і&nbsp;безпека → «Усе одно відкрити».",
       "q4.q": "Це безпечно?",
-      "q4.a": "Hourfox не&nbsp;просить доступу до&nbsp;екрана й&nbsp;файлів, працює без акаунта й&nbsp;нічого не&nbsp;надсилає в&nbsp;інтернет. Доступ до&nbsp;Календаря запитає, лише якщо ввімкнете показ записів у&nbsp;ньому.",
+      "q4.a": "Hourfox не&nbsp;просить доступу до&nbsp;екрана й&nbsp;файлів, працює без акаунта й&nbsp;нічого не&nbsp;надсилає в&nbsp;інтернет. Доступ до&nbsp;Календаря запитає, лише якщо ввімкнете показ записів у&nbsp;ньому. Код відкритий: <a href=\"https://github.com/andmdesign/Hourfox\" target=\"_blank\" rel=\"noopener\">перевірте на&nbsp;GitHub</a>.",
+      "oss.t": "Відкритий код", "oss.d": "Весь код на&nbsp;GitHub: перевірте самі, що Hourfox нічого не&nbsp;надсилає, або зберіть його з&nbsp;вихідного коду. Ліцензія&nbsp;MIT.",
       "q3.q": "Де лежать дані?",
       "q3.a": "Лише на&nbsp;вашому Mac, у&nbsp;<code>~/Library/Application Support/Hourfox</code>. Без акаунта й&nbsp;інтернету, нікуди не&nbsp;надсилаються.",
       "b.timer": "Трекер", "x.export": "Експорт", "b.week": "Цей тиждень",
@@ -953,7 +973,8 @@
       "q2.q": "怎么安装？",
       "q2.a": "解压后把 Hourfox 拖到“应用程序”。首次启动时，打开“系统设置 → 隐私与安全性”，点按“仍要打开”。",
       "q4.q": "安全吗？",
-      "q4.a": "Hourfox 不会请求访问屏幕或文件，无需账户，也不会向网络发送任何内容。只有开启“在日历中显示”时，才会请求访问日历。",
+      "q4.a": "Hourfox 不会请求访问屏幕或文件，无需账户，也不会向网络发送任何内容。只有开启“在日历中显示”时，才会请求访问日历。 代码开源：<a href=\"https://github.com/andmdesign/Hourfox\" target=\"_blank\" rel=\"noopener\">在 GitHub 上查看</a>。",
+      "oss.t": "开源", "oss.d": "全部代码都在 GitHub 上：你可以亲自确认 Hourfox 不发送任何内容，也可以从源代码构建。MIT 许可证。",
       "q3.q": "数据在哪里？",
       "q3.a": "只在你的 Mac 上，位于 <code>~/Library/Application Support/Hourfox</code>。无需账户和联网，也不会发送到任何地方。",
       "b.timer": "追踪", "x.export": "导出", "b.week": "本周",
@@ -1001,7 +1022,8 @@
       "q2.q": "¿Cómo se instala?",
       "q2.a": "Descomprime y arrastra Hourfox a Aplicaciones. En el primer inicio, ve a Ajustes del Sistema → Privacidad y seguridad y pulsa Abrir igualmente.",
       "q4.q": "¿Es seguro?",
-      "q4.a": "Hourfox no pide acceso a tu pantalla ni a tus archivos, funciona sin cuenta y no envía nada a internet. Solo pedirá acceso al Calendario si activas Mostrar en Calendario.",
+      "q4.a": "Hourfox no pide acceso a tu pantalla ni a tus archivos, funciona sin cuenta y no envía nada a internet. Solo pedirá acceso al Calendario si activas Mostrar en Calendario. El código es abierto: <a href=\"https://github.com/andmdesign/Hourfox\" target=\"_blank\" rel=\"noopener\">compruébalo en GitHub</a>.",
+      "oss.t": "Código abierto", "oss.d": "Todo el código está en GitHub: comprueba tú mismo que Hourfox no envía nada o compílalo desde el código fuente. Licencia MIT.",
       "q3.q": "¿Dónde están mis datos?",
       "q3.a": "Solo en tu Mac, en <code>~/Library/Application Support/Hourfox</code>. Sin cuenta ni internet, y no se envían a ningún sitio.",
       "b.timer": "Registro", "x.export": "Exportar", "b.week": "Esta semana",
@@ -1049,7 +1071,8 @@
       "q2.q": "Como instalar?",
       "q2.a": "Descompacte e arraste o Hourfox para Aplicativos. Na primeira vez, vá em Ajustes do Sistema → Privacidade e Segurança e clique em Abrir Mesmo Assim.",
       "q4.q": "É seguro?",
-      "q4.a": "O Hourfox não pede acesso à tela nem aos arquivos, funciona sem conta e não envia nada para a internet. Só pede acesso ao Calendário se você ativar Mostrar no Calendário.",
+      "q4.a": "O Hourfox não pede acesso à tela nem aos arquivos, funciona sem conta e não envia nada para a internet. Só pede acesso ao Calendário se você ativar Mostrar no Calendário. O código é aberto: <a href=\"https://github.com/andmdesign/Hourfox\" target=\"_blank\" rel=\"noopener\">confira no GitHub</a>.",
+      "oss.t": "Código aberto", "oss.d": "Todo o código está no GitHub: confira você mesmo que o Hourfox não envia nada ou compile a partir do código-fonte. Licença MIT.",
       "q3.q": "Onde ficam meus dados?",
       "q3.a": "Só no seu Mac, em <code>~/Library/Application Support/Hourfox</code>. Sem conta nem internet, e nada é enviado para lugar nenhum.",
       "b.timer": "Registro", "x.export": "Exportar", "b.week": "Esta semana",
@@ -1097,7 +1120,8 @@
       "q2.q": "Jak ho nainstalovat?",
       "q2.a": "Rozbalte a přetáhněte Hourfox do Aplikací. Při prvním spuštění otevřete Nastavení systému → Soukromí a zabezpečení a klikněte na Přesto otevřít.",
       "q4.q": "Je to bezpečné?",
-      "q4.a": "Hourfox nežádá o přístup k obrazovce ani souborům, funguje bez účtu a nic neposílá na internet. O přístup ke Kalendáři požádá, jen když zapnete Zobrazovat v Kalendáři.",
+      "q4.a": "Hourfox nežádá o přístup k obrazovce ani souborům, funguje bez účtu a nic neposílá na internet. O přístup ke Kalendáři požádá, jen když zapnete Zobrazovat v Kalendáři. Kód je otevřený: <a href=\"https://github.com/andmdesign/Hourfox\" target=\"_blank\" rel=\"noopener\">ověřte si to na GitHubu</a>.",
+      "oss.t": "Otevřený kód", "oss.d": "Celý kód je na GitHubu: ověřte si sami, že Hourfox nic neposílá, nebo si ho sestavte ze zdrojového kódu. Licence MIT.",
       "q3.q": "Kde jsou moje data?",
       "q3.a": "Jen na vašem Macu, v <code>~/Library/Application Support/Hourfox</code>. Bez účtu a internetu, nikam se neposílají.",
       "b.timer": "Měření", "x.export": "Exportovat", "b.week": "Tento týden",
@@ -1145,7 +1169,8 @@
       "q2.q": "Come si installa?",
       "q2.a": "Estrai e trascina Hourfox in Applicazioni. Al primo avvio, vai in Impostazioni di Sistema → Privacy e sicurezza e fai clic su Apri comunque.",
       "q4.q": "È sicuro?",
-      "q4.a": "Hourfox non chiede l’accesso allo schermo o ai file, funziona senza account e non invia nulla online. Chiede l’accesso a Calendario solo se attivi Mostra in Calendario.",
+      "q4.a": "Hourfox non chiede l’accesso allo schermo o ai file, funziona senza account e non invia nulla online. Chiede l’accesso a Calendario solo se attivi Mostra in Calendario. Il codice è aperto: <a href=\"https://github.com/andmdesign/Hourfox\" target=\"_blank\" rel=\"noopener\">verificalo su GitHub</a>.",
+      "oss.t": "Open source", "oss.d": "Tutto il codice è su GitHub: verifica tu stesso che Hourfox non invii nulla o compilalo dai sorgenti. Licenza MIT.",
       "q3.q": "Dove sono i miei dati?",
       "q3.a": "Solo sul tuo Mac, in <code>~/Library/Application Support/Hourfox</code>. Senza account né internet, e non vengono inviati da nessuna parte.",
       "b.timer": "Tracker", "x.export": "Esporta", "b.week": "Questa settimana",
