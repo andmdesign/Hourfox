@@ -1,4 +1,4 @@
-/* Tempo — pt-BR. Сгенерировано Scripts/l10n.py, править translations.json. */
+/* Hourfox — pt-BR. Сгенерировано Scripts/l10n.py, править translations.json. */
 
 "В архиве пусто" = "O arquivo está vazio";
 "Сюда попадает всё удалённое. Удалить окончательно можно только отсюда." = "Tudo o que é excluído vem para cá. Só daqui é possível excluir definitivamente.";
@@ -15,7 +15,7 @@
 "Всё удалённое исчезнет. Это нельзя отменить." = "Tudo o que foi excluído desaparecerá. Não é possível desfazer.";
 "Вернуть" = "Restaurar";
 "Нет доступа к Календарю" = "Sem acesso ao Calendário";
-"Разрешите Tempo доступ: Системные настройки → Конфиденциальность и безопасность → Календари." = "Permita o acesso do Tempo em Ajustes do Sistema → Privacidade e Segurança → Calendários.";
+"Разрешите Hourfox доступ: Системные настройки → Конфиденциальность и безопасность → Календари." = "Permita o acesso do Hourfox em Ajustes do Sistema → Privacidade e Segurança → Calendários.";
 "Открыть настройки" = "Abrir Ajustes";
 "Отмена" = "Cancelar";
 "Отменить" = "Desfazer";
@@ -118,8 +118,8 @@
 "Тёмная" = "Escuro";
 "Тема" = "Tema";
 "Окна и раскрытый Notch. Свёрнутый Notch всегда чёрный" = "Janelas e Notch aberto. O Notch fechado é sempre preto";
-"Tempo подключён. Можно вернуться в приложение." = "O Tempo está conectado. Você já pode voltar ao app.";
-"Не удалось подключиться. Вернитесь в Tempo и попробуйте ещё раз." = "Não foi possível conectar. Volte ao Tempo e tente novamente.";
+"Hourfox подключён. Можно вернуться в приложение." = "O Hourfox está conectado. Você já pode voltar ao app.";
+"Не удалось подключиться. Вернитесь в Hourfox и попробуйте ещё раз." = "Não foi possível conectar. Volte ao Hourfox e tente novamente.";
 "Не удалось подключить Google Календарь. Попробуйте ещё раз." = "Não foi possível conectar o Google Agenda. Tente novamente.";
 "Доступ к Google Календарю отозван. Подключите его снова." = "O acesso ao Google Agenda foi revogado. Conecte-o novamente.";
 "Без названия" = "Sem título";
@@ -136,7 +136,7 @@
 "Подключить" = "Conectar";
 "Google Календарь" = "Google Agenda";
 "События на сегодня во вкладке Notch" = "Os eventos de hoje em uma aba do Notch";
-"Только чтение: Tempo показывает события и ничего не меняет в календаре." = "Somente leitura: o Tempo mostra os eventos e não altera nada na sua agenda.";
+"Только чтение: Hourfox показывает события и ничего не меняет в календаре." = "Somente leitura: o Hourfox mostra os eventos e não altera nada na sua agenda.";
 "Список" = "Lista";
 "Календарь" = "Calendário";
 "Журнал" = "Registro";
@@ -160,13 +160,13 @@
 "Основные" = "Geral";
 "Дополнительно" = "Extras";
 "Открывать при входе в систему" = "Abrir ao iniciar sessão";
-"Tempo запустится вместе с Mac" = "O Tempo abre quando você inicia o Mac";
+"Hourfox запустится вместе с Mac" = "O Hourfox abre quando você inicia o Mac";
 "Общие" = "Geral";
 "Выключите лишнее — если выключить всё, в Notch останется только строка таймера." = "Desative o que não precisar. Com tudo desativado, o Notch mostra apenas a barra do timer.";
 "Оформление" = "Aparência";
 "Интеграции" = "Integrações";
 "Показывать в Календаре" = "Mostrar no Calendário";
-"Завершённые записи — в календаре «Tempo»" = "Registros concluídos vão para o calendário “Tempo”";
+"Завершённые записи — в календаре «Hourfox»" = "Registros concluídos vão para o calendário “Hourfox”";
 "Вид" = "Visualização";
 "Авто: Notch, если есть вырез, иначе значок в строке меню" = "Automático: Notch se o Mac tiver; caso contrário, um ícone na barra de menus";
 "Сияние" = "Brilho";
@@ -276,8 +276,8 @@
 "Открывать при входе в систему" = "Abrir ao iniciar sessão";
 "Показывать в Календаре" = "Mostrar no Calendário";
 "Открыть Календарь" = "Abrir Calendário";
-"Знакомство с Tempo" = "Introdução ao Tempo";
-"Завершить Tempo" = "Sair do Tempo";
+"Знакомство с Hourfox" = "Introdução ao Hourfox";
+"Завершить Hourfox" = "Sair do Hourfox";
 "Раскрывать при наведении" = "Expandir ao passar o cursor";
 "Не раскрывать при наведении" = "Não expandir ao passar o cursor";
 "Открыть окно" = "Abrir janela";
@@ -306,7 +306,7 @@
 "Изменить" = "Editar";
 "Скопировать" = "Copiar";
 "Заметка" = "Nota";
-"Настройте Tempo под себя" = "Deixe o Tempo do seu jeito";
+"Настройте Hourfox под себя" = "Deixe o Hourfox do seu jeito";
 "Включите только то, что нужно. Всё можно поменять позже в настройках." = "Ative só o que você precisa. Depois, é possível mudar tudo nos Ajustes.";
 "Назад" = "Anterior";
 "Клиент А" = "Cliente A";
@@ -318,12 +318,12 @@
 "Созвон по ТЗ" = "Ligação de briefing";
 "Секундомер или таймер" = "Cronômetro ou timer";
 "Журнал и отчёт" = "Registro e relatórios";
-"Щёлкните значок Tempo в строке меню, и он раскроется." = "Clique no ícone do Tempo na barra de menus para abri-lo.";
-"Наведите курсор на вырез экрана, и Tempo раскроется." = "Passe o ponteiro sobre o notch da tela e o Tempo se abrirá.";
+"Щёлкните значок Hourfox в строке меню, и он раскроется." = "Clique no ícone do Hourfox na barra de menus para abri-lo.";
+"Наведите курсор на вырез экрана, и Hourfox раскроется." = "Passe o ponteiro sobre o notch da tela e o Hourfox se abrirá.";
 "Кнопка с часами рядом с проектом задаёт обратный отсчёт." = "O botão de relógio ao lado do projeto define uma contagem regressiva.";
 "Список дел с приоритетами во вкладке «Задачи»." = "Lista de tarefas com prioridades na aba Tarefas.";
 "Всё время по дням и проектам. Можно показывать в Календаре." = "Todo o seu tempo por dia e projeto. Também no Calendário.";
-"Добро пожаловать в Tempo" = "Boas-vindas ao Tempo";
+"Добро пожаловать в Hourfox" = "Boas-vindas ao Hourfox";
 "Учёт времени прямо в Notch" = "Controle de tempo direto no Notch";
 "Далее" = "Continuar";
 "Вёрстка карточек" = "Layout dos cards";
@@ -383,10 +383,10 @@
 "Сохранить картинкой…" = "Salvar como imagem…";
 "Звуки" = "Sons";
 "Тихий щелчок на старт и стоп таймера" = "Um clique suave ao iniciar e parar o timer";
-"Не удалось прочитать данные Tempo" = "Não foi possível ler os dados do Tempo";
+"Не удалось прочитать данные Hourfox" = "Não foi possível ler os dados do Hourfox";
 "Копия файла сохранена, ничего не потеряно: %@" = "Uma cópia do arquivo foi salva, nada foi perdido: %@";
-"О программе Tempo" = "Sobre o Tempo";
-"Скрыть Tempo" = "Ocultar Tempo";
+"О программе Hourfox" = "Sobre o Hourfox";
+"Скрыть Hourfox" = "Ocultar Hourfox";
 "Старт / Стоп" = "Iniciar / Parar";
 "Правка" = "Editar";
 "Повторить" = "Refazer";

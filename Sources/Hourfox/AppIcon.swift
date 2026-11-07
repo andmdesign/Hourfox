@@ -79,7 +79,7 @@ enum AppIcon {
         if let cached = cache[key] { return cached }
         let side = ceil(size * 1.15)
         let source = svgs[name].flatMap { NSImage(data: Data($0.utf8)) }
-        if source == nil { NSLog("Tempo: нет иконки \(name)") }
+        if source == nil { NSLog("Hourfox: нет иконки \(name)") }
         let image = NSImage(size: NSSize(width: side, height: side), flipped: false) { rect in
             source?.draw(in: rect)
             return true

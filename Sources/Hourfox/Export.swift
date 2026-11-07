@@ -399,7 +399,7 @@ private struct ExportPage: View {
             if isLast { total }
             Spacer(minLength: 0)
             HStack {
-                Text(verbatim: "Tempo")
+                Text(verbatim: "Hourfox")
                 Spacer()
                 Text(verbatim: "\(number) / \(count)")
             }
@@ -593,7 +593,7 @@ struct ExportSheet: View {
             Section("Что выгружать") {
                 if pdfOn {
                     LabeledContent("Формат") {
-                        TempoSegments(selection: $options.format, items: ExportFormat.allCases.map { .init(value: $0, title: $0.title) })
+                        HourfoxSegments(selection: $options.format, items: ExportFormat.allCases.map { .init(value: $0, title: $0.title) })
                     }
                 }
                 Picker("Период", selection: $options.preset) {
@@ -621,7 +621,7 @@ struct ExportSheet: View {
                     ForEach([5, 15, 30], id: \.self) { Text(verbatim: L("До %@", Fmt.minutes($0))).tag($0) }
                 }
                 LabeledContent("Формат времени") {
-                    TempoSegments(selection: $options.timeStyle, items: [
+                    HourfoxSegments(selection: $options.timeStyle, items: [
                         .init(value: .text, title: Fmt.short(5400)),
                         .init(value: .decimal, title: Fmt.hours(5400)),
                     ])

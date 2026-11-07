@@ -47,7 +47,7 @@ struct ReportView: View {
                 }
             }
             BareToolbarItem {
-                TempoSegments(selection: $period, items: Period.allCases.filter { $0 != .year || yearOn }.map {
+                HourfoxSegments(selection: $period, items: Period.allCases.filter { $0 != .year || yearOn }.map {
                     .init(value: $0, title: L($0.rawValue))
                 })
             }

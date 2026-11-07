@@ -8,14 +8,14 @@
     "it": "Nessun accesso a Calendario",
     "uk": "Немає доступу до Календаря"
   },
-  "Разрешите Tempo доступ: Системные настройки → Конфиденциальность и безопасность → Календари.": {
-    "en": "Allow Tempo access in System Settings → Privacy & Security → Calendars.",
-    "zh-Hans": "请在“系统设置”→“隐私与安全性”→“日历”中允许 Tempo 访问。",
-    "es": "Permite el acceso a Tempo en Ajustes del Sistema → Privacidad y seguridad → Calendarios.",
-    "pt-BR": "Permita o acesso do Tempo em Ajustes do Sistema → Privacidade e Segurança → Calendários.",
+  "Разрешите Hourfox доступ: Системные настройки → Конфиденциальность и безопасность → Календари.": {
+    "en": "Allow Hourfox access in System Settings → Privacy & Security → Calendars.",
+    "zh-Hans": "请在“系统设置”→“隐私与安全性”→“日历”中允许 Hourfox 访问。",
+    "es": "Permite el acceso a Hourfox en Ajustes del Sistema → Privacidad y seguridad → Calendarios.",
+    "pt-BR": "Permita o acesso do Hourfox em Ajustes do Sistema → Privacidade e Segurança → Calendários.",
     "cs": "Povolte Tempu přístup v Nastavení systému → Soukromí a zabezpečení → Kalendáře.",
-    "it": "Consenti l’accesso a Tempo in Impostazioni di Sistema → Privacy e sicurezza → Calendari.",
-    "uk": "Надайте Tempo доступ: Системні параметри → Конфіденційність і безпека → Календарі."
+    "it": "Consenti l’accesso a Hourfox in Impostazioni di Sistema → Privacy e sicurezza → Calendari.",
+    "uk": "Надайте Hourfox доступ: Системні параметри → Конфіденційність і безпека → Календарі."
   },
   "Открыть настройки": {
     "en": "Open Settings",
@@ -134,14 +134,14 @@
     "it": "Apri al login",
     "uk": "Відкривати під час входу в систему"
   },
-  "Tempo запустится вместе с Mac": {
-    "en": "Tempo starts when you log in",
-    "zh-Hans": "登录 Mac 时自动启动 Tempo",
-    "es": "Tempo se abre al iniciar tu Mac",
-    "pt-BR": "O Tempo abre quando você inicia o Mac",
-    "cs": "Tempo se spustí spolu s Macem",
-    "it": "Tempo si avvia insieme al Mac",
-    "uk": "Tempo запуститься разом із Mac"
+  "Hourfox запустится вместе с Mac": {
+    "en": "Hourfox starts when you log in",
+    "zh-Hans": "登录 Mac 时自动启动 Hourfox",
+    "es": "Hourfox se abre al iniciar tu Mac",
+    "pt-BR": "O Hourfox abre quando você inicia o Mac",
+    "cs": "Hourfox se spustí spolu s Macem",
+    "it": "Hourfox si avvia insieme al Mac",
+    "uk": "Hourfox запуститься разом із Mac"
   },
   "Показывать в Календаре": {
     "en": "Show in Calendar",
@@ -152,14 +152,14 @@
     "it": "Mostra in Calendario",
     "uk": "Показувати в Календарі"
   },
-  "Завершённые записи — в календаре «Tempo»": {
-    "en": "Finished entries go to the “Tempo” calendar",
-    "zh-Hans": "已完成的记录会添加到“Tempo”日历",
-    "es": "Las entradas terminadas van al calendario «Tempo»",
-    "pt-BR": "Registros concluídos vão para o calendário “Tempo”",
-    "cs": "Dokončené záznamy se ukládají do kalendáře „Tempo“",
-    "it": "Le voci completate finiscono nel calendario «Tempo»",
-    "uk": "Завершені записи в календарі «Tempo»"
+  "Завершённые записи — в календаре «Hourfox»": {
+    "en": "Finished entries go to the “Hourfox” calendar",
+    "zh-Hans": "已完成的记录会添加到“Hourfox”日历",
+    "es": "Las entradas terminadas van al calendario «Hourfox»",
+    "pt-BR": "Registros concluídos vão para o calendário “Hourfox”",
+    "cs": "Dokončené záznamy se ukládají do kalendáře „Hourfox“",
+    "it": "Le voci completate finiscono nel calendario «Hourfox»",
+    "uk": "Завершені записи в календарі «Hourfox»"
   },
   "Записей пока нет": {
     "en": "No entries yet",
@@ -862,23 +862,23 @@
     "it": "Apri Calendario",
     "uk": "Відкрити Календар"
   },
-  "Знакомство с Tempo": {
+  "Знакомство с Hourfox": {
     "en": "Getting Started",
-    "zh-Hans": "Tempo 入门",
-    "es": "Introducción a Tempo",
-    "pt-BR": "Introdução ao Tempo",
+    "zh-Hans": "Hourfox 入门",
+    "es": "Introducción a Hourfox",
+    "pt-BR": "Introdução ao Hourfox",
     "cs": "Seznámení s Tempem",
-    "it": "Introduzione a Tempo",
-    "uk": "Знайомство з Tempo"
+    "it": "Introduzione a Hourfox",
+    "uk": "Знайомство з Hourfox"
   },
-  "Завершить Tempo": {
-    "en": "Quit Tempo",
-    "zh-Hans": "退出 Tempo",
-    "es": "Salir de Tempo",
-    "pt-BR": "Sair do Tempo",
-    "cs": "Ukončit Tempo",
-    "it": "Esci da Tempo",
-    "uk": "Завершити Tempo"
+  "Завершить Hourfox": {
+    "en": "Quit Hourfox",
+    "zh-Hans": "退出 Hourfox",
+    "es": "Salir de Hourfox",
+    "pt-BR": "Sair do Hourfox",
+    "cs": "Ukončit Hourfox",
+    "it": "Esci da Hourfox",
+    "uk": "Завершити Hourfox"
   },
   "Ещё": {
     "en": "More",
@@ -1051,14 +1051,14 @@
     "it": "Nota",
     "uk": "Нотатка"
   },
-  "Добро пожаловать в Tempo": {
-    "en": "Welcome to Tempo",
-    "zh-Hans": "欢迎使用 Tempo",
-    "es": "Te damos la bienvenida a Tempo",
-    "pt-BR": "Boas-vindas ao Tempo",
+  "Добро пожаловать в Hourfox": {
+    "en": "Welcome to Hourfox",
+    "zh-Hans": "欢迎使用 Hourfox",
+    "es": "Te damos la bienvenida a Hourfox",
+    "pt-BR": "Boas-vindas ao Hourfox",
     "cs": "Vítejte v Tempu",
-    "it": "Ti diamo il benvenuto in Tempo",
-    "uk": "Ласкаво просимо до Tempo"
+    "it": "Ti diamo il benvenuto in Hourfox",
+    "uk": "Ласкаво просимо до Hourfox"
   },
   "Учёт времени прямо в Notch": {
     "en": "Time tracking right in the Notch",
@@ -1069,14 +1069,14 @@
     "it": "Monitoraggio del tempo direttamente nel Notch",
     "uk": "Облік часу просто в Notch"
   },
-  "Наведите курсор на вырез экрана, и Tempo раскроется.": {
-    "en": "Hover over the screen notch and Tempo opens up.",
-    "zh-Hans": "将指针移到屏幕顶部的刘海处，Tempo 就会展开。",
-    "es": "Pasa el puntero sobre el notch de la pantalla y Tempo se abrirá.",
-    "pt-BR": "Passe o ponteiro sobre o notch da tela e o Tempo se abrirá.",
-    "cs": "Najeďte ukazatelem na výřez displeje a Tempo se rozbalí.",
-    "it": "Passa il puntatore sul notch dello schermo e Tempo si aprirà.",
-    "uk": "Наведіть курсор на виріз екрана, і Tempo розгорнеться."
+  "Наведите курсор на вырез экрана, и Hourfox раскроется.": {
+    "en": "Hover over the screen notch and Hourfox opens up.",
+    "zh-Hans": "将指针移到屏幕顶部的刘海处，Hourfox 就会展开。",
+    "es": "Pasa el puntero sobre el notch de la pantalla y Hourfox se abrirá.",
+    "pt-BR": "Passe o ponteiro sobre o notch da tela e o Hourfox se abrirá.",
+    "cs": "Najeďte ukazatelem na výřez displeje a Hourfox se rozbalí.",
+    "it": "Passa il puntatore sul notch dello schermo e Hourfox si aprirà.",
+    "uk": "Наведіть курсор на виріз екрана, і Hourfox розгорнеться."
   },
   "Секундомер или таймер": {
     "en": "Stopwatch or Timer",
@@ -1131,23 +1131,23 @@
     "cs": "Datum;Začátek;Konec;Hodiny;Projekt;Popis;Komentář",
     "it": "Data;Inizio;Fine;Ore;Progetto;Descrizione;Commento"
   },
-  "О программе Tempo": {
-    "en": "About Tempo",
-    "zh-Hans": "关于 Tempo",
-    "es": "Acerca de Tempo",
-    "pt-BR": "Sobre o Tempo",
-    "cs": "O aplikaci Tempo",
-    "it": "Informazioni su Tempo",
-    "uk": "Про Tempo"
+  "О программе Hourfox": {
+    "en": "About Hourfox",
+    "zh-Hans": "关于 Hourfox",
+    "es": "Acerca de Hourfox",
+    "pt-BR": "Sobre o Hourfox",
+    "cs": "O aplikaci Hourfox",
+    "it": "Informazioni su Hourfox",
+    "uk": "Про Hourfox"
   },
-  "Скрыть Tempo": {
-    "en": "Hide Tempo",
-    "zh-Hans": "隐藏 Tempo",
-    "es": "Ocultar Tempo",
-    "pt-BR": "Ocultar Tempo",
-    "cs": "Skrýt Tempo",
-    "it": "Nascondi Tempo",
-    "uk": "Сховати Tempo"
+  "Скрыть Hourfox": {
+    "en": "Hide Hourfox",
+    "zh-Hans": "隐藏 Hourfox",
+    "es": "Ocultar Hourfox",
+    "pt-BR": "Ocultar Hourfox",
+    "cs": "Skrýt Hourfox",
+    "it": "Nascondi Hourfox",
+    "uk": "Сховати Hourfox"
   },
   "Старт / Стоп": {
     "en": "Start / Stop",
@@ -1509,14 +1509,14 @@
     "it": "Gli eventi di oggi in una scheda del Notch",
     "uk": "Події на сьогодні у вкладці Notch"
   },
-  "Только чтение: Tempo показывает события и ничего не меняет в календаре.": {
-    "en": "Read-only: Tempo shows your events and never changes your calendar.",
-    "zh-Hans": "只读：Tempo 只显示日程，不会更改你的日历。",
-    "es": "Solo lectura: Tempo muestra los eventos y no cambia nada en tu calendario.",
-    "pt-BR": "Somente leitura: o Tempo mostra os eventos e não altera nada na sua agenda.",
-    "cs": "Jen pro čtení: Tempo události zobrazuje a v kalendáři nic nemění.",
-    "it": "Sola lettura: Tempo mostra gli eventi e non modifica nulla nel calendario.",
-    "uk": "Лише читання: Tempo показує події й нічого не змінює в календарі."
+  "Только чтение: Hourfox показывает события и ничего не меняет в календаре.": {
+    "en": "Read-only: Hourfox shows your events and never changes your calendar.",
+    "zh-Hans": "只读：Hourfox 只显示日程，不会更改你的日历。",
+    "es": "Solo lectura: Hourfox muestra los eventos y no cambia nada en tu calendario.",
+    "pt-BR": "Somente leitura: o Hourfox mostra os eventos e não altera nada na sua agenda.",
+    "cs": "Jen pro čtení: Hourfox události zobrazuje a v kalendáři nic nemění.",
+    "it": "Sola lettura: Hourfox mostra gli eventi e non modifica nulla nel calendario.",
+    "uk": "Лише читання: Hourfox показує події й нічого не змінює в календарі."
   },
   "Не удалось подключить Google Календарь. Попробуйте ещё раз.": {
     "en": "Couldn’t connect Google Calendar. Please try again.",
@@ -1536,23 +1536,23 @@
     "it": "L’accesso a Google Calendar è stato revocato. Collegalo di nuovo.",
     "uk": "Доступ до Google Календаря відкликано. Підключіть його знову."
   },
-  "Tempo подключён. Можно вернуться в приложение.": {
-    "en": "Tempo is connected. You can return to the app.",
-    "zh-Hans": "Tempo 已连接，可以返回应用了。",
-    "es": "Tempo está conectado. Ya puedes volver a la app.",
-    "pt-BR": "O Tempo está conectado. Você já pode voltar ao app.",
-    "cs": "Tempo je připojeno. Můžete se vrátit do aplikace.",
-    "it": "Tempo è collegato. Puoi tornare all’app.",
-    "uk": "Tempo підключено. Можна повернутися в застосунок."
+  "Hourfox подключён. Можно вернуться в приложение.": {
+    "en": "Hourfox is connected. You can return to the app.",
+    "zh-Hans": "Hourfox 已连接，可以返回应用了。",
+    "es": "Hourfox está conectado. Ya puedes volver a la app.",
+    "pt-BR": "O Hourfox está conectado. Você já pode voltar ao app.",
+    "cs": "Hourfox je připojeno. Můžete se vrátit do aplikace.",
+    "it": "Hourfox è collegato. Puoi tornare all’app.",
+    "uk": "Hourfox підключено. Можна повернутися в застосунок."
   },
-  "Не удалось подключиться. Вернитесь в Tempo и попробуйте ещё раз.": {
-    "en": "Couldn’t connect. Return to Tempo and try again.",
-    "zh-Hans": "连接失败。请返回 Tempo 重试。",
-    "es": "No se pudo conectar. Vuelve a Tempo e inténtalo de nuevo.",
-    "pt-BR": "Não foi possível conectar. Volte ao Tempo e tente novamente.",
-    "cs": "Připojení se nezdařilo. Vraťte se do Tempo a zkuste to znovu.",
-    "it": "Connessione non riuscita. Torna a Tempo e riprova.",
-    "uk": "Не вдалося підключитися. Поверніться в Tempo і спробуйте ще раз."
+  "Не удалось подключиться. Вернитесь в Hourfox и попробуйте ещё раз.": {
+    "en": "Couldn’t connect. Return to Hourfox and try again.",
+    "zh-Hans": "连接失败。请返回 Hourfox 重试。",
+    "es": "No se pudo conectar. Vuelve a Hourfox e inténtalo de nuevo.",
+    "pt-BR": "Não foi possível conectar. Volte ao Hourfox e tente novamente.",
+    "cs": "Připojení se nezdařilo. Vraťte se do Hourfox a zkuste to znovu.",
+    "it": "Connessione non riuscita. Torna a Hourfox e riprova.",
+    "uk": "Не вдалося підключитися. Поверніться в Hourfox і спробуйте ще раз."
   },
   "Авто": {
     "en": "Auto",
@@ -1973,14 +1973,14 @@
     "cs": "PDF pro klienta",
     "it": "PDF per il cliente"
   },
-  "Настройте Tempo под себя": {
-    "en": "Make Tempo Yours",
-    "zh-Hans": "按你的方式设置 Tempo",
-    "es": "Adapta Tempo a ti",
-    "pt-BR": "Deixe o Tempo do seu jeito",
-    "cs": "Přizpůsobte si Tempo",
-    "it": "Personalizza Tempo",
-    "uk": "Налаштуйте Tempo під себе"
+  "Настройте Hourfox под себя": {
+    "en": "Make Hourfox Yours",
+    "zh-Hans": "按你的方式设置 Hourfox",
+    "es": "Adapta Hourfox a ti",
+    "pt-BR": "Deixe o Hourfox do seu jeito",
+    "cs": "Přizpůsobte si Hourfox",
+    "it": "Personalizza Hourfox",
+    "uk": "Налаштуйте Hourfox під себе"
   },
   "Включите только то, что нужно. Всё можно поменять позже в настройках.": {
     "en": "Turn on only what you need. You can change everything later in Settings.",
@@ -1991,14 +1991,14 @@
     "it": "Attiva solo ciò che ti serve. Potrai cambiare tutto dopo nelle Impostazioni.",
     "uk": "Увімкніть лише те, що потрібно. Усе можна змінити пізніше в параметрах."
   },
-  "Щёлкните значок Tempo в строке меню, и он раскроется.": {
-    "en": "Click the Tempo icon in the menu bar to open it.",
-    "zh-Hans": "点按菜单栏中的 Tempo 图标即可打开。",
-    "es": "Haz clic en el icono de Tempo en la barra de menús para abrirlo.",
-    "pt-BR": "Clique no ícone do Tempo na barra de menus para abri-lo.",
-    "cs": "Klikněte na ikonu Tempo v řádku nabídek a otevře se.",
-    "it": "Fai clic sull’icona di Tempo nella barra dei menu per aprirlo.",
-    "uk": "Клацніть значок Tempo в рядку меню, і він розгорнеться."
+  "Щёлкните значок Hourfox в строке меню, и он раскроется.": {
+    "en": "Click the Hourfox icon in the menu bar to open it.",
+    "zh-Hans": "点按菜单栏中的 Hourfox 图标即可打开。",
+    "es": "Haz clic en el icono de Hourfox en la barra de menús para abrirlo.",
+    "pt-BR": "Clique no ícone do Hourfox na barra de menus para abri-lo.",
+    "cs": "Klikněte na ikonu Hourfox v řádku nabídek a otevře se.",
+    "it": "Fai clic sull’icona di Hourfox nella barra dei menu per aprirlo.",
+    "uk": "Клацніть значок Hourfox в рядку меню, і він розгорнеться."
   },
   "Далее": {
     "en": "Continue",
@@ -4343,14 +4343,14 @@
     "cs": "Dokončit",
     "it": "Completa"
   },
-  "Не удалось прочитать данные Tempo": {
-    "en": "Couldn’t read Tempo data",
-    "uk": "Не вдалося прочитати дані Tempo",
-    "zh-Hans": "无法读取 Tempo 数据",
-    "es": "No se pudieron leer los datos de Tempo",
-    "pt-BR": "Não foi possível ler os dados do Tempo",
-    "cs": "Data Tempo se nepodařilo načíst",
-    "it": "Impossibile leggere i dati di Tempo"
+  "Не удалось прочитать данные Hourfox": {
+    "en": "Couldn’t read Hourfox data",
+    "uk": "Не вдалося прочитати дані Hourfox",
+    "zh-Hans": "无法读取 Hourfox 数据",
+    "es": "No se pudieron leer los datos de Hourfox",
+    "pt-BR": "Não foi possível ler os dados do Hourfox",
+    "cs": "Data Hourfox se nepodařilo načíst",
+    "it": "Impossibile leggere i dati di Hourfox"
   },
   "Копия файла сохранена, ничего не потеряно: %@": {
     "en": "A copy of the file was saved, nothing is lost: %@",

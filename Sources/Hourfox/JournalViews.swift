@@ -217,7 +217,7 @@ struct SettingsTabBar: View {
     @Binding var tab: SettingsTab
 
     var body: some View {
-        TempoSegments(selection: $tab, items: SettingsTab.allCases.map { .init(value: $0, title: L($0.rawValue)) }, size: .large)
+        HourfoxSegments(selection: $tab, items: SettingsTab.allCases.map { .init(value: $0, title: L($0.rawValue)) }, size: .large)
     }
 }
 
@@ -235,7 +235,7 @@ struct MainSettingsSections: View {
                 let service = SMAppService.mainApp
                 if on { try? service.register() } else { try? service.unregister() }
             })) {
-                settingLabel("Открывать при входе в\u{00A0}систему", "Tempo запустится вместе с\u{00A0}Mac", "power")
+                settingLabel("Открывать при входе в\u{00A0}систему", "Hourfox запустится вместе с\u{00A0}Mac", "power")
             }
         } header: {
             SectionHeaderWithTop(top: top, title: L("Общие"))
@@ -269,7 +269,7 @@ struct AdvancedSettingsSections: View {
                 calendarOn = on
                 CalendarSync.shared.setEnabled(on) { calendarOn = $0 }
             })) {
-                settingLabel("Показывать в\u{00A0}Календаре", "Завершённые записи — в\u{00A0}календаре «Tempo»", "calendar")
+                settingLabel("Показывать в\u{00A0}Календаре", "Завершённые записи — в\u{00A0}календаре «Hourfox»", "calendar")
             }
         }
         if GoogleCalendar.isConfigured {
@@ -714,7 +714,7 @@ struct TasksView: View {
         .navigationSubtitle(store.openTasks.isEmpty ? "" : L("Открытых: %lld", store.openTasks.count))
         .toolbar {
             BareToolbarItem {
-                TempoSegments(selection: Binding(get: { current }, set: { layout = $0 }),
+                HourfoxSegments(selection: Binding(get: { current }, set: { layout = $0 }),
                               items: TaskLayout.allCases.filter { $0 != .due || dueOn }.map {
                                   .init(value: $0, icon: $0.icon, help: L($0.title))
                               })
@@ -1219,7 +1219,7 @@ struct EntryEditor: View {
     }
 
     var body: some View {
-        TempoSheet(title: isNew ? L("Новая запись") : L("Запись")) {
+        HourfoxSheet(title: isNew ? L("Новая запись") : L("Запись")) {
             FormCard {
                 TextField("", text: $draft.title, prompt: Text("Чем вы занимались?"))
                     .textFieldStyle(.plain)
@@ -1374,7 +1374,7 @@ struct ProjectEditor: View {
     private var parsedPrice: Double? { Project.parseRate(price) }
 
     var body: some View {
-        TempoSheet(title: existing == nil ? L("Новый проект") : L("Проект"), width: 460) {
+        HourfoxSheet(title: existing == nil ? L("Новый проект") : L("Проект"), width: 460) {
             FormCard {
                 HStack(spacing: 8) {
                     Button { pickingEmoji.toggle() } label: {
@@ -1415,7 +1415,7 @@ struct ProjectEditor: View {
             if ratesOn {
                 FormCard {
                     FormRow(title: "Оплата") {
-                        TempoSegments(selection: $isFixed, items: [
+                        HourfoxSegments(selection: $isFixed, items: [
                             .init(value: false, title: L("В час")),
                             .init(value: true, title: L("За проект")),
                         ])

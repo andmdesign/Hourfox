@@ -2,7 +2,7 @@ import AppKit
 import ServiceManagement
 import SwiftUI
 
-/// Экран приветствия при первом запуске. Повторно — из меню ⋯ → «Знакомство с Tempo».
+/// Экран приветствия при первом запуске. Повторно — из меню ⋯ → «Знакомство с Hourfox».
 final class OnboardingWindowController: NSObject, NSWindowDelegate {
     private var window: NSWindow?
     private let onFinish: () -> Void
@@ -85,14 +85,14 @@ private struct OnboardingButton: View {
     }
 }
 
-/// «Настройте Tempo под себя»: только названия и выключатели, а показать функцию можно наведением на значок info.
+/// «Настройте Hourfox под себя»: только названия и выключатели, а показать функцию можно наведением на значок info.
 struct OnboardingCustomizeView: View {
     let back: () -> Void
     let start: () -> Void
     @State private var calendarOn = CalendarSync.shared.isEnabled
     private var heading: some View {
         VStack(spacing: 8) {
-            Text("Настройте Tempo под себя")
+            Text("Настройте Hourfox под себя")
                 .font(.system(size: 30, weight: .semibold))
                 .kerning(-0.4)
                 .foregroundStyle(.notchInk)
@@ -117,7 +117,7 @@ struct OnboardingCustomizeView: View {
             }
             OnboardingAppearanceSection()
             Section("Интеграции") {
-                OnboardingRow(title: "Показывать в\u{00A0}Календаре", subtitle: "Завершённые записи — в\u{00A0}календаре «Tempo»", symbol: "calendar", demo: .calendar) {
+                OnboardingRow(title: "Показывать в\u{00A0}Календаре", subtitle: "Завершённые записи — в\u{00A0}календаре «Hourfox»", symbol: "calendar", demo: .calendar) {
                     Toggle("Показывать в\u{00A0}Календаре", isOn: Binding(get: { calendarOn }, set: { on in
                         calendarOn = on
                         CalendarSync.shared.setEnabled(on) { calendarOn = $0 }
@@ -473,8 +473,8 @@ enum OnboardingScene: Int, CaseIterable, Identifiable {
         switch self {
         case .notch:
             DisplayMode.current.usesMenuBar
-                ? "Щёлкните значок Tempo в\u{00A0}строке меню, и\u{00A0}он раскроется."
-                : "Наведите курсор на\u{00A0}вырез экрана, и\u{00A0}Tempo раскроется."
+                ? "Щёлкните значок Hourfox в\u{00A0}строке меню, и\u{00A0}он раскроется."
+                : "Наведите курсор на\u{00A0}вырез экрана, и\u{00A0}Hourfox раскроется."
         case .timer: "Кнопка с\u{00A0}часами рядом с\u{00A0}проектом задаёт обратный отсчёт."
         case .tasks: "Список дел с\u{00A0}приоритетами во\u{00A0}вкладке «Задачи»."
         case .report: "Всё время по\u{00A0}дням и\u{00A0}проектам. Можно показывать в\u{00A0}Календаре."
@@ -497,7 +497,7 @@ struct OnboardingWelcomeView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            Text("Добро пожаловать в\u{00A0}Tempo")
+            Text("Добро пожаловать в\u{00A0}Hourfox")
                 .font(.system(size: 32, weight: .semibold))
                 .kerning(-0.5)
                 .multilineTextAlignment(.center)
@@ -586,7 +586,7 @@ struct OnboardingStage: View {
         ZStack(alignment: .top) {
             desktop
             HStack(spacing: 16) {
-                Text(verbatim: "Tempo").fontWeight(.semibold)
+                Text(verbatim: "Hourfox").fontWeight(.semibold)
                 Spacer()
                 Text(verbatim: Fmt.hhmm.string(from: Date())).monospacedDigit()
             }

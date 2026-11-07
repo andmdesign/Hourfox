@@ -1,14 +1,14 @@
 #!/bin/zsh
-# Собирает Tempo.app и кладёт его в /Applications.
+# Собирает Hourfox.app и кладёт его в /Applications.
 set -euo pipefail
 cd "$(dirname "$0")"
 
 swift build -c release
 
-APP=build/Tempo.app
+APP=build/Hourfox.app
 rm -rf "$APP"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
-cp .build/release/Tempo "$APP/Contents/MacOS/Tempo"
+cp .build/release/Hourfox "$APP/Contents/MacOS/Hourfox"
 cp Resources/Info.plist "$APP/Contents/Info.plist"
 
 if [[ ! -f Resources/AppIcon.icns ]]; then
@@ -32,12 +32,12 @@ fi
 codesign --force --deep --sign - "$APP"
 
 if [[ "${1:-}" == "--install" ]]; then
-  pkill -x Tempo 2>/dev/null || true
-  while pgrep -x Tempo >/dev/null; do sleep 0.2; done
-  rm -rf /Applications/Tempo.app
-  ditto "$APP" /Applications/Tempo.app
-  open /Applications/Tempo.app
-  echo "Установлено: /Applications/Tempo.app"
+  pkill -x Hourfox 2>/dev/null || true
+  while pgrep -x Hourfox >/dev/null; do sleep 0.2; done
+  rm -rf /Applications/Hourfox.app
+  ditto "$APP" /Applications/Hourfox.app
+  open /Applications/Hourfox.app
+  echo "Установлено: /Applications/Hourfox.app"
 else
   echo "Готово: $(pwd)/$APP"
 fi

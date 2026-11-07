@@ -3,7 +3,7 @@ import SwiftUI
 // MARK: - Переключатель
 
 /// Единственный переключатель в окнах: настройки, журнал, отчёт, задачи, экспорт.
-struct TempoSegments<Value: Hashable>: View {
+struct HourfoxSegments<Value: Hashable>: View {
     struct Item {
         let value: Value
         var title: String?
@@ -76,7 +76,7 @@ struct BareToolbarItem<Content: View>: ToolbarContent {
 // MARK: - Каркас окна-листа
 
 /// Лист с заголовком, карточками и кнопками: у всех окон одинаковые поля и размеры.
-struct TempoSheet<Content: View, Buttons: View>: View {
+struct HourfoxSheet<Content: View, Buttons: View>: View {
     let title: String
     var width: CGFloat = 430
     @ViewBuilder let content: () -> Content

@@ -2,7 +2,7 @@ import AppKit
 import Network
 import SwiftUI
 
-/// TEMPO_SNAPSHOT=<папка> — сохраняет снимки собственных окон (для проверки вёрстки без записи экрана).
+/// HOURFOX_SNAPSHOT=<папка> — сохраняет снимки собственных окон (для проверки вёрстки без записи экрана).
 /// В тесте приложение в фоне, а окно без фокуса пропускает события мыши: держим его ключевым.
 private final class AlwaysKeyWindow: NSWindow {
     override var isKeyWindow: Bool { true }
@@ -11,27 +11,27 @@ private final class AlwaysKeyWindow: NSWindow {
 
 enum DebugSnapshots {
     static func runIfRequested(_ app: AppDelegate) {
-        if let dir = ProcessInfo.processInfo.environment["TEMPO_GCAL_FAKE"] {
+        if let dir = ProcessInfo.processInfo.environment["HOURFOX_GCAL_FAKE"] {
             MainActor.assumeIsolated { runGoogleCalendarTest(app, dir) }
             return
         }
-        if let dir = ProcessInfo.processInfo.environment["TEMPO_CALTEST"] {
+        if let dir = ProcessInfo.processInfo.environment["HOURFOX_CALTEST"] {
             MainActor.assumeIsolated { runCalendarTest(app, dir) }
             return
         }
-        if let dir = ProcessInfo.processInfo.environment["TEMPO_EXTRASTEST"] {
+        if let dir = ProcessInfo.processInfo.environment["HOURFOX_EXTRASTEST"] {
             MainActor.assumeIsolated { runExtrasTest(app, dir) }
             return
         }
-        if ProcessInfo.processInfo.environment["TEMPO_ANIMTEST"] != nil {
+        if ProcessInfo.processInfo.environment["HOURFOX_ANIMTEST"] != nil {
             runAnimationTest(app)
             return
         }
-        if let dir = ProcessInfo.processInfo.environment["TEMPO_MENUBARTEST"] {
+        if let dir = ProcessInfo.processInfo.environment["HOURFOX_MENUBARTEST"] {
             runMenuBarTest(app, dir)
             return
         }
-        if let dir = ProcessInfo.processInfo.environment["TEMPO_BURSTTEST"] {
+        if let dir = ProcessInfo.processInfo.environment["HOURFOX_BURSTTEST"] {
             // Залп конфетти в отдельном окне — проверить, что Vortex рисует.
             let w = NSWindow(contentRect: NSRect(x: 200, y: 200, width: 280, height: 260), styleMask: [.borderless], backing: .buffered, defer: false)
             w.contentView = NSHostingView(rootView: StopBurst(spec: .init(color: .systemOrange)).background(Color.black))
@@ -40,7 +40,7 @@ enum DebugSnapshots {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) { exit(0) }
             return
         }
-        if ProcessInfo.processInfo.environment["TEMPO_DRAGTEST"] != nil {
+        if ProcessInfo.processInfo.environment["HOURFOX_DRAGTEST"] != nil {
             // Тянем вкладку «Задачи» вправо собственными событиями мыши и следим, не завис ли главный поток.
             app.notch.expand()
             var last = Date()
@@ -59,7 +59,7 @@ enum DebugSnapshots {
                                                  windowNumber: panel.windowNumber, context: nil, eventNumber: 0, clickCount: 1, pressure: 1) else { return }
                 panel.sendEvent(e)
             }
-            let mode = ProcessInfo.processInfo.environment["TEMPO_DRAGTEST"] ?? "drag"
+            let mode = ProcessInfo.processInfo.environment["HOURFOX_DRAGTEST"] ?? "drag"
             let y: CGFloat = 122, x0: CGFloat = mode == "v2" ? 145 : 125
             func log(_ s: String) { FileHandle.standardError.write("DRAGTEST \(s) tab=\(UserDefaults.standard.string(forKey: "notchTab") ?? "-") order=\(UserDefaults.standard.string(forKey: "notchTabOrder") ?? "-")\n".data(using: .utf8)!) }
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
@@ -94,7 +94,7 @@ enum DebugSnapshots {
             DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) { log("done"); exit(0) }
             return
         }
-        if let dir = ProcessInfo.processInfo.environment["TEMPO_ONBOARDTEST"] {
+        if let dir = ProcessInfo.processInfo.environment["HOURFOX_ONBOARDTEST"] {
             app.onboarding.show()
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 save(NSApp.windows.first { $0 !== app.notch.panel && $0.isVisible }, "\(dir)/7-onboarding.png")
@@ -102,7 +102,7 @@ enum DebugSnapshots {
             }
             return
         }
-        if let dir = ProcessInfo.processInfo.environment["TEMPO_TICKTEST"] {
+        if let dir = ProcessInfo.processInfo.environment["HOURFOX_TICKTEST"] {
             // Покадрово снимаем свёрнутый остров, пока тикают секунды.
             app.store.start(title: "Тест", projectID: nil, emoji: "📎")
             for i in 0..<40 {
@@ -115,7 +115,7 @@ enum DebugSnapshots {
             }
             return
         }
-        if let dir = ProcessInfo.processInfo.environment["TEMPO_PAUSETEST"] {
+        if let dir = ProcessInfo.processInfo.environment["HOURFOX_PAUSETEST"] {
             // Секундомер: 1 с работы, 2 с паузы, 1 с работы → ≈2 с. Таймер на 3 с с паузой 2 с не должен кончиться раньше 5 с.
             app.store.start(title: "Пауза", projectID: nil, planned: .some(nil))
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -146,7 +146,7 @@ enum DebugSnapshots {
             }
             return
         }
-        if ProcessInfo.processInfo.environment["TEMPO_ADDTEST"] != nil {
+        if ProcessInfo.processInfo.environment["HOURFOX_ADDTEST"] != nil {
             // «Ещё N мин» прибавляется к оставшемуся, а не заменяет его.
             app.store.start(title: "Тест", projectID: nil, planned: 600)
             app.store.setTimer(5); let a = app.store.running?.planned ?? 0
@@ -156,7 +156,7 @@ enum DebugSnapshots {
             print("ADDTEST", Int(a), Int(b), Int(c))
             exit(0)
         }
-        if ProcessInfo.processInfo.environment["TEMPO_TIMERTEST"] != nil {
+        if ProcessInfo.processInfo.environment["HOURFOX_TIMERTEST"] != nil {
             // Таймер на 2 секунды: запись должна закрыться ровно через 2 с и показать баннер.
             app.store.start(title: "Тест таймера", projectID: nil, planned: 2)
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
@@ -169,7 +169,7 @@ enum DebugSnapshots {
             }
             return
         }
-        if ProcessInfo.processInfo.environment["TEMPO_SELFTEST"] != nil {
+        if ProcessInfo.processInfo.environment["HOURFOX_SELFTEST"] != nil {
             // Проверка автосохранения: меняем данные и выходим без applicationWillTerminate.
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { app.store.addProject(name: "Тест", color: .blue) }
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
@@ -179,7 +179,7 @@ enum DebugSnapshots {
             }
             return
         }
-        guard let dir = ProcessInfo.processInfo.environment["TEMPO_SNAPSHOT"] else { return }
+        guard let dir = ProcessInfo.processInfo.environment["HOURFOX_SNAPSHOT"] else { return }
         let steps: [(Double, () -> Void)] = [
             (1.0, { save(app.notch.panel, "\(dir)/1-collapsed.png") }),
             (1.1, {
@@ -207,7 +207,7 @@ enum DebugSnapshots {
         }
     }
 
-    /// TEMPO_GCAL_FAKE=<папка> (вместе с TEMPO_DATA_DIR): разбор ответов Google, приём ответа из браузера и снимки вкладки. В сеть не ходит.
+    /// HOURFOX_GCAL_FAKE=<папка> (вместе с HOURFOX_DATA_DIR): разбор ответов Google, приём ответа из браузера и снимки вкладки. В сеть не ходит.
     @MainActor private static func runGoogleCalendarTest(_ app: AppDelegate, _ dir: String) {
         let day = Calendar.current.startOfDay(for: Date())
         let date = day.formatted(.iso8601.year().month().day())
@@ -265,7 +265,7 @@ enum DebugSnapshots {
 
     @MainActor private static var loopbackHold: OAuthLoopbackServer?
 
-    /// TEMPO_EXTRASTEST=<папка> (вместе с TEMPO_DATA_DIR): логика функций и снимки экранов. В сеть не ходит.
+    /// HOURFOX_EXTRASTEST=<папка> (вместе с HOURFOX_DATA_DIR): логика функций и снимки экранов. В сеть не ходит.
     @MainActor private static func runExtrasTest(_ app: AppDelegate, _ dir: String) {
         setbuf(stdout, nil)
         let store = app.store
@@ -873,9 +873,9 @@ enum DebugSnapshots {
             }
 
             hosted(VStack(alignment: .leading, spacing: 14) {
-                TempoSegments(selection: .constant(TaskLayout.kanban), items: TaskLayout.allCases.map { .init(value: $0, icon: $0.icon, help: L($0.title)) })
-                TempoSegments(selection: .constant(Period.week), items: Period.allCases.map { .init(value: $0, title: L($0.rawValue)) })
-                TempoSegments(selection: .constant(SettingsTab.main), items: SettingsTab.allCases.map { .init(value: $0, title: L($0.rawValue)) }, size: .large)
+                HourfoxSegments(selection: .constant(TaskLayout.kanban), items: TaskLayout.allCases.map { .init(value: $0, icon: $0.icon, help: L($0.title)) })
+                HourfoxSegments(selection: .constant(Period.week), items: Period.allCases.map { .init(value: $0, title: L($0.rawValue)) })
+                HourfoxSegments(selection: .constant(SettingsTab.main), items: SettingsTab.allCases.map { .init(value: $0, title: L($0.rawValue)) }, size: .large)
             }.padding(20).frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading), NSSize(width: 460, height: 170), "segments", 0.6)
             hosted(ReportView(), NSSize(width: 980, height: 620), "report-view", 1.0)
             // CSV: текст не должен выполниться как формула.
@@ -1166,7 +1166,7 @@ enum DebugSnapshots {
         }
     }
 
-    /// TEMPO_ANIMTEST=1 (вместе с TEMPO_DATA_DIR): окно не меняет размер, пока открываются строки, и щелчки проходят мимо острова.
+    /// HOURFOX_ANIMTEST=1 (вместе с HOURFOX_DATA_DIR): окно не меняет размер, пока открываются строки, и щелчки проходят мимо острова.
     private static func runAnimationTest(_ app: AppDelegate) {
         let notch = app.notch!
         var heights = Set<CGFloat>()
@@ -1199,7 +1199,7 @@ enum DebugSnapshots {
         }
     }
 
-    /// TEMPO_MENUBARTEST=<папка> (вместе с TEMPO_DATA_DIR и display.mode = menuBar): логика текста, лист значков и панель под значком.
+    /// HOURFOX_MENUBARTEST=<папка> (вместе с HOURFOX_DATA_DIR и display.mode = menuBar): логика текста, лист значков и панель под значком.
     private static func runMenuBarTest(_ app: AppDelegate, _ dir: String) {
         let now = Date()
         func entry(_ minutes: Double, planned: Double? = nil, paused: Bool = false) -> Entry {

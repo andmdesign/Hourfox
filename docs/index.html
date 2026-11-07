@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tempo — a time tracker for Mac</title>
+<title>Hourfox — a time tracker for Mac</title>
 <meta name="description" content="A time tracker for Mac that lives in the Notch or the menu bar. Works offline, no account needed.">
-<meta property="og:title" content="Tempo — a time tracker for Mac">
+<meta property="og:title" content="Hourfox — a time tracker for Mac">
 <meta property="og:description" content="A time tracker for Mac that lives in the Notch or the menu bar. Works offline, no account needed.">
 <meta property="og:type" content="website">
 <meta name="color-scheme" content="dark">
@@ -519,7 +519,7 @@
 
 <nav>
   <div class="wrap">
-    <a class="brand" href="#"><img src="icon.png" alt="">Tempo</a>
+    <a class="brand" href="#"><img src="icon.png" alt="">Hourfox</a>
     <div class="spacer"></div>
     <div class="langsel">
       <button class="globe" id="globe" aria-label="Language" aria-haspopup="menu" aria-expanded="false">
@@ -527,19 +527,19 @@
       </button>
       <div class="menu" id="langMenu" role="menu" hidden></div>
     </div>
-    <a class="btn ghost" href="Tempo.zip" download data-i18n="nav.download">Скачать</a>
+    <a class="btn ghost" href="Hourfox.zip" download data-i18n="nav.download">Скачать</a>
   </div>
 </nav>
 
 <main>
   <header class="hero wrap">
-    <div class="model" id="model"><img class="icon" src="icon.png" alt="Tempo"></div>
+    <div class="model" id="model"><img class="icon" src="hourfox-icon.svg" alt="Hourfox"></div>
     <h1 data-i18n="hero.title">Время под&nbsp;контролем</h1>
     <p class="lead" data-i18n="hero.lead">Трекер времени для&nbsp;Mac, который живёт в&nbsp;Notch или в&nbsp;строке меню.</p>
-    <a class="btn big" href="Tempo.zip" download><span data-i18n="hero.cta">Скачать для <svg class="apple" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>Mac</span></a>
+    <a class="btn big" href="Hourfox.zip" download><span data-i18n="hero.cta">Скачать для <svg class="apple" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>Mac</span></a>
 
     <div class="demo">
-      <div class="feats" id="feats" role="tablist" aria-label="Tempo">
+      <div class="feats" id="feats" role="tablist" aria-label="Hourfox">
         <button role="tab" data-scene="0" data-i18n="b.timer"></button>
         <button role="tab" data-scene="1" data-i18n="b.proj"></button>
         <button role="tab" data-scene="2" data-i18n="b.report"></button>
@@ -548,7 +548,7 @@
       <div class="scaler" id="scaler">
         <div class="screen" id="screen" inert>
           <div class="menubar">
-            <b>Tempo</b><span data-i18n="mb.file">Файл</span><span data-i18n="mb.edit">Правка</span><span data-i18n="mb.view">Вид</span>
+            <b>Hourfox</b><span data-i18n="mb.file">Файл</span><span data-i18n="mb.edit">Правка</span><span data-i18n="mb.view">Вид</span>
             <span class="right"><span id="mbClock"></span></span>
           </div>
 
@@ -745,16 +745,16 @@
   <section class="final wrap">
     <h2 data-i18n="end.t">Бесплатно и&nbsp;без аккаунта</h2>
     <div class="actions">
-      <a class="btn big" href="Tempo.zip" download><span data-i18n="hero.cta">Скачать для <svg class="apple" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>Mac</span></a>
+      <a class="btn big" href="Hourfox.zip" download><span data-i18n="hero.cta">Скачать для <svg class="apple" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>Mac</span></a>
     </div>
   </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <span>Tempo</span>
-    <a href="Tempo.zip" download data-i18n="nav.download">Скачать</a>
-    <a href="https://github.com/andmdesign/Tempo" target="_blank" rel="noopener">GitHub</a>
+    <span>Hourfox</span>
+    <a href="Hourfox.zip" download data-i18n="nav.download">Скачать</a>
+    <a href="https://github.com/andmdesign/Hourfox" target="_blank" rel="noopener">GitHub</a>
     <a href="https://t.me/andmdesign" target="_blank" rel="noopener" data-i18n="ft.feedback">Обратная связь</a>
   </div>
 </footer>
@@ -777,7 +777,7 @@
 
   const T = {
     en: {
-      "doc.title": "Tempo — a time tracker for Mac",
+      "doc.title": "Hourfox — a time tracker for Mac",
       "nav.download": "Download",
       "hero.title": "Your time, under&nbsp;control",
       "hero.lead": "A time tracker for Mac that lives in the Notch or the menu bar.",
@@ -798,20 +798,20 @@
       "a.task": "Homepage fixes", "f.p1": "Design", "f.p2": "Client A",
       "a.d1": "1&nbsp;h 58&nbsp;min", "a.d2": "45&nbsp;min",       "end.t": "Free, no account needed",
                         "c7.t": "With or without a notch",
-      "c7.d": "On a Mac without a notch, Tempo moves to the menu bar on its own.",
+      "c7.d": "On a Mac without a notch, Hourfox moves to the menu bar on its own.",
                               "c10.t": "Your data stays on your Mac",
       "c10.d": "No account. A backup every day, and a deletion or a finished task can be undone.",
                                                 "x.deleted": "Entry deleted",
       "x.undo": "Undo",
       "q.title": "Common questions",
       "q1.q": "Will it run on my Mac?",
-      "q1.a": "Yes, with macOS 14+ and Apple Silicon (M1 or newer). Without a notch, Tempo lives in the menu bar.",
+      "q1.a": "Yes, with macOS 14+ and Apple Silicon (M1 or newer). Without a notch, Hourfox lives in the menu bar.",
       "q2.q": "How do I install it?",
-      "q2.a": "Unzip and drag Tempo to Applications. On first launch, go to System Settings → Privacy &amp; Security and click Open Anyway.",
+      "q2.a": "Unzip and drag Hourfox to Applications. On first launch, go to System Settings → Privacy &amp; Security and click Open Anyway.",
       "q4.q": "Is it safe?",
-      "q4.a": "Tempo doesn’t ask for access to your screen or files, works without an account and sends nothing online. It only asks for Calendar access if you turn on Show in Calendar.",
+      "q4.a": "Hourfox doesn’t ask for access to your screen or files, works without an account and sends nothing online. It only asks for Calendar access if you turn on Show in Calendar.",
       "q3.q": "Where is my data?",
-      "q3.a": "Only on your Mac, in <code>~/Library/Application Support/Tempo</code>. No account, no internet, and nothing gets sent anywhere.",
+      "q3.a": "Only on your Mac, in <code>~/Library/Application Support/Hourfox</code>. No account, no internet, and nothing gets sent anywhere.",
       "b.timer": "Tracker", "x.export": "Export", "b.week": "This week",
       "b.proj": "Projects", "b.report": "Report", "b.newProject": "New project…", "b.nameProject": "Project name", "b.newName": "Client B",
       "c11.t": "Smart input", "c11.d": "Project and timer right in the task name.", "c12.t": "Make it yours", "c12.d": "Light or dark, glass and glow.",
@@ -825,7 +825,7 @@
       min: "min", h: "h", days: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     },
     ru: {
-      "doc.title": "Tempo — трекер времени для Mac",
+      "doc.title": "Hourfox — трекер времени для Mac",
       "nav.download": "Скачать",
       "hero.title": "Время под&nbsp;контролем",
       "hero.lead": "Трекер времени для&nbsp;Mac, который живёт в&nbsp;Notch или в&nbsp;строке меню.",
@@ -846,20 +846,20 @@
       "a.task": "Правки главной страницы", "f.p1": "Дизайн", "f.p2": "Клиент А",
       "a.d1": "1&nbsp;ч 58&nbsp;мин", "a.d2": "45&nbsp;мин",       "end.t": "Бесплатно и&nbsp;без аккаунта",
                         "c7.t": "С&nbsp;вырезом и&nbsp;без",
-      "c7.d": "На&nbsp;Mac без выреза Tempo сам перейдёт в&nbsp;строку меню.",
+      "c7.d": "На&nbsp;Mac без выреза Hourfox сам перейдёт в&nbsp;строку меню.",
                               "c10.t": "Данные остаются на&nbsp;Mac",
       "c10.d": "Без аккаунта. Копия каждый день, а&nbsp;удаление и&nbsp;завершение задачи можно отменить.",
                                                 "x.deleted": "Запись удалена",
       "x.undo": "Отменить",
       "q.title": "Частые вопросы",
       "q1.q": "Заработает ли на&nbsp;моём Mac?",
-      "q1.a": "Да, если macOS&nbsp;14+ и&nbsp;Apple Silicon (M1 и&nbsp;новее). Без выреза Tempo живёт в&nbsp;строке меню.",
+      "q1.a": "Да, если macOS&nbsp;14+ и&nbsp;Apple Silicon (M1 и&nbsp;новее). Без выреза Hourfox живёт в&nbsp;строке меню.",
       "q2.q": "Как установить?",
-      "q2.a": "Распакуйте и&nbsp;перетащите Tempo в&nbsp;«Программы». При первом запуске откройте Системные настройки → Конфиденциальность и&nbsp;безопасность → «Всё равно открыть».",
+      "q2.a": "Распакуйте и&nbsp;перетащите Hourfox в&nbsp;«Программы». При первом запуске откройте Системные настройки → Конфиденциальность и&nbsp;безопасность → «Всё равно открыть».",
       "q4.q": "Это безопасно?",
-      "q4.a": "Tempo не&nbsp;просит доступ к&nbsp;экрану и&nbsp;файлам, работает без аккаунта и&nbsp;ничего не&nbsp;отправляет в&nbsp;интернет. Доступ к&nbsp;Календарю запросит, только если включите показ записей в&nbsp;нём.",
+      "q4.a": "Hourfox не&nbsp;просит доступ к&nbsp;экрану и&nbsp;файлам, работает без аккаунта и&nbsp;ничего не&nbsp;отправляет в&nbsp;интернет. Доступ к&nbsp;Календарю запросит, только если включите показ записей в&nbsp;нём.",
       "q3.q": "Где лежат данные?",
-      "q3.a": "Только на&nbsp;вашем Mac, в&nbsp;<code>~/Library/Application Support/Tempo</code>. Без аккаунта и&nbsp;интернета, никуда не&nbsp;отправляются.",
+      "q3.a": "Только на&nbsp;вашем Mac, в&nbsp;<code>~/Library/Application Support/Hourfox</code>. Без аккаунта и&nbsp;интернета, никуда не&nbsp;отправляются.",
       "b.timer": "Трекер", "x.export": "Экспорт", "b.week": "Эта неделя",
       "b.proj": "Проекты", "b.report": "Отчёт", "b.newProject": "Новый проект…", "b.nameProject": "Название проекта", "b.newName": "Клиент Б",
       "c11.t": "Умный ввод", "c11.d": "Проект и&nbsp;таймер прямо в&nbsp;названии задачи.", "c12.t": "Под себя", "c12.d": "Светлая или тёмная тема, стекло и&nbsp;сияние.",
@@ -873,7 +873,7 @@
       min: "мин", h: "ч", days: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"]
     },
     uk: {
-      "doc.title": "Tempo — трекер часу для Mac",
+      "doc.title": "Hourfox — трекер часу для Mac",
       "nav.download": "Завантажити",
       "hero.title": "Час під&nbsp;контролем",
       "hero.lead": "Трекер часу для&nbsp;Mac, який живе в&nbsp;Notch або в&nbsp;рядку меню.",
@@ -894,20 +894,20 @@
       "a.task": "Правки головної сторінки", "f.p1": "Дизайн", "f.p2": "Клієнт А",
       "a.d1": "1&nbsp;год 58&nbsp;хв", "a.d2": "45&nbsp;хв",       "end.t": "Безплатно й&nbsp;без акаунта",
                         "c7.t": "З&nbsp;вирізом і&nbsp;без",
-      "c7.d": "На&nbsp;Mac без вирізу Tempo сам перейде в&nbsp;рядок меню.",
+      "c7.d": "На&nbsp;Mac без вирізу Hourfox сам перейде в&nbsp;рядок меню.",
                               "c10.t": "Дані залишаються на&nbsp;Mac",
       "c10.d": "Без акаунта. Копія щодня, а&nbsp;видалення й&nbsp;завершення завдання можна скасувати.",
                                                 "x.deleted": "Запис видалено",
       "x.undo": "Скасувати",
       "q.title": "Часті запитання",
       "q1.q": "Чи запрацює на&nbsp;моєму Mac?",
-      "q1.a": "Так, якщо macOS&nbsp;14+ і&nbsp;Apple Silicon (M1 і&nbsp;новіші). Без вирізу Tempo живе в&nbsp;рядку меню.",
+      "q1.a": "Так, якщо macOS&nbsp;14+ і&nbsp;Apple Silicon (M1 і&nbsp;новіші). Без вирізу Hourfox живе в&nbsp;рядку меню.",
       "q2.q": "Як установити?",
-      "q2.a": "Розпакуйте й&nbsp;перетягніть Tempo у&nbsp;«Програми». Під час першого запуску відкрийте Системні параметри → Конфіденційність і&nbsp;безпека → «Усе одно відкрити».",
+      "q2.a": "Розпакуйте й&nbsp;перетягніть Hourfox у&nbsp;«Програми». Під час першого запуску відкрийте Системні параметри → Конфіденційність і&nbsp;безпека → «Усе одно відкрити».",
       "q4.q": "Це безпечно?",
-      "q4.a": "Tempo не&nbsp;просить доступу до&nbsp;екрана й&nbsp;файлів, працює без акаунта й&nbsp;нічого не&nbsp;надсилає в&nbsp;інтернет. Доступ до&nbsp;Календаря запитає, лише якщо ввімкнете показ записів у&nbsp;ньому.",
+      "q4.a": "Hourfox не&nbsp;просить доступу до&nbsp;екрана й&nbsp;файлів, працює без акаунта й&nbsp;нічого не&nbsp;надсилає в&nbsp;інтернет. Доступ до&nbsp;Календаря запитає, лише якщо ввімкнете показ записів у&nbsp;ньому.",
       "q3.q": "Де лежать дані?",
-      "q3.a": "Лише на&nbsp;вашому Mac, у&nbsp;<code>~/Library/Application Support/Tempo</code>. Без акаунта й&nbsp;інтернету, нікуди не&nbsp;надсилаються.",
+      "q3.a": "Лише на&nbsp;вашому Mac, у&nbsp;<code>~/Library/Application Support/Hourfox</code>. Без акаунта й&nbsp;інтернету, нікуди не&nbsp;надсилаються.",
       "b.timer": "Трекер", "x.export": "Експорт", "b.week": "Цей тиждень",
       "b.proj": "Проєкти", "b.report": "Звіт", "b.newProject": "Новий проєкт…", "b.nameProject": "Назва проєкту", "b.newName": "Клієнт Б",
       "c11.t": "Розумне введення", "c11.d": "Проєкт і&nbsp;таймер просто в&nbsp;назві завдання.", "c12.t": "Під себе", "c12.d": "Світла чи темна тема, скло й&nbsp;сяйво.",
@@ -921,7 +921,7 @@
       min: "хв", h: "год", days: ["Нд", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"]
     },
     zh: {
-      "doc.title": "Tempo — Mac 时间追踪工具",
+      "doc.title": "Hourfox — Mac 时间追踪工具",
       "nav.download": "下载",
       "hero.title": "时间，尽在掌握",
       "hero.lead": "一款住在 Notch 或菜单栏里的 Mac 时间追踪工具。",
@@ -942,20 +942,20 @@
       "a.task": "首页修改", "f.p1": "设计", "f.p2": "客户 A",
       "a.d1": "1 小时 58 分钟", "a.d2": "45 分钟",       "end.t": "免费，无需账户",
                         "c7.t": "有无刘海都能用",
-      "c7.d": "在没有刘海的 Mac 上，Tempo 会自动移到菜单栏。",
+      "c7.d": "在没有刘海的 Mac 上，Hourfox 会自动移到菜单栏。",
                               "c10.t": "数据留在你的 Mac 上",
       "c10.d": "无需账户。每天备份，删除和完成任务都可撤销。",
                                                 "x.deleted": "记录已删除",
       "x.undo": "撤销",
       "q.title": "常见问题",
       "q1.q": "我的 Mac 能用吗？",
-      "q1.a": "需要 macOS 14 或更高版本和 Apple 芯片（M1 或更新）。没有刘海时，Tempo 在菜单栏中。",
+      "q1.a": "需要 macOS 14 或更高版本和 Apple 芯片（M1 或更新）。没有刘海时，Hourfox 在菜单栏中。",
       "q2.q": "怎么安装？",
-      "q2.a": "解压后把 Tempo 拖到“应用程序”。首次启动时，打开“系统设置 → 隐私与安全性”，点按“仍要打开”。",
+      "q2.a": "解压后把 Hourfox 拖到“应用程序”。首次启动时，打开“系统设置 → 隐私与安全性”，点按“仍要打开”。",
       "q4.q": "安全吗？",
-      "q4.a": "Tempo 不会请求访问屏幕或文件，无需账户，也不会向网络发送任何内容。只有开启“在日历中显示”时，才会请求访问日历。",
+      "q4.a": "Hourfox 不会请求访问屏幕或文件，无需账户，也不会向网络发送任何内容。只有开启“在日历中显示”时，才会请求访问日历。",
       "q3.q": "数据在哪里？",
-      "q3.a": "只在你的 Mac 上，位于 <code>~/Library/Application Support/Tempo</code>。无需账户和联网，也不会发送到任何地方。",
+      "q3.a": "只在你的 Mac 上，位于 <code>~/Library/Application Support/Hourfox</code>。无需账户和联网，也不会发送到任何地方。",
       "b.timer": "追踪", "x.export": "导出", "b.week": "本周",
       "b.proj": "项目", "b.report": "报告", "b.newProject": "新项目…", "b.nameProject": "项目名称", "b.newName": "客户 B",
       "c11.t": "智能输入", "c11.d": "项目和计时直接写在任务名称里。", "c12.t": "随心外观", "c12.d": "浅色或深色主题，还有玻璃与光效。",
@@ -969,7 +969,7 @@
       min: "分钟", h: "小时", days: ["周日", "周一", "周二", "周三", "周四", "周五", "周六"]
     },
     es: {
-      "doc.title": "Tempo — control del tiempo para Mac",
+      "doc.title": "Hourfox — control del tiempo para Mac",
       "nav.download": "Descargar",
       "hero.title": "Tu tiempo, bajo&nbsp;control",
       "hero.lead": "Un registro de tiempo para Mac que vive en el Notch o en la barra de menús.",
@@ -990,20 +990,20 @@
       "a.task": "Cambios en la portada", "f.p1": "Diseño", "f.p2": "Cliente A",
       "a.d1": "1&nbsp;h 58&nbsp;min", "a.d2": "45&nbsp;min",       "end.t": "Gratis y sin cuenta",
                         "c7.t": "Con o sin notch",
-      "c7.d": "En un Mac sin notch, Tempo pasa solo a la barra de menús.",
+      "c7.d": "En un Mac sin notch, Hourfox pasa solo a la barra de menús.",
                               "c10.t": "Tus datos se quedan en tu Mac",
       "c10.d": "Sin cuenta. Una copia cada día, y lo eliminado o completado se puede deshacer.",
                                                 "x.deleted": "Entrada eliminada",
       "x.undo": "Deshacer",
       "q.title": "Preguntas frecuentes",
       "q1.q": "¿Funcionará en mi Mac?",
-      "q1.a": "Sí, con macOS 14+ y Apple Silicon (M1 o más reciente). Sin notch, Tempo vive en la barra de menús.",
+      "q1.a": "Sí, con macOS 14+ y Apple Silicon (M1 o más reciente). Sin notch, Hourfox vive en la barra de menús.",
       "q2.q": "¿Cómo se instala?",
-      "q2.a": "Descomprime y arrastra Tempo a Aplicaciones. En el primer inicio, ve a Ajustes del Sistema → Privacidad y seguridad y pulsa Abrir igualmente.",
+      "q2.a": "Descomprime y arrastra Hourfox a Aplicaciones. En el primer inicio, ve a Ajustes del Sistema → Privacidad y seguridad y pulsa Abrir igualmente.",
       "q4.q": "¿Es seguro?",
-      "q4.a": "Tempo no pide acceso a tu pantalla ni a tus archivos, funciona sin cuenta y no envía nada a internet. Solo pedirá acceso al Calendario si activas Mostrar en Calendario.",
+      "q4.a": "Hourfox no pide acceso a tu pantalla ni a tus archivos, funciona sin cuenta y no envía nada a internet. Solo pedirá acceso al Calendario si activas Mostrar en Calendario.",
       "q3.q": "¿Dónde están mis datos?",
-      "q3.a": "Solo en tu Mac, en <code>~/Library/Application Support/Tempo</code>. Sin cuenta ni internet, y no se envían a ningún sitio.",
+      "q3.a": "Solo en tu Mac, en <code>~/Library/Application Support/Hourfox</code>. Sin cuenta ni internet, y no se envían a ningún sitio.",
       "b.timer": "Registro", "x.export": "Exportar", "b.week": "Esta semana",
       "b.proj": "Proyectos", "b.report": "Informe", "b.newProject": "Nuevo proyecto…", "b.nameProject": "Nombre del proyecto", "b.newName": "Cliente B",
       "c11.t": "Entrada inteligente", "c11.d": "Proyecto y temporizador en el propio nombre de la tarea.", "c12.t": "A tu gusto", "c12.d": "Tema claro u oscuro, cristal y brillo.",
@@ -1017,7 +1017,7 @@
       min: "min", h: "h", days: ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"]
     },
     pt: {
-      "doc.title": "Tempo — controle de tempo para Mac",
+      "doc.title": "Hourfox — controle de tempo para Mac",
       "nav.download": "Baixar",
       "hero.title": "Seu tempo, sob&nbsp;controle",
       "hero.lead": "Um registro de tempo para Mac que fica no Notch ou na barra de menus.",
@@ -1038,20 +1038,20 @@
       "a.task": "Ajustes na página inicial", "f.p1": "Design", "f.p2": "Cliente A",
       "a.d1": "1&nbsp;h 58&nbsp;min", "a.d2": "45&nbsp;min",       "end.t": "Grátis e sem conta",
                         "c7.t": "Com ou sem notch",
-      "c7.d": "Em um Mac sem notch, o Tempo vai sozinho para a barra de menus.",
+      "c7.d": "Em um Mac sem notch, o Hourfox vai sozinho para a barra de menus.",
                               "c10.t": "Seus dados ficam no seu Mac",
       "c10.d": "Sem conta. Uma cópia por dia, e o que foi excluído ou concluído pode ser desfeito.",
                                                 "x.deleted": "Registro excluído",
       "x.undo": "Desfazer",
       "q.title": "Perguntas frequentes",
       "q1.q": "Vai funcionar no meu Mac?",
-      "q1.a": "Sim, com macOS 14+ e Apple Silicon (M1 ou mais novo). Sem notch, o Tempo fica na barra de menus.",
+      "q1.a": "Sim, com macOS 14+ e Apple Silicon (M1 ou mais novo). Sem notch, o Hourfox fica na barra de menus.",
       "q2.q": "Como instalar?",
-      "q2.a": "Descompacte e arraste o Tempo para Aplicativos. Na primeira vez, vá em Ajustes do Sistema → Privacidade e Segurança e clique em Abrir Mesmo Assim.",
+      "q2.a": "Descompacte e arraste o Hourfox para Aplicativos. Na primeira vez, vá em Ajustes do Sistema → Privacidade e Segurança e clique em Abrir Mesmo Assim.",
       "q4.q": "É seguro?",
-      "q4.a": "O Tempo não pede acesso à tela nem aos arquivos, funciona sem conta e não envia nada para a internet. Só pede acesso ao Calendário se você ativar Mostrar no Calendário.",
+      "q4.a": "O Hourfox não pede acesso à tela nem aos arquivos, funciona sem conta e não envia nada para a internet. Só pede acesso ao Calendário se você ativar Mostrar no Calendário.",
       "q3.q": "Onde ficam meus dados?",
-      "q3.a": "Só no seu Mac, em <code>~/Library/Application Support/Tempo</code>. Sem conta nem internet, e nada é enviado para lugar nenhum.",
+      "q3.a": "Só no seu Mac, em <code>~/Library/Application Support/Hourfox</code>. Sem conta nem internet, e nada é enviado para lugar nenhum.",
       "b.timer": "Registro", "x.export": "Exportar", "b.week": "Esta semana",
       "b.proj": "Projetos", "b.report": "Relatório", "b.newProject": "Novo projeto…", "b.nameProject": "Nome do projeto", "b.newName": "Cliente B",
       "c11.t": "Entrada inteligente", "c11.d": "Projeto e timer no próprio nome da tarefa.", "c12.t": "Do seu jeito", "c12.d": "Tema claro ou escuro, vidro e brilho.",
@@ -1065,7 +1065,7 @@
       min: "min", h: "h", days: ["dom", "seg", "ter", "qua", "qui", "sex", "sáb"]
     },
     cs: {
-      "doc.title": "Tempo — měření času pro Mac",
+      "doc.title": "Hourfox — měření času pro Mac",
       "nav.download": "Stáhnout",
       "hero.title": "Čas pod&nbsp;kontrolou",
       "hero.lead": "Sledování času pro Mac, které žije v Notchi nebo na řádku nabídek.",
@@ -1086,20 +1086,20 @@
       "a.task": "Úpravy úvodní stránky", "f.p1": "Design", "f.p2": "Klient A",
       "a.d1": "1&nbsp;h 58&nbsp;min", "a.d2": "45&nbsp;min",       "end.t": "Zdarma a bez účtu",
                         "c7.t": "S výřezem i bez něj",
-      "c7.d": "Na Macu bez výřezu se Tempo samo přesune na řádek nabídek.",
+      "c7.d": "Na Macu bez výřezu se Hourfox samo přesune na řádek nabídek.",
                               "c10.t": "Vaše data zůstávají na Macu",
       "c10.d": "Bez účtu. Záloha každý den a smazání i dokončení úkolu lze vrátit.",
                                                 "x.deleted": "Záznam smazán",
       "x.undo": "Zpět",
       "q.title": "Časté otázky",
       "q1.q": "Poběží na mém Macu?",
-      "q1.a": "Ano, s macOS 14+ a Apple Silicon (M1 a novější). Bez výřezu bydlí Tempo na řádku nabídek.",
+      "q1.a": "Ano, s macOS 14+ a Apple Silicon (M1 a novější). Bez výřezu bydlí Hourfox na řádku nabídek.",
       "q2.q": "Jak ho nainstalovat?",
-      "q2.a": "Rozbalte a přetáhněte Tempo do Aplikací. Při prvním spuštění otevřete Nastavení systému → Soukromí a zabezpečení a klikněte na Přesto otevřít.",
+      "q2.a": "Rozbalte a přetáhněte Hourfox do Aplikací. Při prvním spuštění otevřete Nastavení systému → Soukromí a zabezpečení a klikněte na Přesto otevřít.",
       "q4.q": "Je to bezpečné?",
-      "q4.a": "Tempo nežádá o přístup k obrazovce ani souborům, funguje bez účtu a nic neposílá na internet. O přístup ke Kalendáři požádá, jen když zapnete Zobrazovat v Kalendáři.",
+      "q4.a": "Hourfox nežádá o přístup k obrazovce ani souborům, funguje bez účtu a nic neposílá na internet. O přístup ke Kalendáři požádá, jen když zapnete Zobrazovat v Kalendáři.",
       "q3.q": "Kde jsou moje data?",
-      "q3.a": "Jen na vašem Macu, v <code>~/Library/Application Support/Tempo</code>. Bez účtu a internetu, nikam se neposílají.",
+      "q3.a": "Jen na vašem Macu, v <code>~/Library/Application Support/Hourfox</code>. Bez účtu a internetu, nikam se neposílají.",
       "b.timer": "Měření", "x.export": "Exportovat", "b.week": "Tento týden",
       "b.proj": "Projekty", "b.report": "Přehled", "b.newProject": "Nový projekt…", "b.nameProject": "Název projektu", "b.newName": "Klient B",
       "c11.t": "Chytré zadávání", "c11.d": "Projekt a časovač přímo v názvu úkolu.", "c12.t": "Podle vás", "c12.d": "Světlý nebo tmavý motiv, sklo a záře.",
@@ -1113,7 +1113,7 @@
       min: "min", h: "h", days: ["ne", "po", "út", "st", "čt", "pá", "so"]
     },
     it: {
-      "doc.title": "Tempo — monitoraggio del tempo per Mac",
+      "doc.title": "Hourfox — monitoraggio del tempo per Mac",
       "nav.download": "Scarica",
       "hero.title": "Il tuo tempo, sotto&nbsp;controllo",
       "hero.lead": "Un tracker del tempo per Mac che vive nel Notch o nella barra dei menu.",
@@ -1134,20 +1134,20 @@
       "a.task": "Modifiche alla home", "f.p1": "Design", "f.p2": "Cliente A",
       "a.d1": "1&nbsp;h 58&nbsp;min", "a.d2": "45&nbsp;min",       "end.t": "Gratis e senza account",
                         "c7.t": "Con o senza notch",
-      "c7.d": "Su un Mac senza notch, Tempo passa da solo alla barra dei menu.",
+      "c7.d": "Su un Mac senza notch, Hourfox passa da solo alla barra dei menu.",
                               "c10.t": "I tuoi dati restano sul Mac",
       "c10.d": "Nessun account. Un backup al giorno, e ciò che elimini o completi si può annullare.",
                                                 "x.deleted": "Voce eliminata",
       "x.undo": "Annulla",
       "q.title": "Domande frequenti",
       "q1.q": "Funzionerà sul mio Mac?",
-      "q1.a": "Sì, con macOS 14+ e Apple Silicon (M1 o più recente). Senza notch, Tempo vive nella barra dei menu.",
+      "q1.a": "Sì, con macOS 14+ e Apple Silicon (M1 o più recente). Senza notch, Hourfox vive nella barra dei menu.",
       "q2.q": "Come si installa?",
-      "q2.a": "Estrai e trascina Tempo in Applicazioni. Al primo avvio, vai in Impostazioni di Sistema → Privacy e sicurezza e fai clic su Apri comunque.",
+      "q2.a": "Estrai e trascina Hourfox in Applicazioni. Al primo avvio, vai in Impostazioni di Sistema → Privacy e sicurezza e fai clic su Apri comunque.",
       "q4.q": "È sicuro?",
-      "q4.a": "Tempo non chiede l’accesso allo schermo o ai file, funziona senza account e non invia nulla online. Chiede l’accesso a Calendario solo se attivi Mostra in Calendario.",
+      "q4.a": "Hourfox non chiede l’accesso allo schermo o ai file, funziona senza account e non invia nulla online. Chiede l’accesso a Calendario solo se attivi Mostra in Calendario.",
       "q3.q": "Dove sono i miei dati?",
-      "q3.a": "Solo sul tuo Mac, in <code>~/Library/Application Support/Tempo</code>. Senza account né internet, e non vengono inviati da nessuna parte.",
+      "q3.a": "Solo sul tuo Mac, in <code>~/Library/Application Support/Hourfox</code>. Senza account né internet, e non vengono inviati da nessuna parte.",
       "b.timer": "Tracker", "x.export": "Esporta", "b.week": "Questa settimana",
       "b.proj": "Progetti", "b.report": "Report", "b.newProject": "Nuovo progetto…", "b.nameProject": "Nome del progetto", "b.newName": "Cliente B",
       "c11.t": "Inserimento rapido", "c11.d": "Progetto e timer direttamente nel nome dell’attività.", "c12.t": "A modo tuo", "c12.d": "Tema chiaro o scuro, vetro e bagliore.",
@@ -2034,10 +2034,12 @@ const stage = document.getElementById("model");
 try {
   const THREE = await import("three");
   const { RoomEnvironment } = await import("three/addons/environments/RoomEnvironment.js");
+  const { SVGLoader } = await import("three/addons/loaders/SVGLoader.js");
 
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "low-power" });
   renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
-  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  // Нейтральный режим не выбеливает насыщенный оранжевый.
+  renderer.toneMapping = THREE.NeutralToneMapping;
   renderer.toneMappingExposure = 0.95;
   renderer.domElement.setAttribute("aria-hidden", "true");
   stage.append(renderer.domElement);
@@ -2048,17 +2050,17 @@ try {
   pmrem.dispose();
   const camera = new THREE.PerspectiveCamera(26, 1, 0.1, 50);
   camera.position.set(0, 0, 7.4);
-  const key = new THREE.DirectionalLight(0xffffff, 0.9);
+  const key = new THREE.DirectionalLight(0xffffff, 0.35);
   key.position.set(2, 3, 5);
-  const rim = new THREE.DirectionalLight(0xff9f0a, 1.4);
-  rim.position.set(-4, -1.5, -2.5);
+  const rimLight = new THREE.DirectionalLight(0xff9f0a, 1.4);
+  rimLight.position.set(-4, -1.5, -2.5);
   // Холодный контровой свет отделяет тёмный корпус от чёрного фона.
   const edge = new THREE.DirectionalLight(0x9db8ff, 1.1);
   edge.position.set(4, 1.5, -3);
-  scene.add(key, rim, edge);
+  scene.add(key, rimLight, edge);
 
   // Корпус: скруглённый квадрат с фаской, как у значка приложения.
-  const side = 2, radius = 0.46, depth = 0.3, half = side / 2;
+  const side = 2, radius = 0.52, depth = 0.3, half = side / 2;
   // Контур точками без повтора первой: совпавшие точки давали скол на фаске.
   const outline = [];
   const corners = [[half - radius, -half + radius, -Math.PI / 2], [half - radius, half - radius, 0], [-half + radius, half - radius, Math.PI / 2], [-half + radius, -half + radius, Math.PI]];
@@ -2071,44 +2073,99 @@ try {
   const shape = new THREE.Shape(outline);
   const bodyGeometry = new THREE.ExtrudeGeometry(shape, { depth, bevelEnabled: true, bevelSize: 0.05, bevelThickness: 0.05, bevelSegments: 8, curveSegments: 48 });
   bodyGeometry.center();
-  const body = new THREE.Mesh(bodyGeometry, new THREE.MeshPhysicalMaterial({ color: 0x0b0b0d, metalness: 0.2, roughness: 0.42, clearcoat: 1, clearcoatRoughness: 0.08, envMapIntensity: 0.75 }));
+  // Корпус: тот же градиент, что в векторе.
+  const paper = document.createElement("canvas");
+  paper.width = paper.height = 1024;
+  const ink = paper.getContext("2d");
+  const wash = ink.createLinearGradient(1024 * 0.35, 0, 1024 * 0.62, 1024);
+  for (const [stop, color] of [[0, "#ff8a2e"], [0.32, "#fa5620"], [0.68, "#f03a1c"], [1, "#e81e0c"]]) wash.addColorStop(stop, color);
+  ink.fillStyle = wash;
+  ink.fillRect(0, 0, 1024, 1024);
+  const gradient = new THREE.CanvasTexture(paper);
+  gradient.colorSpace = THREE.SRGBColorSpace;
+  // Координаты текстуры у крышки совпадают с контуром: от -1 до 1.
+  gradient.repeat.set(0.5, 0.5);
+  gradient.offset.set(0.5, 0.5);
+  const body = new THREE.Mesh(bodyGeometry, [
+    new THREE.MeshPhysicalMaterial({ map: gradient, emissive: 0xffffff, emissiveMap: gradient, emissiveIntensity: 0.34, roughness: 0.5, clearcoat: 0.55, clearcoatRoughness: 0.22, envMapIntensity: 0.12 }),
+    new THREE.MeshPhysicalMaterial({ color: 0xff4a18, emissive: 0xff3000, emissiveIntensity: 0.34, roughness: 0.32, clearcoat: 1, clearcoatRoughness: 0.1, envMapIntensity: 0.35 }),
+  ]);
 
-  const white = new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0xffffff, emissiveIntensity: 0.3, roughness: 0.4 });
-  const track = new THREE.MeshStandardMaterial({ color: 0x2c2c30, roughness: 0.5 });
-  const orange = new THREE.MeshStandardMaterial({ color: 0xff8400, emissive: 0xff6a00, emissiveIntensity: 0.55, roughness: 0.45 });
-  const black = new THREE.MeshPhysicalMaterial({ color: 0x050506, roughness: 0.2, clearcoat: 1 });
+  // Маскот из утверждённого вектора: те же контуры, что в hourfox-icon.svg, только объёмные.
+  const FOX = {
+    silhouette: "M340 202 C430 240 510 330 572 420 C605 413 640 412 668 418 C730 340 820 240 893 217 C915 218 932 280 942 360 C955 470 945 550 920 605 L975 612 C985 615 980 650 965 662 C955 710 935 750 908 770 L955 790 C985 795 998 812 993 830 C985 860 960 905 935 925 C860 960 740 985 660 1064 C655 1072 648 1072 642 1064 C600 1020 520 970 450 950 C360 925 290 885 243 830 L270 805 C245 795 215 790 188 780 C205 730 250 680 298 633 C265 570 255 480 262 420 C270 330 300 240 325 210 C330 203 335 200 340 202 Z",
+    head: "M348 238 C430 285 510 375 558 463 C620 438 700 440 752 468 L708 432 C760 365 830 285 885 255 C905 300 925 400 922 450 C920 510 910 560 893 610 L965 640 L905 770 C930 790 945 800 955 803 L895 842 C800 835 720 805 640 800 C570 795 540 770 510 750 C440 705 330 695 222 762 C255 715 300 670 338 632 C300 580 285 480 292 430 C298 340 325 270 348 238 Z",
+    face: "M222 762 C330 695 440 705 510 750 C540 770 570 795 640 800 C720 805 800 835 895 842 C900 855 920 875 942 878 C925 900 890 920 850 935 C780 955 710 990 660 1034 C610 995 550 955 480 940 C410 925 340 890 276 832 C295 815 320 803 356 803 C330 785 280 768 222 762 Z",
+    earL: "M366 316 C420 360 465 425 495 484 C440 500 395 530 366 585 C335 530 325 400 366 316 Z",
+    earR: "M885 323 C900 400 895 490 873 548 C855 525 825 500 790 480 C825 425 860 360 885 323 Z",
+    earLine: "M790 480 C835 512 870 558 895 608 C868 562 832 520 788 485 Z",
+    glasses: "M430 632 C480 605 690 600 733 632 C736 638 736 642 735 645 C750 642 770 642 783 645 C795 625 850 610 975 612 C985 615 980 650 965 660 C955 710 935 755 905 770 C860 745 800 720 780 675 C765 672 750 672 735 675 C720 720 700 788 610 788 C540 790 505 720 485 662 L445 662 C430 660 425 640 430 632 Z",
+    nose: "M895 830 C900 810 930 800 955 803 C985 800 995 815 993 825 C985 860 960 885 942 878 C920 875 895 850 895 830 Z",
+    smile: "M655 868 C650 852 672 848 688 855 L678 860 C672 858 668 862 672 866 C700 900 760 910 818 902 C770 925 690 915 655 868 Z"
+  };
+  const loader = new SVGLoader();
+  // Координаты вектора 1254 на 1254, у корпуса половина стороны равна 1.
+  function shapes(d) {
+    const path = loader.parse(`<svg xmlns="http://www.w3.org/2000/svg"><path d="${d}"/></svg>`).paths[0];
+    return SVGLoader.createShapes(path).map((shape) => new THREE.Shape(shape.getPoints(28).map((p) => new THREE.Vector2((p.x - 624) / 548, -(p.y - 631) / 548))));
+  }
+  const inkMaterial = new THREE.MeshPhysicalMaterial({ color: 0x0d0907, roughness: 0.32, clearcoat: 1, clearcoatRoughness: 0.12, envMapIntensity: 0.9 });
+  const glassesMaterial = new THREE.MeshPhysicalMaterial({ color: 0x050403, roughness: 0.12, clearcoat: 1, clearcoatRoughness: 0.04, envMapIntensity: 1.3 });
+  const furMaterial = new THREE.MeshPhysicalMaterial({ color: 0xff6a00, emissive: 0xff5200, emissiveIntensity: 0.5, roughness: 0.45, clearcoat: 0.45, clearcoatRoughness: 0.3, envMapIntensity: 0.35 });
+  const creamMaterial = new THREE.MeshPhysicalMaterial({ color: 0xfff0e2, emissive: 0xffeadb, emissiveIntensity: 0.32, roughness: 0.5, clearcoat: 0.35, clearcoatRoughness: 0.3, envMapIntensity: 0.4 });
 
-  const hands = [];
+  // Уши гнутся прямо в вершинах: выше линии лба контур плавно поворачивается вокруг основания уха.
+  const ears = { value: 0 };
+  for (const material of [inkMaterial, furMaterial, creamMaterial]) {
+    material.onBeforeCompile = (shader) => {
+      shader.uniforms.uEars = ears;
+      shader.vertexShader = shader.vertexShader
+        .replace("#include <common>", "#include <common>\nuniform float uEars;")
+        .replace("#include <begin_vertex>", `#include <begin_vertex>
+          {
+            float side = transformed.x < 0.0 ? -1.0 : 1.0;
+            float bend = smoothstep(0.4, 0.66, transformed.y) * uEars * side;
+            vec2 pivot = vec2(side < 0.0 ? -0.36 : 0.3, 0.4);
+            vec2 arm = transformed.xy - pivot;
+            float c = cos(bend), s = sin(bend);
+            transformed.xy = pivot + vec2(arm.x * c - arm.y * s, arm.x * s + arm.y * c);
+          }`);
+    };
+  }
+  // Лёгкое покачивание и раз в несколько секунд короткий дёрг, как у живого лиса.
+  function earsAt(t) {
+    const period = 4.6, flick = (t / 1000) % period;
+    const twitch = flick < 0.55 ? Math.sin(flick * Math.PI * 2 * 2.4) * (1 - flick / 0.55) * 0.14 : 0;
+    return Math.sin(t / 1100) * 0.022 + twitch;
+  }
+
+  function layer(d, material, z, height, bevel) {
+    const geometry = new THREE.ExtrudeGeometry(shapes(d), { depth: height, bevelEnabled: bevel > 0, bevelSize: bevel, bevelThickness: bevel, bevelSegments: 4, curveSegments: 12 });
+    const mesh = new THREE.Mesh(geometry, material);
+    mesh.position.z = z;
+    return mesh;
+  }
   function face() {
     const g = new THREE.Group();
     const front = depth / 2 + 0.05;
-    // Вырез с огоньком сверху.
-    const notch = new THREE.Mesh(new THREE.CapsuleGeometry(0.085, 0.42, 8, 24), black);
-    notch.rotation.z = Math.PI / 2;
-    notch.position.set(0, 0.7, front);
-    notch.scale.z = 0.22;
-    const led = new THREE.Mesh(new THREE.SphereGeometry(0.03, 16, 16), orange);
-    led.position.set(-0.2, 0.7, front + 0.018);
-    // Кольцо таймера: серая дорожка и белая дуга, как на значке.
-    const center = new THREE.Group();
-    center.position.set(0, -0.1, front);
-    const ringTrack = new THREE.Mesh(new THREE.TorusGeometry(0.52, 0.05, 16, 120), track);
-    const arc = new THREE.Mesh(new THREE.TorusGeometry(0.52, 0.066, 16, 120, Math.PI * 1.62), white);
-    arc.rotation.z = Math.PI / 2 - Math.PI * 1.62;
-    ringTrack.scale.z = arc.scale.z = 0.55;
-    // Стрелка.
-    const hand = new THREE.Group();
-    const needle = new THREE.Mesh(new THREE.CapsuleGeometry(0.036, 0.28, 8, 16), orange);
-    needle.position.y = 0.2;
-    needle.position.z = 0.03;
-    needle.scale.z = 0.6;
-    hand.add(needle);
-    hands.push(hand);
-    const pin = new THREE.Mesh(new THREE.SphereGeometry(0.07, 24, 24), white);
-    pin.position.z = 0.04;
-    pin.scale.z = 0.6;
-    center.add(ringTrack, arc, hand, pin);
-    g.add(notch, led, center);
+    // Стеклянный край значка: светлая полоса вдоль контура.
+    const ring = new THREE.Shape(outline.map((p) => p.clone().multiplyScalar(0.99)));
+    ring.holes.push(new THREE.Path(outline.map((p) => p.clone().multiplyScalar(0.972))));
+    const edgeLine = new THREE.Mesh(new THREE.ShapeGeometry(ring, 32), new THREE.MeshBasicMaterial({ color: 0xffd0a8, transparent: true, opacity: 0.4, depthWrite: false }));
+    edgeLine.position.z = front + 0.001;
+    const fur = front + 0.066, skin = fur + 0.022, glasses = skin + 0.02;
+    g.add(
+      edgeLine,
+      layer(FOX.silhouette, inkMaterial, front, 0.05, 0.012),
+      layer(FOX.head, furMaterial, fur, 0.012, 0.006),
+      layer(FOX.face, creamMaterial, skin, 0.012, 0.006),
+      layer(FOX.earL, creamMaterial, skin, 0.006, 0.004),
+      layer(FOX.earR, creamMaterial, skin, 0.006, 0.004),
+      layer(FOX.earLine, inkMaterial, skin + 0.012, 0.004, 0),
+      layer(FOX.glasses, glassesMaterial, glasses, 0.03, 0.009),
+      layer(FOX.nose, glassesMaterial, skin + 0.012, 0.035, 0.012),
+      layer(FOX.smile, inkMaterial, skin + 0.02, 0.004, 0),
+    );
     return g;
   }
   const front = face();
@@ -2146,7 +2203,7 @@ try {
     tiltX += (targetX - tiltX) * Math.min(1, dt * 4);
     tiltY += (targetY - tiltY) * Math.min(1, dt * 4);
     model.position.y = Math.sin(t / 1400) * 0.035;
-    for (const hand of hands) hand.rotation.z = -t / 1000 * (Math.PI * 2 / 12);
+    ears.value = earsAt(t);
     draw();
     requestAnimationFrame(frame);
   }
@@ -2188,7 +2245,7 @@ try {
   stage.classList.add("ready");
   update();
 } catch (error) {
-  console.warn("Tempo: 3D-значок недоступен, показана обычная иконка", error);
+  console.warn("Hourfox: 3D-значок недоступен, показана обычная иконка", error);
 }
 </script>
 </body>

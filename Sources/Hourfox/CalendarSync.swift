@@ -2,8 +2,8 @@ import AppKit
 import Combine
 import EventKit
 
-/// Завершённые записи → события в отдельном календаре «Tempo» приложения «Календарь».
-/// Tempo — источник правды: при каждой синхронизации календарь приводится к журналу
+/// Завершённые записи → события в отдельном календаре «Hourfox» приложения «Календарь».
+/// Hourfox — источник правды: при каждой синхронизации календарь приводится к журналу
 /// (новые события создаются, изменённые обновляются, лишние удаляются).
 final class CalendarSync {
     static let shared = CalendarSync()
@@ -17,7 +17,7 @@ final class CalendarSync {
     private let enabledKey = "calendarSync.enabled"
     private let calendarKey = "calendarSync.calendarID"
     private let fromKey = "calendarSync.from"
-    private let calendarTitle = "Tempo"
+    private let calendarTitle = "Hourfox"
 
     var isAuthorized: Bool { EKEventStore.authorizationStatus(for: .event) == .fullAccess }
     var isEnabled: Bool { defaults.bool(forKey: enabledKey) && isAuthorized }
@@ -75,7 +75,7 @@ final class CalendarSync {
             hasher.combine(Int(e.end!.timeIntervalSince1970))
         }
         let signature = hasher.finalize()
-        guard signature != lastSignature, let calendar = tempoCalendar() else { return }
+        guard signature != lastSignature, let calendar = hourfoxCalendar() else { return }
 
         // Диапазон поиска: от самой старой записи (в том числе уже удалённой) до завтра.
         let now = Date()
@@ -95,7 +95,7 @@ final class CalendarSync {
             let end = min(chunk.addingTimeInterval(365 * 86400), to)
             for ev in ek.events(matching: ek.predicateForEvents(withStart: chunk, end: end, calendars: [calendar])) {
                 guard seen.insert(ev.eventIdentifier ?? UUID().uuidString).inserted else { continue }
-                // Событие без нашей метки — не наше: календарь могли назвать «Tempo» и без нас.
+                // Событие без нашей метки — не наше: календарь могли назвать «Hourfox» и без нас.
                 guard ev.url?.scheme == "tempo", let id = ev.url?.lastPathComponent else {
                     foreign.append(ev)
                     continue
@@ -121,6 +121,7 @@ final class CalendarSync {
             let ev = existing.removeValue(forKey: e.id.uuidString) ?? twin ?? {
                 let ev = EKEvent(eventStore: ek)
                 ev.calendar = calendar
+                // Метка осталась со времён Tempo: по ней узнаём свои события, менять её нельзя.
                 ev.url = URL(string: "tempo://entry/\(e.id.uuidString)")
                 return ev
             }()
@@ -139,7 +140,7 @@ final class CalendarSync {
                 try ek.save(ev, span: .thisEvent, commit: false)
                 changed = true
             } catch {
-                NSLog("Tempo: не удалось сохранить событие: \(error.localizedDescription)")
+                NSLog("Hourfox: не удалось сохранить событие: \(error.localizedDescription)")
             }
         }
         // Записей больше нет — убираем их события.
@@ -148,7 +149,7 @@ final class CalendarSync {
             changed = true
         }
         if changed {
-            do { try ek.commit() } catch { NSLog("Tempo: календарь не сохранён: \(error.localizedDescription)") }
+            do { try ek.commit() } catch { NSLog("Hourfox: календарь не сохранён: \(error.localizedDescription)") }
         }
         lastSignature = signature
     }
@@ -163,9 +164,16 @@ final class CalendarSync {
         }
     }
 
-    /// Свой календарь «Tempo»: по возможности в «На моём Mac», иначе там же, где календарь по умолчанию.
-    private func tempoCalendar() -> EKCalendar? {
-        if let id = defaults.string(forKey: calendarKey), let c = ek.calendar(withIdentifier: id) { return c }
+    /// Свой календарь «Hourfox»: по возможности в «На моём Mac», иначе там же, где календарь по умолчанию.
+    private func hourfoxCalendar() -> EKCalendar? {
+        if let id = defaults.string(forKey: calendarKey), let c = ek.calendar(withIdentifier: id) {
+            // Календарь, созданный ещё под именем Tempo, переименовываем, чтобы не плодить второй.
+            if c.title == "Tempo", c.allowsContentModifications {
+                c.title = calendarTitle
+                try? ek.saveCalendar(c, commit: true)
+            }
+            return c
+        }
         if let c = ek.calendars(for: .event).first(where: { $0.title == calendarTitle && $0.allowsContentModifications }) {
             defaults.set(c.calendarIdentifier, forKey: calendarKey)
             return c
@@ -181,7 +189,7 @@ final class CalendarSync {
                 return c
             }
         }
-        NSLog("Tempo: не удалось создать календарь")
+        NSLog("Hourfox: не удалось создать календарь")
         return nil
     }
 
@@ -189,7 +197,7 @@ final class CalendarSync {
         NSApp.activate(ignoringOtherApps: true)
         let alert = NSAlert()
         alert.messageText = L("Нет доступа к Календарю")
-        alert.informativeText = L("Разрешите Tempo доступ: Системные настройки → Конфиденциальность и безопасность → Календари.")
+        alert.informativeText = L("Разрешите Hourfox доступ: Системные настройки → Конфиденциальность и безопасность → Календари.")
         alert.addButton(withTitle: L("Открыть настройки"))
         alert.addButton(withTitle: L("Отмена"))
         if alert.runModal() == .alertFirstButtonReturn,

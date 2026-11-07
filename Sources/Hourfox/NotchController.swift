@@ -72,7 +72,7 @@ final class NotchModel: ObservableObject {
     var lockFrame: CGRect?
     @Published var notchSize = CGSize(width: 185, height: 32)
     @Published var hasNotch = true
-    /// Tempo живёт значком в строке меню, а панель открывается под ним.
+    /// Hourfox живёт значком в строке меню, а панель открывается под ним.
     @Published var menuBarMode = false
 
     /// Под вырезом экрана нет пикселей: край, совпадающий с вырезом, не виден.
@@ -492,7 +492,7 @@ final class NotchController {
         }
     }
 
-    /// Показать Notch на пару секунд — после знакомства, чтобы было видно, где живёт Tempo.
+    /// Показать Notch на пару секунд — после знакомства, чтобы было видно, где живёт Hourfox.
     func peek() {
         expand()
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) { [weak self] in
@@ -587,9 +587,9 @@ final class NotchController {
             menu.addItem(NSMenuItem(title: L("Открыть Календарь")) { calendar.openCalendarApp() })
         }
         menu.addItem(.separator())
-        menu.addItem(NSMenuItem(title: L("Знакомство с Tempo")) { AppDelegate.shared.onboarding.show() })
+        menu.addItem(NSMenuItem(title: L("Знакомство с Hourfox")) { AppDelegate.shared.onboarding.show() })
         // Опасное действие — красным текстом, как в системных меню macOS.
-        let quit = NSMenuItem(title: L("Завершить Tempo")) { NSApp.terminate(nil) }
+        let quit = NSMenuItem(title: L("Завершить Hourfox")) { NSApp.terminate(nil) }
         quit.attributedTitle = NSAttributedString(string: quit.title, attributes: [
             .foregroundColor: NSColor.systemRed, .font: NSFont.menuFont(ofSize: 0),
         ])

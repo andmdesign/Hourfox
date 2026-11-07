@@ -119,7 +119,7 @@ struct ExpensesSheet: View {
 
     var body: some View {
         let list = store.expenses(of: projectID)
-        TempoSheet(title: L("Расходы: %@", store.name(for: projectID))) {
+        HourfoxSheet(title: L("Расходы: %@", store.name(for: projectID))) {
             FormCard {
                 HStack(spacing: 8) {
                     TextField("", text: $title, prompt: Text("Такси, подписка, подрядчик"))
@@ -290,7 +290,7 @@ enum AutoReport {
                 try report.csv().write(to: url, atomically: true, encoding: .utf8)
             }
         } catch {
-            NSLog("Tempo: не удалось сохранить отчёт: \(error.localizedDescription)")
+            NSLog("Hourfox: не удалось сохранить отчёт: \(error.localizedDescription)")
             return nil
         }
         UserDefaults.standard.set(key, forKey: ExtraKey.autoReportLast)

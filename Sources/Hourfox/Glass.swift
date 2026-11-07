@@ -1,7 +1,7 @@
 import AppKit
 import SwiftUI
 
-/// Тема Tempo: как в системе, светлая или тёмная.
+/// Тема Hourfox: как в системе, светлая или тёмная.
 /// Раскрытый Notch следует теме; свёрнутый всегда чёрный, он продолжает вырез экрана.
 enum AppTheme: String, CaseIterable, Identifiable {
     case system, light, dark

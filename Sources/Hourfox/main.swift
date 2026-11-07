@@ -26,7 +26,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         DebugSnapshots.runIfRequested(self)
         if let copy = store.damagedDataCopy {
             let alert = NSAlert()
-            alert.messageText = L("Не удалось прочитать данные Tempo")
+            alert.messageText = L("Не удалось прочитать данные Hourfox")
             alert.informativeText = L("Копия файла сохранена, ничего не потеряно: %@", copy.path)
             alert.runModal()
         }
@@ -51,14 +51,14 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         let main = NSMenu()
 
         let app = NSMenu()
-        app.addItem(withTitle: L("О программе Tempo"), action: #selector(NSApplication.orderFrontStandardAboutPanel(_:)), keyEquivalent: "")
+        app.addItem(withTitle: L("О программе Hourfox"), action: #selector(NSApplication.orderFrontStandardAboutPanel(_:)), keyEquivalent: "")
         app.addItem(.separator())
         app.addItem(withTitle: L("Настройки…"), action: #selector(openSettings), keyEquivalent: ",").target = self
         app.addItem(.separator())
-        app.addItem(withTitle: L("Скрыть Tempo"), action: #selector(NSApplication.hide(_:)), keyEquivalent: "h")
+        app.addItem(withTitle: L("Скрыть Hourfox"), action: #selector(NSApplication.hide(_:)), keyEquivalent: "h")
         app.addItem(.separator())
-        app.addItem(withTitle: L("Завершить Tempo"), action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
-        main.addItem(submenu: app, title: "Tempo")
+        app.addItem(withTitle: L("Завершить Hourfox"), action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
+        main.addItem(submenu: app, title: "Hourfox")
 
         let timer = NSMenu(title: L("Таймер"))
         let toggle = timer.addItem(withTitle: L("Старт / Стоп"), action: #selector(toggleTimer), keyEquivalent: "t")
@@ -94,6 +94,7 @@ private extension NSMenu {
     }
 }
 
+LegacyMigration.run()
 let app = NSApplication.shared
 let delegate = AppDelegate()
 app.delegate = delegate

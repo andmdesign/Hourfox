@@ -1,7 +1,7 @@
 import Combine
 import SwiftUI
 
-/// Всё хранится локально в ~/Library/Application Support/Tempo/data.json — интернет не нужен.
+/// Всё хранится локально в ~/Library/Application Support/Hourfox/data.json — интернет не нужен.
 final class Store: ObservableObject {
     static let shared = Store()
 
@@ -46,9 +46,8 @@ final class Store: ObservableObject {
     }
 
     init() {
-        let dir = ProcessInfo.processInfo.environment["TEMPO_DATA_DIR"].map { URL(fileURLWithPath: $0) }
-            ?? FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
-            .appendingPathComponent("Tempo", isDirectory: true)
+        let dir = ProcessInfo.processInfo.environment["HOURFOX_DATA_DIR"].map { URL(fileURLWithPath: $0) }
+            ?? LegacyMigration.dataFolder
         try? FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
         fileURL = dir.appendingPathComponent("data.json")
         load()
@@ -114,13 +113,13 @@ final class Store: ObservableObject {
                          draftDuration: draftDuration, tasks: tasks, notes: notes, pins: pins, archive: archive,
                          expenses: expenses, lockedBefore: lockedBefore)
         guard let data = try? encoder.encode(s) else {
-            NSLog("Tempo: не удалось подготовить данные к сохранению")
+            NSLog("Hourfox: не удалось подготовить данные к сохранению")
             return
         }
         do {
             try data.write(to: fileURL, options: .atomic)
         } catch {
-            NSLog("Tempo: не удалось сохранить данные: \(error.localizedDescription)")
+            NSLog("Hourfox: не удалось сохранить данные: \(error.localizedDescription)")
         }
     }
 

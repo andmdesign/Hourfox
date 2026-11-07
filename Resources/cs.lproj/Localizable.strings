@@ -1,4 +1,4 @@
-/* Tempo — cs. Сгенерировано Scripts/l10n.py, править translations.json. */
+/* Hourfox — cs. Сгенерировано Scripts/l10n.py, править translations.json. */
 
 "В архиве пусто" = "Archiv je prázdný";
 "Сюда попадает всё удалённое. Удалить окончательно можно только отсюда." = "Sem se dostane vše smazané. Natrvalo smazat lze jen odtud.";
@@ -15,7 +15,7 @@
 "Всё удалённое исчезнет. Это нельзя отменить." = "Vše smazané zmizí. Tuto akci nelze vrátit.";
 "Вернуть" = "Obnovit";
 "Нет доступа к Календарю" = "Žádný přístup ke Kalendáři";
-"Разрешите Tempo доступ: Системные настройки → Конфиденциальность и безопасность → Календари." = "Povolte Tempu přístup v Nastavení systému → Soukromí a zabezpečení → Kalendáře.";
+"Разрешите Hourfox доступ: Системные настройки → Конфиденциальность и безопасность → Календари." = "Povolte Tempu přístup v Nastavení systému → Soukromí a zabezpečení → Kalendáře.";
 "Открыть настройки" = "Otevřít nastavení";
 "Отмена" = "Zrušit";
 "Отменить" = "Zpět";
@@ -118,8 +118,8 @@
 "Тёмная" = "Tmavý";
 "Тема" = "Motiv";
 "Окна и раскрытый Notch. Свёрнутый Notch всегда чёрный" = "Okna a rozbalený Notch. Sbalený Notch je vždy černý";
-"Tempo подключён. Можно вернуться в приложение." = "Tempo je připojeno. Můžete se vrátit do aplikace.";
-"Не удалось подключиться. Вернитесь в Tempo и попробуйте ещё раз." = "Připojení se nezdařilo. Vraťte se do Tempo a zkuste to znovu.";
+"Hourfox подключён. Можно вернуться в приложение." = "Hourfox je připojeno. Můžete se vrátit do aplikace.";
+"Не удалось подключиться. Вернитесь в Hourfox и попробуйте ещё раз." = "Připojení se nezdařilo. Vraťte se do Hourfox a zkuste to znovu.";
 "Не удалось подключить Google Календарь. Попробуйте ещё раз." = "Kalendář Google se nepodařilo připojit. Zkuste to znovu.";
 "Доступ к Google Календарю отозван. Подключите его снова." = "Přístup ke Kalendáři Google byl odvolán. Připojte ho znovu.";
 "Без названия" = "Bez názvu";
@@ -136,7 +136,7 @@
 "Подключить" = "Připojit";
 "Google Календарь" = "Kalendář Google";
 "События на сегодня во вкладке Notch" = "Dnešní události na kartě v Notch";
-"Только чтение: Tempo показывает события и ничего не меняет в календаре." = "Jen pro čtení: Tempo události zobrazuje a v kalendáři nic nemění.";
+"Только чтение: Hourfox показывает события и ничего не меняет в календаре." = "Jen pro čtení: Hourfox události zobrazuje a v kalendáři nic nemění.";
 "Список" = "Seznam";
 "Календарь" = "Kalendář";
 "Журнал" = "Záznamy";
@@ -160,13 +160,13 @@
 "Основные" = "Obecné";
 "Дополнительно" = "Doplňky";
 "Открывать при входе в систему" = "Otevřít při přihlášení";
-"Tempo запустится вместе с Mac" = "Tempo se spustí spolu s Macem";
+"Hourfox запустится вместе с Mac" = "Hourfox se spustí spolu s Macem";
 "Общие" = "Obecné";
 "Выключите лишнее — если выключить всё, в Notch останется только строка таймера." = "Vypněte, co nepotřebujete. Když vypnete vše, v Notchi zůstane jen řádek časovače.";
 "Оформление" = "Vzhled";
 "Интеграции" = "Integrace";
 "Показывать в Календаре" = "Zobrazovat v Kalendáři";
-"Завершённые записи — в календаре «Tempo»" = "Dokončené záznamy se ukládají do kalendáře „Tempo“";
+"Завершённые записи — в календаре «Hourfox»" = "Dokončené záznamy se ukládají do kalendáře „Hourfox“";
 "Вид" = "Zobrazení";
 "Авто: Notch, если есть вырез, иначе значок в строке меню" = "Automaticky: Notch, pokud ho Mac má, jinak ikona v řádku nabídek";
 "Сияние" = "Záře";
@@ -276,8 +276,8 @@
 "Открывать при входе в систему" = "Otevřít při přihlášení";
 "Показывать в Календаре" = "Zobrazovat v Kalendáři";
 "Открыть Календарь" = "Otevřít Kalendář";
-"Знакомство с Tempo" = "Seznámení s Tempem";
-"Завершить Tempo" = "Ukončit Tempo";
+"Знакомство с Hourfox" = "Seznámení s Tempem";
+"Завершить Hourfox" = "Ukončit Hourfox";
 "Раскрывать при наведении" = "Rozbalit při najetí myší";
 "Не раскрывать при наведении" = "Nerozbalovat při najetí myší";
 "Открыть окно" = "Otevřít okno";
@@ -306,7 +306,7 @@
 "Изменить" = "Upravit";
 "Скопировать" = "Kopírovat";
 "Заметка" = "Poznámka";
-"Настройте Tempo под себя" = "Přizpůsobte si Tempo";
+"Настройте Hourfox под себя" = "Přizpůsobte si Hourfox";
 "Включите только то, что нужно. Всё можно поменять позже в настройках." = "Zapněte jen to, co potřebujete. Vše můžete později změnit v Nastavení.";
 "Назад" = "Předchozí";
 "Клиент А" = "Klient A";
@@ -318,12 +318,12 @@
 "Созвон по ТЗ" = "Hovor o zadání";
 "Секундомер или таймер" = "Stopky nebo časovač";
 "Журнал и отчёт" = "Záznamy a přehledy";
-"Щёлкните значок Tempo в строке меню, и он раскроется." = "Klikněte na ikonu Tempo v řádku nabídek a otevře se.";
-"Наведите курсор на вырез экрана, и Tempo раскроется." = "Najeďte ukazatelem na výřez displeje a Tempo se rozbalí.";
+"Щёлкните значок Hourfox в строке меню, и он раскроется." = "Klikněte na ikonu Hourfox v řádku nabídek a otevře se.";
+"Наведите курсор на вырез экрана, и Hourfox раскроется." = "Najeďte ukazatelem na výřez displeje a Hourfox se rozbalí.";
 "Кнопка с часами рядом с проектом задаёт обратный отсчёт." = "Tlačítko s hodinami vedle projektu nastaví odpočet.";
 "Список дел с приоритетами во вкладке «Задачи»." = "Seznam úkolů s prioritami na kartě Úkoly.";
 "Всё время по дням и проектам. Можно показывать в Календаре." = "Veškerý čas podle dnů a projektů. Lze zobrazit i v Kalendáři.";
-"Добро пожаловать в Tempo" = "Vítejte v Tempu";
+"Добро пожаловать в Hourfox" = "Vítejte v Tempu";
 "Учёт времени прямо в Notch" = "Měření času přímo v Notchi";
 "Далее" = "Pokračovat";
 "Вёрстка карточек" = "Sazba karet";
@@ -383,10 +383,10 @@
 "Сохранить картинкой…" = "Uložit jako obrázek…";
 "Звуки" = "Zvuky";
 "Тихий щелчок на старт и стоп таймера" = "Tiché cvaknutí při spuštění a zastavení časovače";
-"Не удалось прочитать данные Tempo" = "Data Tempo se nepodařilo načíst";
+"Не удалось прочитать данные Hourfox" = "Data Hourfox se nepodařilo načíst";
 "Копия файла сохранена, ничего не потеряно: %@" = "Kopie souboru je uložena, nic se neztratilo: %@";
-"О программе Tempo" = "O aplikaci Tempo";
-"Скрыть Tempo" = "Skrýt Tempo";
+"О программе Hourfox" = "O aplikaci Hourfox";
+"Скрыть Hourfox" = "Skrýt Hourfox";
 "Старт / Стоп" = "Spustit / Zastavit";
 "Правка" = "Úpravy";
 "Повторить" = "Znovu";

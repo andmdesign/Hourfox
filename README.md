@@ -1,8 +1,8 @@
-# Tempo
+# Hourfox
 
 A minimal time tracker for macOS that lives in the MacBook notch, or in the menu bar on Macs without one.
 
-Offline, no account, no analytics. **[Website](https://andmdesign.github.io/Tempo/) · [Download](https://andmdesign.github.io/Tempo/Tempo.zip) · [На русском](README.ru.md)**
+Offline, no account, no analytics. **[Website](https://andmdesign.github.io/Hourfox/) · [Download](https://andmdesign.github.io/Hourfox/Hourfox.zip) · [На русском](README.ru.md)**
 
 ## Features
 
@@ -17,7 +17,7 @@ Offline, no account, no analytics. **[Website](https://andmdesign.github.io/Temp
 
 ## Install
 
-1. Download [Tempo.zip](https://andmdesign.github.io/Tempo/Tempo.zip), unzip it and move Tempo to Applications.
+1. Download [Hourfox.zip](https://andmdesign.github.io/Hourfox/Hourfox.zip), unzip it and move Hourfox to Applications.
 2. The app is not notarized yet, so macOS blocks the first launch. Open it, then allow it in **System Settings → Privacy & Security → Open Anyway**. Or review the source and build it yourself.
 
 Requires macOS 14 or later and Apple Silicon.
@@ -27,15 +27,15 @@ Requires macOS 14 or later and Apple Silicon.
 Only the Command Line Tools are needed (`xcode-select --install`), not Xcode.
 
 ```bash
-./build.sh            # build/Tempo.app
+./build.sh            # build/Hourfox.app
 ./build.sh --install  # build, copy to /Applications and launch
 ```
 
 ## Your data
 
-Everything stays in `~/Library/Application Support/Tempo/`: `data.json`, a daily copy in `backups/` (last 30 days) and a copy of the previous launch.
+Everything stays in `~/Library/Application Support/Hourfox/`: `data.json`, a daily copy in `backups/` (last 30 days) and a copy of the previous launch.
 
-Tempo makes no network requests, with one exception. Google Calendar is compiled in but stays hidden until you supply your own OAuth client: copy `Resources/GoogleOAuth.example.plist` to `Resources/GoogleOAuth.plist` and fill it in. The file is ignored by git. The sign-in uses PKCE and a loopback redirect, and the refresh token is kept in the Keychain. Official builds ship without keys.
+Hourfox makes no network requests, with one exception. Google Calendar is compiled in but stays hidden until you supply your own OAuth client: copy `Resources/GoogleOAuth.example.plist` to `Resources/GoogleOAuth.plist` and fill it in. The file is ignored by git. The sign-in uses PKCE and a loopback redirect, and the refresh token is kept in the Keychain. Official builds ship without keys.
 
 The website, not the app, loads the Inter font from Google Fonts and Three.js from jsDelivr.
 
@@ -43,8 +43,8 @@ The website, not the app, loads the Inter font from Google Fonts and Three.js fr
 
 | Path | What's inside |
 |---|---|
-| `Sources/Tempo/` | SwiftUI and AppKit code. `NotchController` and `NotchViews` are the notch, `Store` holds the data, `JournalViews` is the main window |
-| `Sources/Tempo/Debug.swift` | Self-checks and window snapshots, see below |
+| `Sources/Hourfox/` | SwiftUI and AppKit code. `NotchController` and `NotchViews` are the notch, `Store` holds the data, `JournalViews` is the main window |
+| `Sources/Hourfox/Debug.swift` | Self-checks and window snapshots, see below |
 | `Scripts/` | Icon generator and `l10n.py`, which builds `Localizable.strings` from `translations.json` |
 | `docs/` | The website (GitHub Pages) and the download |
 | `Vendor/Vortex/` | Vendored particle library |
@@ -53,13 +53,13 @@ Interface strings are keyed by their Russian text, and code comments are in Russ
 
 ## Checks
 
-There is no XCTest target yet. The checks live inside the app. Run from `.build`, they use a separate data folder and their own settings domain (`Tempo`), so your installed copy is not touched:
+There is no XCTest target yet. The checks live inside the app. Run from `.build`, they use a separate data folder and their own settings domain (`Hourfox`), so your installed copy is not touched:
 
 ```bash
 swift build -c release
 mkdir -p /tmp/tempo-data /tmp/tempo-shots
-TEMPO_DATA_DIR=/tmp/tempo-data TEMPO_EXTRASTEST=/tmp/tempo-shots .build/release/Tempo
-defaults delete Tempo
+HOURFOX_DATA_DIR=/tmp/tempo-data HOURFOX_EXTRASTEST=/tmp/tempo-shots .build/release/Hourfox
+defaults delete Hourfox
 ```
 
 Logic checks are stable. A few notch checks use real windows and timing, and can fail if you move the mouse during the run.

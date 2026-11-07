@@ -4,7 +4,7 @@ import UniformTypeIdentifiers
 
 /// Анимации отчёта. В автотестах окна стоят в фоне и не успевают договорить, поэтому снимаем сразу итог.
 enum ReportMotion {
-    static let disabledForTests = ["TEMPO_EXTRASTEST", "TEMPO_CALTEST"].contains { ProcessInfo.processInfo.environment[$0] != nil }
+    static let disabledForTests = ["HOURFOX_EXTRASTEST", "HOURFOX_CALTEST"].contains { ProcessInfo.processInfo.environment[$0] != nil }
 }
 
 // MARK: - Расчёты года
@@ -335,7 +335,7 @@ struct YearCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack {
-                Text(verbatim: "Tempo").font(.system(size: 15, weight: .semibold))
+                Text(verbatim: "Hourfox").font(.system(size: 15, weight: .semibold))
                 Spacer()
                 Text(verbatim: "\(stats.year)").font(.system(size: 15, weight: .medium)).foregroundStyle(.secondary).monospacedDigit()
             }
@@ -460,7 +460,7 @@ struct YearReviewSheet: View {
         guard let data = YearCardExport.png(stats) else { return }
         let panel = NSSavePanel()
         panel.allowedContentTypes = [.png]
-        panel.nameFieldStringValue = "Tempo \(stats.year).png"
+        panel.nameFieldStringValue = "Hourfox \(stats.year).png"
         guard panel.runModal() == .OK, let url = panel.url else { return }
         do {
             try data.write(to: url, options: .atomic)

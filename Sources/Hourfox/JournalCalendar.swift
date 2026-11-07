@@ -20,7 +20,7 @@ struct JournalPage: View {
         }
         .toolbar {
             BareToolbarItem {
-                TempoSegments(selection: $mode, items: JournalMode.allCases.map { .init(value: $0, title: L($0.rawValue)) })
+                HourfoxSegments(selection: $mode, items: JournalMode.allCases.map { .init(value: $0, title: L($0.rawValue)) })
             }
         }
     }

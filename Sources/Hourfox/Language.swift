@@ -27,7 +27,7 @@ final class AppLanguage: ObservableObject {
     private var bundle: Bundle?
 
     init() {
-        setting = ProcessInfo.processInfo.environment["TEMPO_LANG"]
+        setting = ProcessInfo.processInfo.environment["HOURFOX_LANG"]
             ?? UserDefaults.standard.string(forKey: "appLanguage") ?? "en"
         resolve()
     }

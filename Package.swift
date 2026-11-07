@@ -2,7 +2,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "Tempo",
+    name: "Hourfox",
     defaultLocalization: "ru",
     platforms: [.macOS(.v14)],
     dependencies: [
@@ -11,12 +11,12 @@ let package = Package(
     ],
     targets: [
         .executableTarget(
-            name: "Tempo",
+            name: "Hourfox",
             dependencies: [
                 .product(name: "Pow", package: "Pow"),
                 .product(name: "Vortex", package: "Vortex"),
             ],
-            path: "Sources/Tempo"
+            path: "Sources/Hourfox"
         )
     ]
 )

@@ -175,7 +175,7 @@ extension Store {
     }
 }
 
-/// Под строкой ввода: подсказки к набираемому слову, а если их нет — что Tempo уже понял.
+/// Под строкой ввода: подсказки к набираемому слову, а если их нет — что Hourfox уже понял.
 struct SmartInputBar: View {
     let onPick: () -> Void
     @EnvironmentObject var store: Store

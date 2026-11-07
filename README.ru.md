@@ -1,8 +1,8 @@
-# Tempo
+# Hourfox
 
 Минималистичный трекер времени для macOS. Живёт в Notch MacBook, а на Mac без выреза в строке меню.
 
-Работает офлайн, без аккаунта и аналитики. **[Сайт](https://andmdesign.github.io/Tempo/) · [Скачать](https://andmdesign.github.io/Tempo/Tempo.zip) · [English](README.md)**
+Работает офлайн, без аккаунта и аналитики. **[Сайт](https://andmdesign.github.io/Hourfox/) · [Скачать](https://andmdesign.github.io/Hourfox/Hourfox.zip) · [English](README.md)**
 
 ## Возможности
 
@@ -17,7 +17,7 @@
 
 ## Установка
 
-1. Скачайте [Tempo.zip](https://andmdesign.github.io/Tempo/Tempo.zip), распакуйте и перенесите Tempo в «Программы».
+1. Скачайте [Hourfox.zip](https://andmdesign.github.io/Hourfox/Hourfox.zip), распакуйте и перенесите Hourfox в «Программы».
 2. Приложение пока не нотаризовано, поэтому первый запуск macOS заблокирует. Откройте его, затем разрешите в **Системные настройки → Конфиденциальность и безопасность → Всё равно открыть**. Или проверьте код и соберите сами.
 
 Нужны macOS 14 или новее и Apple Silicon.
@@ -27,13 +27,13 @@
 Достаточно Command Line Tools (`xcode-select --install`), Xcode не нужен.
 
 ```bash
-./build.sh            # build/Tempo.app
+./build.sh            # build/Hourfox.app
 ./build.sh --install  # собрать, положить в /Applications и запустить
 ```
 
 ## Данные
 
-Всё лежит в `~/Library/Application Support/Tempo/`: `data.json`, ежедневная копия в `backups/` (30 дней) и копия прошлого запуска.
+Всё лежит в `~/Library/Application Support/Hourfox/`: `data.json`, ежедневная копия в `backups/` (30 дней) и копия прошлого запуска.
 
 Приложение не ходит в сеть, с одним исключением. Google Календарь скрыт, пока вы не добавите свой OAuth-клиент: скопируйте `Resources/GoogleOAuth.example.plist` в `Resources/GoogleOAuth.plist` и заполните. Файл в git не попадает. В готовых сборках ключей нет.
 

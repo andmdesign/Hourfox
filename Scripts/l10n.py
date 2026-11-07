@@ -47,10 +47,10 @@ def literals(code):
 
 
 keys = []
-for name in sorted(os.listdir(os.path.join(ROOT, "Sources/Tempo"))):
+for name in sorted(os.listdir(os.path.join(ROOT, "Sources/Hourfox"))):
     if not name.endswith(".swift") or name == "Debug.swift":
         continue
-    for line in open(os.path.join(ROOT, "Sources/Tempo", name), encoding="utf-8"):
+    for line in open(os.path.join(ROOT, "Sources/Hourfox", name), encoding="utf-8"):
         code = line.strip()
         if code.startswith("//") or "NSLog(" in code:
             continue
@@ -69,7 +69,7 @@ def esc(s):
 
 
 for lang in LANGS:
-    lines = [f"/* Tempo — {lang}. Сгенерировано Scripts/l10n.py, править translations.json. */", ""]
+    lines = [f"/* Hourfox — {lang}. Сгенерировано Scripts/l10n.py, править translations.json. */", ""]
     lines += [f'"{esc(k)}" = "{esc(table[k][lang])}";' for k in keys]
     d = os.path.join(ROOT, "Resources", f"{lang}.lproj")
     os.makedirs(d, exist_ok=True)

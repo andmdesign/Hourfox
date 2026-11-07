@@ -1,4 +1,4 @@
-/* Tempo — en. Сгенерировано Scripts/l10n.py, править translations.json. */
+/* Hourfox — en. Сгенерировано Scripts/l10n.py, править translations.json. */
 
 "В архиве пусто" = "Archive is empty";
 "Сюда попадает всё удалённое. Удалить окончательно можно только отсюда." = "Everything you delete lands here. Only here can it be deleted for good.";
@@ -15,7 +15,7 @@
 "Всё удалённое исчезнет. Это нельзя отменить." = "Everything deleted will be gone. This can’t be undone.";
 "Вернуть" = "Restore";
 "Нет доступа к Календарю" = "No access to Calendar";
-"Разрешите Tempo доступ: Системные настройки → Конфиденциальность и безопасность → Календари." = "Allow Tempo access in System Settings → Privacy & Security → Calendars.";
+"Разрешите Hourfox доступ: Системные настройки → Конфиденциальность и безопасность → Календари." = "Allow Hourfox access in System Settings → Privacy & Security → Calendars.";
 "Открыть настройки" = "Open Settings";
 "Отмена" = "Cancel";
 "Отменить" = "Undo";
@@ -118,8 +118,8 @@
 "Тёмная" = "Dark";
 "Тема" = "Theme";
 "Окна и раскрытый Notch. Свёрнутый Notch всегда чёрный" = "Windows and the expanded Notch. The collapsed Notch is always black";
-"Tempo подключён. Можно вернуться в приложение." = "Tempo is connected. You can return to the app.";
-"Не удалось подключиться. Вернитесь в Tempo и попробуйте ещё раз." = "Couldn’t connect. Return to Tempo and try again.";
+"Hourfox подключён. Можно вернуться в приложение." = "Hourfox is connected. You can return to the app.";
+"Не удалось подключиться. Вернитесь в Hourfox и попробуйте ещё раз." = "Couldn’t connect. Return to Hourfox and try again.";
 "Не удалось подключить Google Календарь. Попробуйте ещё раз." = "Couldn’t connect Google Calendar. Please try again.";
 "Доступ к Google Календарю отозван. Подключите его снова." = "Access to Google Calendar was revoked. Please connect it again.";
 "Без названия" = "Untitled";
@@ -136,7 +136,7 @@
 "Подключить" = "Connect";
 "Google Календарь" = "Google Calendar";
 "События на сегодня во вкладке Notch" = "Today’s events in a Notch tab";
-"Только чтение: Tempo показывает события и ничего не меняет в календаре." = "Read-only: Tempo shows your events and never changes your calendar.";
+"Только чтение: Hourfox показывает события и ничего не меняет в календаре." = "Read-only: Hourfox shows your events and never changes your calendar.";
 "Список" = "List";
 "Календарь" = "Calendar";
 "Журнал" = "Journal";
@@ -160,13 +160,13 @@
 "Основные" = "General";
 "Дополнительно" = "Extras";
 "Открывать при входе в систему" = "Open at Login";
-"Tempo запустится вместе с Mac" = "Tempo starts when you log in";
+"Hourfox запустится вместе с Mac" = "Hourfox starts when you log in";
 "Общие" = "General";
 "Выключите лишнее — если выключить всё, в Notch останется только строка таймера." = "Turn off what you don’t need. With everything off, the Notch shows only the timer bar.";
 "Оформление" = "Appearance";
 "Интеграции" = "Integrations";
 "Показывать в Календаре" = "Show in Calendar";
-"Завершённые записи — в календаре «Tempo»" = "Finished entries go to the “Tempo” calendar";
+"Завершённые записи — в календаре «Hourfox»" = "Finished entries go to the “Hourfox” calendar";
 "Вид" = "View";
 "Авто: Notch, если есть вырез, иначе значок в строке меню" = "Auto: Notch if your Mac has one, otherwise an icon in the menu bar";
 "Сияние" = "Glow";
@@ -276,8 +276,8 @@
 "Открывать при входе в систему" = "Open at Login";
 "Показывать в Календаре" = "Show in Calendar";
 "Открыть Календарь" = "Open Calendar";
-"Знакомство с Tempo" = "Getting Started";
-"Завершить Tempo" = "Quit Tempo";
+"Знакомство с Hourfox" = "Getting Started";
+"Завершить Hourfox" = "Quit Hourfox";
 "Раскрывать при наведении" = "Expand on Hover";
 "Не раскрывать при наведении" = "Don’t Expand on Hover";
 "Открыть окно" = "Open Window";
@@ -306,7 +306,7 @@
 "Изменить" = "Edit";
 "Скопировать" = "Copy";
 "Заметка" = "Note";
-"Настройте Tempo под себя" = "Make Tempo Yours";
+"Настройте Hourfox под себя" = "Make Hourfox Yours";
 "Включите только то, что нужно. Всё можно поменять позже в настройках." = "Turn on only what you need. You can change everything later in Settings.";
 "Назад" = "Previous";
 "Клиент А" = "Client A";
@@ -318,12 +318,12 @@
 "Созвон по ТЗ" = "Brief call";
 "Секундомер или таймер" = "Stopwatch or Timer";
 "Журнал и отчёт" = "Journal & Reports";
-"Щёлкните значок Tempo в строке меню, и он раскроется." = "Click the Tempo icon in the menu bar to open it.";
-"Наведите курсор на вырез экрана, и Tempo раскроется." = "Hover over the screen notch and Tempo opens up.";
+"Щёлкните значок Hourfox в строке меню, и он раскроется." = "Click the Hourfox icon in the menu bar to open it.";
+"Наведите курсор на вырез экрана, и Hourfox раскроется." = "Hover over the screen notch and Hourfox opens up.";
 "Кнопка с часами рядом с проектом задаёт обратный отсчёт." = "The clock button next to the project sets a countdown.";
 "Список дел с приоритетами во вкладке «Задачи»." = "A to-do list with priorities in the Tasks tab.";
 "Всё время по дням и проектам. Можно показывать в Календаре." = "All your time by day and project. Can also appear in Calendar.";
-"Добро пожаловать в Tempo" = "Welcome to Tempo";
+"Добро пожаловать в Hourfox" = "Welcome to Hourfox";
 "Учёт времени прямо в Notch" = "Time tracking right in the Notch";
 "Далее" = "Continue";
 "Вёрстка карточек" = "Card layout";
@@ -383,10 +383,10 @@
 "Сохранить картинкой…" = "Save as Image…";
 "Звуки" = "Sounds";
 "Тихий щелчок на старт и стоп таймера" = "A quiet click when the timer starts and stops";
-"Не удалось прочитать данные Tempo" = "Couldn’t read Tempo data";
+"Не удалось прочитать данные Hourfox" = "Couldn’t read Hourfox data";
 "Копия файла сохранена, ничего не потеряно: %@" = "A copy of the file was saved, nothing is lost: %@";
-"О программе Tempo" = "About Tempo";
-"Скрыть Tempo" = "Hide Tempo";
+"О программе Hourfox" = "About Hourfox";
+"Скрыть Hourfox" = "Hide Hourfox";
 "Старт / Стоп" = "Start / Stop";
 "Правка" = "Edit";
 "Повторить" = "Redo";

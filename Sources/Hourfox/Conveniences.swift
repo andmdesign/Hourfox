@@ -168,7 +168,7 @@ struct SplitEntrySheet: View {
     }
 
     var body: some View {
-        TempoSheet(title: L("Разделить запись"), width: 400) {
+        HourfoxSheet(title: L("Разделить запись"), width: 400) {
             FormCard {
                 FormRow(title: "Разделить в") { TimeField(minutes: minutesBinding) }
                 FormLine()
@@ -228,7 +228,7 @@ enum Backups {
             try manager.createDirectory(at: dir, withIntermediateDirectories: true)
             try data.write(to: today, options: .atomic)
         } catch {
-            NSLog("Tempo: не удалось сохранить копию данных: \(error.localizedDescription)")
+            NSLog("Hourfox: не удалось сохранить копию данных: \(error.localizedDescription)")
             return
         }
         prune(dir)

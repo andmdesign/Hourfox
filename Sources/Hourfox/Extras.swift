@@ -3,7 +3,7 @@ import SwiftUI
 
 // MARK: - Дополнительные возможности
 
-/// Необязательные функции. Каждый настраивает Tempo под себя, поэтому по умолчанию всё выключено.
+/// Необязательные функции. Каждый настраивает Hourfox под себя, поэтому по умолчанию всё выключено.
 enum Extra: String, CaseIterable, Identifiable {
     case smartInput, goal, dueDates, rates, clientReport, autoReport, closeMonths, yearReview
 
@@ -584,7 +584,7 @@ extension Store {
         tasks[i].dueMinutes = date == nil ? nil : minutes
     }
 
-    /// Задача, время которой только что наступило. Если Mac спал или Tempo был закрыт дольше
+    /// Задача, время которой только что наступило. Если Mac спал или Hourfox был закрыт дольше
     /// пяти минут, напоминать поздно: задача и так красная и стоит наверху.
     func taskDueNow(now: Date = Date()) -> TodoTask? {
         guard Extra.dueDates.isOn else { return nil }

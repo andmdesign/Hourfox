@@ -7,7 +7,7 @@ import SwiftUI
 
 // MARK: - Модель
 
-/// Событие Google Календаря на сегодня. Tempo их только показывает и ничего не меняет.
+/// Событие Google Календаря на сегодня. Hourfox их только показывает и ничего не меняет.
 struct GoogleEvent: Identifiable, Hashable {
     let id: String
     let title: String
@@ -47,8 +47,8 @@ struct GoogleOAuthConfig {
 
     static let current: GoogleOAuthConfig? = {
         let env = ProcessInfo.processInfo.environment
-        if env["TEMPO_GCAL_FAKE"] != nil { return GoogleOAuthConfig(clientID: "fake", clientSecret: "fake") }
-        let url = env["TEMPO_GOOGLE_CONFIG"].map { URL(fileURLWithPath: $0) }
+        if env["HOURFOX_GCAL_FAKE"] != nil { return GoogleOAuthConfig(clientID: "fake", clientSecret: "fake") }
+        let url = env["HOURFOX_GOOGLE_CONFIG"].map { URL(fileURLWithPath: $0) }
             ?? Bundle.main.url(forResource: "GoogleOAuth", withExtension: "plist")
         guard let url, let data = try? Data(contentsOf: url),
               let dict = try? PropertyListSerialization.propertyList(from: data, format: nil) as? [String: String],
@@ -214,16 +214,16 @@ final class OAuthLoopbackServer {
             return
         }
         if let code = value("code") {
-            reply(connection, status: "200 OK", text: L("Tempo подключён. Можно вернуться в приложение."))
+            reply(connection, status: "200 OK", text: L("Hourfox подключён. Можно вернуться в приложение."))
             complete(.success(code))
         } else {
-            reply(connection, status: "200 OK", text: L("Не удалось подключиться. Вернитесь в Tempo и попробуйте ещё раз."))
+            reply(connection, status: "200 OK", text: L("Не удалось подключиться. Вернитесь в Hourfox и попробуйте ещё раз."))
             complete(.failure(Failure.denied))
         }
     }
 
     private func reply(_ connection: NWConnection, status: String, text: String) {
-        let html = "<!doctype html><meta charset=utf-8><title>Tempo</title><body style=\"font:15px -apple-system;text-align:center;padding-top:80px\">\(text)"
+        let html = "<!doctype html><meta charset=utf-8><title>Hourfox</title><body style=\"font:15px -apple-system;text-align:center;padding-top:80px\">\(text)"
         let response = "HTTP/1.1 \(status)\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: \(html.utf8.count)\r\nConnection: close\r\n\r\n\(html)"
         connection.send(content: Data(response.utf8), completion: .contentProcessed { _ in connection.cancel() })
     }
@@ -232,17 +232,31 @@ final class OAuthLoopbackServer {
 // MARK: - Хранение ключа доступа
 
 /// Токен Google живёт в Связке ключей, а не в data.json.
-/// В тестах (TEMPO_DATA_DIR) Связку не трогаем: держим токен только в памяти.
+/// В тестах (HOURFOX_DATA_DIR) Связку не трогаем: держим токен только в памяти.
 enum GoogleTokenStore {
-    private static let service = "local.andrejm.tempo.google"
+    private static let service = "com.andmdesign.hourfox.google"
     private static let account = "refresh-token"
-    private static var isTest: Bool { ProcessInfo.processInfo.environment["TEMPO_DATA_DIR"] != nil }
+    private static var isTest: Bool { ProcessInfo.processInfo.environment["HOURFOX_DATA_DIR"] != nil }
     private static var memory: String?
 
-    private static var query: [String: Any] {
+    private static var query: [String: Any] { query(service: service) }
+
+    private static func query(service: String) -> [String: Any] {
         [kSecClass as String: kSecClassGenericPassword,
          kSecAttrService as String: service,
          kSecAttrAccount as String: account]
+    }
+
+    /// Вход, сделанный ещё в Tempo: читаем и сразу сохраняем под новым именем.
+    private static func loadLegacy() -> String? {
+        var q = query(service: "local.andrejm.tempo.google")
+        q[kSecReturnData as String] = true
+        q[kSecMatchLimit as String] = kSecMatchLimitOne
+        var out: CFTypeRef?
+        guard SecItemCopyMatching(q as CFDictionary, &out) == errSecSuccess, let data = out as? Data,
+              let token = String(data: data, encoding: .utf8) else { return nil }
+        save(token)
+        return token
     }
 
     static func load() -> String? {
@@ -251,7 +265,7 @@ enum GoogleTokenStore {
         q[kSecReturnData as String] = true
         q[kSecMatchLimit as String] = kSecMatchLimitOne
         var out: CFTypeRef?
-        guard SecItemCopyMatching(q as CFDictionary, &out) == errSecSuccess, let data = out as? Data else { return nil }
+        guard SecItemCopyMatching(q as CFDictionary, &out) == errSecSuccess, let data = out as? Data else { return loadLegacy() }
         return String(data: data, encoding: .utf8)
     }
 
@@ -262,7 +276,7 @@ enum GoogleTokenStore {
         q[kSecValueData as String] = Data(token.utf8)
         q[kSecAttrAccessible as String] = kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly
         let status = SecItemAdd(q as CFDictionary, nil)
-        if status != errSecSuccess { NSLog("Tempo: не удалось сохранить ключ Google: \(status)") }
+        if status != errSecSuccess { NSLog("Hourfox: не удалось сохранить ключ Google: \(status)") }
     }
 
     static func delete() {
@@ -311,7 +325,7 @@ final class GoogleCalendar: ObservableObject {
     func start() {
         guard Self.isConfigured, !started else { return }
         started = true
-        if ProcessInfo.processInfo.environment["TEMPO_GCAL_FAKE"] != nil { return }
+        if ProcessInfo.processInfo.environment["HOURFOX_GCAL_FAKE"] != nil { return }
         scheduleUpdates()
         if GoogleTokenStore.load() != nil {
             status = .connected
@@ -392,7 +406,7 @@ final class GoogleCalendar: ObservableObject {
             status = .connected
             await self.refresh()
         } catch {
-            NSLog("Tempo: вход в Google не завершён: \(String(describing: error))")
+            NSLog("Hourfox: вход в Google не завершён: \(String(describing: error))")
             status = .disconnected
             errorMessage = L("Не удалось подключить Google Календарь. Попробуйте ещё раз.")
         }
@@ -482,7 +496,7 @@ final class GoogleCalendar: ObservableObject {
                     loaded += try await loadEvents(of: calendar, in: day)
                 } catch Failure.http(let code) where code == 403 || code == 404 {
                     // Календарь недоступен: остальные всё равно показываем.
-                    NSLog("Tempo: календарь Google пропущен, код \(code)")
+                    NSLog("Hourfox: календарь Google пропущен, код \(code)")
                 }
             }
             events = GoogleAPI.sorted(loaded)
@@ -493,7 +507,7 @@ final class GoogleCalendar: ObservableObject {
             errorMessage = L("Доступ к Google Календарю отозван. Подключите его снова.")
         } catch {
             // Нет связи: оставляем то, что уже загружено.
-            NSLog("Tempo: события Google не загружены: \(String(describing: error))")
+            NSLog("Hourfox: события Google не загружены: \(String(describing: error))")
             isOffline = true
         }
     }
@@ -792,7 +806,7 @@ struct GoogleCalendarSettings: View {
             if let error = google.errorMessage {
                 Text(error).foregroundStyle(.red)
             } else {
-                Text("Только чтение: Tempo показывает события и ничего не меняет в календаре.")
+                Text("Только чтение: Hourfox показывает события и ничего не меняет в календаре.")
                     .foregroundStyle(.secondary)
             }
         }

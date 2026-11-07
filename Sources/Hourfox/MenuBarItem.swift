@@ -1,7 +1,7 @@
 import AppKit
 import Combine
 
-// MARK: - Где живёт Tempo
+// MARK: - Где живёт Hourfox
 
 /// Авто: Notch там, где есть вырез, иначе значок в строке меню.
 enum DisplayMode: String, CaseIterable, Identifiable {
@@ -36,7 +36,7 @@ enum DisplayMode: String, CaseIterable, Identifiable {
 
 /// Что показывает значок. Сравниваем состояния, чтобы перерисовывать только при изменении.
 struct MenuBarIconState: Equatable {
-    /// Время записи; nil — записи нет, в строке меню только значок Tempo.
+    /// Время записи; nil — записи нет, в строке меню только значок Hourfox.
     var text: String?
     var color: NSColor = .systemBlue
     var isPaused = false
@@ -73,7 +73,7 @@ enum MenuBarIcon {
             drawLogo(center: NSPoint(x: rect.midX, y: rect.midY), radius: 7, ink: ink)
             return
         }
-        // Кольцо цвета проекта, время, значок Tempo.
+        // Кольцо цвета проекта, время, значок Hourfox.
         let ring = NSBezierPath(ovalIn: NSRect(x: 2, y: rect.midY - ringSide / 2, width: ringSide, height: ringSide).insetBy(dx: 1, dy: 1))
         ring.lineWidth = 2
         state.color.setStroke()
@@ -146,8 +146,8 @@ final class MenuBarItem {
             button.target = self
             button.action = #selector(clicked)
             button.sendAction(on: [.leftMouseUp, .rightMouseUp])
-            button.toolTip = "Tempo"
-            button.setAccessibilityLabel("Tempo")
+            button.toolTip = "Hourfox"
+            button.setAccessibilityLabel("Hourfox")
             button.imagePosition = .imageOnly
             // Строка меню бывает и светлой, и тёмной — зависит от обоев.
             appearanceObservation = button.observe(\.effectiveAppearance) { [weak self] _, _ in
