@@ -20,7 +20,7 @@ Offline, no account, no analytics. **[Website](https://andmdesign.github.io/Hour
 1. Download [Hourfox.zip](https://andmdesign.github.io/Hourfox/Hourfox.zip), unzip it and move Hourfox to Applications.
 2. The app is not notarized yet, so macOS blocks the first launch. Open it, then allow it in **System Settings → Privacy & Security → Open Anyway**. Or review the source and build it yourself.
 
-Requires macOS 14 or later and Apple Silicon.
+Requires macOS 14 or later. Works on Apple Silicon and Intel.
 
 ## Build from source
 
@@ -29,6 +29,7 @@ Only the Command Line Tools are needed (`xcode-select --install`), not Xcode.
 ```bash
 ./build.sh            # build/Hourfox.app
 ./build.sh --install  # build, copy to /Applications and launch
+./build.sh --universal  # one app for Apple Silicon and Intel
 ```
 
 ## Your data

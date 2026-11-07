@@ -1,5 +1,6 @@
 # Сборка
 .build/
+.build-x86/
 build/
 *.app
 *.zip

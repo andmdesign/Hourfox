@@ -3,12 +3,18 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
+# --universal: одно приложение для Apple Silicon и Intel, для выкладки. Обычная сборка быстрее.
 swift build -c release
 
 APP=build/Hourfox.app
 rm -rf "$APP"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
-cp .build/release/Hourfox "$APP/Contents/MacOS/Hourfox"
+if [[ "${1:-}" == "--universal" ]]; then
+  swift build -c release --arch x86_64 --scratch-path .build-x86
+  lipo -create .build/release/Hourfox .build-x86/x86_64-apple-macosx/release/Hourfox -output "$APP/Contents/MacOS/Hourfox"
+else
+  cp .build/release/Hourfox "$APP/Contents/MacOS/Hourfox"
+fi
 cp Resources/Info.plist "$APP/Contents/Info.plist"
 
 if [[ ! -f Resources/AppIcon.icns ]]; then
