@@ -2,7 +2,7 @@
 
 Минималистичный трекер времени для macOS. Живёт в Notch MacBook, а на Mac без выреза в строке меню.
 
-Работает офлайн, без аккаунта и аналитики. **[Сайт](https://c4daam.github.io/Tempo/) · [Скачать](https://c4daam.github.io/Tempo/Tempo.zip) · [English](README.md)**
+Работает офлайн, без аккаунта и аналитики. **[Сайт](https://andmdesign.github.io/Tempo/) · [Скачать](https://andmdesign.github.io/Tempo/Tempo.zip) · [English](README.md)**
 
 ## Возможности
 
@@ -17,7 +17,7 @@
 
 ## Установка
 
-1. Скачайте [Tempo.zip](https://c4daam.github.io/Tempo/Tempo.zip), распакуйте и перенесите Tempo в «Программы».
+1. Скачайте [Tempo.zip](https://andmdesign.github.io/Tempo/Tempo.zip), распакуйте и перенесите Tempo в «Программы».
 2. Приложение пока не нотаризовано, поэтому первый запуск macOS заблокирует. Откройте его, затем разрешите в **Системные настройки → Конфиденциальность и безопасность → Всё равно открыть**. Или проверьте код и соберите сами.
 
 Нужны macOS 14 или новее и Apple Silicon.
