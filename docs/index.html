@@ -483,6 +483,8 @@
   .oss-text span { color: var(--dim); font-size: 15px; line-height: 1.45; }
   .oss-arrow { width: 18px; height: 18px; flex: none; margin-left: auto; color: var(--dim); }
   .faq details a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+  .win-ask { display: block; width: fit-content; margin: 18px auto 0; color: var(--dim); font-size: 14px; text-decoration: underline; text-underline-offset: 3px; }
+  .win-ask:hover { color: inherit; }
   .faq { max-width: 760px; margin: 0 auto; }
   .faq h2 { font-family: var(--display); font-size: clamp(28px, 4.2vw, 48px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 20px; }
   .faq details { border-top: 1px solid var(--line); }
@@ -772,6 +774,7 @@
     <div class="actions">
       <a class="btn big" href="Hourfox-Apple.zip" data-download><span data-i18n="hero.cta">Скачать для <svg class="apple" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>Mac</span></a>
     </div>
+    <a class="win-ask" href="https://t.me/andmdesign?text=I%20want%20Hourfox%20on%20Windows" target="_blank" rel="noopener" data-i18n="win.ask"></a>
   </section>
 </main>
 <dialog class="dl" id="dl" aria-labelledby="dlTitle">
@@ -808,6 +811,7 @@
 
   const T = {
     en: {
+      "win.ask": "Need it on Windows? Let us know",
       "dl.t": "Which Mac do you have?", "dl.a": "M1 or newer", "dl.i": "Older models with an Intel processor", "dl.h": "Check under Apple menu → About This Mac.",
       "doc.title": "Hourfox — a time tracker for Mac",
       "nav.download": "Download",
@@ -858,6 +862,7 @@
       min: "min", h: "h", days: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     },
     ru: {
+      "win.ask": "Нужно на&nbsp;Windows? Напишите нам",
       "dl.t": "Какой у вас Mac?", "dl.a": "M1 и новее", "dl.i": "Старые модели с процессором Intel", "dl.h": "Посмотреть можно в меню Apple → «Об этом Mac».",
       "doc.title": "Hourfox — трекер времени для Mac",
       "nav.download": "Скачать",
@@ -908,6 +913,7 @@
       min: "мин", h: "ч", days: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"]
     },
     uk: {
+      "win.ask": "Потрібно на&nbsp;Windows? Напишіть нам",
       "dl.t": "Який у вас Mac?", "dl.a": "M1 і новіші", "dl.i": "Старіші моделі з процесором Intel", "dl.h": "Подивитися можна в меню Apple → «Про цей Mac».",
       "doc.title": "Hourfox — трекер часу для Mac",
       "nav.download": "Завантажити",
@@ -958,6 +964,7 @@
       min: "хв", h: "год", days: ["Нд", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"]
     },
     zh: {
+      "win.ask": "需要 Windows 版？告诉我们",
       "dl.t": "你的 Mac 是哪种？", "dl.a": "M1 或更新", "dl.i": "搭载 Intel 处理器的旧款机型", "dl.h": "可在 Apple 菜单 → “关于本机”中查看。",
       "doc.title": "Hourfox — Mac 时间追踪工具",
       "nav.download": "下载",
@@ -1008,6 +1015,7 @@
       min: "分钟", h: "小时", days: ["周日", "周一", "周二", "周三", "周四", "周五", "周六"]
     },
     es: {
+      "win.ask": "¿Lo necesitas en Windows? Escríbenos",
       "dl.t": "¿Qué Mac tienes?", "dl.a": "M1 o más reciente", "dl.i": "Modelos anteriores con procesador Intel", "dl.h": "Compruébalo en el menú Apple → Acerca de este Mac.",
       "doc.title": "Hourfox — control del tiempo para Mac",
       "nav.download": "Descargar",
@@ -1058,6 +1066,7 @@
       min: "min", h: "h", days: ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"]
     },
     pt: {
+      "win.ask": "Precisa no Windows? Fale com a gente",
       "dl.t": "Qual é o seu Mac?", "dl.a": "M1 ou mais novo", "dl.i": "Modelos antigos com processador Intel", "dl.h": "Veja no menu Apple → Sobre Este Mac.",
       "doc.title": "Hourfox — controle de tempo para Mac",
       "nav.download": "Baixar",
@@ -1108,6 +1117,7 @@
       min: "min", h: "h", days: ["dom", "seg", "ter", "qua", "qui", "sex", "sáb"]
     },
     cs: {
+      "win.ask": "Chcete verzi pro Windows? Napište nám",
       "dl.t": "Jaký máte Mac?", "dl.a": "M1 a novější", "dl.i": "Starší modely s procesorem Intel", "dl.h": "Zjistíte to v nabídce Apple → O tomto Macu.",
       "doc.title": "Hourfox — měření času pro Mac",
       "nav.download": "Stáhnout",
@@ -1158,6 +1168,7 @@
       min: "min", h: "h", days: ["ne", "po", "út", "st", "čt", "pá", "so"]
     },
     it: {
+      "win.ask": "Ti serve su Windows? Scrivici",
       "dl.t": "Quale Mac hai?", "dl.a": "M1 o più recente", "dl.i": "Modelli precedenti con processore Intel", "dl.h": "Controlla nel menu Apple → Informazioni su questo Mac.",
       "doc.title": "Hourfox — monitoraggio del tempo per Mac",
       "nav.download": "Scarica",
