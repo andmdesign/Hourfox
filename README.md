@@ -2,7 +2,7 @@
 
 A minimal time tracker for macOS that lives in the MacBook notch, or in the menu bar on Macs without one.
 
-Offline, no account, no analytics. **[Website](https://andmdesign.github.io/Hourfox/) · [Download](https://andmdesign.github.io/Hourfox/) · [На русском](README.ru.md)**
+Offline, no account, no analytics. **[Website](https://hourfox.app/) · [Download](https://hourfox.app/) · [На русском](README.ru.md)**
 
 ## Features
 
@@ -17,7 +17,7 @@ Offline, no account, no analytics. **[Website](https://andmdesign.github.io/Hour
 
 ## Install
 
-1. Download [Hourfox-Apple.zip or Hourfox-Intel.zip](https://andmdesign.github.io/Hourfox/), unzip it and move Hourfox to Applications.
+1. Download [Hourfox-Apple.zip or Hourfox-Intel.zip](https://hourfox.app/), unzip it and move Hourfox to Applications.
 2. The app is not notarized yet, so macOS blocks the first launch. Open it, then allow it in **System Settings → Privacy & Security → Open Anyway**. Or review the source and build it yourself.
 
 Requires macOS 14 or later. Works on Apple Silicon and Intel.
