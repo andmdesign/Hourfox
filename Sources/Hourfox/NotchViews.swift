@@ -1207,7 +1207,9 @@ struct TasksSection: View {
     var body: some View {
         let open = store.openTasks
         VStack(alignment: .leading, spacing: 1) {
-            ForEach(open.prefix(4)) { t in
+            // Все задачи на месте: больше пяти строк список прокручивается, а не прячет хвост в журнал.
+            NotchScrollList(count: open.count, visible: model.dueFor == nil ? 5 : 2) {
+            ForEach(open) { t in
                 TaskRow(task: t, pickingDue: model.dueFor == t.id) {
                     store.start(title: t.title, projectID: t.projectID, emoji: t.emoji)
                     controller.didStart()
@@ -1229,23 +1231,15 @@ struct TasksSection: View {
                     Button("Удалить", role: .destructive) { store.deleteTask(t.id) }
                 }
                 .transition(.opacity.combined(with: .move(edge: .leading)))
-                if dueOn, model.dueFor == t.id {
-                    calendar(t.due, t.dueMinutes) { date, minutes in
-                        store.setDue(date, minutes: minutes, for: t.id)
-                    } onDone: {
-                        withAnimation(.snappy) { model.dueFor = nil }
-                    }
-                }
             }
-            if open.count > 4 {
-                Button { controller.openJournal(.tasks) } label: {
-                    Text("Ещё \(open.count - 4) в журнале")
-                        .font(.system(size: 12))
-                        .foregroundStyle(.notchInk.opacity(0.4))
-                        .padding(.horizontal, 8)
-                        .frame(height: 24)
+            }
+            // Календарь срока под списком, а не внутри: у прокручиваемого списка постоянная высота.
+            if dueOn, let id = model.dueFor, let t = open.first(where: { $0.id == id }) {
+                calendar(t.due, t.dueMinutes) { date, minutes in
+                    store.setDue(date, minutes: minutes, for: t.id)
+                } onDone: {
+                    withAnimation(.snappy) { model.dueFor = nil }
                 }
-                .buttonStyle(.plain)
             }
             HStack(spacing: 9) {
                 Image(icon: "plus", size: 10)
@@ -1643,6 +1637,29 @@ struct PriorityPicker: View {
 
 // MARK: - Заметки в Notch
 
+/// Список в Notch: до пяти строк во всю высоту, дальше прокрутка. Нижний край гаснет, чтобы было видно продолжение.
+struct NotchScrollList<Content: View>: View {
+    let count: Int
+    /// Пока под списком открыт календарь, строк меньше: Notch не должен вырасти выше экрана.
+    var visible = 5
+    @ViewBuilder let content: () -> Content
+
+    private static var row: CGFloat { 29 }
+
+    var body: some View {
+        if count > visible {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 1) { content() }
+            }
+            .scrollIndicators(.automatic)
+            .frame(height: Self.row * (CGFloat(visible) + 0.5))
+            .mask(LinearGradient(stops: [.init(color: .black, location: 0.86), .init(color: .clear, location: 1)], startPoint: .top, endPoint: .bottom))
+        } else {
+            VStack(alignment: .leading, spacing: 1) { content() }
+        }
+    }
+}
+
 struct NotesSection: View {
     @ObservedObject var model: NotchModel
     let controller: NotchController
@@ -1654,7 +1671,8 @@ struct NotesSection: View {
     var body: some View {
         let notes = store.sortedNotes
         VStack(alignment: .leading, spacing: 1) {
-            ForEach(notes.prefix(4)) { n in
+            NotchScrollList(count: notes.count) {
+            ForEach(notes) { n in
                 if model.editingNoteID == n.id {
                     editor(n)
                 } else {
@@ -1670,15 +1688,6 @@ struct NotesSection: View {
                         }
                 }
             }
-            if notes.count > 4 {
-                Button { controller.openJournal(.notes) } label: {
-                    Text("Ещё \(notes.count - 4) в журнале")
-                        .font(.system(size: 12))
-                        .foregroundStyle(.notchInk.opacity(0.4))
-                        .padding(.horizontal, 8)
-                        .frame(height: 24)
-                }
-                .buttonStyle(.plain)
             }
             HStack(spacing: 9) {
                 Image(icon: "plus", size: 10)

@@ -1102,6 +1102,8 @@ enum DebugSnapshots {
         DispatchQueue.main.asyncAfter(deadline: .now() + 7.2) {
             save(app.notch.panel, "\(dir)/notch-pins-undo.png")
             defaults.set("tasks", forKey: "notchTab")
+            // Задач больше пяти: список в Notch должен прокручиваться, а не прятать хвост.
+            for title in ["Список 1", "Список 2", "Список 3"] { store.addTask(title, projectID: nil) }
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 7.8) {
             save(app.notch.panel, "\(dir)/notch-tasks.png")
