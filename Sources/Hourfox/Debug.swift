@@ -1182,6 +1182,37 @@ enum DebugSnapshots {
             panel.sendEvent(event(.leftMouseDown))
             panel.sendEvent(event(.leftMouseUp))
         }
+        // Настоящее перетаскивание первой задачи на две строки вниз: порядок меняется, задача не запускается.
+        var dragBefore: [String] = []
+        var dragEntries = 0
+        var dragExpanded = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 14.1) {
+            dragBefore = store.openTasks.map(\.title)
+            dragEntries = store.entries.count
+            dragExpanded = app.notch.model.expanded
+            let panel = app.notch.panel
+            let x: CGFloat = 120, y0 = panel.frame.height - 185
+            func event(_ type: NSEvent.EventType, _ y: CGFloat) -> NSEvent {
+                NSEvent.mouseEvent(with: type, location: NSPoint(x: x, y: y), modifierFlags: [], timestamp: ProcessInfo.processInfo.systemUptime,
+                                   windowNumber: panel.windowNumber, context: nil, eventNumber: 0, clickCount: 1, pressure: 1)!
+            }
+            panel.sendEvent(event(.leftMouseDown, y0))
+            for step in 1 ... 12 { panel.sendEvent(event(.leftMouseDragged, y0 - CGFloat(step) * 5)) }
+            panel.sendEvent(event(.leftMouseUp, y0 - 60))
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 14.8) {
+            let after = store.openTasks.map(\.title)
+            print("DRAG before", dragBefore.prefix(4), "after", after.prefix(4))
+            // Просроченная задача стоит наверху всегда, поэтому сдвинуться могла и вторая строка: проверяем, что одна задача ушла на две строки вниз.
+            let moved = dragBefore.indices.contains { i in
+                i + 2 < dragBefore.count && after.firstIndex(of: dragBefore[i]) == i + 2 && after.filter { $0 != dragBefore[i] } == dragBefore.filter { $0 != dragBefore[i] }
+            }
+            // Если в это время шевелят мышью, Notch сворачивается и тащить нечего.
+            if dragExpanded, app.notch.model.expanded, dragBefore.count >= 3 {
+                check("перетаскивание в Notch меняет порядок", moved)
+                check("перетаскивание не запускает задачу", store.entries.count == dragEntries)
+            }
+        }
         DispatchQueue.main.asyncAfter(deadline: .now() + 15.0) {
             print("LIVE later reminded:", store.tasks.first { $0.title == "Живой срок" }?.dueReminded != nil, "banner", app.notch.model.dueTask?.title ?? "нет")
             print("CLICK result open before", openBefore, "after", store.openTasks.count, "first", store.openTasks.first?.title ?? "-")

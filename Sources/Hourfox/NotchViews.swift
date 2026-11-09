@@ -1202,8 +1202,47 @@ struct TasksSection: View {
     /// Проект новой задачи; пока его не выбрали сами, берётся текущий.
     @State private var newProject: UUID??
     @FocusState private var adding: Bool
+    /// Перетаскиваемая задача и насколько её сдвинули по вертикали.
+    @State private var dragging: UUID?
+    @State private var dragShift: CGFloat = 0
 
     private var newProjectID: UUID? { newProject ?? store.currentProjectID }
+    /// Шаг строки в списке: высота 28 и промежуток 1.
+    private static var step: CGFloat { 29 }
+
+    private func dragTarget(from: Int, count: Int) -> Int {
+        max(0, min(count - 1, from + Int((dragShift / Self.step).rounded())))
+    }
+
+    /// Пока задачу тащат, она идёт за курсором, а соседи уступают ей место.
+    private func dragOffset(_ id: UUID, at index: Int, in open: [TodoTask]) -> CGFloat {
+        guard let dragging, let from = open.firstIndex(where: { $0.id == dragging }) else { return 0 }
+        if id == dragging { return dragShift }
+        let to = dragTarget(from: from, count: open.count)
+        if from < to, index > from, index <= to { return -Self.step }
+        if from > to, index >= to, index < from { return Self.step }
+        return 0
+    }
+
+    private func dragGesture(_ t: TodoTask, in open: [TodoTask]) -> some Gesture {
+        DragGesture(minimumDistance: 4, coordinateSpace: .global)
+            .onChanged { v in
+                if dragging == nil { dragging = t.id }
+                dragShift = v.translation.height
+            }
+            .onEnded { _ in
+                var noAnimation = Transaction()
+                noAnimation.disablesAnimations = true
+                withTransaction(noAnimation) {
+                    if let from = open.firstIndex(where: { $0.id == t.id }) {
+                        let to = dragTarget(from: from, count: open.count)
+                        if to != from { store.moveOpenTasks(from: IndexSet(integer: from), to: to > from ? to + 1 : to) }
+                    }
+                    dragging = nil
+                    dragShift = 0
+                }
+            }
+    }
 
     var body: some View {
         let open = store.openTasks
@@ -1231,6 +1270,15 @@ struct TasksSection: View {
                     Divider()
                     Button("Удалить", role: .destructive) { store.deleteTask(t.id) }
                 }
+                // Задачу можно взять за любое место строки и перетащить; простой щелчок работает как раньше.
+                .background(RoundedRectangle(cornerRadius: 8, style: .continuous)
+                    .fill(Color(white: 0.16))
+                    .shadow(color: .black.opacity(0.5), radius: 8, y: 3)
+                    .opacity(dragging == t.id ? 1 : 0))
+                .offset(y: dragOffset(t.id, at: open.firstIndex(of: t) ?? 0, in: open))
+                .zIndex(dragging == t.id ? 1 : 0)
+                .animation(dragging == t.id ? nil : .snappy(duration: 0.22), value: dragOffset(t.id, at: open.firstIndex(of: t) ?? 0, in: open))
+                .highPriorityGesture(dragGesture(t, in: open))
                 .transition(.opacity.combined(with: .move(edge: .leading)))
             }
             }
