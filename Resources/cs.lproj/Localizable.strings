@@ -272,6 +272,7 @@
 "Секундомер" = "Stopky";
 "Другое время" = "Jiný čas";
 "Новый проект…" = "Nový projekt…";
+"Скачать версию %@" = "Stáhnout verzi %@";
 "Настройки…" = "Nastavení…";
 "Открывать при входе в систему" = "Otevřít při přihlášení";
 "Показывать в Календаре" = "Zobrazovat v Kalendáři";
@@ -362,6 +363,15 @@
 "Идёт" = "Běží";
 "Стоп" = "Zastavit";
 "Выполнить" = "Dokončit";
+"Доступна версия %@. Скачать" = "Je dostupná verze %@. Stáhnout";
+"Проверять обновления" = "Kontrolovat aktualizace";
+"Раз в день узнаёт номер новой версии на hourfox.app. Ваши данные не отправляются" = "Jednou denně zjistí na hourfox.app číslo nové verze. Vaše data se neodesílají";
+"Доступна версия %@" = "Je dostupná verze %@";
+"Скачать" = "Stáhnout";
+"У вас последняя версия, %@" = "Máte nejnovější verzi, %@";
+"Версия %@" = "Verze %@";
+"Проверяю…" = "Kontroluji…";
+"Проверить сейчас" = "Zkontrolovat teď";
 "Жаворонок" = "Ranní ptáče";
 "Дневной ритм" = "Denní rytmus";
 "Вечерний ритм" = "Večerní rytmus";

@@ -398,6 +398,7 @@ struct ExpandedView: View {
             .frame(width: side, alignment: .leading)
             Color.clear.frame(width: model.notchSize.width)
             HStack(spacing: 4) {
+                UpdatePill()
                 IconButton(symbol: "maximize-2", help: "Открыть окно") { controller.openJournal(.journal) }
                 IconButton(symbol: "ellipsis", help: "Ещё") { controller.showMoreMenu() }
             }

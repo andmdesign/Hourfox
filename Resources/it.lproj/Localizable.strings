@@ -272,6 +272,7 @@
 "Секундомер" = "Cronometro";
 "Другое время" = "Altra durata";
 "Новый проект…" = "Nuovo progetto…";
+"Скачать версию %@" = "Scarica la versione %@";
 "Настройки…" = "Impostazioni…";
 "Открывать при входе в систему" = "Apri al login";
 "Показывать в Календаре" = "Mostra in Calendario";
@@ -362,6 +363,15 @@
 "Идёт" = "In corso";
 "Стоп" = "Ferma";
 "Выполнить" = "Completa";
+"Доступна версия %@. Скачать" = "Disponibile la versione %@. Scarica";
+"Проверять обновления" = "Controlla aggiornamenti";
+"Раз в день узнаёт номер новой версии на hourfox.app. Ваши данные не отправляются" = "Una volta al giorno controlla su hourfox.app il numero dell’ultima versione. I tuoi dati non vengono inviati";
+"Доступна версия %@" = "Disponibile la versione %@";
+"Скачать" = "Scarica";
+"У вас последняя версия, %@" = "Hai l’ultima versione, %@";
+"Версия %@" = "Versione %@";
+"Проверяю…" = "Controllo…";
+"Проверить сейчас" = "Controlla ora";
 "Жаворонок" = "Mattiniero";
 "Дневной ритм" = "Ritmo diurno";
 "Вечерний ритм" = "Ritmo serale";

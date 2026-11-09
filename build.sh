@@ -16,6 +16,9 @@ else
   cp .build/release/Hourfox "$APP/Contents/MacOS/Hourfox"
 fi
 cp Resources/Info.plist "$APP/Contents/Info.plist"
+# Номер версии один на всё: файл VERSION. По нему приложение узнаёт, что вышла новая.
+VERSION=$(cat VERSION)
+/usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $VERSION" -c "Set :CFBundleVersion $VERSION" "$APP/Contents/Info.plist"
 
 if [[ ! -f Resources/AppIcon.icns ]]; then
   ICONSET=build/AppIcon.iconset
@@ -49,6 +52,8 @@ if [[ "${1:-}" == "--universal" ]]; then
     rm -f "docs/Hourfox-$name.zip"
     ditto -c -k --norsrc --keepParent "$THIN" "docs/Hourfox-$name.zip"
   done
+  # Файл, который приложение раз в день читает на сайте.
+  printf '{\n  "version": "%s",\n  "apple": "https://hourfox.app/Hourfox-Apple.zip",\n  "intel": "https://hourfox.app/Hourfox-Intel.zip"\n}\n' "$VERSION" > docs/version.json
 fi
 
 if [[ "${1:-}" == "--install" ]]; then

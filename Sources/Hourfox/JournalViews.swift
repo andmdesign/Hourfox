@@ -237,6 +237,7 @@ struct MainSettingsSections: View {
             })) {
                 settingLabel("Открывать при входе в\u{00A0}систему", "Hourfox запустится вместе с\u{00A0}Mac", "power")
             }
+            UpdateSettingsRow()
         } header: {
             SectionHeaderWithTop(top: top, title: L("Общие"))
         }

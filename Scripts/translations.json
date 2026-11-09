@@ -4360,5 +4360,95 @@
     "pt-BR": "Uma cópia do arquivo foi salva, nada foi perdido: %@",
     "cs": "Kopie souboru je uložena, nic se neztratilo: %@",
     "it": "Una copia del file è stata salvata, non si è perso nulla: %@"
+  },
+  "Доступна версия %@. Скачать": {
+    "en": "Version %@ is available. Download",
+    "uk": "Доступна версія %@. Завантажити",
+    "zh-Hans": "版本 %@ 可用。下载",
+    "es": "Versión %@ disponible. Descargar",
+    "pt-BR": "Versão %@ disponível. Baixar",
+    "cs": "Je dostupná verze %@. Stáhnout",
+    "it": "Disponibile la versione %@. Scarica"
+  },
+  "Доступна версия %@": {
+    "en": "Version %@ is available",
+    "uk": "Доступна версія %@",
+    "zh-Hans": "版本 %@ 可用",
+    "es": "Versión %@ disponible",
+    "pt-BR": "Versão %@ disponível",
+    "cs": "Je dostupná verze %@",
+    "it": "Disponibile la versione %@"
+  },
+  "Скачать версию %@": {
+    "en": "Download Version %@",
+    "uk": "Завантажити версію %@",
+    "zh-Hans": "下载版本 %@",
+    "es": "Descargar versión %@",
+    "pt-BR": "Baixar versão %@",
+    "cs": "Stáhnout verzi %@",
+    "it": "Scarica la versione %@"
+  },
+  "Проверять обновления": {
+    "en": "Check for Updates",
+    "uk": "Перевіряти оновлення",
+    "zh-Hans": "检查更新",
+    "es": "Buscar actualizaciones",
+    "pt-BR": "Verificar atualizações",
+    "cs": "Kontrolovat aktualizace",
+    "it": "Controlla aggiornamenti"
+  },
+  "Раз в день узнаёт номер новой версии на hourfox.app. Ваши данные не отправляются": {
+    "en": "Once a day, checks hourfox.app for the latest version number. None of your data is sent",
+    "uk": "Раз на день дізнається номер нової версії на hourfox.app. Ваші дані не надсилаються",
+    "zh-Hans": "每天在 hourfox.app 查一次最新版本号。不会发送你的任何数据",
+    "es": "Una vez al día consulta en hourfox.app el número de la última versión. No se envían tus datos",
+    "pt-BR": "Uma vez por dia consulta em hourfox.app o número da versão mais recente. Seus dados não são enviados",
+    "cs": "Jednou denně zjistí na hourfox.app číslo nové verze. Vaše data se neodesílají",
+    "it": "Una volta al giorno controlla su hourfox.app il numero dell’ultima versione. I tuoi dati non vengono inviati"
+  },
+  "У вас последняя версия, %@": {
+    "en": "You have the latest version, %@",
+    "uk": "У вас остання версія, %@",
+    "zh-Hans": "你使用的是最新版本 %@",
+    "es": "Tienes la última versión, %@",
+    "pt-BR": "Você tem a versão mais recente, %@",
+    "cs": "Máte nejnovější verzi, %@",
+    "it": "Hai l’ultima versione, %@"
+  },
+  "Версия %@": {
+    "en": "Version %@",
+    "uk": "Версія %@",
+    "zh-Hans": "版本 %@",
+    "es": "Versión %@",
+    "pt-BR": "Versão %@",
+    "cs": "Verze %@",
+    "it": "Versione %@"
+  },
+  "Проверяю…": {
+    "en": "Checking…",
+    "uk": "Перевіряю…",
+    "zh-Hans": "正在检查…",
+    "es": "Comprobando…",
+    "pt-BR": "Verificando…",
+    "cs": "Kontroluji…",
+    "it": "Controllo…"
+  },
+  "Проверить сейчас": {
+    "en": "Check Now",
+    "uk": "Перевірити зараз",
+    "zh-Hans": "立即检查",
+    "es": "Comprobar ahora",
+    "pt-BR": "Verificar agora",
+    "cs": "Zkontrolovat teď",
+    "it": "Controlla ora"
+  },
+  "Скачать": {
+    "en": "Download",
+    "uk": "Завантажити",
+    "zh-Hans": "下载",
+    "es": "Descargar",
+    "pt-BR": "Baixar",
+    "cs": "Stáhnout",
+    "it": "Scarica"
   }
 }

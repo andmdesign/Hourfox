@@ -904,6 +904,17 @@ enum DebugSnapshots {
                     Text(verbatim: "+ Новая задача").font(.system(size: 13)).foregroundStyle(.white.opacity(0.4)).frame(height: 28)
                 }.padding(16).frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top).background(Color.black).environment(\.colorScheme, .dark), NSSize(width: 480, height: 260), name, 0.8)
             }
+            // Обновления: сравнение версий и разбор файла.
+            check("версии: 1.10 новее 1.9", UpdateChecker.isNewer("1.10", than: "1.9") && !UpdateChecker.isNewer("1.1", than: "1.1") && !UpdateChecker.isNewer("1.0.9", than: "1.1") && UpdateChecker.isNewer("2", than: "1.9.9"))
+            let feedJSON = #"{"version":"9.9","apple":"https://hourfox.app/Hourfox-Apple.zip","intel":"https://hourfox.app/Hourfox-Intel.zip"}"#
+            check("version.json читается", (try? JSONDecoder().decode(UpdateChecker.Release.self, from: Data(feedJSON.utf8)))?.version == "9.9")
+            if let docs = Optional(URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent().appendingPathComponent("docs/version.json")),
+               let data = try? Data(contentsOf: docs) {
+                check("docs/version.json в порядке", (try? JSONDecoder().decode(UpdateChecker.Release.self, from: data)) != nil)
+            }
+            UpdateChecker.shared.pretend(try? JSONDecoder().decode(UpdateChecker.Release.self, from: Data(feedJSON.utf8)))
+            hosted(Form { UpdateSettingsRow() }.formStyle(.grouped), NSSize(width: 640, height: 200), "settings-update", 0.6)
+
             // Окна на новых карточках, снятые как есть.
             var fixedProject = store.addProject(name: "Фикс", color: .teal)
             fixedProject.fixedPrice = 1000

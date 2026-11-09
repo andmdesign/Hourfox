@@ -569,6 +569,10 @@ final class NotchController {
 
     func showMoreMenu() {
         let menu = NSMenu()
+        if let release = UpdateChecker.shared.available {
+            menu.addItem(NSMenuItem(title: L("Скачать версию %@", release.version)) { UpdateChecker.shared.download() })
+            menu.addItem(.separator())
+        }
         menu.addItem(NSMenuItem(title: L("Журнал")) { [weak self] in self?.openJournal(.journal) })
         menu.addItem(NSMenuItem(title: L("Отчёт")) { [weak self] in self?.openJournal(.report) })
         menu.addItem(NSMenuItem(title: L("Настройки…")) { [weak self] in self?.openJournal(.settings) })

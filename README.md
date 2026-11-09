@@ -36,7 +36,7 @@ Only the Command Line Tools are needed (`xcode-select --install`), not Xcode.
 
 Everything stays in `~/Library/Application Support/Hourfox/`: `data.json`, a daily copy in `backups/` (last 30 days) and a copy of the previous launch.
 
-Hourfox makes no network requests, with one exception. Google Calendar is compiled in but stays hidden until you supply your own OAuth client: copy `Resources/GoogleOAuth.example.plist` to `Resources/GoogleOAuth.plist` and fill it in. The file is ignored by git. The sign-in uses PKCE and a loopback redirect, and the refresh token is kept in the Keychain. Official builds ship without keys.
+Hourfox never sends your data anywhere. Once a day it fetches `https://hourfox.app/version.json` to see whether a newer version is out; turn this off in Settings → Check for Updates. Google Calendar is compiled in but stays hidden until you supply your own OAuth client: copy `Resources/GoogleOAuth.example.plist` to `Resources/GoogleOAuth.plist` and fill it in. The file is ignored by git. The sign-in uses PKCE and a loopback redirect, and the refresh token is kept in the Keychain. Official builds ship without keys.
 
 The website, not the app, loads the Inter font from Google Fonts and Three.js from jsDelivr.
 

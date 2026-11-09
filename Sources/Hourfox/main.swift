@@ -22,6 +22,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         notch = NotchController(store: store)
         CalendarSync.shared.start(store: store)
         GoogleCalendar.shared.start()
+        if ProcessInfo.processInfo.environment["HOURFOX_DATA_DIR"] == nil { UpdateChecker.shared.start() }
         if store.isFirstLaunch && !OnboardingWindowController.isDone { onboarding.show() }
         DebugSnapshots.runIfRequested(self)
         if let copy = store.damagedDataCopy {
