@@ -1642,18 +1642,27 @@ struct NotchScrollList<Content: View>: View {
     let count: Int
     /// Пока под списком открыт календарь, строк меньше: Notch не должен вырасти выше экрана.
     var visible = 5
+    /// Для снимков: список сразу прокручен до конца.
+    var startAtBottom = false
     @ViewBuilder let content: () -> Content
 
     private static var row: CGFloat { 29 }
+    /// Пустое место после последней строки и высота затухания: затухание всегда меньше запаса.
+    private static var tail: CGFloat { 22 }
+    private static var fade: CGFloat { 14 }
+    private var height: CGFloat { Self.row * (CGFloat(visible) + 0.5) }
 
     var body: some View {
         if count > visible {
+            // Внизу запас: в конце прокрутки последняя строка стоит целиком над затуханием.
             ScrollView {
                 VStack(alignment: .leading, spacing: 1) { content() }
+                    .padding(.bottom, Self.tail)
             }
             .scrollIndicators(.automatic)
-            .frame(height: Self.row * (CGFloat(visible) + 0.5))
-            .mask(LinearGradient(stops: [.init(color: .black, location: 0.86), .init(color: .clear, location: 1)], startPoint: .top, endPoint: .bottom))
+            .defaultScrollAnchor(startAtBottom ? .bottom : .top)
+            .frame(height: height)
+            .mask(LinearGradient(stops: [.init(color: .black, location: 1 - Self.fade / height), .init(color: .clear, location: 1)], startPoint: .top, endPoint: .bottom))
         } else {
             VStack(alignment: .leading, spacing: 1) { content() }
         }

@@ -889,6 +889,21 @@ enum DebugSnapshots {
                 store.eraseEntry(trap.id)
             }
 
+            // Прокрутка в Notch: в начале и в самом конце списка.
+            let scrollBefore = Set(store.tasks.map(\.id))
+            for n in 1 ... 8 { store.addTask("Прокрутка \(n)", projectID: nil) }
+            let scrollAdded = store.tasks.filter { !scrollBefore.contains($0.id) }.map(\.id)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { scrollAdded.forEach { store.deleteTask($0) } }
+            for (name, bottom) in [("notch-scroll-top", false), ("notch-scroll-end", true)] {
+                hosted(VStack(alignment: .leading, spacing: 1) {
+                    NotchScrollList(count: store.openTasks.count, startAtBottom: bottom) {
+                        ForEach(store.openTasks) { t in
+                            TaskRow(task: t, pickingDue: false, start: {}, pickProject: {}, pickDue: {})
+                        }
+                    }
+                    Text(verbatim: "+ Новая задача").font(.system(size: 13)).foregroundStyle(.white.opacity(0.4)).frame(height: 28)
+                }.padding(16).frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top).background(Color.black).environment(\.colorScheme, .dark), NSSize(width: 480, height: 260), name, 0.8)
+            }
             // Окна на новых карточках, снятые как есть.
             var fixedProject = store.addProject(name: "Фикс", color: .teal)
             fixedProject.fixedPrice = 1000
