@@ -74,6 +74,10 @@ final class NotchModel: ObservableObject {
     @Published var hasNotch = true
     /// Hourfox живёт значком в строке меню, а панель открывается под ним.
     @Published var menuBarMode = false
+    /// Панель посередине экрана, как Spotlight: открывается сочетанием клавиш или щелчком по значку.
+    @Published var centered = false
+    /// Открыли сочетанием клавиш: сразу ставим курсор в «Чем вы заняты?».
+    @Published var focusTitle = 0
 
     /// Под вырезом экрана нет пикселей: край, совпадающий с вырезом, не виден.
     /// Поэтому с сиянием свёрнутый остров опускается чуть ниже выреза — кромку видно на любом Mac.
@@ -265,6 +269,8 @@ final class NotchController {
     // MARK: Геометрия
 
     var screen: NSScreen {
+        // Посередине того экрана, где сейчас мышь.
+        if model.centered, let s = NSScreen.screens.first(where: { $0.frame.contains(NSEvent.mouseLocation) }) { return s }
         if model.menuBarMode, let s = menuBarItem.buttonWindow?.screen { return s }
         return NSScreen.screens.first { $0.safeAreaInsets.top > 0 } ?? NSScreen.main ?? NSScreen.screens[0]
     }
@@ -276,6 +282,7 @@ final class NotchController {
             if model.expanded { collapse() }
             model.menuBarMode = menuBar
         }
+        model.centered = DisplayMode.current.centered
         menuBarItem.setShown(menuBar)
         measureNotch()
         setFrame(targetSize())
@@ -289,6 +296,17 @@ final class NotchController {
 
     private func toggleFromMenuBar() {
         if model.expanded { collapse() } else { expand() }
+    }
+
+    /// Сочетание клавиш: открывает панель с курсором в поле ввода, повторное нажатие закрывает.
+    func toggleFromHotKey() {
+        if model.expanded {
+            collapse()
+            return
+        }
+        expand()
+        panel.makeKeyAndOrderFront(nil)
+        model.focusTitle += 1
     }
 
     private func measureNotch() {
@@ -332,8 +350,13 @@ final class NotchController {
         let f = screen.frame
         var rect = NSRect(x: (f.midX - size.width / 2).rounded(), y: f.maxY - size.height,
                           width: size.width.rounded(), height: size.height.rounded())
-        // Под значком, но не за краем экрана.
-        if model.menuBarMode, let bar = menuBarItem.buttonWindow?.frame {
+        if model.centered {
+            // Верх панели на шестой части экрана сверху, как у Spotlight; окно не выходит за низ экрана.
+            let v = screen.visibleFrame
+            let top = (v.maxY - v.height * 0.16).rounded()
+            rect.size.height = min(rect.height, top - v.minY - 8).rounded()
+            rect.origin.y = top - rect.height
+        } else if model.menuBarMode, let bar = menuBarItem.buttonWindow?.frame {
             rect.origin.x = (bar.midX - size.width / 2).rounded()
             rect.origin.x = min(max(rect.minX, f.minX + 8), f.maxX - size.width - 8).rounded()
             rect.origin.y = bar.minY - 6 - size.height
@@ -385,6 +408,14 @@ final class NotchController {
         }
         if let m = NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseDown, .rightMouseDown], handler: { [weak self] _ in
             self?.clickOutside()
+        }) {
+            monitors.append(m)
+        }
+        // Esc закрывает панель, если сейчас ничего не вводится в строке (там Esc отменяет ввод).
+        if let m = NSEvent.addLocalMonitorForEvents(matching: [.keyDown], handler: { [weak self] e in
+            guard let self, e.keyCode == 53, e.window === panel, model.expanded, !model.isEditingInline else { return e }
+            collapse()
+            return nil
         }) {
             monitors.append(m)
         }

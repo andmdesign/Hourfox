@@ -1581,15 +1581,6 @@
     "cs": "Zobrazení",
     "it": "Vista"
   },
-  "Авто: Notch, если есть вырез, иначе значок в строке меню": {
-    "en": "Auto: Notch if your Mac has one, otherwise an icon in the menu bar",
-    "zh-Hans": "自动：有刘海时使用 Notch，否则在菜单栏显示图标",
-    "es": "Automático: Notch si tu Mac lo tiene; si no, un icono en la barra de menús",
-    "pt-BR": "Automático: Notch se o Mac tiver; caso contrário, um ícone na barra de menus",
-    "cs": "Automaticky: Notch, pokud ho Mac má, jinak ikona v řádku nabídek",
-    "it": "Automatico: Notch se il Mac lo ha, altrimenti un’icona nella barra dei menu",
-    "uk": "Авто: Notch, якщо є виріз, інакше значок у рядку меню"
-  },
   "Все проекты": {
     "en": "All Projects",
     "zh-Hans": "所有项目",
@@ -4450,5 +4441,68 @@
     "pt-BR": "Baixar",
     "cs": "Stáhnout",
     "it": "Scarica"
+  },
+  "Авто: Notch, если есть вырез, иначе значок в строке меню. По центру: панель открывается сочетанием клавиш посередине экрана": {
+    "en": "Auto: Notch if your Mac has one, otherwise an icon in the menu bar. Centered: a shortcut opens the panel in the middle of the screen",
+    "uk": "Авто: Notch, якщо є виріз, інакше значок у рядку меню. По центру: панель відкривається поєднанням клавіш посередині екрана",
+    "zh-Hans": "自动：有刘海时使用 Notch，否则在菜单栏显示图标。居中：用快捷键在屏幕中间打开面板",
+    "es": "Automático: Notch si tu Mac lo tiene; si no, un icono en la barra de menús. Centrado: un atajo abre el panel en el centro de la pantalla",
+    "pt-BR": "Automático: Notch se o Mac tiver; caso contrário, um ícone na barra de menus. Centralizado: um atalho abre o painel no meio da tela",
+    "cs": "Automaticky: Notch, pokud ho Mac má, jinak ikona v řádku nabídek. Uprostřed: zkratka otevře panel uprostřed obrazovky",
+    "it": "Automatico: Notch se il Mac lo ha, altrimenti un’icona nella barra dei menu. Al centro: una scorciatoia apre il pannello al centro dello schermo"
+  },
+  "По центру": {
+    "en": "Centered",
+    "uk": "По центру",
+    "zh-Hans": "居中",
+    "es": "Centrado",
+    "pt-BR": "Centralizado",
+    "cs": "Uprostřed",
+    "it": "Al centro"
+  },
+  "Сочетание клавиш": {
+    "en": "Keyboard Shortcut",
+    "uk": "Поєднання клавіш",
+    "zh-Hans": "快捷键",
+    "es": "Atajo de teclado",
+    "pt-BR": "Atalho de teclado",
+    "cs": "Klávesová zkratka",
+    "it": "Scorciatoia da tastiera"
+  },
+  "Открывает панель Hourfox из любого приложения": {
+    "en": "Opens the Hourfox panel from any app",
+    "uk": "Відкриває панель Hourfox з будь-якої програми",
+    "zh-Hans": "在任意应用中打开 Hourfox 面板",
+    "es": "Abre el panel de Hourfox desde cualquier app",
+    "pt-BR": "Abre o painel do Hourfox em qualquer app",
+    "cs": "Otevře panel Hourfox z libovolné aplikace",
+    "it": "Apre il pannello di Hourfox da qualsiasi app"
+  },
+  "Это сочетание уже занято, выберите другое": {
+    "en": "This shortcut is already in use, choose another",
+    "uk": "Це поєднання вже зайняте, виберіть інше",
+    "zh-Hans": "此快捷键已被占用，请选择其他",
+    "es": "Este atajo ya está en uso, elige otro",
+    "pt-BR": "Este atalho já está em uso, escolha outro",
+    "cs": "Tato zkratka je už obsazená, vyberte jinou",
+    "it": "Questa scorciatoia è già in uso, scegline un’altra"
+  },
+  "Не открывать": {
+    "en": "Off",
+    "uk": "Не відкривати",
+    "zh-Hans": "关闭",
+    "es": "Desactivado",
+    "pt-BR": "Desativado",
+    "cs": "Vypnuto",
+    "it": "Disattivata"
+  },
+  "Пробел": {
+    "en": "Space",
+    "uk": "Пробіл",
+    "zh-Hans": "空格",
+    "es": "Espacio",
+    "pt-BR": "Espaço",
+    "cs": "Mezerník",
+    "it": "Spazio"
   }
 }

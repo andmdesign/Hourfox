@@ -137,6 +137,10 @@
 "Google Календарь" = "Kalendář Google";
 "События на сегодня во вкладке Notch" = "Dnešní události na kartě v Notch";
 "Только чтение: Hourfox показывает события и ничего не меняет в календаре." = "Jen pro čtení: Hourfox události zobrazuje a v kalendáři nic nemění.";
+"Не открывать" = "Vypnuto";
+"Сочетание клавиш" = "Klávesová zkratka";
+"Открывает панель Hourfox из любого приложения" = "Otevře panel Hourfox z libovolné aplikace";
+"Это сочетание уже занято, выберите другое" = "Tato zkratka je už obsazená, vyberte jinou";
 "Список" = "Seznam";
 "Календарь" = "Kalendář";
 "Журнал" = "Záznamy";
@@ -168,7 +172,7 @@
 "Показывать в Календаре" = "Zobrazovat v Kalendáři";
 "Завершённые записи — в календаре «Hourfox»" = "Dokončené záznamy se ukládají do kalendáře „Hourfox“";
 "Вид" = "Zobrazení";
-"Авто: Notch, если есть вырез, иначе значок в строке меню" = "Automaticky: Notch, pokud ho Mac má, jinak ikona v řádku nabídek";
+"Авто: Notch, если есть вырез, иначе значок в строке меню. По центру: панель открывается сочетанием клавиш посередине экрана" = "Automaticky: Notch, pokud ho Mac má, jinak ikona v řádku nabídek. Uprostřed: zkratka otevře panel uprostřed obrazovky";
 "Сияние" = "Záře";
 "Переливающаяся подсветка края в стиле Apple Intelligence" = "Plynulé světlo okrajů ve stylu Apple Intelligence";
 "Стекло" = "Sklo";
@@ -238,6 +242,7 @@
 "Язык" = "Jazyk";
 "Авто" = "Automaticky";
 "Строка меню" = "Řádek nabídek";
+"По центру" = "Uprostřed";
 "Недавние" = "Nedávné";
 "События" = "Události";
 "Итог за сегодня" = "Dnešní souhrn";

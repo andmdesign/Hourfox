@@ -230,6 +230,7 @@ struct MainSettingsSections: View {
         Section {
             LanguagePicker()
             DisplayModePicker()
+            HotKeyPicker()
             Toggle(isOn: Binding(get: { launchAtLogin }, set: { on in
                 launchAtLogin = on
                 let service = SMAppService.mainApp
@@ -289,7 +290,7 @@ struct DisplayModePicker: View {
         })) {
             ForEach(DisplayMode.allCases) { Text(L($0.title)).tag($0.rawValue) }
         } label: {
-            settingLabel("Вид", "Авто: Notch, если есть вырез, иначе значок в\u{00A0}строке меню", "panel-top")
+            settingLabel("Вид", "Авто: Notch, если есть вырез, иначе значок в\u{00A0}строке меню. По\u{00A0}центру: панель открывается сочетанием клавиш посередине экрана", "panel-top")
         }
     }
 }

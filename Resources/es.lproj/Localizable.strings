@@ -137,6 +137,10 @@
 "Google Календарь" = "Google Calendar";
 "События на сегодня во вкладке Notch" = "Los eventos de hoy en una pestaña de Notch";
 "Только чтение: Hourfox показывает события и ничего не меняет в календаре." = "Solo lectura: Hourfox muestra los eventos y no cambia nada en tu calendario.";
+"Не открывать" = "Desactivado";
+"Сочетание клавиш" = "Atajo de teclado";
+"Открывает панель Hourfox из любого приложения" = "Abre el panel de Hourfox desde cualquier app";
+"Это сочетание уже занято, выберите другое" = "Este atajo ya está en uso, elige otro";
 "Список" = "Lista";
 "Календарь" = "Calendario";
 "Журнал" = "Registro";
@@ -168,7 +172,7 @@
 "Показывать в Календаре" = "Mostrar en Calendario";
 "Завершённые записи — в календаре «Hourfox»" = "Las entradas terminadas van al calendario «Hourfox»";
 "Вид" = "Vista";
-"Авто: Notch, если есть вырез, иначе значок в строке меню" = "Automático: Notch si tu Mac lo tiene; si no, un icono en la barra de menús";
+"Авто: Notch, если есть вырез, иначе значок в строке меню. По центру: панель открывается сочетанием клавиш посередине экрана" = "Automático: Notch si tu Mac lo tiene; si no, un icono en la barra de menús. Centrado: un atajo abre el panel en el centro de la pantalla";
 "Сияние" = "Resplandor";
 "Переливающаяся подсветка края в стиле Apple Intelligence" = "Luz de borde fluida al estilo de Apple Intelligence";
 "Стекло" = "Cristal";
@@ -238,6 +242,7 @@
 "Язык" = "Idioma";
 "Авто" = "Automático";
 "Строка меню" = "Barra de menús";
+"По центру" = "Centrado";
 "Недавние" = "Recientes";
 "События" = "Eventos";
 "Итог за сегодня" = "Total de hoy";

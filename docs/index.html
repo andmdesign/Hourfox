@@ -218,7 +218,7 @@
     width: 180px; height: 32px;
     background: #000;
     border-radius: 0 0 11px 11px;
-    transition: width 0.5s var(--spring), height 0.5s var(--spring), border-radius 0.4s ease;
+    transition: width 0.5s var(--spring), height 0.5s var(--spring), border-radius 0.4s ease, opacity 0.25s;
     cursor: pointer;
     z-index: 2;
   }
@@ -259,8 +259,22 @@
   }
   .island.open .panel { opacity: 1; filter: none; transform: none; pointer-events: auto; transition-delay: 0.06s; }
   .phead { height: 32px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; font-weight: 500; }
-  .phead .today { color: rgba(255,255,255,0.45); }
-  .phead .today b { color: rgba(255,255,255,0.9); font-weight: 500; margin-left: 5px; font-variant-numeric: tabular-nums; }
+  .phead .today { display: flex; align-items: center; gap: 7px; color: rgba(255,255,255,0.4); font-size: 13px; }
+  .phead .today b { color: rgba(255,255,255,0.92); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .phead .ring { width: 15px; height: 15px; transform: rotate(-90deg); }
+  .ring circle { fill: none; stroke: rgba(255,255,255,0.18); stroke-width: 2.2; }
+  .ring .arc { stroke: #0a84ff; stroke-linecap: round; stroke-dasharray: var(--p, 0) 100; transition: stroke-dasharray 0.6s ease; }
+  .chip .chev { width: 8px; height: 6px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; opacity: 0.5; margin-left: 2px; }
+  /* Вырез экрана остаётся на месте, когда панель открыта посередине. */
+  .hwnotch { position: absolute; top: 0; left: 50%; width: 180px; height: 32px; margin-left: -90px; background: #000; border-radius: 0 0 11px 11px; z-index: 1; }
+  .island.center { top: 64px; border-radius: 26px; box-shadow: 0 0 0 1px rgba(255,255,255,0.1), 0 30px 80px rgba(0,0,0,0.6); }
+  .island.center::before, .island.center::after, .island.center .wings { display: none; }
+  .island.center:not(.open) { opacity: 0; pointer-events: none; }
+  .keys { position: absolute; left: 50%; top: 52%; z-index: 3; display: flex; gap: 8px; transform: translate(-50%, -50%) scale(0.9); opacity: 0; transition: opacity 0.25s, transform 0.35s var(--spring); pointer-events: none; }
+  .keys.on { opacity: 1; transform: translate(-50%, -50%); }
+  .keys kbd { min-width: 46px; height: 46px; padding: 0 14px; border-radius: 11px; display: grid; place-items: center; font: 600 17px var(--font); color: #fff; background: rgba(255,255,255,0.12); box-shadow: inset 0 -3px 0 rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.14); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: transform 0.12s, background 0.12s; }
+  .keys.down kbd { transform: translateY(2px); background: rgba(255,255,255,0.22); box-shadow: inset 0 -1px 0 rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.2); }
+  .lrow.lift { position: relative; z-index: 2; background: #2a2a2e; box-shadow: 0 8px 22px rgba(0,0,0,0.55); }
   .phead .icons { display: flex; gap: 14px; color: rgba(255,255,255,0.6); }
   .phead svg { width: 14px; height: 14px; display: block; }
   .row {
@@ -562,15 +576,15 @@
   <header class="hero wrap">
     <div class="model" id="model"><img class="icon" src="hourfox-icon.svg" alt="Hourfox"></div>
     <h1 data-i18n="hero.title">Время под&nbsp;контролем</h1>
-    <p class="lead" data-i18n="hero.lead">Трекер времени для&nbsp;Mac, который живёт в&nbsp;Notch или в&nbsp;строке меню.</p>
+    <p class="lead" data-i18n="hero.lead">Трекер времени для&nbsp;Mac, который живёт в&nbsp;Notch или в&nbsp;строке меню, а&nbsp;ещё открывается по&nbsp;⌥&nbsp;Пробел.</p>
     <a class="btn big" href="Hourfox-Apple.zip" data-download><span data-i18n="hero.cta">Скачать для <svg class="apple" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>Mac</span></a>
 
     <div class="demo">
       <div class="feats" id="feats" role="tablist" aria-label="Hourfox">
         <button role="tab" data-scene="0" data-i18n="b.timer"></button>
-        <button role="tab" data-scene="1" data-i18n="b.proj"></button>
-        <button role="tab" data-scene="2" data-i18n="b.report"></button>
-        <button role="tab" data-scene="3" data-i18n="d.tasks"></button>
+        <button role="tab" data-scene="1" data-i18n="d.tasks"></button>
+        <button role="tab" data-scene="2" data-i18n="b.hotkey"></button>
+        <button role="tab" data-scene="3" data-i18n="b.report"></button>
       </div>
       <div class="scaler" id="scaler">
         <div class="screen" id="screen" inert>
@@ -592,13 +606,15 @@
             <div id="drows"></div>
           </div>
 
+          <div class="hwnotch" aria-hidden="true"></div>
+          <div class="keys" id="keys" aria-hidden="true"><kbd>⌥</kbd><kbd data-i18n="k.space">Space</kbd></div>
           <div class="island running" id="island">
             <div class="clip">
               <div class="wings"><span class="wleft"><span class="dot" id="wingDot"></span><svg class="wlock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.5 10.5V6.75a4.5 4.5 0 1 1 9 0v3.75M3.75 21.75h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H3.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"/></svg></span><span class="wtime" id="wingTime">0:00</span></div>
               <div class="shine" id="shine"></div>
               <div class="panel">
                 <div class="phead">
-                  <span class="today"><span data-i18n="d.today">Сегодня</span><b id="today">0 мин</b></span>
+                  <span class="today"><svg class="ring" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5"/><circle class="arc" id="ring" cx="8" cy="8" r="6.5" pathLength="100"/></svg><b id="today">0 мин</b><span class="goal" id="goal"></span></span>
                   <span class="icons">
                     <button id="pexpand" aria-label="Report" style="display:block"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15"/></svg></button>
                     <svg viewBox="0 0 16 16" fill="currentColor"><circle cx="3" cy="8" r="1.5"/><circle cx="8" cy="8" r="1.5"/><circle cx="13" cy="8" r="1.5"/></svg>
@@ -607,7 +623,7 @@
                 <div class="row">
                   <span class="smile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15.182 15.182a4.5 4.5 0 0 1-6.364 0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/><circle cx="9.4" cy="9.75" r=".9" fill="currentColor" stroke="none"/><circle cx="14.6" cy="9.75" r=".9" fill="currentColor" stroke="none"/></svg></span>
                   <input id="title" autocomplete="off" spellcheck="false">
-                  <button class="chip" id="chip"><span class="dot" id="chipDot"></span><span id="chipName"></span></button>
+                  <button class="chip" id="chip"><span class="dot" id="chipDot"></span><span id="chipName"></span><svg class="chev" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
                   <button class="tchip" id="tchip" aria-label="Timer"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="8" cy="9" r="5.6"/><path d="M8 9V6.4M6.4 1.6h3.2"/></svg><span id="tchipLabel"></span></button>
                   <span class="ptime" id="ptime">0:00:00</span>
                   <button class="pause-btn" id="pauseB" aria-label="Pause"><svg class="p1" viewBox="0 0 12 12"><rect x="2.4" y="1.5" width="2.6" height="9" rx=".9" fill="currentColor"/><rect x="7" y="1.5" width="2.6" height="9" rx=".9" fill="currentColor"/></svg><svg class="p2" viewBox="0 0 12 12"><path d="M2.5 1.2v9.6c0 .6.6.9 1.1.6l7.4-4.8c.4-.3.4-.9 0-1.2L3.6.6C3.1.3 2.5.6 2.5 1.2z" fill="currentColor"/></svg></button>
@@ -834,7 +850,8 @@
       "doc.title": "Hourfox — a time tracker for Mac",
       "nav.download": "Download",
       "hero.title": "Your time, under&nbsp;control",
-      "hero.lead": "A time tracker for Mac that lives in the Notch or the menu bar.",
+      "hero.lead": "A time tracker for Mac that lives in the Notch or the menu bar, or opens with ⌥&nbsp;Space.",
+      "b.hotkey": "Shortcut", "k.space": "Space",
       "hero.cta": "Download for {apple}Mac",
       "mb.file": "File", "mb.edit": "Edit", "mb.view": "View",
       "d.today": "Today", "d.recent": "Recent", "d.tasks": "Tasks", "d.notes": "Notes",
@@ -885,7 +902,8 @@
       "doc.title": "Hourfox — трекер времени для Mac",
       "nav.download": "Скачать",
       "hero.title": "Время под&nbsp;контролем",
-      "hero.lead": "Трекер времени для&nbsp;Mac, который живёт в&nbsp;Notch или в&nbsp;строке меню.",
+      "hero.lead": "Трекер времени для&nbsp;Mac, который живёт в&nbsp;Notch или в&nbsp;строке меню, а&nbsp;ещё открывается по&nbsp;⌥&nbsp;Пробел.",
+      "b.hotkey": "По клавишам", "k.space": "Пробел",
       "hero.cta": "Скачать для {apple}Mac",
       "mb.file": "Файл", "mb.edit": "Правка", "mb.view": "Вид",
       "d.today": "Сегодня", "d.recent": "Недавние", "d.tasks": "Задачи", "d.notes": "Заметки",
@@ -936,7 +954,8 @@
       "doc.title": "Hourfox — трекер часу для Mac",
       "nav.download": "Завантажити",
       "hero.title": "Час під&nbsp;контролем",
-      "hero.lead": "Трекер часу для&nbsp;Mac, який живе в&nbsp;Notch або в&nbsp;рядку меню.",
+      "hero.lead": "Трекер часу для&nbsp;Mac, який живе в&nbsp;Notch або в&nbsp;рядку меню, а&nbsp;ще відкривається на&nbsp;⌥&nbsp;Пробіл.",
+      "b.hotkey": "Клавішами", "k.space": "Пробіл",
       "hero.cta": "Завантажити для {apple}Mac",
       "mb.file": "Файл", "mb.edit": "Редагування", "mb.view": "Вигляд",
       "d.today": "Сьогодні", "d.recent": "Нещодавні", "d.tasks": "Завдання", "d.notes": "Нотатки",
@@ -987,7 +1006,8 @@
       "doc.title": "Hourfox — Mac 时间追踪工具",
       "nav.download": "下载",
       "hero.title": "时间，尽在掌握",
-      "hero.lead": "一款住在 Notch 或菜单栏里的 Mac 时间追踪工具。",
+      "hero.lead": "一款住在 Notch 或菜单栏里的 Mac 时间追踪工具，按 ⌥ 空格也能打开。",
+      "b.hotkey": "快捷键", "k.space": "空格",
       "hero.cta": "下载 {apple}Mac 版",
       "mb.file": "文件", "mb.edit": "编辑", "mb.view": "显示",
       "d.today": "今天", "d.recent": "最近", "d.tasks": "任务", "d.notes": "笔记",
@@ -1038,7 +1058,8 @@
       "doc.title": "Hourfox — control del tiempo para Mac",
       "nav.download": "Descargar",
       "hero.title": "Tu tiempo, bajo&nbsp;control",
-      "hero.lead": "Un registro de tiempo para Mac que vive en el Notch o en la barra de menús.",
+      "hero.lead": "Un registro de tiempo para Mac que vive en el Notch o en la barra de menús, o se abre con ⌥&nbsp;Espacio.",
+      "b.hotkey": "Atajo", "k.space": "Espacio",
       "hero.cta": "Descargar para {apple}Mac",
       "mb.file": "Archivo", "mb.edit": "Edición", "mb.view": "Visualización",
       "d.today": "Hoy", "d.recent": "Recientes", "d.tasks": "Tareas", "d.notes": "Notas",
@@ -1089,7 +1110,8 @@
       "doc.title": "Hourfox — controle de tempo para Mac",
       "nav.download": "Baixar",
       "hero.title": "Seu tempo, sob&nbsp;controle",
-      "hero.lead": "Um registro de tempo para Mac que fica no Notch ou na barra de menus.",
+      "hero.lead": "Um registro de tempo para Mac que fica no Notch ou na barra de menus, ou abre com ⌥&nbsp;Espaço.",
+      "b.hotkey": "Atalho", "k.space": "Espaço",
       "hero.cta": "Baixar para {apple}Mac",
       "mb.file": "Arquivo", "mb.edit": "Editar", "mb.view": "Visualizar",
       "d.today": "Hoje", "d.recent": "Recentes", "d.tasks": "Tarefas", "d.notes": "Notas",
@@ -1140,7 +1162,8 @@
       "doc.title": "Hourfox — měření času pro Mac",
       "nav.download": "Stáhnout",
       "hero.title": "Čas pod&nbsp;kontrolou",
-      "hero.lead": "Sledování času pro Mac, které žije v Notchi nebo na řádku nabídek.",
+      "hero.lead": "Sledování času pro Mac, které žije v Notchi nebo na řádku nabídek, nebo se otevře přes ⌥&nbsp;Mezerník.",
+      "b.hotkey": "Zkratka", "k.space": "Mezerník",
       "hero.cta": "Stáhnout pro {apple}Mac",
       "mb.file": "Soubor", "mb.edit": "Úpravy", "mb.view": "Zobrazení",
       "d.today": "Dnes", "d.recent": "Nedávné", "d.tasks": "Úkoly", "d.notes": "Poznámky",
@@ -1191,7 +1214,8 @@
       "doc.title": "Hourfox — monitoraggio del tempo per Mac",
       "nav.download": "Scarica",
       "hero.title": "Il tuo tempo, sotto&nbsp;controllo",
-      "hero.lead": "Un tracker del tempo per Mac che vive nel Notch o nella barra dei menu.",
+      "hero.lead": "Un tracker del tempo per Mac che vive nel Notch o nella barra dei menu, o si apre con ⌥&nbsp;Spazio.",
+      "b.hotkey": "Scorciatoia", "k.space": "Spazio",
       "hero.cta": "Scarica per {apple}Mac",
       "mb.file": "File", "mb.edit": "Modifica", "mb.view": "Vista",
       "d.today": "Oggi", "d.recent": "Recenti", "d.tasks": "Attività", "d.notes": "Note",
@@ -1297,7 +1321,8 @@
 
   function seedLists() {
     const t = T[lang];
-    demo.tasks = t.tasks.map(([title, priority, project], i) => ({ title, priority, project, done: false, due: i === 0 }));
+    demo.tasks = t.tasks.map(([title, priority, project], i) => ({ title, priority, project, done: false, due: i === 0 }))
+      .sort((a, b) => b.priority - a.priority);
     demo.notes = t.notes.map(([title, preview], i) => ({ title, preview, time: ["18:06", "15:36", "09:12"][i] }));
   }
 
@@ -1354,7 +1379,7 @@
     const open = demo.tasks.filter((x) => !x.done).length;
     const labels = { recent: t["d.recent"], tasks: open ? `${t["d.tasks"]} ${open}` : t["d.tasks"], notes: t["d.notes"] };
     document.querySelectorAll("#tabs button").forEach((b) => {
-      b.innerHTML = `<svg class="grip" viewBox="0 0 9 7" fill="currentColor"><rect width="9" height="1.2" rx=".6"/><rect y="2.9" width="9" height="1.2" rx=".6"/><rect y="5.8" width="9" height="1.2" rx=".6"/></svg>${esc(labels[b.dataset.tab])}`;
+      b.textContent = labels[b.dataset.tab];
       b.setAttribute("aria-selected", String(b.dataset.tab === demo.tab));
     });
     renderList();
@@ -1368,7 +1393,7 @@
         `<button class="lrow" data-recent="${i}"><span class="dot" style="--c:${COLORS[p]}"></span><span class="t">${esc(t.recent[task])}</span><span class="p">${esc(t.projects[p])}</span>${PLAY}</button>`
       ).join("");
     } else if (demo.tab === "tasks") {
-      const order = demo.tasks.map((x, i) => [x, i]).filter(([x]) => !x.done).sort((a, b) => b[0].priority - a[0].priority);
+      const order = demo.tasks.map((x, i) => [x, i]).filter(([x]) => !x.done);
       const dueText = `${t["d.today"]} 14:30`;
       html = order.map(([x, i]) =>
         `<div class="lrow" data-task="${i}"><i class="cb${x.priority ? " pri" : ""}" data-check="${i}" style="--p:${PRIORITY[x.priority] || "#fff"};--c:${x.project != null ? COLORS[x.project] : "#0a84ff"}"></i>` +
@@ -1393,7 +1418,10 @@
     if (demo.running && demo.planned && elapsed() >= demo.planned) { stop(); return; }
     $("wingTime").textContent = compact(shown());
     $("ptime").textContent = clock(shown());
-    $("today").textContent = short(tot.reduce((a, b) => a + b, 0));
+    const day = tot.reduce((a, b) => a + b, 0);
+    $("today").textContent = short(day);
+    $("goal").textContent = `/ 6 ${t.h}`;
+    $("ring").style.setProperty("--p", Math.min(100, day / 216).toFixed(1));
     const order = tot.map((s, i) => [s, i]).filter(([s]) => s > 0).sort((a, b) => b[0] - a[0]);
     $("bar").innerHTML = order.map(([s, i]) => `<span style="--c:${COLORS[i]};flex-grow:${s / sum}"></span>`).join("");
     $("legend").innerHTML = order.map(([s, i]) =>
@@ -1616,7 +1644,10 @@
       // «!!! Позвонить» — восклицательные знаки в начале задают приоритет, как в приложении.
       const marks = (text.match(/^!{1,3}/) || [""])[0].length;
       text = text.slice(marks).trim() || text;
-      demo.tasks.push({ title: text, priority: marks || demo.newTask.priority, project: demo.project, done: false, due: demo.newTask.due });
+      // Важная задача встаёт над менее важными, обычная — в конец, как в приложении.
+      const item = { title: text, priority: marks || demo.newTask.priority, project: demo.project, done: false, due: demo.newTask.due };
+      const at = demo.tasks.findIndex((x) => !x.done && x.priority < item.priority);
+      demo.tasks.splice(at < 0 ? demo.tasks.length : at, 0, item);
       demo.newTask = { priority: 0, due: false };
     } else {
       const d = new Date();
@@ -1760,7 +1791,7 @@
 
   async function glide(x, y, speed = 1) {
     const dist = Math.hypot(x - gx, y - gy);
-    const ms = Math.round(Math.min(1250, Math.max(520, 420 + dist * 1.5)) / speed);
+    const ms = Math.round(Math.min(780, Math.max(340, 260 + dist * 1.05)) / speed);
     ghostX.style.transitionDuration = `${ms}ms, 0.3s`;
     ghostY.style.transitionDuration = `${ms}ms`;
     ghostX.style.transform = `translateX(${x}px)`;
@@ -1781,7 +1812,7 @@
   async function press(el) {
     const [x, y] = place(el);
     await glide(x, y);
-    await wait(160);
+    await wait(90);
     ghostY.classList.add("down");
     el.classList.add("pressed");
     ghostRing.classList.remove("go"); void ghostRing.offsetWidth; ghostRing.classList.add("go");
@@ -1789,10 +1820,12 @@
     ghostY.classList.remove("down");
     el.classList.remove("pressed");
     el.dispatchEvent(new MouseEvent("click", { bubbles: true }));
-    await wait(220);
+    await wait(150);
   }
 
   function resetDemo() {
+    island.classList.remove("center");
+    $("keys").classList.remove("on", "down");
     collapse();
     demo.running = false;
     demo.title = 0;
@@ -1820,7 +1853,7 @@
   async function type(field, text) {
     for (let i = 1; i <= text.length; i++) {
       field.value = text.slice(0, i);
-      await wait(44 + Math.random() * 46);
+      await wait(26 + Math.random() * 30);
     }
   }
 
@@ -1829,17 +1862,17 @@
 
   async function openNotch() {
     resetDemo();
-    jump(SCREEN_W * 0.78, 340);
-    await wait(600);
+    jump(SCREEN_W * 0.64, 150);
+    await wait(250);
     ghostX.classList.add("on");
-    await wait(300);
+    await wait(150);
     const [x, y] = place(island);
     await glide(x, y);
     expand();
-    await wait(620);
+    await wait(480);
   }
 
-  async function finish(pause = 1300) {
+  async function finish(pause = 900) {
     await glide(...rest());
     collapse();
     await wait(pause);
@@ -1847,105 +1880,115 @@
     await wait(450);
   }
 
-  // Таймер: написать задачу, выбрать проект и время, запустить, остановить.
+  // Трекер: написать задачу, запустить, время тикает у выреза, остановить.
   async function sceneTimer() {
     await openNotch();
     const [x, y] = place(input, 0.12);
     await glide(x, y, 1.3);
-    await wait(140);
     await type(input, T[lang].recent[0]);
-    await wait(320);
-    await press($("chip"));
-    await wait(380);
-    await press($("tchip"));
-    await wait(520);
+    await wait(250);
     await press($("go"));
-    // Запись пошла, Notch свернулся: время тикает рядом с вырезом.
     await glide(...rest());
-    await wait(2600);
+    await wait(1900);
     const [nx, ny] = place(island);
     await glide(nx, ny);
     expand();
-    await wait(620);
-    await press($("pauseB"));
-    await wait(1100);
-    await press($("pauseB"));
-    await wait(650);
+    await wait(450);
     await press($("go"));
-    await wait(500);
+    await wait(350);
     await finish();
   }
 
-  // Задачи: добавить с приоритетом и сроком, закрыть выполненную, запустить запись.
+  // Перетащить задачу из строки from в строку to: строка едет за курсором, соседи уступают место.
+  async function dragTask(from, to) {
+    const rows = [...$("list").querySelectorAll("[data-task]")];
+    const row = rows[from], step = rows[1].offsetTop - rows[0].offsetTop, dy = (to - from) * step;
+    const [x, y] = place(row, 0.45);
+    await glide(x, y);
+    await wait(90);
+    ghostY.classList.add("down");
+    row.classList.add("lift");
+    await wait(160);
+    const ms = 620;
+    row.style.transition = `transform ${ms}ms cubic-bezier(0.42, 0, 0.18, 1)`;
+    row.style.transform = `translateY(${dy}px)`;
+    rows.forEach((r, i) => {
+      const shift = from < to ? (i > from && i <= to ? -step : 0) : (i >= to && i < from ? step : 0);
+      if (shift) { r.style.transition = "transform 0.25s ease"; r.style.transform = `translateY(${shift}px)`; }
+    });
+    ghostY.style.transitionDuration = `${ms}ms`;
+    ghostY.style.transform = `translateY(${y + dy}px)`;
+    gy = y + dy;
+    await wait(ms + 60);
+    ghostY.classList.remove("down");
+    const open = demo.tasks.filter((t) => !t.done);
+    const [moved] = open.splice(from, 1);
+    open.splice(to, 0, moved);
+    demo.tasks = [...open, ...demo.tasks.filter((t) => t.done)];
+    renderTabs();
+    await wait(250);
+  }
+
+  // Задачи: добавить важную, перетащить на место, закрыть выполненную.
   async function sceneTasks() {
     await openNotch();
     await press(document.querySelector('#tabs [data-tab="tasks"]'));
-    await wait(450);
+    await wait(300);
     const field = inList('input[data-add="task"]');
     const [x, y] = place(field, 0.1);
     await glide(x, y, 1.3);
-    await wait(140);
     await type(field, T[lang].recent[1]);
-    await wait(280);
+    await wait(200);
     await press($("nPri"));
-    await wait(450);
+    await wait(300);
     await press(primenu.querySelector('[data-priority="3"]'));
-    await wait(350);
-    await press($("nDue"));
-    await wait(450);
+    await wait(200);
     field.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", bubbles: true }));
-    await wait(850);
-    const rows = $("list").querySelectorAll("[data-check]");
-    await press(rows[rows.length - 1]);
-    await wait(1500);
-    await press(inList("[data-task] .pl"));
-    await glide(...rest());
-    await wait(2200);
+    await wait(600);
+    const count = $("list").querySelectorAll("[data-task]").length;
+    await dragTask(count - 1, 1);
+    await wait(300);
+    const checks = $("list").querySelectorAll("[data-check]");
+    await press(checks[checks.length - 1]);
+    await wait(1100);
     await finish(500);
   }
 
-  // Проекты: открыть список, создать новый со своим цветом.
-  async function sceneProjects() {
-    await openNotch();
-    const [x, y] = place(input, 0.12);
-    await glide(x, y, 1.3);
-    await wait(140);
-    await type(input, T[lang].recent[3]);
-    await wait(320);
-    await press($("chip"));
-    await wait(650);
-    await press($("pnew"));
+  // По клавишам: ⌥ Пробел открывает панель посередине экрана, Enter запускает запись.
+  async function sceneHotkey() {
+    resetDemo();
+    await wait(400);
+    const keys = $("keys");
+    keys.classList.add("on");
     await wait(450);
-    const [nx, ny] = place($("newName"), 0.1);
-    await glide(nx, ny, 1.3);
-    await wait(120);
-    await type($("newName"), T[lang]["b.newName"]);
-    await wait(320);
-    await press($("swatches").children[5]);
-    await wait(420);
-    await press($("newOk"));
-    await wait(700);
-    await press($("go"));
-    await glide(...rest());
-    await wait(2200);
-    await finish(500);
+    keys.classList.add("down");
+    await wait(160);
+    keys.classList.remove("down");
+    island.classList.add("center");
+    expand();
+    await wait(260);
+    keys.classList.remove("on");
+    await wait(300);
+    await type(input, T[lang].recent[2]);
+    await wait(350);
+    input.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", bubbles: true }));
+    await wait(450);
+    island.classList.remove("center");
+    await wait(2000);
   }
 
   // Отчёт: открыть окно, посмотреть неделю, выгрузить в PDF.
   async function sceneReport() {
     await openNotch();
     await press($("pexpand"));
-    await wait(700);
-    let [x, y] = place($("dchart"), 0.32, 0.5);
-    await glide(x, y);
     await wait(500);
-    [x, y] = place($("drows"), 0.7, 0.5);
+    const [x, y] = place($("dchart"), 0.32, 0.5);
     await glide(x, y);
-    await wait(800);
+    await wait(400);
     await press($("dexport"));
-    await wait(450);
+    await wait(300);
     await press($("dpdf"));
-    await wait(600);
+    await wait(450);
     await press($("dclose"));
     await finish(500);
   }
@@ -1990,7 +2033,7 @@
     }, 0);
   });
 
-  const SCENES = [sceneTimer, sceneProjects, sceneReport, sceneTasks];
+  const SCENES = [sceneTimer, sceneTasks, sceneHotkey, sceneReport];
   let sceneIndex = 0;
   function markScene() {
     document.querySelectorAll("#feats button").forEach((b) => b.setAttribute("aria-selected", String(+b.dataset.scene === sceneIndex)));

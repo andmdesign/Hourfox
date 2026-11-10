@@ -431,6 +431,8 @@ struct ExpandedView: View {
                 .font(.system(size: 15))
                 .foregroundStyle(.notchInk)
                 .focused($titleFocused)
+                .onAppear { if model.focusTitle > 0 { DispatchQueue.main.async { titleFocused = true } } }
+                .onChange(of: model.focusTitle) { titleFocused = true }
                 .onSubmit {
                     if store.running == nil {
                         start()

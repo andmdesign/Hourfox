@@ -4,8 +4,9 @@ import Combine
 // MARK: - Где живёт Hourfox
 
 /// Авто: Notch там, где есть вырез, иначе значок в строке меню.
+/// По центру: наверху только значок, а панель открывается сочетанием клавиш посередине экрана, как Spotlight.
 enum DisplayMode: String, CaseIterable, Identifiable {
-    case auto, notch, menuBar
+    case auto, notch, menuBar, center
 
     static let key = "display.mode"
     static var current: DisplayMode {
@@ -19,6 +20,7 @@ enum DisplayMode: String, CaseIterable, Identifiable {
         case .auto: "Авто"
         case .notch: "Notch"
         case .menuBar: "Строка меню"
+        case .center: "По центру"
         }
     }
 
@@ -27,9 +29,12 @@ enum DisplayMode: String, CaseIterable, Identifiable {
         switch self {
         case .auto: !NSScreen.screens.contains { $0.safeAreaInsets.top > 0 }
         case .notch: false
-        case .menuBar: true
+        case .menuBar, .center: true
         }
     }
+
+    /// Панель открывается посередине экрана, а не под значком.
+    var centered: Bool { self == .center }
 }
 
 // MARK: - Рисунок значка

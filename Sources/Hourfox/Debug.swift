@@ -1318,9 +1318,15 @@ enum DebugSnapshots {
         print("MENUBAR mode:", notch.model.menuBarMode, "panel visible collapsed:", notch.panel.isVisible)
         app.store.addTask("!! Позвонить в банк", projectID: nil)
         UserDefaults.standard.set("tasks", forKey: "notchTab")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) { notch.expand() }
+        // В режиме «По центру» открываем так же, как сочетание клавиш.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) { notch.model.centered ? notch.toggleFromHotKey() : notch.expand() }
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             print("MENUBAR expanded visible:", notch.panel.isVisible, "frame:", notch.panel.frame, "screen:", notch.screen.frame)
+            if notch.model.centered {
+                let f = notch.panel.frame, v = notch.screen.visibleFrame
+                print(abs(f.midX - v.midX) < 2 && f.maxY < v.maxY - 40 && f.minY >= v.minY ? "OK  " : "FAIL", "панель по центру экрана")
+                print(notch.panel.isKeyWindow && notch.panel.firstResponder is NSTextView ? "OK  " : "FAIL", "сочетание клавиш ставит курсор в поле")
+            }
             save(notch.panel, "\(dir)/panel.png")
             notch.collapse()
             print("MENUBAR collapsed visible:", notch.panel.isVisible)
