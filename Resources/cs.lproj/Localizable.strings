@@ -18,6 +18,17 @@
 "Разрешите Hourfox доступ: Системные настройки → Конфиденциальность и безопасность → Календари." = "Povolte Tempu přístup v Nastavení systému → Soukromí a zabezpečení → Kalendáře.";
 "Открыть настройки" = "Otevřít nastavení";
 "Отмена" = "Zrušit";
+"Развернуть" = "Rozbalit";
+"Остановить" = "Zastavit";
+"Вернуть Notch" = "Zpět do Notche";
+"Показать капсулу" = "Zobrazit kapsli";
+"Открыть панель" = "Otevřít panel";
+"Без названия" = "Bez názvu";
+"Ничего не записывается" = "Nic se neměří";
+"Сегодня" = "Dnes";
+"Продолжить" = "Pokračovat";
+"Пауза" = "Pozastavit";
+"Начать запись" = "Začít měřit";
 "Отменить" = "Zpět";
 "Другой цвет" = "Jiná barva";
 "Разделить запись" = "Rozdělit záznam";
@@ -26,7 +37,6 @@
 "Вторая часть" = "Druhá část";
 "Название второй части" = "Název druhé části";
 "Разделить" = "Rozdělit";
-"Сегодня" = "Dnes";
 "Эта неделя" = "Tento týden";
 "Этот месяц" = "Tento měsíc";
 "Прошлый месяц" = "Minulý měsíc";
@@ -122,7 +132,6 @@
 "Не удалось подключиться. Вернитесь в Hourfox и попробуйте ещё раз." = "Připojení se nezdařilo. Vraťte se do Hourfox a zkuste to znovu.";
 "Не удалось подключить Google Календарь. Попробуйте ещё раз." = "Kalendář Google se nepodařilo připojit. Zkuste to znovu.";
 "Доступ к Google Календарю отозван. Подключите его снова." = "Přístup ke Kalendáři Google byl odvolán. Připojte ho znovu.";
-"Без названия" = "Bez názvu";
 "Нет связи с Google Календарём" = "Kalendář Google není dostupný";
 "На сегодня событий больше нет" = "Dnes už žádné další události";
 "Начать" = "Začít";
@@ -194,12 +203,10 @@
 "Изменить…" = "Upravit…";
 "Добавить комментарий…" = "Přidat komentář…";
 "Изменить комментарий…" = "Upravit komentář…";
-"Продолжить" = "Pokračovat";
 "Открепить" = "Odepnout";
 "Закрепить" = "Připnout";
 "Разделить…" = "Rozdělit…";
 "Склеить с «%@»" = "Sloučit s „%@“";
-"Остановить" = "Zastavit";
 "Открытых: %lld" = "Otevřené: %lld";
 "Новая задача" = "Nový úkol";
 "Приоритет" = "Priorita";
@@ -279,6 +286,8 @@
 "Новый проект…" = "Nový projekt…";
 "Скачать версию %@" = "Stáhnout verzi %@";
 "Настройки…" = "Nastavení…";
+"Капсула с таймером" = "Kapsle s časovačem";
+"Вернуть панель на место" = "Vrátit panel na místo";
 "Открывать при входе в систему" = "Otevřít při přihlášení";
 "Показывать в Календаре" = "Zobrazovat v Kalendáři";
 "Открыть Календарь" = "Otevřít Kalendář";
@@ -286,6 +295,7 @@
 "Завершить Hourfox" = "Ukončit Hourfox";
 "Раскрывать при наведении" = "Rozbalit při najetí myší";
 "Не раскрывать при наведении" = "Nerozbalovat při najetí myší";
+"Свернуть в капсулу" = "Zmenšit na kapsli";
 "Открыть окно" = "Otevřít okno";
 "Ещё" = "Více";
 "Чем вы заняты?" = "Na čem pracujete?";
@@ -305,7 +315,6 @@
 "Закрыть" = "Zavřít";
 "+15 мин" = "+15 min";
 "Запустить" = "Spustit";
-"Пауза" = "Pozastavit";
 "Закреплено" = "Připnuto";
 "Таймер" = "Časovač";
 "Изменить" = "Upravit";

@@ -18,6 +18,17 @@
 "Разрешите Hourfox доступ: Системные настройки → Конфиденциальность и безопасность → Календари." = "Allow Hourfox access in System Settings → Privacy & Security → Calendars.";
 "Открыть настройки" = "Open Settings";
 "Отмена" = "Cancel";
+"Развернуть" = "Expand";
+"Остановить" = "Stop";
+"Вернуть Notch" = "Back to Notch";
+"Показать капсулу" = "Show Capsule";
+"Открыть панель" = "Open Panel";
+"Без названия" = "Untitled";
+"Ничего не записывается" = "Nothing is being tracked";
+"Сегодня" = "Today";
+"Продолжить" = "Continue";
+"Пауза" = "Pause";
+"Начать запись" = "Start Tracking";
 "Отменить" = "Undo";
 "Другой цвет" = "Another color";
 "Разделить запись" = "Split entry";
@@ -26,7 +37,6 @@
 "Вторая часть" = "Second part";
 "Название второй части" = "Second part name";
 "Разделить" = "Split";
-"Сегодня" = "Today";
 "Эта неделя" = "This week";
 "Этот месяц" = "This month";
 "Прошлый месяц" = "Last month";
@@ -122,7 +132,6 @@
 "Не удалось подключиться. Вернитесь в Hourfox и попробуйте ещё раз." = "Couldn’t connect. Return to Hourfox and try again.";
 "Не удалось подключить Google Календарь. Попробуйте ещё раз." = "Couldn’t connect Google Calendar. Please try again.";
 "Доступ к Google Календарю отозван. Подключите его снова." = "Access to Google Calendar was revoked. Please connect it again.";
-"Без названия" = "Untitled";
 "Нет связи с Google Календарём" = "Can’t reach Google Calendar";
 "На сегодня событий больше нет" = "No more events today";
 "Начать" = "Start";
@@ -194,12 +203,10 @@
 "Изменить…" = "Edit…";
 "Добавить комментарий…" = "Add Comment…";
 "Изменить комментарий…" = "Edit Comment…";
-"Продолжить" = "Continue";
 "Открепить" = "Unpin";
 "Закрепить" = "Pin";
 "Разделить…" = "Split…";
 "Склеить с «%@»" = "Merge with “%@”";
-"Остановить" = "Stop";
 "Открытых: %lld" = "Open: %lld";
 "Новая задача" = "New Task";
 "Приоритет" = "Priority";
@@ -279,6 +286,8 @@
 "Новый проект…" = "New Project…";
 "Скачать версию %@" = "Download Version %@";
 "Настройки…" = "Settings…";
+"Капсула с таймером" = "Timer Capsule";
+"Вернуть панель на место" = "Reset Panel Position";
 "Открывать при входе в систему" = "Open at Login";
 "Показывать в Календаре" = "Show in Calendar";
 "Открыть Календарь" = "Open Calendar";
@@ -286,6 +295,7 @@
 "Завершить Hourfox" = "Quit Hourfox";
 "Раскрывать при наведении" = "Expand on Hover";
 "Не раскрывать при наведении" = "Don’t Expand on Hover";
+"Свернуть в капсулу" = "Shrink to Capsule";
 "Открыть окно" = "Open Window";
 "Ещё" = "More";
 "Чем вы заняты?" = "What are you working on?";
@@ -305,7 +315,6 @@
 "Закрыть" = "Close";
 "+15 мин" = "+15 min";
 "Запустить" = "Start";
-"Пауза" = "Pause";
 "Закреплено" = "Pinned";
 "Таймер" = "Timer";
 "Изменить" = "Edit";

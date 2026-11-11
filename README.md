@@ -1,6 +1,6 @@
 # Hourfox
 
-A minimal time tracker for macOS that lives in the MacBook notch, or in the menu bar on Macs without one. It can also open in the middle of the screen with ⌥ Space.
+A minimal time tracker for macOS that lives in the MacBook notch, or in the menu bar on Macs without one. It can also open in the middle of the screen with ⇧⌥ Space.
 
 Offline, no account, no analytics. **[Website](https://hourfox.app/) · [Download](https://hourfox.app/) · [На русском](README.ru.md)**
 

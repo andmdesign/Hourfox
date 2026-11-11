@@ -4504,5 +4504,86 @@
     "pt-BR": "Espaço",
     "cs": "Mezerník",
     "it": "Spazio"
+  },
+  "Развернуть": {
+    "en": "Expand",
+    "uk": "Розгорнути",
+    "zh-Hans": "展开",
+    "es": "Expandir",
+    "pt-BR": "Expandir",
+    "cs": "Rozbalit",
+    "it": "Espandi"
+  },
+  "Вернуть Notch": {
+    "en": "Back to Notch",
+    "uk": "Повернути Notch",
+    "zh-Hans": "恢复 Notch",
+    "es": "Volver al Notch",
+    "pt-BR": "Voltar ao Notch",
+    "cs": "Zpět do Notche",
+    "it": "Torna al Notch"
+  },
+  "Показать капсулу": {
+    "en": "Show Capsule",
+    "uk": "Показати капсулу",
+    "zh-Hans": "显示胶囊",
+    "es": "Mostrar cápsula",
+    "pt-BR": "Mostrar cápsula",
+    "cs": "Zobrazit kapsli",
+    "it": "Mostra capsula"
+  },
+  "Открыть панель": {
+    "en": "Open Panel",
+    "uk": "Відкрити панель",
+    "zh-Hans": "打开面板",
+    "es": "Abrir panel",
+    "pt-BR": "Abrir painel",
+    "cs": "Otevřít panel",
+    "it": "Apri pannello"
+  },
+  "Ничего не записывается": {
+    "en": "Nothing is being tracked",
+    "uk": "Нічого не записується",
+    "zh-Hans": "未在记录",
+    "es": "No se está registrando nada",
+    "pt-BR": "Nada sendo registrado",
+    "cs": "Nic se neměří",
+    "it": "Nessuna registrazione"
+  },
+  "Начать запись": {
+    "en": "Start Tracking",
+    "uk": "Почати запис",
+    "zh-Hans": "开始记录",
+    "es": "Empezar a registrar",
+    "pt-BR": "Começar a registrar",
+    "cs": "Začít měřit",
+    "it": "Inizia a registrare"
+  },
+  "Капсула с таймером": {
+    "en": "Timer Capsule",
+    "uk": "Капсула з таймером",
+    "zh-Hans": "计时胶囊",
+    "es": "Cápsula con temporizador",
+    "pt-BR": "Cápsula com cronômetro",
+    "cs": "Kapsle s časovačem",
+    "it": "Capsula con timer"
+  },
+  "Вернуть панель на место": {
+    "en": "Reset Panel Position",
+    "uk": "Повернути панель на місце",
+    "zh-Hans": "面板复位",
+    "es": "Devolver el panel a su sitio",
+    "pt-BR": "Devolver o painel ao lugar",
+    "cs": "Vrátit panel na místo",
+    "it": "Riporta il pannello al suo posto"
+  },
+  "Свернуть в капсулу": {
+    "en": "Shrink to Capsule",
+    "uk": "Згорнути в капсулу",
+    "zh-Hans": "缩成胶囊",
+    "es": "Reducir a cápsula",
+    "pt-BR": "Reduzir a cápsula",
+    "cs": "Zmenšit na kapsli",
+    "it": "Riduci a capsula"
   }
 }

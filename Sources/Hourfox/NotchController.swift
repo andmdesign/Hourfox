@@ -78,6 +78,20 @@ final class NotchModel: ObservableObject {
     @Published var centered = false
     /// Открыли сочетанием клавиш: сразу ставим курсор в «Чем вы заняты?».
     @Published var focusTitle = 0
+    /// Закреплённая панель не прячется, когда уводят мышь или щёлкают мимо.
+    @Published var pinned = UserDefaults.standard.bool(forKey: "panel.pinned") {
+        didSet { UserDefaults.standard.set(pinned, forKey: "panel.pinned") }
+    }
+    /// Вместо острова — маленькая капсула с таймером, её можно таскать и прятать за край экрана.
+    @Published var mini = UserDefaults.standard.bool(forKey: "panel.mini") {
+        didSet { UserDefaults.standard.set(mini, forKey: "panel.mini") }
+    }
+    /// Капсула наполовину спрятана за краем экрана.
+    @Published var tucked = UserDefaults.standard.bool(forKey: "capsule.tucked") {
+        didSet { UserDefaults.standard.set(tucked, forKey: "capsule.tucked") }
+    }
+    /// Панель живёт сама по себе, а не в вырезе: под значком, посередине или рядом с капсулой.
+    var floating: Bool { menuBarMode || mini }
 
     /// Под вырезом экрана нет пикселей: край, совпадающий с вырезом, не виден.
     /// Поэтому с сиянием свёрнутый остров опускается чуть ниже выреза — кромку видно на любом Mac.
@@ -153,7 +167,7 @@ final class NotchController {
 
         NotificationCenter.default.publisher(for: NSWindow.didResignKeyNotification, object: panel)
             .sink { [weak self] _ in
-                guard let self, model.expanded, !pointerInside, !menuOpen, !ColorPanelBridge.isOpen else { return }
+                guard let self, model.expanded, !model.pinned, !pointerInside, !menuOpen, !ColorPanelBridge.isOpen else { return }
                 collapse()
             }
             .store(in: &cancellables)
@@ -269,6 +283,8 @@ final class NotchController {
     // MARK: Геометрия
 
     var screen: NSScreen {
+        if let o = panelOrigin, model.expanded, model.floating, let s = NSScreen.screens.first(where: { $0.frame.contains(o) }) { return s }
+        if model.mini, let s = NSScreen.screens.first(where: { $0.frame.contains(capsuleAnchor) }) { return s }
         // Посередине того экрана, где сейчас мышь.
         if model.centered, let s = NSScreen.screens.first(where: { $0.frame.contains(NSEvent.mouseLocation) }) { return s }
         if model.menuBarMode, let s = menuBarItem.buttonWindow?.screen { return s }
@@ -286,10 +302,10 @@ final class NotchController {
         menuBarItem.setShown(menuBar)
         measureNotch()
         setFrame(targetSize())
-        if menuBar && !model.expanded {
+        if menuBar && !model.expanded && !model.mini {
             panel.orderOut(nil)
         } else {
-            panel.hasShadow = menuBar
+            panel.hasShadow = model.floating
             panel.orderFrontRegardless()
         }
     }
@@ -311,7 +327,7 @@ final class NotchController {
 
     private func measureNotch() {
         let s = screen
-        if model.menuBarMode {
+        if model.floating {
             // Выреза нет: шапка панели просто идёт сверху, без пустого места посередине.
             model.hasNotch = false
             model.notchSize = CGSize(width: 0, height: 34)
@@ -328,6 +344,7 @@ final class NotchController {
 
     private func targetSize(running: Bool? = nil) -> CGSize {
         let n = model.notchSize
+        if model.mini && !model.expanded { return Self.capsuleSize }
         // Раскрытое окно не меняет размер: рост окна внутри анимации сбрасывал весь остров вниз.
         if model.expanded {
             return CGSize(width: model.expandedWidth, height: expandedWindowHeight)
@@ -347,10 +364,23 @@ final class NotchController {
     }
 
     private func setFrame(_ size: CGSize) {
+        if model.mini && !model.expanded {
+            let rect = capsuleRect()
+            if panel.frame != rect { panel.setFrame(rect, display: true) }
+            return
+        }
+        if model.expanded, model.floating, let o = panelOrigin {
+            // Панель, которую перетащили: левый верхний угол там, где её отпустили.
+            let v = screen.visibleFrame
+            let h = min(size.height, o.y - v.minY - 8).rounded()
+            let rect = NSRect(x: o.x.rounded(), y: (o.y - h).rounded(), width: size.width.rounded(), height: h)
+            if panel.frame != rect { panel.setFrame(rect, display: true) }
+            return
+        }
         let f = screen.frame
         var rect = NSRect(x: (f.midX - size.width / 2).rounded(), y: f.maxY - size.height,
                           width: size.width.rounded(), height: size.height.rounded())
-        if model.centered {
+        if model.centered || model.mini {
             // Верх панели на шестой части экрана сверху, как у Spotlight; окно не выходит за низ экрана.
             let v = screen.visibleFrame
             let top = (v.maxY - v.height * 0.16).rounded()
@@ -389,6 +419,7 @@ final class NotchController {
 
     private var hotRect: NSRect {
         let f = panel.frame
+        if model.mini && !model.expanded { return f }
         if model.menuBarMode && !model.expanded { return .zero }
         let w = model.expanded ? model.expandedWidth : (model.shapeSize.width > 0 ? model.shapeSize.width : f.width)
         let h = model.expanded ? max(model.shapeSize.height, model.notchSize.height) : model.collapsedHeight(running: store.running != nil)
@@ -439,7 +470,7 @@ final class NotchController {
         guard inside != pointerInside else { return }
         pointerInside = inside
         // Панель под значком открывается и закрывается только по щелчку: мышь просто идёт через строку меню.
-        guard !model.menuBarMode else { return }
+        guard !model.floating else { return }
         if inside {
             collapseWork?.cancel()
             guard !model.expanded, !model.locked else { return }
@@ -452,7 +483,7 @@ final class NotchController {
         } else {
             expandWork?.cancel()
             // Пока пользователь печатает — не прячемся от случайного движения мыши.
-            guard model.expanded, !panel.isKeyWindow, !menuOpen, !ColorPanelBridge.isOpen else { return }
+            guard model.expanded, !model.pinned, !panel.isKeyWindow, !menuOpen, !ColorPanelBridge.isOpen else { return }
             let work = DispatchWorkItem { [weak self] in
                 guard let self, !pointerInside, !menuOpen, !ColorPanelBridge.isOpen else { return }
                 collapse()
@@ -463,7 +494,7 @@ final class NotchController {
     }
 
     private func clickOutside() {
-        guard model.expanded, !menuOpen, !hotRect.contains(NSEvent.mouseLocation) else { return }
+        guard model.expanded, !model.pinned, !menuOpen, !hotRect.contains(NSEvent.mouseLocation) else { return }
         // Щелчок по самому значку обработает он сам, иначе панель закроется и тут же откроется.
         if model.menuBarMode, menuBarItem.buttonWindow?.frame.contains(NSEvent.mouseLocation) == true { return }
         collapse()
@@ -476,8 +507,8 @@ final class NotchController {
         collapseWork?.cancel()
         setFrame(CGSize(width: model.expandedWidth, height: expandedWindowHeight))
         // На светлом фоне светлому острову нужна тень, иначе он сливается с окнами под ним.
-        panel.hasShadow = model.menuBarMode || panel.effectiveAppearance.bestMatch(from: [.aqua, .darkAqua]) == .aqua
-        if model.menuBarMode { panel.orderFrontRegardless() }
+        panel.hasShadow = model.floating || panel.effectiveAppearance.bestMatch(from: [.aqua, .darkAqua]) == .aqua
+        if model.floating { panel.orderFrontRegardless() }
         model.expanded = true
         NSHapticFeedbackManager.defaultPerformer.perform(.alignment, performanceTime: .now)
     }
@@ -498,8 +529,18 @@ final class NotchController {
         model.timeUp = nil
         model.dueTask = nil
         model.expanded = false
-        panel.hasShadow = model.menuBarMode
+        panel.hasShadow = model.floating
         updateClickThrough()
+        if model.mini {
+            // Панель сжимается обратно в капсулу; клавиатура возвращается приложению, в котором работали.
+            setFrame(targetSize())
+            if panel.isKeyWindow {
+                panel.makeFirstResponder(nil)
+                panel.orderOut(nil)
+            }
+            panel.orderFrontRegardless()
+            return
+        }
         if model.menuBarMode {
             // Панель просто исчезает, как обычное меню; клавиатура возвращается приложению.
             panel.orderOut(nil)
@@ -517,10 +558,157 @@ final class NotchController {
     /// Сворачиваемся и, когда «крылья» встанут на место, пускаем по острову блик.
     func didStart() {
         NSHapticFeedbackManager.defaultPerformer.perform(.levelChange, performanceTime: .now)
+        // Закреплённая панель остаётся открытой и после старта.
+        guard !model.pinned else { return }
         collapse()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.45) { [weak self] in
             self?.model.startPulse += 1
         }
+    }
+
+    // MARK: Закрепление, перетаскивание и капсула
+
+    func togglePin() {
+        model.pinned.toggle()
+        NSHapticFeedbackManager.defaultPerformer.perform(.alignment, performanceTime: .now)
+    }
+
+    /// Левый верхний угол перетащенной панели; nil — панель на обычном месте.
+    private var panelOrigin: CGPoint? = NotchController.loadPoint("panel.origin")
+    var isPanelMoved: Bool { panelOrigin != nil }
+    private var dragStart: (mouse: CGPoint, origin: CGPoint)?
+
+    /// Панель тянут за шапку. В Notch она живёт в вырезе и не двигается.
+    func dragPanel() {
+        guard model.floating, model.expanded else { return }
+        let m = NSEvent.mouseLocation
+        if dragStart == nil { dragStart = (m, CGPoint(x: panel.frame.minX, y: panel.frame.maxY)) }
+        guard let d = dragStart else { return }
+        panelOrigin = CGPoint(x: d.origin.x + m.x - d.mouse.x, y: d.origin.y + m.y - d.mouse.y)
+        setFrame(targetSize())
+    }
+
+    func endDragPanel() {
+        guard dragStart != nil, var o = panelOrigin else { return }
+        dragStart = nil
+        // Шапка остаётся на экране, а под панелью хватает места для списка.
+        let v = screen.visibleFrame
+        o.x = min(max(o.x, v.minX - model.expandedWidth + 120), v.maxX - 120)
+        o.y = min(max(o.y, v.minY + 420), v.maxY)
+        panelOrigin = o
+        Self.savePoint(o, "panel.origin")
+        setFrame(targetSize())
+    }
+
+    func resetPanelPosition() {
+        panelOrigin = nil
+        UserDefaults.standard.removeObject(forKey: "panel.origin")
+        setFrame(targetSize())
+    }
+
+    /// Капсула: размер как у мини-плеера.
+    static let capsuleSize = CGSize(width: 300, height: 58)
+    /// Сколько капсулы видно, когда она спрятана за край.
+    private static let tuckVisible: CGFloat = 22
+    private var capsuleRight = UserDefaults.standard.object(forKey: "capsule.right") as? Bool ?? true
+    private var capsuleY: CGFloat? = (UserDefaults.standard.object(forKey: "capsule.y") as? Double).map { CGFloat($0) }
+    private var capsuleScreenX: CGFloat? = (UserDefaults.standard.object(forKey: "capsule.x") as? Double).map { CGFloat($0) }
+    /// Пока капсулу тащат, она стоит под курсором, а не у края.
+    private var capsuleDrag: CGPoint?
+    private var capsuleDragStart: (mouse: CGPoint, origin: CGPoint)?
+
+    /// Точка, по которой понятно, на каком экране капсула.
+    var capsuleAnchor: CGPoint {
+        CGPoint(x: capsuleScreenX ?? (NSScreen.main?.frame.midX ?? 0), y: capsuleY ?? (NSScreen.main?.frame.midY ?? 0))
+    }
+
+    private func capsuleRect() -> NSRect {
+        let size = Self.capsuleSize
+        if let o = capsuleDrag { return NSRect(origin: o, size: size) }
+        let v = (NSScreen.screens.first { $0.frame.contains(capsuleAnchor) } ?? NSScreen.main ?? NSScreen.screens[0]).visibleFrame
+        let y = min(max(capsuleY ?? (v.maxY - v.height * 0.25), v.minY + 6), v.maxY - size.height - 6)
+        let margin: CGFloat = 12
+        let x: CGFloat = capsuleRight
+            ? (model.tucked ? v.maxX - Self.tuckVisible : v.maxX - size.width - margin)
+            : (model.tucked ? v.minX - size.width + Self.tuckVisible : v.minX + margin)
+        return NSRect(x: x.rounded(), y: y.rounded(), width: size.width, height: size.height)
+    }
+
+    func dragCapsule() {
+        let m = NSEvent.mouseLocation
+        if capsuleDragStart == nil { capsuleDragStart = (m, panel.frame.origin) }
+        guard let d = capsuleDragStart else { return }
+        capsuleDrag = CGPoint(x: d.origin.x + m.x - d.mouse.x, y: d.origin.y + m.y - d.mouse.y)
+        setFrame(targetSize())
+    }
+
+    /// Капсула прилипает к ближнему краю; если её утащили за край — прячется, оставляя полоску.
+    func endDragCapsule() {
+        guard capsuleDragStart != nil else { return }
+        capsuleDragStart = nil
+        let f = panel.frame
+        let s = NSScreen.screens.first { $0.frame.contains(CGPoint(x: f.midX, y: f.midY)) } ?? screen
+        let v = s.visibleFrame
+        capsuleRight = f.midX > v.midX
+        model.tucked = capsuleRight ? f.maxX > v.maxX + 16 : f.minX < v.minX - 16
+        capsuleY = f.minY
+        capsuleScreenX = v.midX
+        capsuleDrag = nil
+        UserDefaults.standard.set(capsuleRight, forKey: "capsule.right")
+        UserDefaults.standard.set(Double(f.minY), forKey: "capsule.y")
+        UserDefaults.standard.set(Double(v.midX), forKey: "capsule.x")
+        animateCapsule()
+    }
+
+    private func animateCapsule() {
+        NSAnimationContext.runAnimationGroup { ctx in
+            ctx.duration = 0.28
+            ctx.timingFunction = CAMediaTimingFunction(controlPoints: 0.2, 0.9, 0.3, 1)
+            panel.animator().setFrame(capsuleRect(), display: true)
+        }
+    }
+
+    /// Щелчок по спрятанной капсуле выдвигает её, по выдвинутой — открывает панель.
+    func tapCapsule() {
+        if model.tucked {
+            model.tucked = false
+            animateCapsule()
+        } else {
+            expand()
+        }
+    }
+
+    /// Для проверок: отпустить капсулу или панель в заданной точке, как будто её туда дотащили.
+    func dropCapsule(at origin: CGPoint) {
+        capsuleDragStart = (.zero, .zero)
+        capsuleDrag = origin
+        setFrame(targetSize())
+        endDragCapsule()
+    }
+
+    func dropPanel(at topLeft: CGPoint) {
+        dragStart = (.zero, .zero)
+        panelOrigin = topLeft
+        endDragPanel()
+    }
+
+    /// Включить или выключить капсулу.
+    func setMini(_ on: Bool) {
+        guard on != model.mini else { return }
+        if model.expanded { collapse() }
+        model.mini = on
+        if on { model.tucked = false }
+        measureNotch()
+        applyDisplayMode()
+    }
+
+    private static func loadPoint(_ key: String) -> CGPoint? {
+        guard let a = UserDefaults.standard.array(forKey: key) as? [Double], a.count == 2 else { return nil }
+        return CGPoint(x: a[0], y: a[1])
+    }
+
+    private static func savePoint(_ p: CGPoint, _ key: String) {
+        UserDefaults.standard.set([Double(p.x), Double(p.y)], forKey: key)
     }
 
     /// Показать Notch на пару секунд — после знакомства, чтобы было видно, где живёт Hourfox.
@@ -608,6 +796,15 @@ final class NotchController {
         menu.addItem(NSMenuItem(title: L("Отчёт")) { [weak self] in self?.openJournal(.report) })
         menu.addItem(NSMenuItem(title: L("Настройки…")) { [weak self] in self?.openJournal(.settings) })
         menu.addItem(.separator())
+        let mini = NSMenuItem(title: L("Капсула с таймером")) { [weak self] in
+            guard let self else { return }
+            setMini(!model.mini)
+        }
+        mini.state = model.mini ? .on : .off
+        menu.addItem(mini)
+        if isPanelMoved {
+            menu.addItem(NSMenuItem(title: L("Вернуть панель на место")) { [weak self] in self?.resetPanelPosition() })
+        }
         let login = NSMenuItem(title: L("Открывать при входе в систему")) {
             let service = SMAppService.mainApp
             if service.status == .enabled { try? service.unregister() } else { try? service.register() }

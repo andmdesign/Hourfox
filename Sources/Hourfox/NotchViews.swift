@@ -56,8 +56,17 @@ struct NotchRootView: View {
     private var isRunning: Bool { store.running != nil }
 
     var body: some View {
-        let shape = NotchShape(topRadius: model.expanded ? 12 : 6, bottomRadius: model.expanded ? 26 : 10, isPanel: model.menuBarMode)
-        VStack(spacing: 0) {
+        if model.mini && !model.expanded {
+            CapsuleView(model: model, controller: controller)
+                .transition(.opacity.combined(with: .scale(0.9)))
+        } else {
+            island
+        }
+    }
+
+    private var island: some View {
+        let shape = NotchShape(topRadius: model.expanded ? 12 : 6, bottomRadius: model.expanded ? 26 : 10, isPanel: model.floating)
+        return VStack(spacing: 0) {
             ZStack(alignment: .top) {
                 if model.expanded {
                     ExpandedView(model: model, controller: controller, dot: dot)
@@ -399,6 +408,8 @@ struct ExpandedView: View {
             Color.clear.frame(width: model.notchSize.width)
             HStack(spacing: 4) {
                 UpdatePill()
+                IconButton(symbol: "pin", help: model.pinned ? "Открепить" : "Закрепить", active: model.pinned) { controller.togglePin() }
+                IconButton(symbol: "arrows-in", help: "Свернуть в капсулу") { controller.setMini(true) }
                 IconButton(symbol: "maximize-2", help: "Открыть окно") { controller.openJournal(.journal) }
                 IconButton(symbol: "ellipsis", help: "Ещё") { controller.showMoreMenu() }
             }
@@ -406,7 +417,12 @@ struct ExpandedView: View {
         }
         .frame(height: model.notchSize.height)
         // В панели под значком нет выреза: верхний отступ такой же, как боковые.
-        .padding(.top, model.menuBarMode ? 10 : 0)
+        .padding(.top, model.floating ? 10 : 0)
+        // Отдельную панель можно перетащить за шапку; в Notch она живёт в вырезе.
+        .contentShape(Rectangle())
+        .gesture(DragGesture(minimumDistance: 3)
+            .onChanged { _ in controller.dragPanel() }
+            .onEnded { _ in controller.endDragPanel() })
     }
 
     private var inputRow: some View {
@@ -922,13 +938,15 @@ struct ExpandedView: View {
 struct IconButton: View {
     let symbol: String
     let help: String
+    /// Включённое состояние, например закреплённая панель.
+    var active = false
     let action: () -> Void
     @State private var hover = false
 
     var body: some View {
         Button(action: action) {
             Image(icon: symbol, size: 12)
-                .foregroundStyle(.notchInk.opacity(hover ? 0.95 : 0.6))
+                .foregroundStyle(active ? AnyShapeStyle(Color.accentColor) : AnyShapeStyle(.notchInk.opacity(hover ? 0.95 : 0.6)))
                 .frame(width: 26, height: 22)
                 .background(RoundedRectangle(cornerRadius: 6, style: .continuous).fill(.notchInk.opacity(hover ? 0.1 : 0)))
                 .contentShape(Rectangle())

@@ -27,6 +27,10 @@ enum DebugSnapshots {
             runAnimationTest(app)
             return
         }
+        if let dir = ProcessInfo.processInfo.environment["HOURFOX_CAPSULETEST"] {
+            runCapsuleTest(app, dir)
+            return
+        }
         if let dir = ProcessInfo.processInfo.environment["HOURFOX_MENUBARTEST"] {
             runMenuBarTest(app, dir)
             return
@@ -1333,6 +1337,65 @@ enum DebugSnapshots {
             app.store.start(title: "Тест", projectID: nil, planned: .some(nil))
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.6) { NSApp.terminate(nil) }
+    }
+
+    /// HOURFOX_CAPSULETEST=<папка>: капсула у края, прятание за край, закрепление и перетаскивание панели.
+    private static func runCapsuleTest(_ app: AppDelegate, _ dir: String) {
+        func check(_ name: String, _ ok: Bool) { print(ok ? "OK  " : "FAIL", name) }
+        let notch = app.notch!, store = app.store
+        let size = NotchController.capsuleSize
+        store.start(title: "Вёрстка лендинга", projectID: store.projects.first?.id)
+        notch.setMini(true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+            let v = notch.screen.visibleFrame, f = notch.panel.frame
+            print("CAPSULE frame", f, "visible", v)
+            check("капсула видна и размером с мини-плеер", notch.panel.isVisible && f.size == size)
+            check("капсула у правого края", abs(f.maxX - (v.maxX - 12)) < 1)
+            save(notch.panel, "\(dir)/capsule.png")
+            // Утащили за правый край — прячется, видна полоска.
+            notch.dropCapsule(at: CGPoint(x: v.maxX - 80, y: v.midY))
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.1) {
+            let v = notch.screen.visibleFrame, f = notch.panel.frame
+            check("за край — капсула прячется", notch.model.tucked && abs(f.minX - (v.maxX - 22)) < 1)
+            notch.tapCapsule()
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) {
+            let v = notch.screen.visibleFrame, f = notch.panel.frame
+            check("щелчок выдвигает капсулу", !notch.model.tucked && abs(f.maxX - (v.maxX - 12)) < 1)
+            // Отпустили в левой половине — прилипает к левому краю.
+            notch.dropCapsule(at: CGPoint(x: v.minX + v.width * 0.3, y: v.minY + 200))
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.1) {
+            let v = notch.screen.visibleFrame, f = notch.panel.frame
+            check("капсула прилипает к левому краю", abs(f.minX - (v.minX + 12)) < 1 && abs(f.minY - (v.minY + 200)) < 1)
+            notch.tapCapsule()
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.8) {
+            check("щелчок по капсуле открывает панель", notch.model.expanded && notch.panel.frame.width == notch.model.expandedWidth)
+            save(notch.panel, "\(dir)/capsule-panel.png")
+            notch.model.pinned = true
+            notch.didStart()
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.4) {
+            check("закреплённая панель не закрывается после старта", notch.model.expanded)
+            let v = notch.screen.visibleFrame
+            notch.dropPanel(at: CGPoint(x: v.minX + 60, y: v.maxY - 40))
+            check("панель переезжает туда, куда её дотащили", abs(notch.panel.frame.minX - (v.minX + 60)) < 1 && abs(notch.panel.frame.maxY - (v.maxY - 40)) < 1)
+            notch.model.pinned = false
+            notch.collapse()
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.9) {
+            check("панель сворачивается обратно в капсулу", !notch.model.expanded && notch.panel.frame.size == size && notch.panel.isVisible)
+            store.stop()
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4.4) {
+            save(notch.panel, "\(dir)/capsule-idle.png")
+            notch.resetPanelPosition()
+            notch.setMini(false)
+            check("без капсулы снова Notch", !notch.model.mini && !notch.model.floating)
+            NSApp.terminate(nil)
+        }
     }
 
     /// Календарь дня: расчёты, снимки и настоящие жесты мышью.
